@@ -1,6 +1,7 @@
 package Print;
 
 import Color.WindowColor;
+import Receipt.Receipt;
 import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -96,11 +97,12 @@ public class ReprintJdailog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
-        this.dispose();
+        Receipt rec= new Receipt(new JFrame(),true);
+        rec.setVisible(true);
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
     private void btnPrintByInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseClicked
-        ReprintByInvoice rep = new ReprintByInvoice(new JFrame(),true);
+        ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(),true);
         rep.setVisible(true);
     }//GEN-LAST:event_btnPrintByInvoiceMouseClicked
 

@@ -1,4 +1,3 @@
-C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Print\ReprintByInvoice.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\OpenAndCloseShift\OpenShiftJdailog.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Return\ReturnDialog.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\SearchField.java
@@ -6,14 +5,21 @@ C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\ja
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Button\Button.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Return\ApprovalCode.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\LabelFontGreen.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Button\ButtonAddProduct.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\ReceiptBox.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Button\ButtonBuy.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Button\ButtonLogin.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\LabelReceipt.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Receipt\CashierReport.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Print\ReprintJdailog.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\TextField.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\ComboBox.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Combobox\ComboItem.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Print\ReprintByInvoicenumber.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\LabelPopUpTitle.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\LoginAndLogoutForm\LoginFormJdailog.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\DeleteAndCancel\CancelDialog.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\TextFieldCenter.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\BoxItem.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\DeleteAndCancel\DeleteDialog.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\Shadow\ShadowType.java
@@ -31,6 +37,7 @@ C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\ja
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\PasswordField.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\View\MainPage\MainPage.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\LabelTitle.java
+C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Receipt\Receipt.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Button\ButtonInstock.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Components\Shadow\GraphicsUtilities.java
 C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\java\Color\WindowColor.java

@@ -3,6 +3,7 @@ package Components;
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
+import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,7 +12,6 @@ import java.awt.RenderingHints;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
-import javax.swing.JTextField;
 
 /**
  *
@@ -20,9 +20,20 @@ import javax.swing.JTextField;
 public class TextField extends javax.swing.JPanel {
 
     /**
-     * Creates new form TextField
+     * @return the labelTextField
      */
-    
+    public String getLabelTextField() {
+        return labelTextField;
+    }
+
+    /**
+     * @param labelTextField the labelTextField to set
+     */
+    public void setLabelTextField(String labelTextField) {
+        this.labelTextField = labelTextField;
+        txtText.setText(labelTextField);
+        txtText.setForeground(Color.LIGHT_GRAY);
+    }
     
     public TextField() {
         initComponents();
@@ -30,6 +41,32 @@ public class TextField extends javax.swing.JPanel {
         txtText.setFont(WindowFonts.timeNewRoman);
     }
     
+    //Create Placeholder
+    public void initEvent(ButtonEvent event) {
+        txtText.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if(txtText.getText().trim().equals(labelTextField)) {
+                    txtText.setText("");
+                }
+                txtText.setForeground(Color.BLACK);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(txtText.getText().trim().equals("")) {
+                    txtText.setText(labelTextField);
+                    txtText.setForeground(Color.LIGHT_GRAY);
+                }
+                
+                if(txtText.getText().trim().equals(labelTextField)) {
+                    txtText.setForeground(Color.LIGHT_GRAY);
+                }
+            }
+        });
+    }
+    
+
     //=================================================Create Shadow Box
     private ShadowType shadowType;
     private int shadowSize = 3;
@@ -93,6 +130,11 @@ public class TextField extends javax.swing.JPanel {
 
         txtText.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtText.setBorder(null);
+        txtText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTextFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,11 +149,16 @@ public class TextField extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtText)
+                .addComponent(txtText, javax.swing.GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTextFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTextFocusGained
+
+    private String labelTextField;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField txtText;

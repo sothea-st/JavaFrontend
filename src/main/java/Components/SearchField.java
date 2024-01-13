@@ -8,12 +8,12 @@ import Fonts.WindowFonts;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.KeyboardFocusManager;
 import java.awt.RenderingHints;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+
 
 /**
  *
@@ -33,27 +33,32 @@ public class SearchField extends javax.swing.JPanel {
      */
     public void setPlaceholder(String placeholder) {
         this.placeholder = placeholder;
-        txtSearch.setText(placeholder);
-        
-//        txtSearch.setForeground(Color.gray);
-//        if( txtSearch.getText().equals("") ) {
-//            txtSearch.setText(placeholder);
-//        }
+        textSearch.setText(placeholder);
+        textSearch.setForeground(Color.LIGHT_GRAY);
     }
     
     public void initEvent(ButtonEvent event) {
-        txtSearch.addFocusListener(new FocusListener() {
+        textSearch.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                event.onFocusGain();
+                if(textSearch.getText().trim().equals(placeholder)) {
+                    textSearch.setText("");
+                }
+                textSearch.setForeground(Color.BLACK);
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                
+                if(textSearch.getText().trim().equals("")) {
+                    textSearch.setText(placeholder);
+                    textSearch.setForeground(Color.LIGHT_GRAY);
+                }
+
+                if(textSearch.getText().trim().equals(placeholder)) {
+                    textSearch.setForeground(Color.LIGHT_GRAY);
+                }
             }
-        }
-        );
+        });
     }
 
     /**
@@ -62,8 +67,10 @@ public class SearchField extends javax.swing.JPanel {
     public SearchField() {
         initComponents();
         setBackground(WindowColor.white); 
-        txtSearch.setFont(WindowFonts.timeNewRoman);
+        textSearch.setFont(WindowFonts.timeNewRoman);   
+
     }
+        
     
     //=================================================Create Shadow Box
     private ShadowType shadowType;
@@ -124,14 +131,12 @@ public class SearchField extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSearch = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-
-        txtSearch.setText("Placeholder");
-        txtSearch.setBorder(null);
-        txtSearch.setRequestFocusEnabled(false);
+        textSearch = new javax.swing.JTextField();
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\Search Icon.png")); // NOI18N
+
+        textSearch.setBorder(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,19 +144,18 @@ public class SearchField extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addComponent(textSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSearch)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,6 +163,6 @@ public class SearchField extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField textSearch;
     // End of variables declaration//GEN-END:variables
 }

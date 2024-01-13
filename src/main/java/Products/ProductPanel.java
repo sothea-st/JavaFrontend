@@ -1,19 +1,18 @@
 package Products;
 
+import Button.Button;
 import Color.WindowColor;
 import Components.BoxItem;
 import Components.SubtotalPanel;
 import Event.ButtonEvent;
-import View.MainPage.MainPage;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,6 +20,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -34,8 +34,9 @@ public class ProductPanel extends javax.swing.JPanel {
      */
     private JPanel panelItem;
     private SubtotalPanel totalPanel;
+    private Button btnPayment;
     
-    public ProductPanel(JPanel panelItem, SubtotalPanel totalPanel) {
+    public ProductPanel(JPanel panelItem, SubtotalPanel totalPanel, Button btnPayment) {
         initComponents();
         panelProduct.setBackground(WindowColor.slightGreen);
         panelPagination.setBackground(WindowColor.slightGreen);
@@ -43,6 +44,16 @@ public class ProductPanel extends javax.swing.JPanel {
         appendProduct();
         this.panelItem = panelItem;
         this.totalPanel=totalPanel;
+        this.btnPayment=btnPayment;
+        addCombo();
+    }
+    
+    void addCombo(){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("", "Select Product by Brand");
+        map.put("1", "ABC");
+        map.put("2", "DES");
+        cmboxBrand.setMap(map);
     }
     
     ArrayList<BoxItem> arrInt = new ArrayList<>();
@@ -84,10 +95,12 @@ public class ProductPanel extends javax.swing.JPanel {
             double price = rd.nextDouble(5, 20);
             double barcode = rd.nextDouble(100, 200);
             double amountUsd = price * qty;
+            double amountKhr = price * qty * 4200;
 
             DecimalFormat df = new DecimalFormat("#,##0.00 kg"); 
             DecimalFormat dm = new DecimalFormat("$ #,##0.00");
             DecimalFormat bar = new DecimalFormat("########00000000");
+            DecimalFormat kh = new DecimalFormat("#,##0.00");
             
             String name = list[i].getName().substring(0, list[i].getName().length() - 4);
             Icon image = new ImageIcon(list[i].getAbsolutePath());
@@ -104,20 +117,41 @@ public class ProductPanel extends javax.swing.JPanel {
                     box.setLabelPrice(dm.format(price));
                     box.setLabelBarcode(bar.format(barcode));
                     box.setLabelAmountUsd(dm.format(amountUsd));
+                    box.setLabelAmountKh(kh.format(amountKhr));
                     arrInt.add(box);
                     
                     double sum = 0;
                     for (int j = 0; j < arrInt.size(); j++) {
                         sum = sum + amountUsd;
                     }
+                    
+                    double sumKh = 0;
+                    for (int j = 0; j < arrInt.size(); j++) {
+                        sumKh = sumKh + amountKhr;
+                    }
 
-
+//                    ButtonEvent event = new ButtonEvent() {
+//                        @Override
+//                        public void onMouseClick() {
+//                            String mybo = box.getLabelProductName(); 
+//                            panelItem.remove(box);
+//                            panelItem.remove(Box.createRigidArea(new Dimension(10, 10)));
+//                            panelItem.revalidate();
+//                        }
+//                   };
+                    
+                    
                     panelItem.add(box);
                     panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
                     panelItem.revalidate();
-                    panelItem.setBorder(new EmptyBorder(10, 10, 10, 10)); // for padding item 
+//                    panelItem.setBorder(new EmptyBorder(10, 10, 10, 10)); // for padding item 
+                    
+                    panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
                     panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
-                                        totalPanel.setLabelSubtotalUsd(dm.format(sum));
+                    totalPanel.setLabelSubtotalUsd(dm.format(sum));
+                    totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
+                    btnPayment.setBackground(WindowColor.lightBlue);
+                    panelItem.setBackground(WindowColor.white);
                 }
             };
             
@@ -152,9 +186,7 @@ public class ProductPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         panelProduct = new javax.swing.JPanel();
         panelPagination = new javax.swing.JPanel();
-        button1 = new Button.Button();
-        button2 = new Button.Button();
-        comboBox1 = new Components.ComboBox();
+        cmboxBrand = new Components.ComboBox();
         labelFontGreen1 = new Components.LabelFontGreen();
         labelFontGreen2 = new Components.LabelFontGreen();
         labelFontGreen3 = new Components.LabelFontGreen();
@@ -162,6 +194,8 @@ public class ProductPanel extends javax.swing.JPanel {
         labelFontGreen5 = new Components.LabelFontGreen();
         labelFontGreen6 = new Components.LabelFontGreen();
         labelFontGreen7 = new Components.LabelFontGreen();
+        labelTitle1 = new Components.LabelTitle();
+        labelTitle2 = new Components.LabelTitle();
 
         scrollItem.setBorder(null);
 
@@ -180,101 +214,99 @@ public class ProductPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
-                .addGap(173, 173, 173))
+                .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addGap(304, 304, 304))
         );
 
         scrollItem.setViewportView(jPanel1);
 
-        button1.setBackground(new java.awt.Color(47, 155, 70));
-        button1.setButtonName("Home");
+        labelFontGreen1.setLabelName(">");
 
-        button2.setBackground(new java.awt.Color(47, 155, 70));
-        button2.setButtonName("NEW ITEMS");
+        labelFontGreen2.setLabelName("<");
 
-        labelFontGreen1.setLabelName("4");
+        labelFontGreen3.setLabelName("1");
 
-        labelFontGreen2.setLabelName(">");
+        labelFontGreen4.setLabelName("2");
 
-        labelFontGreen3.setLabelName("5");
+        labelFontGreen5.setLabelName("3");
 
-        labelFontGreen4.setLabelName("3");
+        labelFontGreen6.setLabelName("4");
 
-        labelFontGreen5.setLabelName("2");
+        labelFontGreen7.setLabelName("5");
 
-        labelFontGreen6.setLabelName("1");
+        labelTitle1.setBackground(new java.awt.Color(47, 155, 70));
+        labelTitle1.setLabelTitle("Home");
 
-        labelFontGreen7.setLabelName("<");
+        labelTitle2.setBackground(new java.awt.Color(47, 155, 70));
+        labelTitle2.setLabelTitle("NEW ITEMS");
 
         javax.swing.GroupLayout panelPaginationLayout = new javax.swing.GroupLayout(panelPagination);
         panelPagination.setLayout(panelPaginationLayout);
         panelPaginationLayout.setHorizontalGroup(
             panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPaginationLayout.createSequentialGroup()
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
+                .addComponent(labelTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelPaginationLayout.createSequentialGroup()
-                        .addComponent(labelFontGreen7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFontGreen2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFontGreen6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFontGreen3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFontGreen5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFontGreen4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFontGreen4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFontGreen5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFontGreen1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFontGreen6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFontGreen3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFontGreen7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFontGreen2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(comboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
+                        .addComponent(labelFontGreen1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmboxBrand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
         panelPaginationLayout.setVerticalGroup(
             panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPaginationLayout.createSequentialGroup()
-                .addComponent(comboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFontGreen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmboxBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelFontGreen2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFontGreen3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFontGreen4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFontGreen5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFontGreen6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelFontGreen7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(labelFontGreen7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFontGreen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(panelPaginationLayout.createSequentialGroup()
-                .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(button1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(button2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollItem, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+            .addComponent(scrollItem, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
             .addComponent(panelPagination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPagination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollItem, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(scrollItem, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.Button button1;
-    private Button.Button button2;
-    private Components.ComboBox comboBox1;
+    private Components.ComboBox cmboxBrand;
     private javax.swing.JPanel jPanel1;
     private Components.LabelFontGreen labelFontGreen1;
     private Components.LabelFontGreen labelFontGreen2;
@@ -283,6 +315,8 @@ public class ProductPanel extends javax.swing.JPanel {
     private Components.LabelFontGreen labelFontGreen5;
     private Components.LabelFontGreen labelFontGreen6;
     private Components.LabelFontGreen labelFontGreen7;
+    private Components.LabelTitle labelTitle1;
+    private Components.LabelTitle labelTitle2;
     private javax.swing.JPanel panelPagination;
     private javax.swing.JPanel panelProduct;
     private javax.swing.JScrollPane scrollItem;

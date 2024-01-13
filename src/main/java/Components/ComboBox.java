@@ -1,13 +1,20 @@
 package Components;
 
+import Combobox.ComboItem;
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
+import Fonts.WindowFonts;
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import javax.swing.AbstractButton;
+import javax.swing.JComponent;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -15,12 +22,39 @@ import java.awt.image.BufferedImage;
  */
 public class ComboBox extends javax.swing.JPanel {
 
+    
+    private HashMap<String,String> map;
+    
+    public HashMap<String, String> getMap() {
+          return map;
+    }
+
+    public void setMap(HashMap<String, String> map) {
+        this.map = map;
+        for( String key:map.keySet() ) {
+            ComboItem cm = new ComboItem(key,map.get(key));
+            combo.addItem(cm.getValue());
+            combo.setFont(WindowFonts.timeNewRoman);
+        }
+    }
+    
     /**
      * Creates new form ComboBox
      */
     public ComboBox() {
         initComponents();
         setBackground(WindowColor.white);
+        
+        for (int i = 0; i < combo.getComponentCount(); i++) 
+        {
+            if (combo.getComponent(i) instanceof JComponent) {
+                ((JComponent) combo.getComponent(i)).setBorder(new EmptyBorder(0, 0,0,0));
+            }
+
+            if (combo.getComponent(i) instanceof AbstractButton) {
+                ((AbstractButton) combo.getComponent(i)).setBorderPainted(true);
+            }
+        }
         
     }
 
@@ -83,13 +117,14 @@ public class ComboBox extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combo = new javax.swing.JComboBox<>();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        combo.setBackground(new java.awt.Color(255, 255, 255));
+        combo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        combo.setFocusable(false);
+        combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboActionPerformed(evt);
             }
         });
 
@@ -99,24 +134,24 @@ public class ComboBox extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, 0, 202, Short.MAX_VALUE)
+                .addComponent(combo, 0, 202, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
+                .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> combo;
     // End of variables declaration//GEN-END:variables
 }

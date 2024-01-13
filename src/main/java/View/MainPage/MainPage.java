@@ -2,17 +2,19 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
-import Components.SubtotalPanel;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
-import LoginAndLogoutForm.LogoutDialog;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
 import Print.ReprintJdailog;
 import Products.ProductPanel;
+import Receipt.CashierReport;
 import Return.ApprovalCode;
+import java.awt.Color;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +26,18 @@ import javax.swing.JScrollPane;
 
 public class MainPage extends javax.swing.JFrame {
 
+    public Color getActiveColor() {
+        return activeColor;
+    }
+
+    public void setActiveColor(Color activeColor) {
+        this.activeColor = activeColor;
+        menuNewItem.setBackground(activeColor);
+    }
+
+    private Color bgColor = new Color(204, 204, 204);
+    private Color activeColor = new Color(56, 56, 56);
+    
     public JPanel getDetailProduct() {
         return detailProduct;
     }
@@ -37,6 +51,19 @@ public class MainPage extends javax.swing.JFrame {
     
     public MainPage() {
         initComponents();
+        event();
+        setBackground();
+        currenDateTime();
+        jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        BackgroundImage bgimg = new BackgroundImage();
+        PanelProduct.removeAll();
+        PanelProduct.add(bgimg);
+        PanelProduct.revalidate();
+        PanelProduct.repaint();
+    }
+
+    private void setBackground(){
         mainPanel.setBackground(WindowColor.slightGreen);
         menuBar.setBackground(WindowColor.darkGreen);
         day.setBackground(WindowColor.slightGreen);
@@ -44,26 +71,25 @@ public class MainPage extends javax.swing.JFrame {
         PanelProduct.setBackground(WindowColor.slightGreen);
         boxOne.setBackground(WindowColor.slightGreen);
         detailItem.setBackground(WindowColor.slightGreen);
-        
-        BackgroundImage bgimg = new BackgroundImage();
-        PanelProduct.removeAll();
-        PanelProduct.add(bgimg);
-        PanelProduct.revalidate();
-        PanelProduct.repaint();
-        event();
-        jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     }
     
+    private void currenDateTime(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");  
+        LocalDateTime date = LocalDateTime.now();  
+        currentDate.setText(dtf.format(date));
+    }
+    
+    //Function call Placeholder
     void event(){
         ButtonEvent btnevent = new ButtonEvent() {
             @Override
             public void onFocusGain() {
-                System.out.println("Helloooo");
-                searchBox.setPlaceholder("");
+               
             }
            
         };
         searchBox.initEvent(btnevent);
+        textField.initEvent(btnevent);
     }
 
     @SuppressWarnings("unchecked")
@@ -72,7 +98,7 @@ public class MainPage extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JPanel();
-        textField1 = new Components.TextField();
+        textField = new Components.TextField();
         labelTitle1 = new Components.LabelTitle();
         menuNewItem = new Components.LabelTitle();
         labelTitle3 = new Components.LabelTitle();
@@ -96,7 +122,7 @@ public class MainPage extends javax.swing.JFrame {
         button10 = new Button.Button();
         buttonCancel1 = new Button.ButtonCancel();
         searchBox = new Components.SearchField();
-        jLabel3 = new javax.swing.JLabel();
+        currentDate = new javax.swing.JLabel();
         PanelProduct = new javax.swing.JPanel();
         lbPOSId = new javax.swing.JLabel();
         jScrollPaneDetail = new javax.swing.JScrollPane();
@@ -104,6 +130,8 @@ public class MainPage extends javax.swing.JFrame {
         detailItem = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        textField.setLabelTextField("Scan or input barcode");
 
         labelTitle1.setLabelTitle("PROMOTION");
 
@@ -144,23 +172,19 @@ public class MainPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitle7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelTitle7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitle6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitle5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitle4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitle3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuNewItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(textField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+            .addComponent(menuNewItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitle4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitle5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitle7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,6 +252,11 @@ public class MainPage extends javax.swing.JFrame {
 
         button9.setBackground(new java.awt.Color(47, 155, 70));
         button9.setButtonName("Cashier Report");
+        button9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button9MouseClicked(evt);
+            }
+        });
 
         button10.setBackground(new java.awt.Color(47, 155, 70));
         button10.setButtonName("Customer ");
@@ -299,11 +328,11 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        searchBox.setPlaceholder("Search by name");
+        searchBox.setPlaceholder("Search by name or barcode");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Tuesday, 02 January 2024 03:50:00 PM");
+        currentDate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        currentDate.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        currentDate.setText("Tuesday, 02 January 2024 03:50:00 PM");
 
         PanelProduct.setLayout(new java.awt.BorderLayout());
 
@@ -319,14 +348,14 @@ public class MainPage extends javax.swing.JFrame {
         detailItem.setLayout(detailItemLayout);
         detailItemLayout.setHorizontalGroup(
             detailItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
         detailItemLayout.setVerticalGroup(
             detailItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        boxOne.add(detailItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 390, -1));
+        boxOne.add(detailItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 550, -1));
 
         jScrollPaneDetail.setViewportView(boxOne);
 
@@ -346,16 +375,16 @@ public class MainPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbPOSId, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(PanelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(PanelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPaneDetail)
+                    .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addComponent(panelprocessing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(19, 19, 19))
+                .addGap(10, 10, 10))
             .addComponent(menuBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
@@ -363,34 +392,38 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addContainerGap(20, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                                .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(imgUser, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                                        .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43))))))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbPOSId, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(currentDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPaneDetail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelprocessing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(26, 26, 26))
+                    .addComponent(PanelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -411,19 +444,19 @@ public class MainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-//        LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(),true);
-//        jdFormLogin.setVisible(true);
+        LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(),true);
+        jdFormLogin.setVisible(true);
         
-        LogoutDialog logout = new LogoutDialog(new JFrame(),true);
-        logout.setVisible(true);
+//        LogoutDialog logout = new LogoutDialog(new JFrame(),true);
+//        logout.setVisible(true);
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnOpenShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenShiftMouseClicked
-//        OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(),true);
-//        jdOpenShift.setVisible(true);
+        OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(),true);
+        jdOpenShift.setVisible(true);
 
-        CloseShift jdCloseShift = new CloseShift(new JFrame(),true);
-        jdCloseShift.setVisible(true);
+//        CloseShift jdCloseShift = new CloseShift(new JFrame(),true);
+//        jdCloseShift.setVisible(true);
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
@@ -432,6 +465,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReprintMouseClicked
 
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
+
         PaymentOption pay = new PaymentOption(new JFrame(),true);
         pay.setVisible(true);
     }//GEN-LAST:event_btnPaymentMouseClicked
@@ -447,13 +481,18 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void menuNewItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewItemMouseClicked
-        ProductPanel pdPanel = new ProductPanel(detailItem,totalPanel);
+        ProductPanel pdPanel = new ProductPanel(detailItem,totalPanel,btnPayment);
         PanelProduct.removeAll();
         PanelProduct.add(pdPanel);
         PanelProduct.revalidate();
         PanelProduct.repaint();
-
+        menuNewItem.setBackground(getActiveColor());
     }//GEN-LAST:event_menuNewItemMouseClicked
+
+    private void button9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button9MouseClicked
+        CashierReport cashier = new CashierReport(new JFrame(),true);
+        cashier.setVisible(true);
+    }//GEN-LAST:event_button9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -503,11 +542,11 @@ public class MainPage extends javax.swing.JFrame {
     private Button.Button button8;
     private Button.Button button9;
     private Button.ButtonCancel buttonCancel1;
+    private javax.swing.JLabel currentDate;
     private javax.swing.JPanel day;
     private javax.swing.JPanel detailItem;
     private javax.swing.JLabel imgUser;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPaneDetail;
     private Components.LabelTitle labelTitle1;
     private Components.LabelTitle labelTitle3;
@@ -521,7 +560,7 @@ public class MainPage extends javax.swing.JFrame {
     private Components.LabelTitle menuNewItem;
     private javax.swing.JPanel panelprocessing;
     private Components.SearchField searchBox;
-    private Components.TextField textField1;
+    private Components.TextField textField;
     private Components.SubtotalPanel totalPanel;
     // End of variables declaration//GEN-END:variables
 }

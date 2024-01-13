@@ -1,6 +1,7 @@
 package DeleteAndCancel;
 
 import Color.WindowColor;
+import java.util.HashMap;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -18,6 +19,17 @@ public class DeleteDialog extends javax.swing.JDialog {
         panelDelete.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        addCombo();
+    }
+    
+    void addCombo(){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("", "Select the reason");
+        map.put("1", "Over Scanning");
+        map.put("2", "Customer Change Mind");
+        map.put("3", "Wrong Price");
+        map.put("4", "Bad Quality");
+        comboBoxReason.setMap(map);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +39,7 @@ public class DeleteDialog extends javax.swing.JDialog {
         panelDelete = new javax.swing.JPanel();
         labelPopUpTitle2 = new Components.LabelPopUpTitle();
         lbReason1 = new Components.Label();
-        comboBoxReason1 = new Components.ComboBox();
+        comboBoxReason = new Components.ComboBox();
         buttonCancel1 = new Button.ButtonCancel();
         buttonSave1 = new Button.ButtonSave();
 
@@ -39,11 +51,17 @@ public class DeleteDialog extends javax.swing.JDialog {
 
         lbReason1.setLabelName("Reason");
 
-        comboBoxReason1.setPreferredSize(new java.awt.Dimension(2, 28));
+        comboBoxReason.setPreferredSize(new java.awt.Dimension(2, 28));
 
         buttonCancel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonCancel1MouseClicked(evt);
+            }
+        });
+
+        buttonSave1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSave1MouseClicked(evt);
             }
         });
 
@@ -58,12 +76,12 @@ public class DeleteDialog extends javax.swing.JDialog {
                         .addGap(17, 17, 17)
                         .addComponent(lbReason1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboBoxReason1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelDeleteLayout.createSequentialGroup()
-                        .addContainerGap(199, Short.MAX_VALUE)
-                        .addComponent(buttonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(201, Short.MAX_VALUE)
+                        .addComponent(buttonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
         panelDeleteLayout.setVerticalGroup(
@@ -72,13 +90,13 @@ public class DeleteDialog extends javax.swing.JDialog {
                 .addComponent(labelPopUpTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboBoxReason1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbReason1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,15 +109,22 @@ public class DeleteDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
         this.dispose();
     }//GEN-LAST:event_buttonCancel1MouseClicked
+
+    private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
+        
+    }//GEN-LAST:event_buttonSave1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,7 +171,7 @@ public class DeleteDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.ButtonCancel buttonCancel1;
     private Button.ButtonSave buttonSave1;
-    private Components.ComboBox comboBoxReason1;
+    private Components.ComboBox comboBoxReason;
     private Components.LabelPopUpTitle labelPopUpTitle2;
     private Components.Label lbReason1;
     private javax.swing.JPanel panelDelete;

@@ -43,9 +43,9 @@
                   <EmptySpace min="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCancel" min="-2" pref="78" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="button1" min="-2" max="-2" attributes="0"/>
+                          <Component id="button1" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -74,22 +74,22 @@
                       <Component id="txtinvoice" max="32767" attributes="0"/>
                       <Component id="lbInvoiceNo" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="txtBarcode" max="32767" attributes="0"/>
                       <Component id="lbBrcode" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="comboBoxReason" max="32767" attributes="0"/>
                       <Component id="lbReason" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
                       <Component id="button1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,8 +116,14 @@
           </Properties>
         </Component>
         <Component class="Components.TextField" name="txtinvoice">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="Scan or input"/>
+          </Properties>
         </Component>
         <Component class="Components.TextField" name="txtBarcode">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="Scan or input"/>
+          </Properties>
         </Component>
         <Component class="Components.ComboBox" name="comboBoxReason">
         </Component>

@@ -36,8 +36,9 @@ public class UnEditableTextField extends javax.swing.JPanel {
      */
     public UnEditableTextField() {
         initComponents();
-        setBackground(WindowColor.gray);
+        setBackground(WindowColor.white);
         textField.setFont(WindowFonts.timeNewRoman);
+        textField.setBackground(WindowColor.white);
     }
 
     //=================================================Create Shadow Box
@@ -119,7 +120,7 @@ public class UnEditableTextField extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textField)
+                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

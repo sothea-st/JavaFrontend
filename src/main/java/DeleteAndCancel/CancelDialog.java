@@ -1,6 +1,7 @@
 package DeleteAndCancel;
 
 import Color.WindowColor;
+import java.util.HashMap;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -18,6 +19,17 @@ public class CancelDialog extends javax.swing.JDialog {
         panelCancel.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        addCombo();
+    }
+    
+    void addCombo(){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("", "Select the reason");
+        map.put("1", "Over Scanning");
+        map.put("2", "Customer Change Mind");
+        map.put("3", "Wrong Price");
+        map.put("4", "Bad Quality");
+        comboBoxReason.setMap(map);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,9 +69,9 @@ public class CancelDialog extends javax.swing.JDialog {
                         .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
                     .addGroup(panelCancelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
         panelCancelLayout.setVerticalGroup(

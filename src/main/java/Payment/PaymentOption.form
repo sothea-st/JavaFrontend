@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelPayment" alignment="0" max="32767" attributes="0"/>
+          <Component id="panelPayment" alignment="0" pref="1028" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -38,25 +38,26 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labelPopUpTitle1" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbCustomerId" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lbSource" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="lbCustomerType" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="lbEarning" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbCustomerId" pref="92" max="32767" attributes="0"/>
-                              <Component id="lbCustomerType" pref="0" max="32767" attributes="0"/>
-                              <Component id="lbSource" pref="0" max="32767" attributes="0"/>
-                              <Component id="lbEarning" pref="0" max="32767" attributes="0"/>
+                              <Component id="cmbCustomerType" pref="197" max="32767" attributes="0"/>
+                              <Component id="cmbSource" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="txtEarning" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="txtCustomerId" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="comboBox5" alignment="0" max="32767" attributes="0"/>
-                              <Component id="comboBox4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtCustomerId" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textField10" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -78,101 +79,126 @@
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbCreditCard" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelFontBlack2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbCash" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="labelFontBlack1" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelFontBlack6" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelFontBlack7" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelFontBlack8" min="-2" pref="68" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="labelFontBlack3" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelFontBlack13" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelFontBlack14" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelFontBlack15" min="-2" pref="68" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="labelFontBlack5" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="labelFontBlack4" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbCreditCard" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbCash" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack16" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="labelFontBlack17" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack1" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack18" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack6" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack7" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack8" min="-2" pref="68" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="labelFontBlack9" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelFontBlack3" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack13" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack14" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelFontBlack15" min="-2" pref="68" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="labelFontBlack5" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="labelFontBlack4" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="labelFontBlack16" min="-2" pref="68" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="labelFontBlack17" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="labelFontBlack18" min="-2" pref="68" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="labelFontBlack9" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbCustomerPhone" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtCustomerPhone" min="-2" pref="197" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbCustomerEmail" min="-2" pref="117" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txtCustomerEmail" min="-2" pref="197" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbGift" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="cmbCoupon" min="-2" pref="197" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="label1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtCustomerName" min="-2" pref="197" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="lbCashPayment" min="-2" pref="290" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="705" max="-2" attributes="0"/>
+                  <Component id="panelTotal" min="-2" pref="305" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="label1" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                          <Component id="lbCustomerPhone" alignment="1" min="-2" pref="105" max="-2" attributes="0"/>
-                          <Component id="lbGift" alignment="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="lbCustomerEmail" min="-2" pref="105" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textField9" max="32767" attributes="0"/>
-                      <Component id="textField8" alignment="0" max="32767" attributes="0"/>
-                      <Component id="comboBox3" max="32767" attributes="0"/>
-                      <Component id="textField4" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelTotal" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbCashPayment" alignment="1" min="-2" pref="328" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="labelPopUpTitle1" min="-2" pref="1030" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="labelPopUpTitle1" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelPopUpTitle1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCustomerId" alignment="1" pref="34" max="32767" attributes="0"/>
-                              <Component id="textField4" alignment="1" max="32767" attributes="0"/>
                               <Component id="lbCustomerId" alignment="0" max="32767" attributes="0"/>
                               <Component id="label1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtCustomerName" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerId" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lbCashPayment" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -180,39 +206,38 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textField8" alignment="1" pref="30" max="32767" attributes="0"/>
+                              <Component id="lbCustomerPhone" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="comboBox4" max="32767" attributes="0"/>
-                                      <Component id="lbCustomerType" max="32767" attributes="0"/>
+                                      <Component id="cmbCustomerType" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerPhone" max="32767" attributes="0"/>
+                                      <Component id="lbCustomerType" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="lbCustomerPhone" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textField9" pref="30" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="lbCustomerEmail" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="comboBox5" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="lbSource" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textField10" alignment="0" pref="30" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="comboBox3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="cmbSource" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerEmail" max="32767" attributes="0"/>
+                                      <Component id="lbCustomerEmail" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="lbGift" max="32767" attributes="0"/>
-                              <Component id="lbEarning" alignment="1" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbCoupon" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lbGift" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbEarning" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEarning" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbGender" min="-2" pref="29" max="-2" attributes="0"/>
                               <Component id="lbNationality" min="-2" pref="29" max="-2" attributes="0"/>
@@ -258,7 +283,7 @@
                               <Component id="lbCreditCard" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelFontBlack15" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="labelFontBlack17" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelFontBlack16" alignment="0" max="32767" attributes="0"/>
@@ -279,21 +304,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="Components.ComboBox" name="comboBox3">
+        <Component class="Components.ComboBox" name="cmbCoupon">
         </Component>
-        <Component class="Components.TextField" name="txtCustomerId">
+        <Component class="Components.ComboBox" name="cmbCustomerType">
         </Component>
-        <Component class="Components.TextField" name="textField4">
-        </Component>
-        <Component class="Components.TextField" name="textField8">
-        </Component>
-        <Component class="Components.TextField" name="textField9">
-        </Component>
-        <Component class="Components.TextField" name="textField10">
-        </Component>
-        <Component class="Components.ComboBox" name="comboBox4">
-        </Component>
-        <Component class="Components.ComboBox" name="comboBox5">
+        <Component class="Components.ComboBox" name="cmbSource">
         </Component>
         <Component class="Components.LabelPopUpTitle" name="labelPopUpTitle1">
           <Properties>
@@ -307,7 +322,7 @@
         </Component>
         <Component class="Components.Label" name="lbCustomerType">
           <Properties>
-            <Property name="labelName" type="java.lang.String" value="Customer type"/>
+            <Property name="labelName" type="java.lang.String" value="Customer Type"/>
           </Properties>
         </Component>
         <Component class="Components.Label" name="lbSource">
@@ -434,7 +449,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="label12" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="label3" min="-2" pref="9" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="label11" pref="0" max="32767" attributes="0"/>
@@ -442,52 +457,67 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="label2" min="-2" pref="9" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label10" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="label10" min="-2" pref="77" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label14" min="-2" pref="9" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label18" min="-2" pref="96" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="label17" min="-2" pref="9" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label21" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="label16" pref="0" max="32767" attributes="0"/>
-                                  <Component id="label15" min="-2" pref="9" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label19" alignment="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="label20" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="label16" pref="0" max="32767" attributes="0"/>
+                                      <Component id="label15" min="-2" pref="9" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="label14" alignment="0" min="-2" pref="9" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="label20" min="-2" pref="8" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="label18" min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Component id="label19" alignment="1" min="-2" pref="8" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="label17" min="-2" pref="9" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="label21" min="-2" pref="8" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="3" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label10" pref="25" max="32767" attributes="0"/>
+                          <Component id="label10" max="32767" attributes="0"/>
                           <Component id="label2" max="32767" attributes="0"/>
                           <Component id="label5" max="32767" attributes="0"/>
                           <Component id="label14" alignment="1" max="32767" attributes="0"/>
                           <Component id="label18" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="label3" alignment="0" pref="27" max="32767" attributes="0"/>
+                                  <Component id="label3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="label11" alignment="0" max="32767" attributes="0"/>
                                   <Component id="label6" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -495,32 +525,35 @@
                           </Group>
                           <Component id="label19" alignment="0" max="32767" attributes="0"/>
                           <Component id="label15" max="32767" attributes="0"/>
+                          <Component id="jLabel2" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label7" alignment="0" max="32767" attributes="0"/>
                           <Component id="label16" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label20" alignment="0" pref="25" max="32767" attributes="0"/>
+                                  <Component id="label20" alignment="0" max="32767" attributes="0"/>
                                   <Component id="label12" alignment="0" max="32767" attributes="0"/>
                                   <Component id="label4" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label13" alignment="0" max="32767" attributes="0"/>
                           <Component id="label9" alignment="0" max="32767" attributes="0"/>
                           <Component id="label8" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label21" pref="27" max="32767" attributes="0"/>
+                          <Component id="label17" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel4" max="32767" attributes="0"/>
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="label17" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="label21" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -624,6 +657,38 @@
             <Component class="Components.Label" name="label21">
               <Properties>
                 <Property name="labelName" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -731,6 +796,9 @@
             </Property>
             <Property name="labelName" type="java.lang.String" value="Back"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelFontBlack2MouseClicked"/>
+          </Events>
         </Component>
         <Component class="Components.LabelFontBlack" name="labelFontBlack5">
           <Properties>
@@ -746,6 +814,31 @@
               <Color blue="46" green="98" red="2f" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="Charge&amp;Print"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerId">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="Scan or input"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtEarning">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerName">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerPhone">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerEmail">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
           </Properties>
         </Component>
       </SubComponents>

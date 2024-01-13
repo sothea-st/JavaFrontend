@@ -65,12 +65,12 @@
                       <Group type="102" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textField4" min="-2" max="-2" attributes="0"/>
-                              <Component id="textField3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textField5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="textField6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="textField2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="textField1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="abaCreditCard" min="-2" max="-2" attributes="0"/>
+                              <Component id="khqrAba" min="-2" max="-2" attributes="0"/>
+                              <Component id="cashUsd" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cashKhr" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="khqrMnk" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="redexpress" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -83,9 +83,9 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="buttonSave" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCancel" min="-2" pref="78" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buttonSave" min="-2" pref="78" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -99,42 +99,42 @@
                       <Component id="IbUserId" pref="29" max="32767" attributes="0"/>
                       <Component id="lbPosId" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textField1" max="32767" attributes="0"/>
+                      <Component id="redexpress" max="32767" attributes="0"/>
                       <Component id="label1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textField2" max="32767" attributes="0"/>
+                      <Component id="khqrMnk" max="32767" attributes="0"/>
                       <Component id="label2" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textField3" max="32767" attributes="0"/>
+                      <Component id="khqrAba" max="32767" attributes="0"/>
                       <Component id="label3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textField4" max="32767" attributes="0"/>
+                      <Component id="abaCreditCard" max="32767" attributes="0"/>
                       <Component id="label4" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textField5" max="32767" attributes="0"/>
+                      <Component id="cashUsd" max="32767" attributes="0"/>
                       <Component id="label5" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="label6" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="textField6" min="-2" max="-2" attributes="0"/>
+                      <Component id="cashKhr" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonSave" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -192,17 +192,35 @@
             <Property name="labelName" type="java.lang.String" value="CASH (KHR)"/>
           </Properties>
         </Component>
-        <Component class="Components.TextField" name="textField1">
+        <Component class="Components.TextField" name="redexpress">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
         </Component>
-        <Component class="Components.TextField" name="textField2">
+        <Component class="Components.TextField" name="khqrMnk">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
         </Component>
-        <Component class="Components.TextField" name="textField3">
+        <Component class="Components.TextField" name="khqrAba">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
         </Component>
-        <Component class="Components.TextField" name="textField4">
+        <Component class="Components.TextField" name="abaCreditCard">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
         </Component>
-        <Component class="Components.TextField" name="textField5">
+        <Component class="Components.TextField" name="cashUsd">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
         </Component>
-        <Component class="Components.TextField" name="textField6">
+        <Component class="Components.TextField" name="cashKhr">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="0.00"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

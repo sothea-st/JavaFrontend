@@ -56,9 +56,9 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCancel" min="-2" pref="78" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonLogin" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonLogin" min="-2" pref="78" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -79,7 +79,7 @@
                       <Component id="txtCode" max="32767" attributes="0"/>
                       <Component id="lbCode" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="txtPassword" max="32767" attributes="0"/>
                       <Component id="lbPassword" max="32767" attributes="0"/>
@@ -89,7 +89,7 @@
                       <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonLogin" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,6 +111,9 @@
           </Properties>
         </Component>
         <Component class="Components.TextField" name="txtCode">
+          <Properties>
+            <Property name="labelTextField" type="java.lang.String" value="Code"/>
+          </Properties>
         </Component>
         <Component class="Components.PasswordField" name="txtPassword">
         </Component>

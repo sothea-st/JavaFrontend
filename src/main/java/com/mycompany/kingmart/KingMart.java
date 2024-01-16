@@ -9,7 +9,7 @@ import View.MainPage.MainPage;
 public class KingMart {
 
     public static void main(String[] args) {
-        MainPage mainPage = new MainPage();
+        MainPage mainPage = new MainPage(null);
         mainPage.setVisible(true);
     }
 }

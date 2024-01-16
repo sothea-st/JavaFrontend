@@ -16,24 +16,17 @@ import java.awt.image.BufferedImage;
  */
 public class Button extends javax.swing.JPanel {
 
-    /**
-     * @return the buttonName
-     */
+ 
     public String getButtonName() {
         return buttonName;
     }
-
-    /**
-     * @param buttonName the buttonName to set
-     */
+ 
     public void setButtonName(String buttonName) {
         this.buttonName = buttonName;
         button.setText(buttonName);
     }
 
-    /**
-     * Creates new form Button
-     */
+ 
     public Button() {
         initComponents();
         setBackground(WindowColor.darkred);

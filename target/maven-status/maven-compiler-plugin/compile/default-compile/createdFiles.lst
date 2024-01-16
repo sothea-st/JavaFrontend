@@ -20,14 +20,19 @@ Return\ApprovalCode$4.class
 View\MainPage\MainPage$7.class
 Receipt\Receipt$4.class
 DeleteAndCancel\DeleteDialog.class
+View\MainPage\MainPage$11.class
+Constant\JavaConnection.class
 DeleteAndCancel\CancelDialog$2.class
 Components\Label.class
+Components\PasswordField$3.class
 Components\Shadow\GraphicsUtilities.class
 Components\Shadow\ShadowType.class
 Combobox\ComboItem.class
+Constant\JavaConstant.class
 Receipt\Receipt$1.class
 Components\TextField$1.class
 Receipt\Receipt.class
+Constant\JavaBaseUrl.class
 Fonts\WindowFonts.class
 OpenAndCloseShift\OpenShiftJdailog$2.class
 Components\LabelFontBlack.class
@@ -35,6 +40,7 @@ Products\ProductPanel$1.class
 Components\ComboBox$1.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
+Constant\JavaRoute.class
 Return\ReturnDialog$3.class
 Return\ReturnDialog$3$1.class
 Receipt\Receipt$3.class
@@ -87,6 +93,7 @@ Components\TextField.class
 Components\UnEditableTextField.class
 DeleteAndCancel\DeleteDialog$2.class
 LoginAndLogoutForm\LogoutDialog$2.class
+Components\PasswordField$2.class
 Print\ReprintByInvoicenumber$1.class
 View\MainPage\MainPage$1.class
 Print\ReprintByInvoicenumber$4$1.class
@@ -98,10 +105,12 @@ Components\TextField$2.class
 OpenAndCloseShift\OpenShiftJdailog$3$1.class
 Button\ButtonBuy.class
 Components\BoxItem.class
+Model\PackageProduct\ProductModel.class
 Components\TextFieldCenter$1.class
 Components\RadioButton.class
 OpenAndCloseShift\CloseShift.class
 Button\ButtonAddProduct.class
+Components\TextField$3.class
 Components\ReceiptBox.class
 Print\ReprintByInvoicenumber$2.class
 View\MainPage\MainPage$2.class
@@ -120,3 +129,4 @@ Return\ApprovalCode$3.class
 Payment\PaymentOption$3.class
 Receipt\CashierReport.class
 OpenAndCloseShift\CloseShift$1.class
+Components\PasswordField$1.class

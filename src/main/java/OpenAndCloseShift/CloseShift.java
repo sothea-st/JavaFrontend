@@ -1,5 +1,6 @@
 package OpenAndCloseShift;
 
+import Button.Button;
 import Color.WindowColor;
 import Event.ButtonEvent;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -12,14 +13,18 @@ public class CloseShift extends javax.swing.JDialog {
 
     /**
      * Creates new form CloseShift
-     */
-    public CloseShift(java.awt.Frame parent, boolean modal) {
+    */
+    
+    private Button btnOpenAndCloseShift;
+    
+    public CloseShift(java.awt.Frame parent, boolean modal,Button btnOpenAndCloseShift) {
         super(parent, modal);
         initComponents();
         panelCloseShift.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         event();
+        this.btnOpenAndCloseShift=btnOpenAndCloseShift;
     }
     
     void event(){
@@ -47,8 +52,8 @@ public class CloseShift extends javax.swing.JDialog {
         labelPopUpTitle1 = new Components.LabelPopUpTitle();
         lbPosId = new Components.Label();
         IbUserId = new Components.Label();
-        buttonCancel = new Button.ButtonCancel();
-        buttonSave = new Button.ButtonSave();
+        buttonCancel = new ButtonPackage.ButtonCancel();
+        buttonSave = new ButtonPackage.ButtonSave();
         label1 = new Components.Label();
         label2 = new Components.Label();
         label3 = new Components.Label();
@@ -75,6 +80,12 @@ public class CloseShift extends javax.swing.JDialog {
         buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonCancelMouseClicked(evt);
+            }
+        });
+
+        buttonSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSaveMouseClicked(evt);
             }
         });
 
@@ -201,6 +212,11 @@ public class CloseShift extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
+    private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
+        btnOpenAndCloseShift.setButtonName("Open Shift");
+        this.dispose();
+    }//GEN-LAST:event_buttonSaveMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -231,7 +247,7 @@ public class CloseShift extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true);
+                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -246,8 +262,8 @@ public class CloseShift extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.Label IbUserId;
     private Components.TextField abaCreditCard;
-    private Button.ButtonCancel buttonCancel;
-    private Button.ButtonSave buttonSave;
+    private ButtonPackage.ButtonCancel buttonCancel;
+    private ButtonPackage.ButtonSave buttonSave;
     private Components.TextField cashKhr;
     private Components.TextField cashUsd;
     private Components.TextField khqrAba;

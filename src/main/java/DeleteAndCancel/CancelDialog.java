@@ -40,8 +40,8 @@ public class CancelDialog extends javax.swing.JDialog {
         labelPopUpTitle1 = new Components.LabelPopUpTitle();
         lbReason = new Components.Label();
         comboBoxReason = new Components.ComboBox();
-        buttonCancel = new Button.ButtonCancel();
-        buttonSave = new Button.ButtonSave();
+        buttonCancel = new ButtonPackage.ButtonCancel();
+        buttonSave = new ButtonPackage.ButtonSave();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -152,8 +152,8 @@ public class CancelDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.ButtonCancel buttonCancel;
-    private Button.ButtonSave buttonSave;
+    private ButtonPackage.ButtonCancel buttonCancel;
+    private ButtonPackage.ButtonSave buttonSave;
     private Components.ComboBox comboBoxReason;
     private Components.LabelPopUpTitle labelPopUpTitle1;
     private Components.Label lbReason;

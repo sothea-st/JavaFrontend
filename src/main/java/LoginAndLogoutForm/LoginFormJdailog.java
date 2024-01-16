@@ -1,8 +1,9 @@
 package LoginAndLogoutForm;
 
+import Button.Button;
 import Color.WindowColor;
 import Event.ButtonEvent;
-import View.MainPage.MainPage;
+import java.awt.Color;
 
 /**
  *
@@ -13,16 +14,17 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     /**
      * Creates new form LoginFormJdailog
      */
+    private Button btnLoginAndout; 
     
-    public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
+    public LoginFormJdailog(java.awt.Frame parent, boolean modal,Button btnLoginAndout ) {
         super(parent, modal);
         initComponents();
         panelLogin.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         event();
+        this.btnLoginAndout=btnLoginAndout;
     }
-    
     
     //Function call Placeholder
     void event(){
@@ -31,11 +33,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
             public void onFocusGain() {
                
             }
-           
         };
         txtUserId.initEvent(btnevent);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,8 +47,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         labelPopUpTitle2 = new Components.LabelPopUpTitle();
         lbUserId = new Components.Label();
         lbPassword = new Components.Label();
-        buttonLogin = new Button.ButtonLogin();
-        buttonCancel = new Button.ButtonCancel();
+        buttonLogin = new ButtonPackage.ButtonLogin();
+        buttonCancel = new ButtonPackage.ButtonCancel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,19 +81,19 @@ public class LoginFormJdailog extends javax.swing.JDialog {
             .addComponent(labelPopUpTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
                 .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLoginLayout.createSequentialGroup()
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
+                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
         panelLoginLayout.setVerticalGroup(
@@ -108,11 +108,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,14 +130,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-       this.dispose();
-    }//GEN-LAST:event_buttonCancelMouseClicked
-
     private void buttonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLoginMouseClicked
-
-        
+        btnLoginAndout.setButtonName("Log Out");
+        this.dispose();
     }//GEN-LAST:event_buttonLoginMouseClicked
+
+    private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_buttonCancelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -169,7 +169,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true);
+                LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -182,8 +182,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.ButtonCancel buttonCancel;
-    private Button.ButtonLogin buttonLogin;
+    private ButtonPackage.ButtonCancel buttonCancel;
+    private ButtonPackage.ButtonLogin buttonLogin;
     private Components.LabelPopUpTitle labelPopUpTitle2;
     private Components.Label lbPassword;
     private Components.Label lbUserId;

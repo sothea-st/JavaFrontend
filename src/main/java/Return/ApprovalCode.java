@@ -44,8 +44,8 @@ public class ApprovalCode extends javax.swing.JDialog {
         labelPopUpTitle1 = new Components.LabelPopUpTitle();
         txtCode = new Components.TextField();
         txtPassword = new Components.PasswordField();
-        buttonCancel = new Button.ButtonCancel();
-        buttonLogin = new Button.ButtonLogin();
+        buttonCancel = new ButtonPackage.ButtonCancel();
+        buttonLogin = new ButtonPackage.ButtonLogin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -182,8 +182,8 @@ public class ApprovalCode extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.ButtonCancel buttonCancel;
-    private Button.ButtonLogin buttonLogin;
+    private ButtonPackage.ButtonCancel buttonCancel;
+    private ButtonPackage.ButtonLogin buttonLogin;
     private Components.LabelPopUpTitle labelPopUpTitle1;
     private Components.Label lbCode;
     private Components.Label lbPassword;

@@ -1,4 +1,4 @@
-package Button;
+package ButtonPackage;
 
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
@@ -14,17 +14,41 @@ import java.awt.image.BufferedImage;
  *
  * @author FRONT-END.06
  */
-public class ButtonSave extends javax.swing.JPanel {
+public class ButtonCancel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ButtonSave
+     * Creates new form ButtonCancel
      */
-    public ButtonSave() {
+    public ButtonCancel() {
         initComponents();
-        setBackground(WindowColor.green);
-        btnSave.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        setBackground(WindowColor.darkred);
+        btnCancel.setFont(WindowFonts.timeNewRomanBoldForLabel);
     }
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        btnCancel = new javax.swing.JLabel();
+
+        btnCancel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCancel.setText("Cancel");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
     //=================================================Create Shadow Box
     private ShadowType shadowType;
@@ -80,34 +104,8 @@ public class ButtonSave extends javax.swing.JPanel {
         g2.drawImage(render.createShadow(img), 0, 0, null);
         g2.drawImage(img, x, y, null);
     }
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        btnSave = new javax.swing.JLabel();
-
-        btnSave.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSave.setText("Save");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnSave;
+    private javax.swing.JLabel btnCancel;
     // End of variables declaration//GEN-END:variables
 }

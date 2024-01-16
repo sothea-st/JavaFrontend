@@ -46,13 +46,8 @@
               <Component id="labelPopUpTitle2" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="15" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="buttonCancel" min="-2" pref="78" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonLogin" min="-2" pref="78" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="lbUserId" min="-2" pref="81" max="-2" attributes="0"/>
                               <Component id="lbPassword" min="-2" pref="81" max="-2" attributes="0"/>
@@ -63,8 +58,13 @@
                               <Component id="txtPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="buttonCancel" min="-2" pref="78" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="buttonLogin" min="-2" pref="78" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -82,12 +82,12 @@
                       <Component id="lbPassword" max="32767" attributes="0"/>
                       <Component id="txtPassword" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="buttonLogin" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -115,12 +115,12 @@
             <Property name="labelName" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="Button.ButtonLogin" name="buttonLogin">
+        <Component class="ButtonPackage.ButtonLogin" name="buttonLogin">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonLoginMouseClicked"/>
           </Events>
         </Component>
-        <Component class="Button.ButtonCancel" name="buttonCancel">
+        <Component class="ButtonPackage.ButtonCancel" name="buttonCancel">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCancelMouseClicked"/>
           </Events>

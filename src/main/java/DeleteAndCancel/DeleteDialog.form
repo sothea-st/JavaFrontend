@@ -106,12 +106,12 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="Button.ButtonCancel" name="buttonCancel1">
+        <Component class="ButtonPackage.ButtonCancel" name="buttonCancel1">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCancel1MouseClicked"/>
           </Events>
         </Component>
-        <Component class="Button.ButtonSave" name="buttonSave1">
+        <Component class="ButtonPackage.ButtonSave" name="buttonSave1">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSave1MouseClicked"/>
           </Events>

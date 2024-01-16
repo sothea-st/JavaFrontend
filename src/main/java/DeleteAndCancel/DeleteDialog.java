@@ -40,8 +40,8 @@ public class DeleteDialog extends javax.swing.JDialog {
         labelPopUpTitle2 = new Components.LabelPopUpTitle();
         lbReason1 = new Components.Label();
         comboBoxReason = new Components.ComboBox();
-        buttonCancel1 = new Button.ButtonCancel();
-        buttonSave1 = new Button.ButtonSave();
+        buttonCancel1 = new ButtonPackage.ButtonCancel();
+        buttonSave1 = new ButtonPackage.ButtonSave();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -169,8 +169,8 @@ public class DeleteDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.ButtonCancel buttonCancel1;
-    private Button.ButtonSave buttonSave1;
+    private ButtonPackage.ButtonCancel buttonCancel1;
+    private ButtonPackage.ButtonSave buttonSave1;
     private Components.ComboBox comboBoxReason;
     private Components.LabelPopUpTitle labelPopUpTitle2;
     private Components.Label lbReason1;

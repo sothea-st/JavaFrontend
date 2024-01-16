@@ -155,12 +155,15 @@
             <Property name="labelName" type="java.lang.String" value="Cash Amount"/>
           </Properties>
         </Component>
-        <Component class="Button.ButtonCancel" name="buttonCancel">
+        <Component class="ButtonPackage.ButtonCancel" name="buttonCancel">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCancelMouseClicked"/>
           </Events>
         </Component>
-        <Component class="Button.ButtonSave" name="buttonSave">
+        <Component class="ButtonPackage.ButtonSave" name="buttonSave">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSaveMouseClicked"/>
+          </Events>
         </Component>
         <Component class="Components.Label" name="label1">
           <Properties>

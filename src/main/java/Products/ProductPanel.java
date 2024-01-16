@@ -46,8 +46,10 @@ public class ProductPanel extends javax.swing.JPanel {
         this.totalPanel=totalPanel;
         this.btnPayment=btnPayment;
         addCombo();
+
     }
     
+    //Add Combobox item
     void addCombo(){
         HashMap<String,String> map = new HashMap<>();
         map.put("", "Select Product by Brand");
@@ -76,7 +78,9 @@ public class ProductPanel extends javax.swing.JPanel {
         int x = 0;
         int y = 0;
 
-        for (int i = 0; i < list.length; i++) {
+        int rowLenght = list.length;
+        
+        for (int i = 0; i < rowLenght; i++) {
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = x;
             gbc.gridy = y;
@@ -85,11 +89,13 @@ public class ProductPanel extends javax.swing.JPanel {
             gbc.insets = new Insets(5, 0, 5, 10);
             x++;
             if (x == 5) {
-                 x = 0;
-                 y++;
+                x = 0;
+                y++;
             }
             
             int qty = 1;
+            int id = i + 1;
+           
             Random rd = new Random();
             double weight = rd.nextDouble(5, 20);
             double price = rd.nextDouble(5, 20);
@@ -104,12 +110,11 @@ public class ProductPanel extends javax.swing.JPanel {
             
             String name = list[i].getName().substring(0, list[i].getName().length() - 4);
             Icon image = new ImageIcon(list[i].getAbsolutePath());
-
+            
             ButtonEvent event = new ButtonEvent() {
                 @Override
                 public void onMouseClick() {
 
-                    int id = arrInt.size();
                     BoxItem box = new BoxItem();
                     box.setLabelProductName("" + name);
                     box.setIconImage(image);
@@ -117,8 +122,7 @@ public class ProductPanel extends javax.swing.JPanel {
                     box.setLabelPrice(dm.format(price));
                     box.setLabelBarcode(bar.format(barcode));
                     box.setLabelAmountUsd(dm.format(amountUsd));
-                    box.setLabelAmountKh(kh.format(amountKhr));
-                    arrInt.add(box);
+                    box.setLabelAmountKh(kh.format(amountKhr)); 
                     
                     double sum = 0;
                     for (int j = 0; j < arrInt.size(); j++) {
@@ -130,17 +134,7 @@ public class ProductPanel extends javax.swing.JPanel {
                         sumKh = sumKh + amountKhr;
                     }
 
-//                    ButtonEvent event = new ButtonEvent() {
-//                        @Override
-//                        public void onMouseClick() {
-//                            String mybo = box.getLabelProductName(); 
-//                            panelItem.remove(box);
-//                            panelItem.remove(Box.createRigidArea(new Dimension(10, 10)));
-//                            panelItem.revalidate();
-//                        }
-//                   };
-                    
-                    
+                    arrInt.add(box);
                     panelItem.add(box);
                     panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
                     panelItem.revalidate();
@@ -148,10 +142,12 @@ public class ProductPanel extends javax.swing.JPanel {
                     
                     panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
                     panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
+                    panelItem.setBackground(WindowColor.white);
+                    
                     totalPanel.setLabelSubtotalUsd(dm.format(sum));
                     totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
                     btnPayment.setBackground(WindowColor.lightBlue);
-                    panelItem.setBackground(WindowColor.white);
+                    
                 }
             };
             

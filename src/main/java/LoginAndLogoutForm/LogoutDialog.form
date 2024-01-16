@@ -81,9 +81,9 @@
             <Property name="labelName" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="Button.ButtonLogin" name="buttonLogin">
+        <Component class="ButtonPackage.ButtonLogin" name="buttonLogin">
         </Component>
-        <Component class="Button.ButtonCancel" name="buttonCancel">
+        <Component class="ButtonPackage.ButtonCancel" name="buttonCancel">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCancelMouseClicked"/>
           </Events>
@@ -137,15 +137,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="labelPopUpTitle" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                          <Component id="btnNo" min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="buttonNo" min="-2" pref="78" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnYes" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="buttonYes" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtLabel" alignment="0" min="-2" pref="232" max="-2" attributes="0"/>
+                      <Component id="txtLabel" min="-2" pref="232" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
               </Group>
@@ -157,12 +156,12 @@
                   <Component id="labelPopUpTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="txtLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnYes" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnNo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="buttonYes" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonNo" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -173,24 +172,21 @@
             <Property name="labelTitle" type="java.lang.String" value="Login"/>
           </Properties>
         </Component>
-        <Component class="Button.Button" name="btnYes">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="46" green="98" red="2f" type="rgb"/>
-            </Property>
-            <Property name="buttonName" type="java.lang.String" value="Yes"/>
-          </Properties>
-        </Component>
-        <Component class="Button.Button" name="btnNo">
-          <Properties>
-            <Property name="buttonName" type="java.lang.String" value="No"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="txtLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Are you sure to logout ?"/>
           </Properties>
+        </Component>
+        <Component class="ButtonPackage.ButtonYes" name="buttonYes">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonYesMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="ButtonPackage.ButtonNo" name="buttonNo">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonNoMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

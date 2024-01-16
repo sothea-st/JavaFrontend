@@ -1,4 +1,4 @@
-package Button;
+package ButtonPackage;
 
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
@@ -14,18 +14,42 @@ import java.awt.image.BufferedImage;
  *
  * @author FRONT-END.06
  */
-public class ButtonLogin extends javax.swing.JPanel {
+public class ButtonNo extends javax.swing.JPanel {
 
     /**
-     * Creates new form ButtonLogin
+     * Creates new form ButtonNo
      */
-    public ButtonLogin() {
+    public ButtonNo() {
         initComponents();
-        setBackground(WindowColor.green);
-        btnLogin.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        setBackground(WindowColor.darkred);
+        btnNo.setFont(WindowFonts.timeNewRomanBoldForLabel);
     }
 
-    //=================================================Create Shadow Box
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        btnNo = new javax.swing.JLabel();
+
+        btnNo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnNo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNo.setText("No");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnNo, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnNo, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+//=================================================Create Shadow Box
     private ShadowType shadowType;
     private int shadowSize = 3;
     private float shadowOpacity = 0.8f;
@@ -79,35 +103,8 @@ public class ButtonLogin extends javax.swing.JPanel {
         g2.drawImage(render.createShadow(img), 0, 0, null);
         g2.drawImage(img, x, y, null);
     }
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        btnLogin = new javax.swing.JLabel();
-
-        btnLogin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnLogin.setText("Login");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnLogin;
+    private javax.swing.JLabel btnNo;
     // End of variables declaration//GEN-END:variables
 }

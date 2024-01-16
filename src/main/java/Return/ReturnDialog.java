@@ -57,7 +57,7 @@ public class ReturnDialog extends javax.swing.JDialog {
         txtinvoice = new Components.TextField();
         txtBarcode = new Components.TextField();
         comboBoxReason = new Components.ComboBox();
-        buttonCancel = new Button.ButtonCancel();
+        buttonCancel = new ButtonPackage.ButtonCancel();
         button1 = new Button.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -193,7 +193,7 @@ public class ReturnDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.Button button1;
-    private Button.ButtonCancel buttonCancel;
+    private ButtonPackage.ButtonCancel buttonCancel;
     private Components.ComboBox comboBoxReason;
     private Components.LabelPopUpTitle labelPopUpTitle;
     private Components.Label lbBrcode;

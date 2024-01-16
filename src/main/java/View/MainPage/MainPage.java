@@ -5,6 +5,7 @@ import Components.BackgroundImage;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
+import LoginAndLogoutForm.LogoutDialog;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
@@ -114,13 +115,13 @@ public class MainPage extends javax.swing.JFrame {
         btnReturn = new Button.Button();
         button3 = new Button.Button();
         btnPayment = new Button.Button();
-        btnLogin = new Button.Button();
-        btnOpenShift = new Button.Button();
+        btnLoginAndout = new Button.Button();
+        btnOpenAndCloseShift = new Button.Button();
         btnReprint = new Button.Button();
         button8 = new Button.Button();
-        button9 = new Button.Button();
+        btnCashier = new Button.Button();
         button10 = new Button.Button();
-        buttonCancel1 = new Button.ButtonCancel();
+        buttonCancel1 = new ButtonPackage.ButtonCancel();
         searchBox = new Components.SearchField();
         currentDate = new javax.swing.JLabel();
         PanelProduct = new javax.swing.JPanel();
@@ -223,19 +224,19 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(47, 155, 70));
-        btnLogin.setButtonName("Login");
-        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLoginAndout.setBackground(new java.awt.Color(47, 155, 70));
+        btnLoginAndout.setButtonName("Login");
+        btnLoginAndout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLoginMouseClicked(evt);
+                btnLoginAndoutMouseClicked(evt);
             }
         });
 
-        btnOpenShift.setBackground(new java.awt.Color(47, 155, 70));
-        btnOpenShift.setButtonName("Open Shift");
-        btnOpenShift.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnOpenAndCloseShift.setBackground(new java.awt.Color(47, 155, 70));
+        btnOpenAndCloseShift.setButtonName("Open Shift");
+        btnOpenAndCloseShift.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOpenShiftMouseClicked(evt);
+                btnOpenAndCloseShiftMouseClicked(evt);
             }
         });
 
@@ -250,11 +251,11 @@ public class MainPage extends javax.swing.JFrame {
         button8.setBackground(new java.awt.Color(47, 155, 70));
         button8.setButtonName("Discount");
 
-        button9.setBackground(new java.awt.Color(47, 155, 70));
-        button9.setButtonName("Cashier Report");
-        button9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCashier.setBackground(new java.awt.Color(47, 155, 70));
+        btnCashier.setButtonName("Cashier Report");
+        btnCashier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button9MouseClicked(evt);
+                btnCashierMouseClicked(evt);
             }
         });
 
@@ -280,12 +281,12 @@ public class MainPage extends javax.swing.JFrame {
                             .addGroup(panelprocessingLayout.createSequentialGroup()
                                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(buttonCancel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btnLoginAndout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(7, 7, 7)
                                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnOpenShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnOpenAndCloseShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(button9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCashier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelprocessingLayout.createSequentialGroup()
@@ -317,13 +318,13 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(buttonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOpenShift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoginAndout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOpenAndCloseShift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCashier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -443,43 +444,59 @@ public class MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(),true);
-        jdFormLogin.setVisible(true);
+    //Action Button Login and Logout
+    private void btnLoginAndoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginAndoutMouseClicked
         
-//        LogoutDialog logout = new LogoutDialog(new JFrame(),true);
-//        logout.setVisible(true);
-    }//GEN-LAST:event_btnLoginMouseClicked
+        if(btnLoginAndout.getButtonName().equals("Login")){
+            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(),true,btnLoginAndout);
+            jdFormLogin.setVisible(true);
+        }
+        else
+        {
+            LogoutDialog logout = new LogoutDialog(new JFrame(),true,btnLoginAndout);
+            logout.setVisible(true);
+        }
+    }//GEN-LAST:event_btnLoginAndoutMouseClicked
 
-    private void btnOpenShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenShiftMouseClicked
-        OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(),true);
-        jdOpenShift.setVisible(true);
+    //Action Button Open and Close Shift
+    private void btnOpenAndCloseShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenAndCloseShiftMouseClicked
+        if(btnOpenAndCloseShift.getButtonName().equals("Open Shift")){
+            OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(),true,btnOpenAndCloseShift);
+            jdOpenShift.setVisible(true);
+        }
+        else
+        {
+            CloseShift jdCloseShift = new CloseShift(new JFrame(),true,btnOpenAndCloseShift);
+            jdCloseShift.setVisible(true);
+        }
+    }//GEN-LAST:event_btnOpenAndCloseShiftMouseClicked
 
-//        CloseShift jdCloseShift = new CloseShift(new JFrame(),true);
-//        jdCloseShift.setVisible(true);
-    }//GEN-LAST:event_btnOpenShiftMouseClicked
-
+    //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
         ReprintJdailog rep = new ReprintJdailog(new JFrame(),true);
         rep.setVisible(true);
     }//GEN-LAST:event_btnReprintMouseClicked
 
+    //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
 
         PaymentOption pay = new PaymentOption(new JFrame(),true);
         pay.setVisible(true);
     }//GEN-LAST:event_btnPaymentMouseClicked
 
+    //Action Button Return
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
         ApprovalCode approval = new ApprovalCode(new JFrame(),true);
         approval.setVisible(true);
     }//GEN-LAST:event_btnReturnMouseClicked
 
+    //Action Button Cancel
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
         CancelDialog cancel = new CancelDialog(new JFrame(),true);
         cancel.setVisible(true);
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
+    //Action New Item
     private void menuNewItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewItemMouseClicked
         ProductPanel pdPanel = new ProductPanel(detailItem,totalPanel,btnPayment);
         PanelProduct.removeAll();
@@ -489,10 +506,11 @@ public class MainPage extends javax.swing.JFrame {
         menuNewItem.setBackground(getActiveColor());
     }//GEN-LAST:event_menuNewItemMouseClicked
 
-    private void button9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button9MouseClicked
+    //Action Button Cashier
+    private void btnCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCashierMouseClicked
         CashierReport cashier = new CashierReport(new JFrame(),true);
         cashier.setVisible(true);
-    }//GEN-LAST:event_button9MouseClicked
+    }//GEN-LAST:event_btnCashierMouseClicked
 
     /**
      * @param args the command line arguments
@@ -532,16 +550,16 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelProduct;
     private javax.swing.JPanel boxOne;
-    private Button.Button btnLogin;
-    private Button.Button btnOpenShift;
+    private Button.Button btnCashier;
+    private Button.Button btnLoginAndout;
+    private Button.Button btnOpenAndCloseShift;
     private Button.Button btnPayment;
     private Button.Button btnReprint;
     private Button.Button btnReturn;
     private Button.Button button10;
     private Button.Button button3;
     private Button.Button button8;
-    private Button.Button button9;
-    private Button.ButtonCancel buttonCancel1;
+    private ButtonPackage.ButtonCancel buttonCancel1;
     private javax.swing.JLabel currentDate;
     private javax.swing.JPanel day;
     private javax.swing.JPanel detailItem;

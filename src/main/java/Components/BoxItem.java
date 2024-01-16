@@ -19,6 +19,20 @@ import javax.swing.JFrame;
  */
 public class BoxItem extends javax.swing.JPanel {
 
+    /**
+     * @return the labelQuantity
+     */
+    public int getLabelQuantity() {
+        return labelQuantity;
+    }
+
+    /**
+     * @param labelQuantity the labelQuantity to set
+     */
+    public void setLabelQuantity(int labelQuantity) {
+        this.labelQuantity = labelQuantity;
+    }
+
     public String getLabelAmountKh() {
         return labelAmountKh;
     }
@@ -93,6 +107,8 @@ public class BoxItem extends javax.swing.JPanel {
     private String labelBarcode;
     private String labelAmountUsd;
     private String labelAmountKh;
+    
+    private int labelQuantity;
 
     public BoxItem() {
         initComponents();
@@ -110,7 +126,6 @@ public class BoxItem extends javax.swing.JPanel {
         amountkh.setForeground(WindowColor.darkGreen);
         barcode.setFont(WindowFonts.timeNewRomanBoldForLabel);
         lbBarcode.setFont(WindowFonts.timeNewRomanBoldForLabel);
-//        lbBarcode.setForeground(WindowColor.gray);
         discount.setFont(WindowFonts.timeNewRomanBoldForLabel);
         txtDiscount.setFont(WindowFonts.timeNewRomanBoldForLabel);
         lbEach.setFont(WindowFonts.timeNewRomanBoldForLabel);
@@ -189,7 +204,7 @@ public class BoxItem extends javax.swing.JPanel {
         amountUsd = new javax.swing.JLabel();
         amountkh = new javax.swing.JLabel();
         btnDelete = new javax.swing.JLabel();
-        buttonAddProduct2 = new Button.ButtonAddProduct();
+        buttonAddProduct = new Button.ButtonAddProduct();
         jLabel1 = new javax.swing.JLabel();
         lbEach = new javax.swing.JLabel();
 
@@ -239,6 +254,8 @@ public class BoxItem extends javax.swing.JPanel {
             }
         });
 
+        buttonAddProduct.setQuantity(10);
+
         jLabel1.setForeground(new java.awt.Color(16, 107, 67));
         jLabel1.setText("៛");
 
@@ -264,7 +281,7 @@ public class BoxItem extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbEach, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonAddProduct2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                .addComponent(buttonAddProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                                 .addGap(6, 6, 6))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -309,7 +326,7 @@ public class BoxItem extends javax.swing.JPanel {
                             .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonAddProduct2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonAddProduct, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbSale, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbEach, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -336,7 +353,7 @@ public class BoxItem extends javax.swing.JPanel {
     private javax.swing.JLabel amountkh;
     private javax.swing.JLabel barcode;
     private javax.swing.JLabel btnDelete;
-    private Button.ButtonAddProduct buttonAddProduct2;
+    private Button.ButtonAddProduct buttonAddProduct;
     private javax.swing.JLabel discount;
     private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;

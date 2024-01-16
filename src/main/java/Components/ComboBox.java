@@ -6,15 +6,12 @@ import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
 import Fonts.WindowFonts;
 import java.awt.Color;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 
 /**
  *
@@ -45,16 +42,8 @@ public class ComboBox extends javax.swing.JPanel {
         initComponents();
         setBackground(WindowColor.white);
         
-        for (int i = 0; i < combo.getComponentCount(); i++) 
-        {
-            if (combo.getComponent(i) instanceof JComponent) {
-                ((JComponent) combo.getComponent(i)).setBorder(new EmptyBorder(0, 0,0,0));
-            }
-
-            if (combo.getComponent(i) instanceof AbstractButton) {
-                ((AbstractButton) combo.getComponent(i)).setBorderPainted(true);
-            }
-        }
+        //Delete Border Combobox
+        combo.setUI(new BasicComboBoxUI());
         
     }
 
@@ -147,7 +136,7 @@ public class ComboBox extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_comboActionPerformed
 
 

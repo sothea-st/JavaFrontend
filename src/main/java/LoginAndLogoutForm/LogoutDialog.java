@@ -1,5 +1,6 @@
 package LoginAndLogoutForm;
 
+import Button.Button;
 import Color.WindowColor;
 import Fonts.WindowFonts;
 
@@ -11,10 +12,14 @@ public class LogoutDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form LogoutDialog
-     */
-    public LogoutDialog(java.awt.Frame parent, boolean modal) {
+    */
+    private Button btnLoginAndout;
+    
+    public LogoutDialog(java.awt.Frame parent, boolean modal, Button btnLoginAndout) {
         super(parent, modal);
         initComponents();
+        this.btnLoginAndout=btnLoginAndout;
+        
         txtLabel.setFont(WindowFonts.timeNewRomanBoldForLabel);
         panelLogout.setBackground(WindowColor.mediumGreen);  
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -31,13 +36,13 @@ public class LogoutDialog extends javax.swing.JDialog {
         labelPopUpTitle2 = new Components.LabelPopUpTitle();
         lbUserId = new Components.Label();
         lbPassword = new Components.Label();
-        buttonLogin = new Button.ButtonLogin();
-        buttonCancel = new Button.ButtonCancel();
+        buttonLogin = new ButtonPackage.ButtonLogin();
+        buttonCancel = new ButtonPackage.ButtonCancel();
         panelLogout = new javax.swing.JPanel();
         labelPopUpTitle = new Components.LabelPopUpTitle();
-        btnYes = new Button.Button();
-        btnNo = new Button.Button();
         txtLabel = new javax.swing.JLabel();
+        buttonYes = new ButtonPackage.ButtonYes();
+        buttonNo = new ButtonPackage.ButtonNo();
 
         panelLogin.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -100,13 +105,20 @@ public class LogoutDialog extends javax.swing.JDialog {
 
         labelPopUpTitle.setLabelTitle("Login");
 
-        btnYes.setBackground(new java.awt.Color(47, 152, 70));
-        btnYes.setButtonName("Yes");
-
-        btnNo.setButtonName("No");
-
         txtLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtLabel.setText("Are you sure to logout ?");
+
+        buttonYes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonYesMouseClicked(evt);
+            }
+        });
+
+        buttonNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonNoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLogoutLayout = new javax.swing.GroupLayout(panelLogout);
         panelLogout.setLayout(panelLogoutLayout);
@@ -114,12 +126,11 @@ public class LogoutDialog extends javax.swing.JDialog {
             panelLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(labelPopUpTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelLogoutLayout.createSequentialGroup()
-                .addGroup(panelLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogoutLayout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonNo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonYes, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
@@ -129,11 +140,11 @@ public class LogoutDialog extends javax.swing.JDialog {
                 .addComponent(labelPopUpTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(txtLabel)
-                .addGap(18, 18, 18)
-                .addGroup(panelLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonYes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,6 +167,15 @@ public class LogoutDialog extends javax.swing.JDialog {
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
+
+    private void buttonYesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonYesMouseClicked
+       btnLoginAndout.setButtonName("Login");
+       this.dispose();
+    }//GEN-LAST:event_buttonYesMouseClicked
+
+    private void buttonNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonNoMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_buttonNoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,7 +207,7 @@ public class LogoutDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
+                LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -200,10 +220,10 @@ public class LogoutDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.Button btnNo;
-    private Button.Button btnYes;
-    private Button.ButtonCancel buttonCancel;
-    private Button.ButtonLogin buttonLogin;
+    private ButtonPackage.ButtonCancel buttonCancel;
+    private ButtonPackage.ButtonLogin buttonLogin;
+    private ButtonPackage.ButtonNo buttonNo;
+    private ButtonPackage.ButtonYes buttonYes;
     private Components.LabelPopUpTitle labelPopUpTitle;
     private Components.LabelPopUpTitle labelPopUpTitle2;
     private Components.Label lbPassword;

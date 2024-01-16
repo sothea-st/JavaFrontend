@@ -117,12 +117,12 @@
         </Component>
         <Component class="Components.PasswordField" name="txtPassword">
         </Component>
-        <Component class="Button.ButtonCancel" name="buttonCancel">
+        <Component class="ButtonPackage.ButtonCancel" name="buttonCancel">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCancelMouseClicked"/>
           </Events>
         </Component>
-        <Component class="Button.ButtonLogin" name="buttonLogin">
+        <Component class="ButtonPackage.ButtonLogin" name="buttonLogin">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonLoginMouseClicked"/>
           </Events>

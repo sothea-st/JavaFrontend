@@ -17,9 +17,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
      * Creates new form OpenShiftJdailog
     */
     
-    private Button btnOpenAndCloseShift;
-    
-    public OpenShiftJdailog(java.awt.Frame parent, boolean modal,Button btnOpenAndCloseShift) {
+    public OpenShiftJdailog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         panelOpenShift.setBackground(WindowColor.mediumGreen);
@@ -27,8 +25,6 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         setResizable(false);
         currenDateTime();
         event();
-        
-        this.btnOpenAndCloseShift=btnOpenAndCloseShift;
     }
     
     private void currenDateTime(){
@@ -215,8 +211,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-        btnOpenAndCloseShift.setButtonName("Close Shift");
-        this.dispose();
+    
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     /**
@@ -249,7 +244,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                OpenShiftJdailog dialog = new OpenShiftJdailog(new javax.swing.JFrame(), true,null);
+                OpenShiftJdailog dialog = new OpenShiftJdailog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

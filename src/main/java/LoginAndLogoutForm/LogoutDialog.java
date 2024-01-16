@@ -13,12 +13,11 @@ public class LogoutDialog extends javax.swing.JDialog {
     /**
      * Creates new form LogoutDialog
     */
-    private Button btnLoginAndout;
+
     
-    public LogoutDialog(java.awt.Frame parent, boolean modal, Button btnLoginAndout) {
+    public LogoutDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.btnLoginAndout=btnLoginAndout;
         
         txtLabel.setFont(WindowFonts.timeNewRomanBoldForLabel);
         panelLogout.setBackground(WindowColor.mediumGreen);  
@@ -169,8 +168,7 @@ public class LogoutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonYesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonYesMouseClicked
-       btnLoginAndout.setButtonName("Login");
-       this.dispose();
+    
     }//GEN-LAST:event_buttonYesMouseClicked
 
     private void buttonNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonNoMouseClicked
@@ -207,7 +205,7 @@ public class LogoutDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true,null);
+                LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

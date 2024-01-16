@@ -2,42 +2,61 @@ package LoginAndLogoutForm;
 
 import Button.Button;
 import Color.WindowColor;
+import Constant.JavaBaseUrl;
+import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
+//import View.MainPage.MainPage;
 import java.awt.Color;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import okhttp3.FormBody;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import org.json.JSONObject;
+ 
 
 /**
  *
  * @author FRONT-END.06
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
+     
+//    private Button.Button btnLogin;
+    private Button btnLogin;
+    private JLabel boxUserName;
+  
+     public LoginFormJdailog(java.awt.Frame parent, boolean modal, Button btnLogin,JLabel boxUserName) {
+          super(parent, modal);
+          initComponents();
+          panelLogin.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          event();
+          this.btnLogin = btnLogin;
+          this.boxUserName = boxUserName;
+     }
 
-    /**
-     * Creates new form LoginFormJdailog
-     */
-    private Button btnLoginAndout; 
-    
-    public LoginFormJdailog(java.awt.Frame parent, boolean modal,Button btnLoginAndout ) {
-        super(parent, modal);
-        initComponents();
-        panelLogin.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        event();
-        this.btnLoginAndout=btnLoginAndout;
-    }
-    
-    //Function call Placeholder
-    void event(){
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
-               
-            }
-        };
-        txtUserId.initEvent(btnevent);
-    }
+     //Function call Placeholder
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
 
-    @SuppressWarnings("unchecked")
+               }
+
+          };
+          txtUserId.initEvent(btnevent);
+     }
+
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -47,14 +66,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         labelPopUpTitle2 = new Components.LabelPopUpTitle();
         lbUserId = new Components.Label();
         lbPassword = new Components.Label();
-        buttonLogin = new ButtonPackage.ButtonLogin();
-        buttonCancel = new ButtonPackage.ButtonCancel();
+        buttonCancel1 = new ButtonPackage.ButtonCancel();
+        buttonLogin1 = new ButtonPackage.ButtonLogin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelLogin.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtUserId.setLabelTextField("User ID");
+        txtUserId.setLabelTextField("");
 
         labelPopUpTitle2.setLabelTitle("Login");
 
@@ -62,15 +81,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
         lbPassword.setLabelName("Password");
 
-        buttonLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonLoginMouseClicked(evt);
-            }
-        });
-
-        buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonCancelMouseClicked(evt);
+                buttonLogin1MouseClicked(evt);
             }
         });
 
@@ -89,12 +102,13 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
-                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
+                        .addComponent(buttonLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +122,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCancel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLogin1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,60 +144,89 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLoginMouseClicked
-        btnLoginAndout.setButtonName("Log Out");
-        this.dispose();
-    }//GEN-LAST:event_buttonLoginMouseClicked
+    private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
+        String userId = txtUserId.getValueTextField();
+        String password = txtPassword.getValuePassword();
+        System.out.println(userId +" "+ password);
 
-    private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_buttonCancelMouseClicked
+        OkHttpClient client = new OkHttpClient();
+        RequestBody formBody = new FormBody.Builder()
+             .add("userCode", userId)
+             .add("password", password)
+             .build();
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
+        Request request = new Request.Builder()
+             .url(new JavaBaseUrl().getBaseUrl()+JavaRoute.login)
+             .post(formBody)
+             .build();
+
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+             Response response = client.newCall(request).execute();
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true,null);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+             if (response.isSuccessful()) {
+                  String responseData = response.body().string();
+                  JSONObject jsonObject = new JSONObject(responseData);
+                  JavaConstant.token = jsonObject.getString("token");
+                  dispose();
+                  btnLogin.setButtonName("Logout");
+                  String userName = jsonObject.getString("fullName");
+                  String userCode = jsonObject.getString("userCode");
+                  boxUserName.setText(userName + " USER ID : " + userCode);
+             } else {
+                  System.err.println("fail");
+             }
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_buttonLogin1MouseClicked
+
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
                     }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          }
+          //</editor-fold>
+
+          /* Create and display the dialog */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true,null,null);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ButtonPackage.ButtonCancel buttonCancel;
-    private ButtonPackage.ButtonLogin buttonLogin;
+    private ButtonPackage.ButtonCancel buttonCancel1;
+    private ButtonPackage.ButtonLogin buttonLogin1;
     private Components.LabelPopUpTitle labelPopUpTitle2;
     private Components.Label lbPassword;
     private Components.Label lbUserId;

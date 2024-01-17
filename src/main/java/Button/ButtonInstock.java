@@ -22,7 +22,7 @@ public class ButtonInstock extends javax.swing.JPanel {
     public ButtonInstock() {
         initComponents();
         button.setForeground(WindowColor.white);
-        button.setFont(WindowFonts.timeNewRomanBold10);
+
         setBackground(WindowColor.darkGreen);
     }
 
@@ -88,7 +88,7 @@ public class ButtonInstock extends javax.swing.JPanel {
         button = new javax.swing.JLabel();
 
         button.setBackground(new java.awt.Color(255, 255, 255));
-        button.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        button.setFont(new java.awt.Font("Times New Roman", 1, 8)); // NOI18N
         button.setForeground(new java.awt.Color(16, 107, 67));
         button.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         button.setText("In Stock");
@@ -99,7 +99,7 @@ public class ButtonInstock extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

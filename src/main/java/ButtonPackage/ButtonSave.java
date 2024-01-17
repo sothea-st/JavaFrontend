@@ -25,7 +25,6 @@ public class ButtonSave extends javax.swing.JPanel {
         btnSave.setFont(WindowFonts.timeNewRomanBoldForLabel);
     }
 
-
     //=================================================Create Shadow Box
     private ShadowType shadowType;
     private int shadowSize = 3;
@@ -105,7 +104,6 @@ public class ButtonSave extends javax.swing.JPanel {
             .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnSave;

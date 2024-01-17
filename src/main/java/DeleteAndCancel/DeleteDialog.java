@@ -1,7 +1,13 @@
 package DeleteAndCancel;
 
 import Color.WindowColor;
+import Components.BoxItem;
+import View.MainPage.MainPage;
+import java.awt.Dimension;
 import java.util.HashMap;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -12,7 +18,7 @@ public class DeleteDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form DeleteDialog
-     */
+    */
     public DeleteDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -123,7 +129,8 @@ public class DeleteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
-        
+
+        this.dispose();   
     }//GEN-LAST:event_buttonSave1MouseClicked
 
     /**

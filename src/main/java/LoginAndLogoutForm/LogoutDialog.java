@@ -1,6 +1,5 @@
 package LoginAndLogoutForm;
 
-import Button.Button;
 import Color.WindowColor;
 import Fonts.WindowFonts;
 

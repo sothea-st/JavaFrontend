@@ -15,16 +15,13 @@ public class CloseShift extends javax.swing.JDialog {
      * Creates new form CloseShift
     */
     
-    private Button btnOpenAndCloseShift;
-    
-    public CloseShift(java.awt.Frame parent, boolean modal,Button btnOpenAndCloseShift) {
+    public CloseShift(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         panelCloseShift.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         event();
-        this.btnOpenAndCloseShift=btnOpenAndCloseShift;
     }
     
     void event(){
@@ -213,8 +210,7 @@ public class CloseShift extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-        btnOpenAndCloseShift.setButtonName("Open Shift");
-        this.dispose();
+
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     /**
@@ -247,7 +243,7 @@ public class CloseShift extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true,null);
+                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

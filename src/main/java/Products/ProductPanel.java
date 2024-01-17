@@ -4,9 +4,7 @@ import Button.Button;
 import Color.WindowColor;
 import Components.BoxItem;
 import Components.SubtotalPanel;
-import Constant.JavaBaseUrl;
 import Constant.JavaConnection;
-import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.PackageProduct.ProductModel;
@@ -21,7 +19,6 @@ import java.util.HashMap;
 import java.util.Random;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
@@ -51,13 +48,13 @@ public class ProductPanel extends javax.swing.JPanel {
           panelProduct.setBackground(WindowColor.slightGreen);
           panelPagination.setBackground(WindowColor.slightGreen);
           setBackground(WindowColor.slightGreen);
-//          appendProduct();
+          appendProduct();
           this.panelItem = panelItem;
           this.totalPanel = totalPanel;
           this.btnPayment = btnPayment;
           addCombo();
 
-          readProduct();
+//          readProduct();
      }
 
      void addCombo() {
@@ -103,7 +100,7 @@ public class ProductPanel extends javax.swing.JPanel {
                     }
                     
                     
-                    appendProduct(listProduct);
+//                    appendProduct(listProduct);
                      
                } else {
                     System.err.println("fail loading data");
@@ -117,7 +114,7 @@ public class ProductPanel extends javax.swing.JPanel {
      ArrayList<BoxItem> arrInt = new ArrayList<>();
      //=========================Append Product into panelProductBox===============================
 
-     void appendProduct(ArrayList<ProductModel> listProduct) {
+     void appendProduct() {
 
           scrollItem.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
           File f = new File("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\productImage");
@@ -135,8 +132,8 @@ public class ProductPanel extends javax.swing.JPanel {
           int x = 0;
           int y = 0;
 
-          for (int i = 0; i < listProduct.size(); i++) {
-               var listData = listProduct.get(i);
+          for (int i = 0; i < list.length; i++) {
+//               var listData = listProduct.get(i);
                GridBagConstraints gbc = new GridBagConstraints();
                gbc.gridx = x;
                gbc.gridy = y;
@@ -190,40 +187,45 @@ public class ProductPanel extends javax.swing.JPanel {
                               sumKh = sumKh + amountKhr;
                          }
 
-                                   //                    ButtonEvent event = new ButtonEvent() {
-                                   //                        @Override
-                                   //                        public void onMouseClick() {
-                                   //                            String mybo = box.getLabelProductName(); 
-                                   //                            panelItem.remove(box);
-                                   //                            panelItem.remove(Box.createRigidArea(new Dimension(10, 10)));
-                                   //                            panelItem.revalidate();
-                                   //                        }
-                                   //                   };
-                         panelItem.add(box);
-                         panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
-                         panelItem.revalidate();
-                                   //                    panelItem.setBorder(new EmptyBorder(10, 10, 10, 10)); // for padding item 
+                         
+//                        ButtonEvent event = new ButtonEvent() {
+//                            @Override
+//                            public void onMouseClick() {
+//
+//                                panelItem.remove(box);
+//                                panelItem.remove(Box.createRigidArea(new Dimension(10, 10)));
+//
+//                                panelItem.revalidate();
+//                            }
+//                        };                  
+//                        box.initEvent(event);  
+                        
+                        panelItem.add(box);
+                        panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
+                        panelItem.revalidate();
 
-                         panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
-                         panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
-                         totalPanel.setLabelSubtotalUsd(dm.format(sum));
-                         totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
-                         btnPayment.setBackground(WindowColor.lightBlue);
-                         panelItem.setBackground(WindowColor.white);
+                        panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
+                        panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
+                        
+                        totalPanel.setLabelSubtotalUsd(dm.format(sum));
+                        totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
+                        
+                        btnPayment.setBackground(WindowColor.lightBlue);
+                        panelItem.setBackground(WindowColor.white);
                     }
                };
 
                ProductBox product = new ProductBox();
                product.initEvent(event);
                String productName;
-               if (listData.getProductNameEn().length() > 15) {
-                    productName = listData.getProductNameEn().substring(0, 14) + "...";
-               } else {
-                    productName = listData.getProductNameEn();
-               }
-               
-               System.err.println(listData.getProductNameEn());
-               product.setProductName("<html>" + listData.getProductNameEn() + "</html>");
+//               if (listData.getProductNameEn().length() > 15) {
+//                    productName = listData.getProductNameEn().substring(0, 14) + "...";
+//               } else {
+//                    productName = listData.getProductNameEn();
+//               }
+//               
+//               System.err.println(listData.getProductNameEn());
+               product.setProductName("<html>" + list[i].getName() + "</html>");
 
                product.setWeight(df.format(weight));
 
@@ -265,9 +267,9 @@ public class ProductPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 925, Short.MAX_VALUE)
-                .addGap(37, 37, 37))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +308,7 @@ public class ProductPanel extends javax.swing.JPanel {
                 .addComponent(labelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
                 .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelPaginationLayout.createSequentialGroup()
                         .addComponent(labelFontGreen2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
@@ -323,7 +325,7 @@ public class ProductPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelFontGreen1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cmboxBrand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33))
+                .addGap(45, 45, 45))
         );
         panelPaginationLayout.setVerticalGroup(
             panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

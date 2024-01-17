@@ -2,61 +2,93 @@ package LoginAndLogoutForm;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.BoxItem;
+import Components.LabelTitle;
 import Constant.JavaBaseUrl;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
+import Model.PackageProduct.CategoryModel;
+import Model.PackageProduct.ProductModel;
+import Products.ProductBox;
 //import View.MainPage.MainPage;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+import javax.swing.border.BevelBorder;
 import okhttp3.FormBody;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.json.JSONArray;
 import org.json.JSONObject;
- 
 
 /**
  *
  * @author FRONT-END.06
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
-     
+
     //private Button.Button btnLogin;
     private Button btnLogin;
     private JLabel boxUserName;
-  
-     public LoginFormJdailog(java.awt.Frame parent, boolean modal, Button btnLogin,JLabel boxUserName) {
-          super(parent, modal);
-          initComponents();
-          panelLogin.setBackground(WindowColor.mediumGreen);
-          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-          setResizable(false);
-          event();
-          this.btnLogin = btnLogin;
-          this.boxUserName = boxUserName;
-     }
+    private JPanel panelCategory;
+    private JPanel panelProduct;
 
-     //Function call Placeholder
-     void event() {
-          ButtonEvent btnevent = new ButtonEvent() {
-               @Override
-               public void onFocusGain() {
+    public JPanel getPanelProduct() {
+        return panelProduct;
+    }
 
-               }
+    public void setPanelProduct(JPanel panelProduct) {
+        this.panelProduct = panelProduct;
+    }
 
-          };
-          txtUserId.initEvent(btnevent);
-     }
+    public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        panelLogin.setBackground(WindowColor.mediumGreen);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        event();
+    }
 
-     @SuppressWarnings("unchecked")
+    //Function call Placeholder
+    void event() {
+        ButtonEvent btnevent = new ButtonEvent() {
+            @Override
+            public void onFocusGain() {
+
+            }
+
+        };
+        txtUserId.initEvent(btnevent);
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -147,82 +179,303 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
         String userId = txtUserId.getValueTextField();
         String password = txtPassword.getValuePassword();
-        System.out.println(userId +" "+ password);
+        System.out.println(userId + " " + password);
 
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
-             .add("userCode", userId)
-             .add("password", password)
-             .build();
-
+                .add("userCode", userId)
+                .add("password", password)
+                .build();
 
         Request request = new Request.Builder()
-             .url(new JavaBaseUrl().getBaseUrl()+JavaRoute.login)
-             .post(formBody)
-             .build();
+                .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.login)
+                .post(formBody)
+                .build();
 
         try {
-             Response response = client.newCall(request).execute();
+            Response response = client.newCall(request).execute();
 
-             if (response.isSuccessful()) {
-                  String responseData = response.body().string();
-                  JSONObject jsonObject = new JSONObject(responseData);
-                  JavaConstant.token = jsonObject.getString("token");
-                  dispose();
-                  btnLogin.setButtonName("Logout");
-                  String userName = jsonObject.getString("fullName");
-                  String userCode = jsonObject.getString("userCode");
-                  boxUserName.setText(userName + " USER ID : " + userCode);
-             } else {
-                  System.err.println("fail");
-             }
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JavaConstant.token = jsonObject.getString("token");
+                dispose();
+                getBtnLogin().setButtonName("Logout");
+                String userName = jsonObject.getString("fullName");
+                String userCode = jsonObject.getString("userCode");
+                getBoxUserName().setText(userName + " USER ID : " + userCode);
+                category();
+            } else {
+                System.err.println("fail");
+            }
         } catch (Exception e) {
 
         }
     }//GEN-LAST:event_buttonLogin1MouseClicked
 
-     /**
-      * @param args the command line
-      * arguments
-      */
-     public static void main(String args[]) {
-          /* Set the Nimbus look and feel */
-          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-           */
-          try {
-               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                         break;
-                    }
-               }
-          } catch (ClassNotFoundException ex) {
-               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex) {
-               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex) {
-               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-               java.util.logging.Logger.getLogger(LoginFormJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
-          //</editor-fold>
+    private void category() {
+        try {
+            ArrayList<CategoryModel> listCategory = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.category);
+            if (response.isSuccessful()) {
+                String strData = response.body().string(); // convert response to string 
+                JSONObject jsonObject = new JSONObject(strData); // conver string to jsonobject
+                JSONArray data = jsonObject.getJSONArray("data");
 
-          /* Create and display the dialog */
-          java.awt.EventQueue.invokeLater(new Runnable() {
-               public void run() {
-                    LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true,null,null);
-                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                         @Override
-                         public void windowClosing(java.awt.event.WindowEvent e) {
-                              System.exit(0);
-                         }
-                    });
-                    dialog.setVisible(true);
-               }
-          });
-     }
+                for (int i = 0; i < data.length(); i++) {
+                    var objData = data.getJSONObject(i);
+                    CategoryModel c = new CategoryModel(
+                            objData.getInt("id"),
+                            objData.getString("catNameEn"),
+                            objData.getInt("parentId"),
+                            objData.getInt("parentId")
+                    );
+                    listCategory.add(c);
+                }
+
+                for (int i = 0; i < listCategory.size(); i++) {
+                    int id = listCategory.get(i).getId();
+                    LabelTitle categoryTitle = new LabelTitle();
+                    panelCategory.add(categoryTitle);
+                    String catName = listCategory.get(i).getCatNameEn();
+                    categoryTitle.setLabelTitle(catName);
+                    ButtonEvent event = new ButtonEvent() {
+                        @Override
+                        public void onMouseClick() {
+
+                            // click on category actice background color
+                            Component[] listCom = panelCategory.getComponents();
+                            for (int i = 0; i < listCom.length; i++) {
+                                String title = ((LabelTitle) listCom[i]).getLabelTitle();
+                                if (catName.equals(title)) {
+                                    listCom[i].setBackground(Color.red);
+                                } else {
+                                    listCom[i].setBackground(WindowColor.darkGreen);
+                                }
+                            }
+
+                            panelProduct.removeAll();
+                            product(id);
+                            panelProduct.revalidate();
+                            panelProduct.repaint();
+                        }
+                    };
+                    categoryTitle.initEvent(event);
+                }
+                panelCategory.setLayout(new GridLayout());
+
+            } else {
+                System.err.println("fail load category");
+            }
+        } catch (Exception e) {
+            System.err.println("error " + e);
+        }
+
+    }
+
+    private void product(int id) {
+        try {
+            ArrayList<ProductModel> listProduct = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.getProductByCatId + id);
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                System.err.println("data item = ");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    ProductModel product = new ProductModel(
+                            obj.getInt("id"),
+                            obj.getInt("catId"),
+                            obj.getString("flag"),
+                            obj.getString("weight"),
+                            obj.getBigDecimal("cost"),
+                            obj.getString("proImageName"),
+                            obj.getBigDecimal("price"),
+                            obj.getString("barcode"),
+                            obj.getString("proNameKh"),
+                            obj.getString("proNameEn"),
+                            obj.getString("productStatus"),
+                            obj.getInt("discount")
+                    );
+                    listProduct.add(product);
+                }
+                appendProduct(listProduct);
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
+
+    }
+
+    void appendProduct(ArrayList<ProductModel> listProduct) {
+
+//        scrollItem.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+//        File f = new File("C:\\Users\\USER\\Pictures\\food");
+//        File[] list = f.listFiles();
+        // set panel to GridBagLayout
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0}; // one row has 5 column
+        gridBagLayout.rowWeights = new double[]{0, 0, 0, 0, 1};
+        gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0};
+        gridBagLayout.columnWeights = new double[]{0, 0, 0, 0, 1};
+
+        panelProduct.setLayout(gridBagLayout);
+
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < listProduct.size(); i++) {
+
+            var listData = listProduct.get(i);
+
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = x;
+            gbc.gridy = y;
+            gbc.gridwidth = 1;
+            gbc.anchor = gbc.NORTH;
+            gbc.insets = new Insets(5, 0, 5, 10);
+            x++;
+            if (x == 5) {
+                x = 0;
+                y++;
+            }
+
+            int qty = 1;
+            Random rd = new Random();
+            double weight = rd.nextDouble(5, 20);
+            double price = rd.nextDouble(5, 20);
+            double barcode = rd.nextDouble(100, 200);
+            double amountUsd = price * qty;
+            double amountKhr = price * qty * 4200;
+
+            DecimalFormat df = new DecimalFormat("#,##0.00 kg");
+            DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+            DecimalFormat bar = new DecimalFormat("########00000000");
+            DecimalFormat kh = new DecimalFormat("#,##0.00");
+
+            ButtonEvent event = new ButtonEvent() {
+                @Override
+                public void onMouseClick() {
+
+//                    int id = arrInt.size();
+//                    BoxItem box = new BoxItem();
+//                         box.setLabelProductName("" + name);
+//                         box.setIconImage(image);
+//                    box.setLabelWeight(df.format(weight));
+//                    box.setLabelPrice(dm.format(price));
+//                    box.setLabelBarcode(bar.format(barcode));
+//                    box.setLabelAmountUsd(dm.format(amountUsd));
+//                    box.setLabelAmountKh(kh.format(amountKhr));
+//                    arrInt.add(box);
+//
+//                    double sum = 0;
+//                    for (int j = 0; j < arrInt.size(); j++) {
+//                        sum = sum + amountUsd;
+//                    }
+//
+//                    double sumKh = 0;
+//                    for (int j = 0; j < arrInt.size(); j++) {
+//                        sumKh = sumKh + amountKhr;
+//                    }
+//                        ButtonEvent event = new ButtonEvent() {
+//                            @Override
+//                            public void onMouseClick() {
+//
+//                                panelItem.remove(box);
+//                                panelItem.remove(Box.createRigidArea(new Dimension(10, 10)));
+//
+//                                panelItem.revalidate();
+//                            }
+//                        };                  
+//                        box.initEvent(event);  
+//                    panelItem.add(box);
+//                    panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
+//                    panelItem.revalidate();
+//
+//                    panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
+//                    panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
+//
+//                    totalPanel.setLabelSubtotalUsd(dm.format(sum));
+//                    totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
+//
+//                    btnPayment.setBackground(WindowColor.lightBlue);
+//                    panelItem.setBackground(WindowColor.white);
+                }
+            };
+
+            ProductBox product = new ProductBox();
+            product.initEvent(event);
+            String productName;
+//               if (listData.getProductNameEn().length() > 15) {
+//                    productName = listData.getProductNameEn().substring(0, 14) + "...";
+//               } else {
+//                    productName = listData.getProductNameEn();
+//               }
+//               
+//               System.err.println(listData.getProductNameEn());
+            product.setProductName("<html>" + listData.getProductNameEn() + "</html>");
+
+            product.setWeight(df.format(weight));
+
+            product.setPrice(dm.format(price));
+
+            product.setBarcode(bar.format(barcode));
+
+            // read image from api 
+            try {
+                Response response = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
+                byte[] image = response.body().bytes();
+        
+                product.setImage(new ImageIcon(image));
+            } catch (Exception e) {
+                System.err.println("error read image = " + e);
+            }
+
+            panelProduct.add(product, gbc);
+        }
+    }
+
+    public JLabel getBoxUserName() {
+        return boxUserName;
+    }
+
+    public void setBoxUserName(JLabel boxUserName) {
+        this.boxUserName = boxUserName;
+    }
+
+    public Button getBtnLogin() {
+        return btnLogin;
+    }
+
+    public void setBtnLogin(Button btnLogin) {
+        this.btnLogin = btnLogin;
+    }
+
+    public void setPanelCategory(JPanel panelCategory) {
+        this.panelCategory = panelCategory;
+    }
+
+    public JPanel getPanelCategory() {
+        return panelCategory;
+    }
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel1;
@@ -234,4 +487,5 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     private Components.PasswordField txtPassword;
     private Components.TextField txtUserId;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -1,7 +1,10 @@
 package Components;
 
 import Color.WindowColor;
+import Event.ButtonEvent;
 import Fonts.WindowFonts;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -24,6 +27,36 @@ public class LabelTitle extends javax.swing.JPanel {
         lbTitle.setText(labelTitle);
     }
 
+    public void initEvent(ButtonEvent event) {
+        lbTitle.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                event.onMouseClick();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+        });
+    }
+    
+    
     /**
      * Creates new form LabelTitle
      */

@@ -7,6 +7,7 @@ LoginAndLogoutForm\LogoutDialog$4$1.class
 Payment\PaymentOption$1.class
 Receipt\CashierReport$3.class
 DeleteAndCancel\DeleteDialog$3$1.class
+LoginAndLogoutForm\LoginFormJdailog$5$1.class
 com\mycompany\kingmart\KingMart.class
 Payment\PaymentOption.class
 Receipt\Receipt$4$1.class
@@ -22,8 +23,10 @@ Print\ReprintJdailog$2.class
 Return\ApprovalCode$4.class
 View\MainPage\MainPage$7.class
 OpenAndCloseShift\CloseShift$4$1.class
+Components\LabelTitle$1.class
 Receipt\Receipt$4.class
 DeleteAndCancel\DeleteDialog.class
+LoginAndLogoutForm\LoginFormJdailog$5.class
 Constant\JavaConnection.class
 DeleteAndCancel\CancelDialog$2.class
 Components\Label.class
@@ -72,9 +75,9 @@ OpenAndCloseShift\OpenShiftJdailog$4.class
 Components\LabelPopUpTitle.class
 LoginAndLogoutForm\LoginFormJdailog$1.class
 OpenAndCloseShift\OpenShiftJdailog$1.class
-LoginAndLogoutForm\LoginFormJdailog$3$1.class
 Components\Shadow\ShadowRenderer.class
 DeleteAndCancel\CancelDialog$1.class
+LoginAndLogoutForm\LoginFormJdailog$4.class
 Components\LabelTitle.class
 Payment\PaymentOption$2.class
 OpenAndCloseShift\CloseShift$2.class
@@ -126,6 +129,7 @@ DeleteAndCancel\DeleteDialog$3.class
 LoginAndLogoutForm\LoginFormJdailog$3.class
 OpenAndCloseShift\OpenShiftJdailog$3.class
 LoginAndLogoutForm\LogoutDialog$1.class
+Model\PackageProduct\CategoryModel.class
 Components\TextFieldCenter$2.class
 Components\BackgroundImage.class
 Payment\PaymentOption$3$1.class

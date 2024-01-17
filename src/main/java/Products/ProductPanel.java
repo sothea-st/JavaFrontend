@@ -36,158 +36,149 @@ import org.json.JSONObject;
  */
 public class ProductPanel extends javax.swing.JPanel {
 
-     /**
-      * Creates new form ProductPanel
-      */
-     private JPanel panelItem;
-     private SubtotalPanel totalPanel;
-     private Button btnPayment;
+    /**
+     * Creates new form ProductPanel
+     */
+    private JPanel panelItem;
+    private SubtotalPanel totalPanel;
+    private Button btnPayment;
 
-     public ProductPanel(JPanel panelItem, SubtotalPanel totalPanel, Button btnPayment) {
-          initComponents();
-          panelProduct.setBackground(WindowColor.slightGreen);
-          panelPagination.setBackground(WindowColor.slightGreen);
-          setBackground(WindowColor.slightGreen);
-          appendProduct();
-          this.panelItem = panelItem;
-          this.totalPanel = totalPanel;
-          this.btnPayment = btnPayment;
-          addCombo();
+    public ProductPanel(JPanel panelItem, SubtotalPanel totalPanel, Button btnPayment) {
+        initComponents();
+        panelProduct.setBackground(WindowColor.slightGreen);
+        panelPagination.setBackground(WindowColor.slightGreen);
+        setBackground(WindowColor.slightGreen);
+        appendProduct();
+        this.panelItem = panelItem;
+        this.totalPanel = totalPanel;
+        this.btnPayment = btnPayment;
+        addCombo();
 
 //          readProduct();
-     }
+    }
 
-     void addCombo() {
-          HashMap<String, String> map = new HashMap<>();
-          map.put("", "Select Product by Brand");
-          map.put("1", "ABC");
-          map.put("2", "DES");
-          cmboxBrand.setMap(map);
-     }
+    void addCombo() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("", "Select Product by Brand");
+        map.put("1", "ABC");
+        map.put("2", "DES");
+        cmboxBrand.setMap(map);
+    }
 
-     void readProduct() {
-          try {
-               ArrayList<ProductModel> listProduct = new ArrayList<>();
+    void readProduct() {
+        try {
+            ArrayList<ProductModel> listProduct = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.product);
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONObject data = jsonObject.getJSONObject("data");
+                JSONArray result = data.getJSONArray("result");
 
-               Response response = JavaConnection.get(JavaRoute.product);
-               if (response.isSuccessful()) {
-                    String responseData = response.body().string();
-                    JSONObject jsonObject = new JSONObject(responseData);
-                    JSONObject data = jsonObject.getJSONObject("data");
-                    JSONArray result = data.getJSONArray("result");
+                for (int i = 0; i < result.length(); i++) {
+                    JSONObject obj = result.getJSONObject(i);
+                    ProductModel product = new ProductModel(
+                            obj.getInt("id"),
+                            obj.getInt("catId"),
+                            obj.getString("flag"),
+                            obj.getString("weight"),
+                            obj.getBigDecimal("cost"),
+                            obj.getString("proImageName"),
+                            obj.getBigDecimal("price"),
+                            obj.getString("barcode"),
+                            obj.getString("proNameKh"),
+                            obj.getString("proNameEn"),
+                            obj.getString("productStatus"),
+                            obj.getInt("discount")
+                    );
+                    listProduct.add(product);
+                }
 
-                    for (int i = 0; i < result.length(); i++) {
-                         JSONObject obj = result.getJSONObject(i);
-                         ProductModel product = new ProductModel(
-                              obj.getInt("id"),
-                              obj.getInt("catId"),
-                              obj.getString("flag"),
-                              obj.getString("weight"),
-                              obj.getString("costKhr"),
-                              obj.getString("fileName"),
-                              obj.getString("priceKhr"),
-                              obj.getString("barcode"),
-                              obj.getInt("unitTypeId"),
-                              obj.getString("proNameKh"),
-                              obj.getString("proNameEn"),
-                              0,
-                              0,
-                              "",
-                              0,
-                              obj.getString("discountPercentag")
-                         );
-                         listProduct.add(product);
-                    }
-                    
-                    
 //                    appendProduct(listProduct);
-                     
-               } else {
-                    System.err.println("fail loading data");
-               }
-          } catch (Exception e) {
-               System.err.println("error = " + e);
-          }
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
 
-     }
+    }
 
-     ArrayList<BoxItem> arrInt = new ArrayList<>();
-     //=========================Append Product into panelProductBox===============================
+    ArrayList<BoxItem> arrInt = new ArrayList<>();
+    //=========================Append Product into panelProductBox===============================
 
-     void appendProduct() {
+    void appendProduct() {
 
-          scrollItem.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
-          File f = new File("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\productImage");
-          File[] list = f.listFiles();
+        scrollItem.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+        File f = new File("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\productImage");
+        File[] list = f.listFiles();
 
-          // set panel to GridBagLayout
-          GridBagLayout gridBagLayout = new GridBagLayout();
-          gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0}; // one row has 5 column
-          gridBagLayout.rowWeights = new double[]{0, 0, 0, 0, 1};
-          gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0};
-          gridBagLayout.columnWeights = new double[]{0, 0, 0, 0, 1};
+        // set panel to GridBagLayout
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0}; // one row has 5 column
+        gridBagLayout.rowWeights = new double[]{0, 0, 0, 0, 1};
+        gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0};
+        gridBagLayout.columnWeights = new double[]{0, 0, 0, 0, 1};
 
-          panelProduct.setLayout(gridBagLayout);
+        panelProduct.setLayout(gridBagLayout);
 
-          int x = 0;
-          int y = 0;
+        int x = 0;
+        int y = 0;
 
-          for (int i = 0; i < list.length; i++) {
+        for (int i = 0; i < list.length; i++) {
 //               var listData = listProduct.get(i);
-               GridBagConstraints gbc = new GridBagConstraints();
-               gbc.gridx = x;
-               gbc.gridy = y;
-               gbc.gridwidth = 1;
-               gbc.anchor = gbc.NORTH;
-               gbc.insets = new Insets(5, 0, 5, 10);
-               x++;
-               if (x == 5) {
-                    x = 0;
-                    y++;
-               }
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = x;
+            gbc.gridy = y;
+            gbc.gridwidth = 1;
+            gbc.anchor = gbc.NORTH;
+            gbc.insets = new Insets(5, 0, 5, 10);
+            x++;
+            if (x == 5) {
+                x = 0;
+                y++;
+            }
 
-               int qty = 1;
-               Random rd = new Random();
-               double weight = rd.nextDouble(5, 20);
-               double price = rd.nextDouble(5, 20);
-               double barcode = rd.nextDouble(100, 200);
-               double amountUsd = price * qty;
-               double amountKhr = price * qty * 4200;
+            int qty = 1;
+            Random rd = new Random();
+            double weight = rd.nextDouble(5, 20);
+            double price = rd.nextDouble(5, 20);
+            double barcode = rd.nextDouble(100, 200);
+            double amountUsd = price * qty;
+            double amountKhr = price * qty * 4200;
 
-               DecimalFormat df = new DecimalFormat("#,##0.00 kg");
-               DecimalFormat dm = new DecimalFormat("$ #,##0.00");
-               DecimalFormat bar = new DecimalFormat("########00000000");
-               DecimalFormat kh = new DecimalFormat("#,##0.00");
+            DecimalFormat df = new DecimalFormat("#,##0.00 kg");
+            DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+            DecimalFormat bar = new DecimalFormat("########00000000");
+            DecimalFormat kh = new DecimalFormat("#,##0.00");
 
 //               String name = list[i].getName().substring(0, list[i].getName().length() - 4);
 //               Icon image = new ImageIcon(list[i].getAbsolutePath());
+            ButtonEvent event = new ButtonEvent() {
+                @Override
+                public void onMouseClick() {
 
-               ButtonEvent event = new ButtonEvent() {
-                    @Override
-                    public void onMouseClick() {
-
-                         int id = arrInt.size();
-                         BoxItem box = new BoxItem();
+                    int id = arrInt.size();
+                    BoxItem box = new BoxItem();
 //                         box.setLabelProductName("" + name);
 //                         box.setIconImage(image);
-                         box.setLabelWeight(df.format(weight));
-                         box.setLabelPrice(dm.format(price));
-                         box.setLabelBarcode(bar.format(barcode));
-                         box.setLabelAmountUsd(dm.format(amountUsd));
-                         box.setLabelAmountKh(kh.format(amountKhr));
-                         arrInt.add(box);
+                    box.setLabelWeight(df.format(weight));
+                    box.setLabelPrice(dm.format(price));
+                    box.setLabelBarcode(bar.format(barcode));
+                    box.setLabelAmountUsd(dm.format(amountUsd));
+                    box.setLabelAmountKh(kh.format(amountKhr));
+                    arrInt.add(box);
 
-                         double sum = 0;
-                         for (int j = 0; j < arrInt.size(); j++) {
-                              sum = sum + amountUsd;
-                         }
+                    double sum = 0;
+                    for (int j = 0; j < arrInt.size(); j++) {
+                        sum = sum + amountUsd;
+                    }
 
-                         double sumKh = 0;
-                         for (int j = 0; j < arrInt.size(); j++) {
-                              sumKh = sumKh + amountKhr;
-                         }
+                    double sumKh = 0;
+                    for (int j = 0; j < arrInt.size(); j++) {
+                        sumKh = sumKh + amountKhr;
+                    }
 
-                         
 //                        ButtonEvent event = new ButtonEvent() {
 //                            @Override
 //                            public void onMouseClick() {
@@ -199,25 +190,24 @@ public class ProductPanel extends javax.swing.JPanel {
 //                            }
 //                        };                  
 //                        box.initEvent(event);  
-                        
-                        panelItem.add(box);
-                        panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
-                        panelItem.revalidate();
+                    panelItem.add(box);
+                    panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
+                    panelItem.revalidate();
 
-                        panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
-                        panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
-                        
-                        totalPanel.setLabelSubtotalUsd(dm.format(sum));
-                        totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
-                        
-                        btnPayment.setBackground(WindowColor.lightBlue);
-                        panelItem.setBackground(WindowColor.white);
-                    }
-               };
+                    panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
+                    panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
 
-               ProductBox product = new ProductBox();
-               product.initEvent(event);
-               String productName;
+                    totalPanel.setLabelSubtotalUsd(dm.format(sum));
+                    totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
+
+                    btnPayment.setBackground(WindowColor.lightBlue);
+                    panelItem.setBackground(WindowColor.white);
+                }
+            };
+
+            ProductBox product = new ProductBox();
+            product.initEvent(event);
+            String productName;
 //               if (listData.getProductNameEn().length() > 15) {
 //                    productName = listData.getProductNameEn().substring(0, 14) + "...";
 //               } else {
@@ -225,20 +215,20 @@ public class ProductPanel extends javax.swing.JPanel {
 //               }
 //               
 //               System.err.println(listData.getProductNameEn());
-               product.setProductName("<html>" + list[i].getName() + "</html>");
+            product.setProductName("<html>" + list[i].getName() + "</html>");
 
-               product.setWeight(df.format(weight));
+            product.setWeight(df.format(weight));
 
-               product.setPrice(dm.format(price));
+            product.setPrice(dm.format(price));
 
-               product.setBarcode(bar.format(barcode));
+            product.setBarcode(bar.format(barcode));
 
-               product.setImage(new ImageIcon(list[i].getAbsolutePath()));
-               panelProduct.add(product, gbc);
-          }
-     }
+            product.setImage(new ImageIcon(list[i].getAbsolutePath()));
+            panelProduct.add(product, gbc);
+        }
+    }
 
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

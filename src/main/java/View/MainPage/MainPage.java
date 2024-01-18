@@ -51,7 +51,6 @@ public class MainPage extends javax.swing.JFrame {
         PanelProduct.revalidate();
         PanelProduct.repaint();
         jScrollPaneCategory.setVisible(false);
-        
     }
 
 
@@ -435,6 +434,8 @@ public class MainPage extends javax.swing.JFrame {
             jdFormLogin.setCategory(category);
             jdFormLogin.setPanelProduct(PanelProduct);
             jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
+            jdFormLogin.setDetailItem(detailItem);
+            jdFormLogin.setBoxOne(boxOne);
             jdFormLogin.setVisible(true);
         } else if (buttonName.equals("logout")) {
             LogoutDialog logout = new LogoutDialog(new JFrame(), true);

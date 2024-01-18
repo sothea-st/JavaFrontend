@@ -19,6 +19,16 @@ public class ButtonInstock extends javax.swing.JPanel {
     /**
      * Creates new form ButtonInstock
      */
+     private String buttonName;
+
+     public String getButtonName() {
+          return buttonName;
+     }
+
+     public void setButtonName(String buttonName) {
+          this.buttonName = buttonName;
+          button.setText(buttonName);
+     }
     public ButtonInstock() {
         initComponents();
         button.setForeground(WindowColor.white);

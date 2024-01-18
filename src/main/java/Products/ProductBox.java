@@ -72,11 +72,11 @@ public class ProductBox extends javax.swing.JPanel {
         initComponents();
         productBox.setBackground(WindowColor.white);
         setBackground(WindowColor.white);
-        lbName.setFont(WindowFonts.timeNewRomanBold14);
+        lbName.setFont(WindowFonts.timeNewRomanBold11);
         lbName.setForeground(WindowColor.black);
         lbWeight.setFont(WindowFonts.timeNewRomanBold10);
         lbWeight.setForeground(WindowColor.gray);
-        lbPrice.setFont(WindowFonts.timeNewRomanBold14);
+        lbPrice.setFont(WindowFonts.timeNewRomanBold12);
         lbPrice.setForeground(WindowColor.darkGreen);
         lbBarcode.setFont(WindowFonts.timeNewRomanBold10);
         lbBarcode.setForeground(WindowColor.gray);
@@ -249,7 +249,7 @@ public class ProductBox extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
                 .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbName, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
@@ -279,8 +279,8 @@ public class ProductBox extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(productBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(productBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

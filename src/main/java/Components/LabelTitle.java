@@ -27,6 +27,36 @@ public class LabelTitle extends javax.swing.JPanel {
         lbTitle.setText(labelTitle);
     }
 
+    public void initEvent(ButtonEvent event) {
+        lbTitle.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                event.onMouseClick();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+        });
+    }
+    
+    
     /**
      * Creates new form LabelTitle
      */
@@ -72,37 +102,6 @@ public class LabelTitle extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbTitleMouseClicked
 
-     //=================================================
-   
-    public void initEvent(ButtonEvent event) {
-        lbTitle.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                event.onMouseClick();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-
-        });
-     }
 
     private String labelTitle;
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,7 +10,7 @@ import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
-import Model.Category.CategoryModel;
+// import Model.Category.CategoryModel;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
@@ -38,31 +38,32 @@ public class MainPage extends javax.swing.JFrame {
     private Color activeColor = new Color(56, 56, 56);
     private JPanel detailProduct;
 
-
     public MainPage(String data) {
         initComponents();
         event();
         setBackground();
         currenDateTime();
         jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         BackgroundImage bgimg = new BackgroundImage();
-        panelProduct.removeAll();
-        panelProduct.add(bgimg);
-        panelProduct.revalidate();
-        panelProduct.repaint();
-        jScrollCategory.setVisible(false);
+        PanelProduct.removeAll();
+        PanelProduct.add(bgimg);
+        PanelProduct.revalidate();
+        PanelProduct.repaint();
+        jScrollPaneCategory.setVisible(false);
+        
     }
-    
+
+
     private void setBackground() {
         mainPanel.setBackground(WindowColor.slightGreen);
         panelCategory.setBackground(WindowColor.darkGreen);
-        panelJscroll.setBackground(WindowColor.darkGreen);
+        category.setBackground(WindowColor.darkGreen);
         menuBar.setBackground(WindowColor.darkGreen);
-        jScrollCategory.setBackground(WindowColor.darkGreen);
+        jScrollPaneCategory.setBackground(WindowColor.darkGreen);
         day.setBackground(WindowColor.slightGreen);
         panelprocessing.setBackground(WindowColor.slightGreen);
-        panelProduct.setBackground(WindowColor.slightGreen);
+        PanelProduct.setBackground(WindowColor.slightGreen);
         boxOne.setBackground(WindowColor.slightGreen);
         detailItem.setBackground(WindowColor.slightGreen);
     }
@@ -79,11 +80,11 @@ public class MainPage extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JPanel();
-        textField = new Components.TextField();
-        panelJscroll = new javax.swing.JPanel();
-        jScrollCategory = new javax.swing.JScrollPane();
         panelCategory = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPaneCategory = new javax.swing.JScrollPane();
+        category = new javax.swing.JPanel();
+        textField = new Components.TextField();
+        lbLogo = new javax.swing.JLabel();
         imgUser = new javax.swing.JLabel();
         day = new javax.swing.JPanel();
         panelprocessing = new javax.swing.JPanel();
@@ -100,7 +101,8 @@ public class MainPage extends javax.swing.JFrame {
         buttonCancel1 = new ButtonPackage.ButtonCancel();
         searchBox = new Components.SearchField();
         currentDate = new javax.swing.JLabel();
-        panelProduct = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        PanelProduct = new javax.swing.JPanel();
         lbPOSId = new javax.swing.JLabel();
         jScrollPaneDetail = new javax.swing.JScrollPane();
         boxOne = new javax.swing.JPanel();
@@ -109,54 +111,62 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textField.setLabelTextField("Scan or input barcode");
+        jScrollPaneCategory.setBorder(null);
 
-        jScrollCategory.setBorder(null);
+        javax.swing.GroupLayout categoryLayout = new javax.swing.GroupLayout(category);
+        category.setLayout(categoryLayout);
+        categoryLayout.setHorizontalGroup(
+            categoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1101, Short.MAX_VALUE)
+        );
+        categoryLayout.setVerticalGroup(
+            categoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jScrollPaneCategory.setViewportView(category);
 
         javax.swing.GroupLayout panelCategoryLayout = new javax.swing.GroupLayout(panelCategory);
         panelCategory.setLayout(panelCategoryLayout);
         panelCategoryLayout.setHorizontalGroup(
             panelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1272, Short.MAX_VALUE)
+            .addGap(0, 1074, Short.MAX_VALUE)
+            .addGroup(panelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCategoryLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPaneCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         panelCategoryLayout.setVerticalGroup(
             panelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPaneCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
         );
 
-        jScrollCategory.setViewportView(panelCategory);
-
-        javax.swing.GroupLayout panelJscrollLayout = new javax.swing.GroupLayout(panelJscroll);
-        panelJscroll.setLayout(panelJscrollLayout);
-        panelJscrollLayout.setHorizontalGroup(
-            panelJscrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
-        );
-        panelJscrollLayout.setVerticalGroup(
-            panelJscrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelJscrollLayout.createSequentialGroup()
-                .addComponent(jScrollCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        textField.setLabelTextField("Scan or input barcode");
 
         javax.swing.GroupLayout menuBarLayout = new javax.swing.GroupLayout(menuBar);
         menuBar.setLayout(menuBarLayout);
         menuBarLayout.setHorizontalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuBarLayout.createSequentialGroup()
-                .addComponent(panelJscroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addComponent(panelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelJscroll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(menuBarLayout.createSequentialGroup()
+                .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
+        lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
 
         imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\UserIcon.png")); // NOI18N
@@ -292,7 +302,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonCashier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         searchBox.setPlaceholder("Search by name or barcode");
@@ -301,7 +311,10 @@ public class MainPage extends javax.swing.JFrame {
         currentDate.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         currentDate.setText("Tuesday, 02 January 2024 03:50:00 PM");
 
-        panelProduct.setLayout(new java.awt.BorderLayout());
+        jScrollPane2.setBorder(null);
+
+        PanelProduct.setLayout(new java.awt.BorderLayout());
+        jScrollPane2.setViewportView(PanelProduct);
 
         lbPOSId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbPOSId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -319,10 +332,10 @@ public class MainPage extends javax.swing.JFrame {
         );
         detailItemLayout.setVerticalGroup(
             detailItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        boxOne.add(detailItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 0, 450, -1));
+        boxOne.add(detailItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, -1));
 
         jScrollPaneDetail.setViewportView(boxOne);
 
@@ -334,62 +347,64 @@ public class MainPage extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgUser, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(441, 441, 441)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(imgUser, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(boxUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(53, 53, 53)
                         .addComponent(lbPOSId, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addGap(38, 38, 38))
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(panelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneDetail)
-                    .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneDetail))
                 .addContainerGap())
-            .addComponent(menuBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(imgUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbPOSId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(boxUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(20, 20, 20)
-                .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(imgUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lbPOSId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(boxUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(lbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)))
+                .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneDetail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelprocessing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(4, 4, 4))))
+                        .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,9 +428,13 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String buttonName = btnLogin.getButtonName().toLowerCase();
-
         if (buttonName.equals("login")) {
-            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true, btnLogin, boxUserName,panelCategory,jScrollCategory,panelProduct);
+            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
+            jdFormLogin.setBoxUserName(boxUserName);
+            jdFormLogin.setBtnLogin(btnLogin);
+            jdFormLogin.setCategory(category);
+            jdFormLogin.setPanelProduct(PanelProduct);
+            jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
             jdFormLogin.setVisible(true);
         } else if (buttonName.equals("logout")) {
             LogoutDialog logout = new LogoutDialog(new JFrame(), true);
@@ -568,6 +587,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelProduct;
     private javax.swing.JPanel boxOne;
     private javax.swing.JLabel boxUserName;
     private Button.Button btnLogin;
@@ -580,19 +600,19 @@ public class MainPage extends javax.swing.JFrame {
     private Button.Button button8;
     private ButtonPackage.ButtonCancel buttonCancel1;
     private Button.Button buttonCashier;
+    private javax.swing.JPanel category;
     private javax.swing.JLabel currentDate;
     private javax.swing.JPanel day;
     private javax.swing.JPanel detailItem;
     private javax.swing.JLabel imgUser;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollCategory;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPaneCategory;
     private javax.swing.JScrollPane jScrollPaneDetail;
+    private javax.swing.JLabel lbLogo;
     private javax.swing.JLabel lbPOSId;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuBar;
     private javax.swing.JPanel panelCategory;
-    private javax.swing.JPanel panelJscroll;
-    private javax.swing.JPanel panelProduct;
     private javax.swing.JPanel panelprocessing;
     private Components.SearchField searchBox;
     private Components.TextField textField;

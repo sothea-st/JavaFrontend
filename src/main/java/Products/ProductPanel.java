@@ -35,40 +35,38 @@ import org.json.JSONObject;
  */
 public class ProductPanel extends javax.swing.JPanel {
 
-    DecimalFormat dm = new DecimalFormat("$ #,##0.00");
-     /**
-      * Creates new form ProductPanel
-    */
+    /**
+     * Creates new form ProductPanel
+     */
     private JPanel panelItem;
     private SubtotalPanel totalPanel;
     private Button btnPayment;
 
     public ProductPanel(JPanel panelItem, SubtotalPanel totalPanel, Button btnPayment) {
-       initComponents();
-       panelProduct.setBackground(WindowColor.slightGreen);
-       panelPagination.setBackground(WindowColor.slightGreen);
-       setBackground(WindowColor.slightGreen);
-//          appendProduct();
-       this.panelItem = panelItem;
-       this.totalPanel = totalPanel;
-       this.btnPayment = btnPayment;
-       addCombo();
+        initComponents();
+        panelProduct.setBackground(WindowColor.slightGreen);
+        panelPagination.setBackground(WindowColor.slightGreen);
+        setBackground(WindowColor.slightGreen);
+        appendProduct();
+        this.panelItem = panelItem;
+        this.totalPanel = totalPanel;
+        this.btnPayment = btnPayment;
+        addCombo();
 
-       readProduct();
+//          readProduct();
     }
 
     void addCombo() {
-       HashMap<String, String> map = new HashMap<>();
-       map.put("", "Select Product by Brand");
-       map.put("1", "ABC");
-       map.put("2", "DES");
-       cmboxBrand.setMap(map);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("", "Select Product by Brand");
+        map.put("1", "ABC");
+        map.put("2", "DES");
+        cmboxBrand.setMap(map);
     }
 
     void readProduct() {
         try {
             ArrayList<ProductModel> listProduct = new ArrayList<>();
-
             Response response = JavaConnection.get(JavaRoute.product);
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
@@ -79,37 +77,36 @@ public class ProductPanel extends javax.swing.JPanel {
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject obj = result.getJSONObject(i);
                     ProductModel product = new ProductModel(
-                         obj.getInt("id"),
-                         obj.getInt("catId"),
-                         obj.getString("flag"),
-                         obj.getString("weight"),
-                         obj.getString("proImageName"),
-                         obj.getString("barcode"),
-                         obj.getString("proNameKh"),
-                         obj.getString("proNameEn"),
-                         obj.getBigDecimal("cost"),
-                         obj.getBigDecimal("price"),      
-                         
-                         obj.getString("productStatus"),
-                         obj.getInt("discount")
+                            obj.getInt("id"),
+                            obj.getInt("catId"),
+                            obj.getString("flag"),
+                            obj.getString("weight"),
+                            obj.getBigDecimal("cost"),
+                            obj.getString("proImageName"),
+                            obj.getBigDecimal("price"),
+                            obj.getString("barcode"),
+                            obj.getString("proNameKh"),
+                            obj.getString("proNameEn"),
+                            obj.getString("productStatus"),
+                            obj.getInt("discount")
                     );
                     listProduct.add(product);
                 }
-                appendProduct(listProduct);
 
+//                    appendProduct(listProduct);
             } else {
                 System.err.println("fail loading data");
             }
         } catch (Exception e) {
-             System.err.println("error = " + e);
+            System.err.println("error = " + e);
         }
 
-     }
+    }
 
-     ArrayList<BoxItem> arrInt = new ArrayList<>();
-     //=========================Append Product into panelProductBox===============================
+    ArrayList<BoxItem> arrInt = new ArrayList<>();
+    //=========================Append Product into panelProductBox===============================
 
-     void appendProduct(ArrayList<ProductModel> listProduct) {
+    void appendProduct() {
 
         scrollItem.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         File f = new File("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\productImage");
@@ -127,8 +124,8 @@ public class ProductPanel extends javax.swing.JPanel {
         int x = 0;
         int y = 0;
 
-        for (int i = 0; i < listProduct.size(); i++) {
-            var listData = listProduct.get(i);
+        for (int i = 0; i < list.length; i++) {
+//               var listData = listProduct.get(i);
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = x;
             gbc.gridy = y;
@@ -137,49 +134,49 @@ public class ProductPanel extends javax.swing.JPanel {
             gbc.insets = new Insets(5, 0, 5, 10);
             x++;
             if (x == 5) {
-                 x = 0;
-                 y++;
+                x = 0;
+                y++;
             }
 
             int qty = 1;
             Random rd = new Random();
-//            double weight = rd.nextDouble(5, 20);
-            
+            double weight = rd.nextDouble(5, 20);
+            double price = rd.nextDouble(5, 20);
             double barcode = rd.nextDouble(100, 200);
-//            double amountUsd = price * qty;
-//            double amountKhr = price * qty * 4200;
+            double amountUsd = price * qty;
+            double amountKhr = price * qty * 4200;
 
-//            DecimalFormat df = new DecimalFormat("#,##0.00 kg");
-//            DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+            DecimalFormat df = new DecimalFormat("#,##0.00 kg");
+            DecimalFormat dm = new DecimalFormat("$ #,##0.00");
             DecimalFormat bar = new DecimalFormat("########00000000");
-//            DecimalFormat kh = new DecimalFormat("#,##0.00");
+            DecimalFormat kh = new DecimalFormat("#,##0.00");
 
 //               String name = list[i].getName().substring(0, list[i].getName().length() - 4);
 //               Icon image = new ImageIcon(list[i].getAbsolutePath());
+            ButtonEvent event = new ButtonEvent() {
+                @Override
+                public void onMouseClick() {
 
-//            ButtonEvent event = new ButtonEvent() {
-//                 @Override
-//                 public void onMouseClick() {
-//
-//                      int id = arrInt.size();
-//                      BoxItem box = new BoxItem();
-//                      box.setLabelWeight(df.format(weight));
-//                      box.setLabelPrice(dm.format(price));
-//                      box.setLabelBarcode(bar.format(barcode));
-//                      box.setLabelAmountUsd(dm.format(amountUsd));
-//                      box.setLabelAmountKh(kh.format(amountKhr));
-//                      arrInt.add(box);
-//
-//                      double sum = 0;
-//                      for (int j = 0; j < arrInt.size(); j++) {
-//                           sum = sum + amountUsd;
-//                      }
-//
-//                      double sumKh = 0;
-//                      for (int j = 0; j < arrInt.size(); j++) {
-//                           sumKh = sumKh + amountKhr;
-//                      }
+                    int id = arrInt.size();
+                    BoxItem box = new BoxItem();
+//                         box.setLabelProductName("" + name);
+//                         box.setIconImage(image);
+                    box.setLabelWeight(df.format(weight));
+                    box.setLabelPrice(dm.format(price));
+                    box.setLabelBarcode(bar.format(barcode));
+                    box.setLabelAmountUsd(dm.format(amountUsd));
+                    box.setLabelAmountKh(kh.format(amountKhr));
+                    arrInt.add(box);
 
+                    double sum = 0;
+                    for (int j = 0; j < arrInt.size(); j++) {
+                        sum = sum + amountUsd;
+                    }
+
+                    double sumKh = 0;
+                    for (int j = 0; j < arrInt.size(); j++) {
+                        sumKh = sumKh + amountKhr;
+                    }
 
 //                        ButtonEvent event = new ButtonEvent() {
 //                            @Override
@@ -192,46 +189,45 @@ public class ProductPanel extends javax.swing.JPanel {
 //                            }
 //                        };                  
 //                        box.initEvent(event);  
+                    panelItem.add(box);
+                    panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
+                    panelItem.revalidate();
 
-//                    panelItem.add(box);
-//                    panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
-//                    panelItem.revalidate();
-//
-//                    panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
-//                    panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
-//
-//                    totalPanel.setLabelSubtotalUsd(dm.format(sum));
-//                    totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
-//
-//                    btnPayment.setBackground(WindowColor.lightBlue);
-//                    panelItem.setBackground(WindowColor.white);
-//                }
-//            };
+                    panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
+                    panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
+
+                    totalPanel.setLabelSubtotalUsd(dm.format(sum));
+                    totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
+
+                    btnPayment.setBackground(WindowColor.lightBlue);
+                    panelItem.setBackground(WindowColor.white);
+                }
+            };
 
             ProductBox product = new ProductBox();
-//            product.initEvent(event);
+            product.initEvent(event);
             String productName;
-            if (listData.getProductNameEn().length() > 15) {
-                 productName = listData.getProductNameEn().substring(0, 14) + "...";
-            } else {
-                 productName = listData.getProductNameEn();
-            }
+//               if (listData.getProductNameEn().length() > 15) {
+//                    productName = listData.getProductNameEn().substring(0, 14) + "...";
+//               } else {
+//                    productName = listData.getProductNameEn();
+//               }
+//               
+//               System.err.println(listData.getProductNameEn());
+            product.setProductName("<html>" + list[i].getName() + "</html>");
 
-            product.setProductName("<html>" + productName+ "</html>");
+            product.setWeight(df.format(weight));
 
-            product.setWeight(listData.getWeight());
-
-            BigDecimal price = listData.getPrice();
             product.setPrice(dm.format(price));
 
             product.setBarcode(bar.format(barcode));
 
             product.setImage(new ImageIcon(list[i].getAbsolutePath()));
             panelProduct.add(product, gbc);
-          }
-     }
+        }
+    }
 
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

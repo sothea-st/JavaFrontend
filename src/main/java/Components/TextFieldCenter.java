@@ -122,7 +122,7 @@ public class TextFieldCenter extends javax.swing.JPanel {
     public TextFieldCenter() {
         initComponents();
         setBackground(WindowColor.white); 
-        txtTextCenter.setFont(WindowFonts.timeNewRoman);
+        txtTextCenter.setFont(WindowFonts.timeNewRoman14);
     }
 
     private String labelTextCenter;

@@ -18,7 +18,7 @@ public class LogoutDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        txtLabel.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        txtLabel.setFont(WindowFonts.timeNewRomanBold14);
         panelLogout.setBackground(WindowColor.mediumGreen);  
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);

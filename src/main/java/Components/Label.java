@@ -30,7 +30,7 @@ public class Label extends javax.swing.JPanel {
     public Label() {
         initComponents();
         setBackground(WindowColor.mediumGreen);
-        lbLabel.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        lbLabel.setFont(WindowFonts.timeNewRomanBold14);
         lbLabel.setForeground(WindowColor.black);
         
     }

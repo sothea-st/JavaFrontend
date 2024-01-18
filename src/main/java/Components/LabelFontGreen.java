@@ -37,7 +37,7 @@ public class LabelFontGreen extends javax.swing.JPanel {
     public LabelFontGreen() {
         initComponents();
         setBackground(WindowColor.white);
-        lbLabel.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        lbLabel.setFont(WindowFonts.timeNewRomanBold14);
         lbLabel.setForeground(WindowColor.darkGreen);
     }
 

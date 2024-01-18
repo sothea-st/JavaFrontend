@@ -22,7 +22,7 @@ public class ButtonSave extends javax.swing.JPanel {
     public ButtonSave() {
         initComponents();
         setBackground(WindowColor.green);
-        btnSave.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        btnSave.setFont(WindowFonts.timeNewRomanBold14);
     }
 
     //=================================================Create Shadow Box

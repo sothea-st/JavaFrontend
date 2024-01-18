@@ -22,7 +22,7 @@ public class ButtonNo extends javax.swing.JPanel {
     public ButtonNo() {
         initComponents();
         setBackground(WindowColor.darkred);
-        btnNo.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        btnNo.setFont(WindowFonts.timeNewRomanBold14);
     }
 
     @SuppressWarnings("unchecked")

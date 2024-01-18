@@ -1,24 +1,22 @@
  
 package Model.PackageProduct;
  
+import java.math.BigDecimal;
+
 
 public class ProductModel {
      private int id;
      private int catId;
      private String flage;
      private String weight;
-     private String costKhr;
      private String fileName;
-     private String priceKhr;
      private String barcode;
-     private int unitTypeId;
      private String productNameKh;
      private String productNameEn;
-     private Object costUsd;
-     private Object priceUsd;
+     private BigDecimal cost;
+     private BigDecimal price;
      private String productStatus;
      private Object discount;
-     private String disoucntPercentage;
      
      public ProductModel(){}
 
@@ -54,12 +52,12 @@ public class ProductModel {
           this.weight = weight;
      }
 
-     public String getCostKhr() {
-          return costKhr;
+     public BigDecimal getCost() {
+          return cost;
      }
 
-     public void setCostKhr(String costKhr) {
-          this.costKhr = costKhr;
+     public void setCost(BigDecimal cost) {
+          this.cost = cost;
      }
 
      public String getFileName() {
@@ -70,12 +68,12 @@ public class ProductModel {
           this.fileName = fileName;
      }
 
-     public String getPriceKhr() {
-          return priceKhr;
+     public BigDecimal getPrice() {
+          return price;
      }
 
-     public void setPriceKhr(String priceKhr) {
-          this.priceKhr = priceKhr;
+     public void setPrice(BigDecimal price) {
+          this.price = price;
      }
 
      public String getBarcode() {
@@ -86,13 +84,7 @@ public class ProductModel {
           this.barcode = barcode;
      }
 
-     public int getUnitTypeId() {
-          return unitTypeId;
-     }
-
-     public void setUnitTypeId(int unitTypeId) {
-          this.unitTypeId = unitTypeId;
-     }
+   
 
      public String getProductNameKh() {
           return productNameKh;
@@ -110,22 +102,7 @@ public class ProductModel {
           this.productNameEn = productNameEn;
      }
 
-     public Object getCostUsd() {
-          return costUsd;
-     }
-
-     public void setCostUsd(Object costUsd) {
-          this.costUsd = costUsd == null ? "" : costUsd;
-     }
-
-     public Object getPriceUsd() {
-          return priceUsd;
-     }
-
-     public void setPriceUsd(Object priceUsd) {
-          this.priceUsd =  priceUsd == null ? "" : priceUsd;
-     }
-
+   
      public String getProductStatus() {
           return productStatus;
      }
@@ -142,49 +119,37 @@ public class ProductModel {
           this.discount = discount == null ? "" : discount;
      }
 
-     public String getDisoucntPercentage() {
-          return disoucntPercentage;
-     }
-
-     public void setDisoucntPercentage(String disoucntPercentage) {
-          this.disoucntPercentage = disoucntPercentage;
-     }
-     
+   
      public ProductModel(
           int id, 
           int catId,
           String flage,
           String weight,
-          String costKhr,
           String fileName,
-          String priceKhr,
           String barcode, 
-          int unitTypeId,
           String productNameKh,
           String productNameEn,
-          Object costUsd,
-          Object priceUsd,
+          BigDecimal cost,
+          BigDecimal price,
           String productStatus,
-          Object discount,
-          String disoucntPercentage) {
+          Object discount
+     ) {
           this.id = id;
           this.catId = catId;
           this.flage = flage;
           this.weight = weight;
-          this.costKhr = costKhr;
+          this.cost = cost;
           this.fileName = fileName;
-          this.priceKhr = priceKhr;
+          this.price = price;
           this.barcode = barcode;
-          this.unitTypeId = unitTypeId;
+       
           this.productNameKh = productNameKh;
           this.productNameEn = productNameEn;
-          this.costUsd = costUsd;
-          this.priceUsd = priceUsd;
+        
           this.productStatus = productStatus;
           this.discount = discount;
-          this.disoucntPercentage = disoucntPercentage;
+        
      }
-     
      
     
 }

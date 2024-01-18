@@ -22,7 +22,7 @@ public class ButtonCancel extends javax.swing.JPanel {
     public ButtonCancel() {
         initComponents();
         setBackground(WindowColor.darkred);
-        btnCancel.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        btnCancel.setFont(WindowFonts.timeNewRomanBold14);
     }
 
     @SuppressWarnings("unchecked")

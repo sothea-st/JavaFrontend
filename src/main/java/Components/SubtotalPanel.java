@@ -52,7 +52,7 @@ public class SubtotalPanel extends javax.swing.JPanel {
     public SubtotalPanel() {
         initComponents();
         setBackground(WindowColor.mediumGreen);
-        setFont(WindowFonts.timeNewRomanBold);
+        setFont(WindowFonts.timeNewRomanBold14);
     }
     
     

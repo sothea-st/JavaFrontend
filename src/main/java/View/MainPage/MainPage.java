@@ -3,11 +3,14 @@ package View.MainPage;
 import Color.WindowColor;
 import Components.BackgroundImage;
 import Components.LabelTitle;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
+import Model.Category.CategoryModel;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
@@ -20,6 +23,7 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -41,34 +45,24 @@ public class MainPage extends javax.swing.JFrame {
         setBackground();
         currenDateTime();
         jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        jScrollCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         BackgroundImage bgimg = new BackgroundImage();
-        PanelProduct.removeAll();
-        PanelProduct.add(bgimg);
-        PanelProduct.revalidate();
-        PanelProduct.repaint();
-        categoryMenu();
-        
+        panelProduct.removeAll();
+        panelProduct.add(bgimg);
+        panelProduct.revalidate();
+        panelProduct.repaint();
+        jScrollCategory.setVisible(false);
     }
-     
-    void categoryMenu() {
-        String[] listCategory = {"PROMOTION", "NEW ITEMS", "GROCERY", "FRESH","HEALTH & BEAUTY", "NONFOODS"};
-        for (int i = 0; i < listCategory.length; i++) {
-            LabelTitle categoryTitle = new LabelTitle();
-            panelCategory.add(categoryTitle);
-            categoryTitle.setLabelTitle(listCategory[i]);
-        }
-        panelCategory.setLayout(new GridLayout());
-    }
-
+    
     private void setBackground() {
         mainPanel.setBackground(WindowColor.slightGreen);
         panelCategory.setBackground(WindowColor.darkGreen);
+        panelJscroll.setBackground(WindowColor.darkGreen);
         menuBar.setBackground(WindowColor.darkGreen);
-        jScrollPane1.setBackground(WindowColor.darkGreen);
+        jScrollCategory.setBackground(WindowColor.darkGreen);
         day.setBackground(WindowColor.slightGreen);
         panelprocessing.setBackground(WindowColor.slightGreen);
-        PanelProduct.setBackground(WindowColor.slightGreen);
+        panelProduct.setBackground(WindowColor.slightGreen);
         boxOne.setBackground(WindowColor.slightGreen);
         detailItem.setBackground(WindowColor.slightGreen);
     }
@@ -86,7 +80,8 @@ public class MainPage extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JPanel();
         textField = new Components.TextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panelJscroll = new javax.swing.JPanel();
+        jScrollCategory = new javax.swing.JScrollPane();
         panelCategory = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         imgUser = new javax.swing.JLabel();
@@ -105,7 +100,7 @@ public class MainPage extends javax.swing.JFrame {
         buttonCancel1 = new ButtonPackage.ButtonCancel();
         searchBox = new Components.SearchField();
         currentDate = new javax.swing.JLabel();
-        PanelProduct = new javax.swing.JPanel();
+        panelProduct = new javax.swing.JPanel();
         lbPOSId = new javax.swing.JLabel();
         jScrollPaneDetail = new javax.swing.JScrollPane();
         boxOne = new javax.swing.JPanel();
@@ -116,7 +111,7 @@ public class MainPage extends javax.swing.JFrame {
 
         textField.setLabelTextField("Scan or input barcode");
 
-        jScrollPane1.setBorder(null);
+        jScrollCategory.setBorder(null);
 
         javax.swing.GroupLayout panelCategoryLayout = new javax.swing.GroupLayout(panelCategory);
         panelCategory.setLayout(panelCategoryLayout);
@@ -129,26 +124,35 @@ public class MainPage extends javax.swing.JFrame {
             .addGap(0, 65, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(panelCategory);
+        jScrollCategory.setViewportView(panelCategory);
+
+        javax.swing.GroupLayout panelJscrollLayout = new javax.swing.GroupLayout(panelJscroll);
+        panelJscroll.setLayout(panelJscrollLayout);
+        panelJscrollLayout.setHorizontalGroup(
+            panelJscrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
+        );
+        panelJscrollLayout.setVerticalGroup(
+            panelJscrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelJscrollLayout.createSequentialGroup()
+                .addComponent(jScrollCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout menuBarLayout = new javax.swing.GroupLayout(menuBar);
         menuBar.setLayout(menuBarLayout);
         menuBarLayout.setHorizontalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuBarLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelJscroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuBarLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBarLayout.createSequentialGroup()
-                .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panelJscroll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -288,7 +292,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonCashier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         searchBox.setPlaceholder("Search by name or barcode");
@@ -297,7 +301,7 @@ public class MainPage extends javax.swing.JFrame {
         currentDate.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         currentDate.setText("Tuesday, 02 January 2024 03:50:00 PM");
 
-        PanelProduct.setLayout(new java.awt.BorderLayout());
+        panelProduct.setLayout(new java.awt.BorderLayout());
 
         lbPOSId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbPOSId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -349,10 +353,10 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(PanelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneDetail)
                     .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addComponent(menuBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -376,15 +380,15 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(boxUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(20, 20, 20)
-                .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                        .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelprocessing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(PanelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(4, 4, 4))))
         );
 
@@ -398,7 +402,9 @@ public class MainPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -409,7 +415,7 @@ public class MainPage extends javax.swing.JFrame {
         String buttonName = btnLogin.getButtonName().toLowerCase();
 
         if (buttonName.equals("login")) {
-            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true, btnLogin, boxUserName);
+            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true, btnLogin, boxUserName,panelCategory,jScrollCategory,panelProduct);
             jdFormLogin.setVisible(true);
         } else if (buttonName.equals("logout")) {
             LogoutDialog logout = new LogoutDialog(new JFrame(), true);
@@ -562,7 +568,6 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelProduct;
     private javax.swing.JPanel boxOne;
     private javax.swing.JLabel boxUserName;
     private Button.Button btnLogin;
@@ -580,12 +585,14 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel detailItem;
     private javax.swing.JLabel imgUser;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollCategory;
     private javax.swing.JScrollPane jScrollPaneDetail;
     private javax.swing.JLabel lbPOSId;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuBar;
     private javax.swing.JPanel panelCategory;
+    private javax.swing.JPanel panelJscroll;
+    private javax.swing.JPanel panelProduct;
     private javax.swing.JPanel panelprocessing;
     private Components.SearchField searchBox;
     private Components.TextField textField;

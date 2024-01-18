@@ -35,7 +35,7 @@ public class TextField extends javax.swing.JPanel {
     public TextField() {
         initComponents();
         setBackground(WindowColor.white); 
-        txtText.setFont(WindowFonts.timeNewRoman);
+        txtText.setFont(WindowFonts.timeNewRoman14);
     }
     
     

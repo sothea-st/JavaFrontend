@@ -32,7 +32,7 @@ public class RadioButton extends javax.swing.JPanel {
         initComponents();
         setBackground(WindowColor.mediumGreen);
         jRadioButton.setBackground(WindowColor.mediumGreen);
-        jRadioButton.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        jRadioButton.setFont(WindowFonts.timeNewRomanBold14);
         jRadioButton.setForeground(WindowColor.black);
     }
 

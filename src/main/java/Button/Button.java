@@ -30,7 +30,7 @@ public class Button extends javax.swing.JPanel {
     public Button() {
         initComponents();
         setBackground(WindowColor.darkred);
-        button.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        button.setFont(WindowFonts.timeNewRomanBold14);
     }
     
     

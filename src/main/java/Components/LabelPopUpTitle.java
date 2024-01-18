@@ -30,7 +30,7 @@ public class LabelPopUpTitle extends javax.swing.JPanel {
     public LabelPopUpTitle() {
         initComponents();
         setBackground(WindowColor.green);
-        lbTitle.setFont(WindowFonts.timeNewRomanBold);
+        lbTitle.setFont(WindowFonts.timeNewRomanBold16);
         lbTitle.setForeground(WindowColor.white);
     }
 

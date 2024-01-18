@@ -31,7 +31,7 @@ public class ComboBox extends javax.swing.JPanel {
         for( String key:map.keySet() ) {
             ComboItem cm = new ComboItem(key,map.get(key));
             combo.addItem(cm.getValue());
-            combo.setFont(WindowFonts.timeNewRoman);
+            combo.setFont(WindowFonts.timeNewRoman14);
         }
     }
     

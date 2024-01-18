@@ -2,24 +2,29 @@ package LoginAndLogoutForm;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.BackgroundImage;
+import Components.LabelTitle;
+import Components.SubtotalPanel;
 import Constant.JavaBaseUrl;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
-//import View.MainPage.MainPage;
+import Model.Category.CategoryModel;
+import Products.ProductPanel;
 import java.awt.Color;
-import java.awt.event.WindowEvent;
-import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+//import View.MainPage.MainPage;
+import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import okhttp3.FormBody;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.json.JSONArray;
 import org.json.JSONObject;
  
 
@@ -32,8 +37,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     //private Button.Button btnLogin;
     private Button btnLogin;
     private JLabel boxUserName;
+    private JPanel panelCategory;
+    private JScrollPane jScrollCategory;
+    private JPanel panelProduct;
   
-     public LoginFormJdailog(java.awt.Frame parent, boolean modal, Button btnLogin,JLabel boxUserName) {
+     public LoginFormJdailog(java.awt.Frame parent, boolean modal, Button btnLogin,JLabel boxUserName,JPanel panelCategory,JScrollPane jScrollCategory,JPanel panelProduct) {
           super(parent, modal);
           initComponents();
           panelLogin.setBackground(WindowColor.mediumGreen);
@@ -42,6 +50,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           event();
           this.btnLogin = btnLogin;
           this.boxUserName = boxUserName;
+          this.panelCategory=panelCategory;
+          this.jScrollCategory=jScrollCategory;
+          this.panelProduct=panelProduct;
      }
 
      //Function call Placeholder
@@ -155,7 +166,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
              .add("password", password)
              .build();
 
-
         Request request = new Request.Builder()
              .url(new JavaBaseUrl().getBaseUrl()+JavaRoute.login)
              .post(formBody)
@@ -173,6 +183,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                   String userName = jsonObject.getString("fullName");
                   String userCode = jsonObject.getString("userCode");
                   boxUserName.setText(userName + " USER ID : " + userCode);
+                  categoryMenu();
+                  jScrollCategory.setVisible(true);
+                  
              } else {
                   System.err.println("fail");
              }
@@ -181,6 +194,56 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_buttonLogin1MouseClicked
 
+         
+    void categoryMenu() {
+        try {
+                ArrayList<CategoryModel> listCategory = new ArrayList<>();
+                Response response = JavaConnection.get(JavaRoute.category);
+
+                if (response.isSuccessful()) {
+                     String responseData = response.body().string();
+                     JSONObject jsonObject = new JSONObject(responseData);
+                     JSONArray data = jsonObject.getJSONArray("data");
+
+                     for (int i = 0; i < data.length(); i++) {
+                         JSONObject obj = data.getJSONObject(i);
+                         CategoryModel category = new CategoryModel(
+                                 obj.getInt("id"),
+                                obj.getString("catNameEn")
+                         );
+                         
+                        LabelTitle categoryTitle = new LabelTitle();
+                        panelCategory.add(categoryTitle);
+                        categoryTitle.setLabelTitle(category.getCatNameEn());
+                        
+                        ButtonEvent event = new ButtonEvent() {
+                            @Override
+                            public void onMouseClick() {
+                                
+                                if(categoryTitle.getLabelTitle().equals("NEW ITEMS")){
+                                    categoryTitle.setBackground(WindowColor.black);
+                                    ProductPanel product = new ProductPanel(null,null,null);
+                                    panelProduct.removeAll();
+                                    panelProduct.add(product);
+                                    panelProduct.revalidate();
+                                    panelProduct.repaint();
+                                }
+                            }
+                            
+                        };     
+                        categoryTitle.initEvent(event);
+                     }
+                        panelCategory.setLayout(new GridLayout());
+
+                } else {
+                     System.err.println("fail loading data");
+                }
+        } catch (Exception e) {
+             System.err.println("error = " + e);
+        }
+    }
+    
+    
      /**
       * @param args the command line
       * arguments
@@ -212,7 +275,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           /* Create and display the dialog */
           java.awt.EventQueue.invokeLater(new Runnable() {
                public void run() {
-                    LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true,null,null);
+                    LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true,null,null,null,null,null);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                          @Override
                          public void windowClosing(java.awt.event.WindowEvent e) {

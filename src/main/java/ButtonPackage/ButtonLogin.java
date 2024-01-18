@@ -22,7 +22,7 @@ public class ButtonLogin extends javax.swing.JPanel {
     public ButtonLogin() {
         initComponents();
         setBackground(WindowColor.green);
-        btnLogin.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        btnLogin.setFont(WindowFonts.timeNewRomanBold14);
     }
 
     //=================================================Create Shadow Box

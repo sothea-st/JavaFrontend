@@ -23,7 +23,7 @@ public class ButtonYes extends javax.swing.JPanel {
     public ButtonYes() {
         initComponents();
         setBackground(WindowColor.green);
-        btnYes.setFont(WindowFonts.timeNewRomanBoldForLabel);
+        btnYes.setFont(WindowFonts.timeNewRomanBold14);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,7 +1,10 @@
 package Components;
 
 import Color.WindowColor;
+import Event.ButtonEvent;
 import Fonts.WindowFonts;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -30,7 +33,7 @@ public class LabelTitle extends javax.swing.JPanel {
     public LabelTitle() {
         initComponents();
         setBackground(WindowColor.darkGreen);
-        lbTitle.setFont(WindowFonts.timeNewRomanBold);
+        lbTitle.setFont(WindowFonts.timeNewRomanBold16);
         lbTitle.setForeground(WindowColor.white);
     }
 
@@ -43,14 +46,19 @@ public class LabelTitle extends javax.swing.JPanel {
         lbTitle.setForeground(new java.awt.Color(255, 255, 255));
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("jLabel1");
+        lbTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbTitleMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,6 +68,41 @@ public class LabelTitle extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lbTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbTitleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbTitleMouseClicked
+
+     //=================================================
+   
+    public void initEvent(ButtonEvent event) {
+        lbTitle.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                event.onMouseClick();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
+     }
 
     private String labelTitle;
     // Variables declaration - do not modify//GEN-BEGIN:variables

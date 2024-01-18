@@ -37,7 +37,7 @@ public class UnEditableTextField extends javax.swing.JPanel {
     public UnEditableTextField() {
         initComponents();
         setBackground(WindowColor.white);
-        textField.setFont(WindowFonts.timeNewRoman);
+        textField.setFont(WindowFonts.timeNewRoman14);
         textField.setBackground(WindowColor.white);
     }
 

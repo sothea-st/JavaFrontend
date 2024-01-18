@@ -73,7 +73,6 @@ Return\ApprovalCode$1.class
 LoginAndLogoutForm\LogoutDialog$4$1.class
 Receipt\CashierReport$3.class
 DeleteAndCancel\DeleteDialog$3$1.class
-LoginAndLogoutForm\LoginFormJdailog$5$1.class
 com\mycompany\kingmart\KingMart.class
 Payment\PaymentOption.class
 Receipt\Receipt$4$1.class
@@ -97,6 +96,7 @@ Components\LabelFontBlack.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
 Return\ReturnDialog$3$1.class
+LoginAndLogoutForm\LoginFormJdailog$6.class
 View\MainPage\MainPage$5.class
 Event\ButtonEvent.class
 View\MainPage\MainPage$4.class
@@ -127,6 +127,7 @@ Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
 View\MainPage\MainPage$1.class
+LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class
 Button\ButtonBuy.class
 Components\BoxItem.class

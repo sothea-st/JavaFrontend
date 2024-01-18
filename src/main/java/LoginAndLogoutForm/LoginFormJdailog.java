@@ -128,6 +128,12 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
         lbPassword.setLabelName("Password");
 
+        buttonCancel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCancel1MouseClicked(evt);
+            }
+        });
+
         buttonLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonLogin1MouseClicked(evt);
@@ -212,7 +218,12 @@ public class LoginFormJdailog extends javax.swing.JDialog {
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
                 JSONObject jsonObject = new JSONObject(responseData);
+                
+                //Session
                 JavaConstant.token = jsonObject.getString("token");
+                JavaConstant.fullName = jsonObject.getString("fullName");
+                JavaConstant.userCode = jsonObject.getString("userCode");
+                
                 dispose();
                 getBtnLogin().setButtonName("Logout");
                 String userName = jsonObject.getString("fullName");
@@ -227,6 +238,10 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
         }
     }//GEN-LAST:event_buttonLogin1MouseClicked
+
+    private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void category() {
         
@@ -439,13 +454,20 @@ public class LoginFormJdailog extends javax.swing.JDialog {
             product.setPrice(dm.format(price));
 
             product.setBarcode(bar.format(barcode));
+            
 
             // read image from api 
             try {
+                //Product
                 Response response = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
                 byte[] image = response.body().bytes();
-        
+      
+                //flag
+                Response responseFlage = JavaConnection.get(JavaRoute.readImage + listData.getFlag());
+                byte[] flag = responseFlage.body().bytes();
+                
                 product.setImage(new ImageIcon(image));
+                product.setFlag(new ImageIcon(flag));
             } catch (Exception e) {
                 System.err.println("error read image = " + e);
             }

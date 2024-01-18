@@ -37,13 +37,13 @@ public class ButtonBuy extends javax.swing.JPanel {
     public ButtonBuy() {
         initComponents();
         button.setForeground(WindowColor.darkGreen);
-        button.setFont(WindowFonts.timeNewRomanBold10);
+        button.setFont(WindowFonts.timeNewRomanBold8);
         setBackground(WindowColor.white);
     }
 
-     //=================================================Create Shadow Box
+//     //=================================================Create Shadow Box
     private ShadowType shadowType;
-    private int shadowSize = 5;
+    private int shadowSize = 3;
     private float shadowOpacity = 0.8f;
     private Color shadowColor = WindowColor.darkGreen;
     

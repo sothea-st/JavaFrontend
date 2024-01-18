@@ -39,6 +39,7 @@ public class UnEditableTextField extends javax.swing.JPanel {
         setBackground(WindowColor.white);
         textField.setFont(WindowFonts.timeNewRoman14);
         textField.setBackground(WindowColor.white);
+        textField.setForeground(WindowColor.gray);
     }
 
     //=================================================Create Shadow Box

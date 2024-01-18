@@ -2,6 +2,7 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Constant.JavaConstant;
 import Event.ButtonEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +27,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         setResizable(false);
         currenDateTime();
         event();
+        setText();
         this.btnOpenShift=btnOpenShift;
     }
     
@@ -35,6 +37,10 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         txtDateTime.setUneditText(dtf.format(date));
     }
     
+    private void setText(){
+        txtCashierName.setUneditText(JavaConstant.fullName);
+        txtUserId.setUneditText(JavaConstant.userCode);
+    }
     
     void event(){
         ButtonEvent btnevent = new ButtonEvent() {
@@ -213,8 +219,43 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-        dispose();
+  
+//        String reserveUsd = txtTotalUsd.getValueTextField();
+//        String reserveKhr = txtTotalKhr.getValueTextField();
+//        System.out.println(reserveUsd + " " + reserveKhr);
+//
+//        OkHttpClient client = new OkHttpClient();
+//        RequestBody formBody = new FormBody.Builder()
+//                .add("reserveUsd", reserveUsd)
+//                .add("reserveKhr", reserveKhr)
+//                .build();
+//
+//        Request request = new Request.Builder()
+//                .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.openShift)
+//                .post(formBody)
+//                .build();
+//
+//        try {
+//            Response response = client.newCall(request).execute();
+//            if (response.isSuccessful()) {
+//                String responseData = response.body().string();
+//                System.out.println("Helllo " + responseData);
+//                JSONObject jsonObject = new JSONObject(responseData);
+//                JavaConstant.token = jsonObject.getString("token");
+//                dispose();
+//                getBtnOpenShift().setButtonName("Close Shift");
+//            } else {
+//                System.err.println("fail");
+//            }
+//        } catch (Exception e) {
+//
+//        }
+        
+//        getBtnOpenShift().setButtonName("Helllooo");
+        
         btnOpenShift.setButtonName("Close Shift");
+        dispose();
+        
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     /**

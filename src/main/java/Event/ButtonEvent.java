@@ -23,4 +23,7 @@ public interface ButtonEvent {
      default public void onFocusGain(){
          
      }
+     
+     default public void btnPlus(){}
+    default public void btnMinus(){}
 }

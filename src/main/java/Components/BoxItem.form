@@ -232,7 +232,7 @@
     </Component>
     <Component class="Button.ButtonAddProduct" name="buttonAddProduct">
       <Properties>
-        <Property name="quantity" type="int" value="10"/>
+        <Property name="quantity" type="int" value="1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

@@ -14,6 +14,8 @@ public class WindowFonts {
     
     public static Font timeNewRomanBold10 = new Font("Times New Roman", Font.BOLD, 10);
     public static Font timeNewRoman10 = new Font("Times New Roman", Font.PLAIN, 10);
+    public static Font timeNewRomanBold8 = new Font("Times New Roman", Font.BOLD, 8);
+    public static Font timeNewRoman8 = new Font("Times New Roman", Font.PLAIN, 8);
     public static Font timeNewRoman11 = new Font("Times New Roman", Font.PLAIN, 11);
     public static Font timeNewRomanBold11 = new Font("Times New Roman", Font.BOLD, 11);
     public static Font timeNewRoman12 = new Font("Times New Roman", Font.PLAIN, 12);

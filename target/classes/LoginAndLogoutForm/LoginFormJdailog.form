@@ -117,6 +117,9 @@
           </Properties>
         </Component>
         <Component class="ButtonPackage.ButtonCancel" name="buttonCancel1">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCancel1MouseClicked"/>
+          </Events>
         </Component>
         <Component class="ButtonPackage.ButtonLogin" name="buttonLogin1">
           <Events>

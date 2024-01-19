@@ -54,7 +54,7 @@ public class ProductBox extends javax.swing.JPanel {
 
     public void setImage(Icon image) {
         this.image = image;
-        img.setIcon(image);
+        productImage.setIcon(image);
     }
 
     public String getProductName() {
@@ -199,18 +199,18 @@ public class ProductBox extends javax.swing.JPanel {
      private void initComponents() {
 
           productBox = new javax.swing.JPanel();
-          img = new javax.swing.JLabel();
+          productImage = new javax.swing.JLabel();
           lbName = new javax.swing.JLabel();
           lbWeight = new javax.swing.JLabel();
           lbBarcode = new javax.swing.JLabel();
           flagImage = new javax.swing.JLabel();
           txtBarcode = new javax.swing.JLabel();
-          status = new Button.ButtonInstock();
+          buttonStatus = new Button.ButtonInstock();
           lbEach = new javax.swing.JLabel();
           lbPrice = new javax.swing.JLabel();
           btnBuy = new Button.ButtonBuy();
 
-          img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+          productImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
           lbName.setText("Name");
 
@@ -232,7 +232,7 @@ public class ProductBox extends javax.swing.JPanel {
                productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
                     .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                         .addComponent(img, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                         .addComponent(productImage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                          .addComponent(lbName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                          .addGroup(productBoxLayout.createSequentialGroup()
                               .addComponent(lbWeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,13 +252,14 @@ public class ProductBox extends javax.swing.JPanel {
                               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                               .addComponent(lbEach, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(24, 24, 24))
           );
           productBoxLayout.setVerticalGroup(
                productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                    .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()
+                    .addComponent(productImage, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,7 +271,7 @@ public class ProductBox extends javax.swing.JPanel {
                          .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                               .addComponent(lbEach, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                               .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                         .addComponent(status, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                         .addComponent(buttonStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                          .addComponent(lbBarcode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -299,15 +300,15 @@ public class ProductBox extends javax.swing.JPanel {
 
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private Button.ButtonBuy btnBuy;
+     private Button.ButtonInstock buttonStatus;
      private javax.swing.JLabel flagImage;
-     private javax.swing.JLabel img;
      private javax.swing.JLabel lbBarcode;
      private javax.swing.JLabel lbEach;
      private javax.swing.JLabel lbName;
      private javax.swing.JLabel lbPrice;
      private javax.swing.JLabel lbWeight;
      private javax.swing.JPanel productBox;
-     private Button.ButtonInstock status;
+     private javax.swing.JLabel productImage;
      private javax.swing.JLabel txtBarcode;
      // End of variables declaration//GEN-END:variables
 
@@ -323,6 +324,6 @@ public class ProductBox extends javax.swing.JPanel {
       */
      public void setProductStatus(String productStatus) {
           this.productStatus = productStatus;
-          status.setButtonName(productStatus);
+          buttonStatus.setButtonName(productStatus);
      }
 }

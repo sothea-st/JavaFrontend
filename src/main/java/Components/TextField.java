@@ -39,11 +39,6 @@ public class TextField extends javax.swing.JPanel {
     }
     
     
-    
- 
-       
-    
-    
     //Create Placeholder
     public void initEvent(ButtonEvent event) {
         txtText.addFocusListener(new FocusListener() {

@@ -44,12 +44,13 @@ public class MainPage extends javax.swing.JFrame {
         setBackground();
         currenDateTime();
         jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         BackgroundImage bgimg = new BackgroundImage();
-        PanelProduct.removeAll();
-        PanelProduct.add(bgimg);
-        PanelProduct.revalidate();
-        PanelProduct.repaint();
+        panelProduct.removeAll();
+        panelProduct.add(bgimg);
+        panelProduct.revalidate();
+        panelProduct.repaint();
         jScrollPaneCategory.setVisible(false);
     }
 
@@ -62,7 +63,7 @@ public class MainPage extends javax.swing.JFrame {
         jScrollPaneCategory.setBackground(WindowColor.darkGreen);
         day.setBackground(WindowColor.slightGreen);
         panelprocessing.setBackground(WindowColor.slightGreen);
-        PanelProduct.setBackground(WindowColor.slightGreen);
+        panelProduct.setBackground(WindowColor.slightGreen);
         boxOne.setBackground(WindowColor.slightGreen);
         detailItem.setBackground(WindowColor.slightGreen);
     }
@@ -101,7 +102,7 @@ public class MainPage extends javax.swing.JFrame {
         searchBox = new Components.SearchField();
         currentDate = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        PanelProduct = new javax.swing.JPanel();
+        panelProduct = new javax.swing.JPanel();
         lbPOSId = new javax.swing.JLabel();
         jScrollPaneDetail = new javax.swing.JScrollPane();
         boxOne = new javax.swing.JPanel();
@@ -310,8 +311,8 @@ public class MainPage extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(null);
 
-        PanelProduct.setLayout(new java.awt.BorderLayout());
-        jScrollPane2.setViewportView(PanelProduct);
+        panelProduct.setLayout(new java.awt.BorderLayout());
+        jScrollPane2.setViewportView(panelProduct);
 
         lbPOSId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbPOSId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -365,10 +366,10 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPaneDetail))
+                    .addComponent(jScrollPaneDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addComponent(menuBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -401,7 +402,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(jScrollPaneDetail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelprocessing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -430,7 +431,7 @@ public class MainPage extends javax.swing.JFrame {
             jdFormLogin.setBoxUserName(boxUserName);
             jdFormLogin.setBtnLogin(btnLogin);
             jdFormLogin.setCategory(category);
-            jdFormLogin.setPanelProduct(PanelProduct);
+            jdFormLogin.setPanelProduct(panelProduct);
             jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
             jdFormLogin.setDetailItem(detailItem);
             jdFormLogin.setBoxOne(boxOne);
@@ -448,6 +449,7 @@ public class MainPage extends javax.swing.JFrame {
             if (buttonName.equals("open shift")) {
                OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true,btnOpenShift);
                jdOpenShift.setVisible(true);
+//               jdOpenShift.setBtnOpenShift(btnOpenShift);
             }
             else if (buttonName.equals("close shift")) {
                 CloseShift close = new CloseShift(new JFrame(), true);
@@ -587,7 +589,6 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelProduct;
     private javax.swing.JPanel boxOne;
     private javax.swing.JLabel boxUserName;
     private Button.Button btnLogin;
@@ -613,6 +614,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuBar;
     private javax.swing.JPanel panelCategory;
+    private javax.swing.JPanel panelProduct;
     private javax.swing.JPanel panelprocessing;
     private Components.SearchField searchBox;
     private Components.TextField textField;

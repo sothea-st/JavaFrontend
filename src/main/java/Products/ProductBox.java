@@ -187,8 +187,8 @@ public class ProductBox extends javax.swing.JPanel {
     private Icon flagImage;
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+     private void initComponents() {
 
         productBox = new javax.swing.JPanel();
         productImg = new javax.swing.JLabel();
@@ -206,12 +206,11 @@ public class ProductBox extends javax.swing.JPanel {
 
         lbName.setText("Name");
 
-        lbWeight.setText("Weight");
+          lbName.setText("Name");
 
-        txtBarcode.setText("Barcode :");
+          lbWeight.setText("Weight");
 
-        flagImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        flagImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\Flag-United Kingdom -icon.png")); // NOI18N
+          txtBarcode.setText("Barcode :");
 
         lbPrice.setText("Price");
 

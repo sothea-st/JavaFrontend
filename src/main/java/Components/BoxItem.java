@@ -231,7 +231,7 @@ public class BoxItem extends javax.swing.JPanel {
                 setLabelAmountUsd(dm.format(subAmountUsd));
                 double amountKh = Double.valueOf(subAmountUsd) * 4200;
                 setLabelAmountKh(kh.format(amountKh));
-                subtotalPanel.setLabelSubtotalUsd("ddddddddddddddddd");
+//                subtotalPanel.setLabelSubtotalUsd("ddddddddddddddddd");
              
 //                    for( int i = 0 ; i < listCom.length  )
             }

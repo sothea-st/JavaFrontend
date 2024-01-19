@@ -2,11 +2,15 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import okhttp3.Response;
+import org.json.JSONObject;
 
 /**
  *
@@ -40,6 +44,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     private void setText(){
         txtCashierName.setUneditText(JavaConstant.fullName);
         txtUserId.setUneditText(JavaConstant.userCode);
+        txtPosId.setUneditText(JavaConstant.posId);
     }
     
     void event(){
@@ -48,7 +53,6 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
             public void onFocusGain() {
 
             }
-           
         };
         txtTotalUsd.initEvent(btnevent);
         txtTotalKhr.initEvent(btnevent);
@@ -220,42 +224,37 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
   
-//        String reserveUsd = txtTotalUsd.getValueTextField();
-//        String reserveKhr = txtTotalKhr.getValueTextField();
-//        System.out.println(reserveUsd + " " + reserveKhr);
-//
-//        OkHttpClient client = new OkHttpClient();
-//        RequestBody formBody = new FormBody.Builder()
-//                .add("reserveUsd", reserveUsd)
-//                .add("reserveKhr", reserveKhr)
-//                .build();
-//
-//        Request request = new Request.Builder()
-//                .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.openShift)
-//                .post(formBody)
-//                .build();
-//
-//        try {
-//            Response response = client.newCall(request).execute();
-//            if (response.isSuccessful()) {
-//                String responseData = response.body().string();
-//                System.out.println("Helllo " + responseData);
-//                JSONObject jsonObject = new JSONObject(responseData);
-//                JavaConstant.token = jsonObject.getString("token");
-//                dispose();
-//                getBtnOpenShift().setButtonName("Close Shift");
-//            } else {
-//                System.err.println("fail");
-//            }
-//        } catch (Exception e) {
-//
-//        }
-        
-//        getBtnOpenShift().setButtonName("Helllooo");
-        
-        btnOpenShift.setButtonName("Close Shift");
-        dispose();
-        
+        String reserveUsd = txtTotalUsd.getValueTextField();
+        String reserveKhr = txtTotalKhr.getValueTextField();
+        String posId = txtPosId.getUneditText();
+        String userCode = txtUserId.getUneditText();
+        String openTime = txtDateTime.getUneditText();
+
+        JSONObject json = new JSONObject();
+        json.put("reserveUsd", reserveUsd);
+        json.put("reserveKhr", reserveKhr);
+        json.put("posId", posId);
+        json.put("userCode", userCode);
+        json.put("openTime", openTime);
+        json.put("createBy", JavaConstant.cashierId);
+
+        try {
+            Response response = JavaConnection.post(JavaRoute.openShift, json);
+            if (response.isSuccessful()) {
+                 String responseData = response.body().string();
+                 JSONObject jsonObject = new JSONObject(responseData);
+                 dispose();
+                 System.out.println("Success" + " " +response);
+                 btnOpenShift.setButtonName("Close Shift");
+            }
+            else
+            {
+                System.out.println("Failll");
+            }        
+
+        } catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     /**

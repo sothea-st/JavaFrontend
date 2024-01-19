@@ -186,7 +186,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          JSONObject json = new JSONObject();
          json.put("userCode", "0001");
          json.put("password", "TT@126$kh#");
-
         
          try {
               Response response = JavaConnection.login(JavaRoute.login, json);
@@ -198,6 +197,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    JavaConstant.token = jsonObject.getString("token");
                    JavaConstant.fullName = jsonObject.getString("fullName");
                    JavaConstant.userCode = jsonObject.getString("userCode");
+                   JavaConstant.posId = jsonObject.getString("posId");
+                   JavaConstant.cashierId = jsonObject.getInt("id");
 
                    dispose();
                    getBtnLogin().setButtonName("Logout");

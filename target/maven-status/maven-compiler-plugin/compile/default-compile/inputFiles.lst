@@ -8,6 +8,7 @@ D:\POS_CASHIER\tt_pos_window\src\main\java\ButtonPackage\ButtonNo.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\PackageProduct\CategoryModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\PasswordField.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\LoginAndLogoutForm\LoginFormJdailog.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\CustomerType\SourceModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\ButtonPackage\ButtonLogin.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Constant\JavaConnection.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\LabelFontBlack.java
@@ -15,6 +16,7 @@ D:\POS_CASHIER\tt_pos_window\src\main\java\Button\Button.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\ReceiptBox.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Category\CategoryModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\com\mycompany\kingmart\KingMart.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\CustomerType\CustomerTypeModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\BackgroundImage.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\ButtonPackage\ButtonCancel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\LoginAndLogoutForm\LogoutDialog.java

@@ -424,11 +424,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                try {
                     Response responseProductImg = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
                     byte[] imagePro = responseProductImg.body().bytes();
-                    product.setImage(new ImageIcon(imagePro));
+                    product.setProductImage(new ImageIcon(imagePro));
 
                     Response img = JavaConnection.get(JavaRoute.readImage + listData.getFlag());
                     byte[] imgs = img.body().bytes();
-                    // product.setImageFlag(new ImageIcon(imgs));
+                     product.setFlagImage(new ImageIcon(imgs));
 
                } catch (Exception e) {
                     System.err.println("error read image = " + e);

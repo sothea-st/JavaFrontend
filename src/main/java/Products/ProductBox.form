@@ -16,19 +16,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="productBox" pref="150" max="32767" attributes="0"/>
+              <Component id="productBox" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="productBox" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="productBox" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -39,71 +39,64 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="lbName" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="productImage" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lbName" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="lbWeight" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="flagImage" min="-2" pref="64" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <Component id="lbPrice" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="buttonStatus" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lbBarcode" min="-2" pref="45" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtBarcode" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="productImg" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="txtBarcode" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnBuy" min="-2" pref="47" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbPrice" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbEach" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonStatus" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBuy" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Component id="lbWeight" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="flagImg" min="-2" pref="30" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="discount" min="-2" pref="67" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="productImage" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="productImg" min="-2" pref="85" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbName" min="-2" pref="25" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lbWeight" pref="27" max="32767" attributes="0"/>
-                      <Component id="flagImage" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbWeight" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="flagImg" min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbEach" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="lbPrice" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="buttonStatus" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="discount" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbBarcode" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtBarcode" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnBuy" alignment="1" pref="31" max="32767" attributes="0"/>
+                      <Component id="lbPrice" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonStatus" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnBuy" max="32767" attributes="0"/>
+                      <Component id="txtBarcode" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="productImage">
+        <Component class="javax.swing.JLabel" name="productImg">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
@@ -118,27 +111,17 @@
             <Property name="text" type="java.lang.String" value="Weight"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbBarcode">
+        <Component class="javax.swing.JLabel" name="txtBarcode">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Barcode"/>
+            <Property name="text" type="java.lang.String" value="Barcode :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="flagImage">
+        <Component class="javax.swing.JLabel" name="flagImg">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="txtBarcode">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="0000"/>
-          </Properties>
-        </Component>
         <Component class="Button.ButtonInstock" name="buttonStatus">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbEach">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="each"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbPrice">
           <Properties>
@@ -146,6 +129,14 @@
           </Properties>
         </Component>
         <Component class="Button.ButtonBuy" name="btnBuy">
+        </Component>
+        <Component class="Button.ButtonInstock" name="discount">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="buttonName" type="java.lang.String" value="Was $10.10"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

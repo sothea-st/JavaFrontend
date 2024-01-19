@@ -41,4 +41,22 @@ public class JavaConnection {
           return response;
      }
 
+     public static Response post(String route,JSONObject json) {
+          Response response = null;
+          try {
+               OkHttpClient client = new OkHttpClient();
+               RequestBody body = RequestBody.create(
+                    JavaConstant.JSON,
+                    json.toString());
+               Request request = new Request.Builder()
+                    .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.login)
+                    .header("Authorization", "Bearer " + JavaConstant.token)
+                    .post(body).build();
+               response = client.newCall(request).execute();
+          } catch (Exception e) {
+               System.err.println("getting error during call request " + e);
+          }
+          return response;
+     }
+
 }

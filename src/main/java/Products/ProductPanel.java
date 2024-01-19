@@ -222,7 +222,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
             product.setBarcode(bar.format(barcode));
 
-            product.setImage(new ImageIcon(list[i].getAbsolutePath()));
+            product.setProductImage(new ImageIcon(list[i].getAbsolutePath()));
             panelProduct.add(product, gbc);
         }
     }

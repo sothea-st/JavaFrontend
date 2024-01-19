@@ -16,20 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="button" pref="40" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="button" alignment="1" pref="52" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="button" pref="9" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="button" alignment="0" pref="20" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -47,6 +39,13 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Buy"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder>
+              <Color PropertyName="color" blue="43" green="6b" red="10" type="rgb"/>
+            </MatteColorBorder>
+          </Border>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

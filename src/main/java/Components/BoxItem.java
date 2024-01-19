@@ -7,6 +7,7 @@ import DeleteAndCancel.DeleteDialog;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -136,6 +137,17 @@ public class BoxItem extends javax.swing.JPanel {
         this.subtotalPanel = subtotalPanel;
     }
 
+     public Component[] getListCom() {
+          return listCom;
+     }
+
+     public void setListCom(Component[] listCom) {
+          this.listCom = listCom;
+     }
+    
+    
+    
+
     //=================================================
     public void initEvent(ButtonEvent event) {
         btnDelete.addMouseListener(new MouseListener() {
@@ -183,6 +195,7 @@ public class BoxItem extends javax.swing.JPanel {
     private int productId;
 
     private SubtotalPanel subtotalPanel;
+    private Component[] listCom;
 
     DecimalFormat dm = new DecimalFormat("$ #,##0.00");    // new (hello world) 18-01-2024
     DecimalFormat kh = new DecimalFormat("#,##0");  // new 18-01-2024 (hello world)
@@ -224,7 +237,8 @@ public class BoxItem extends javax.swing.JPanel {
                 double amountKh = Double.valueOf(subAmountUsd) * 4200;
                 setLabelAmountKh(kh.format(amountKh));
                 subtotalPanel.setLabelSubtotalUsd("ddddddddddddddddd");
-               
+             
+//                    for( int i = 0 ; i < listCom.length  )
             }
 
             @Override

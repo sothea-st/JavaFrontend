@@ -361,7 +361,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                 public void onMouseClick() {
 
                     BoxItem box = new BoxItem();
-                    box.setSubtotalPanel(subtotalPanel);
+                   
                     try {
                         //   new 18-01-2024 (hello world)
                         Component[] listCom = detailItem.getComponents();
@@ -378,6 +378,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                     obj.setLabelAmountUsd(dm.format(newAmountUsd));
                                     obj.setLabelAmountKh(kh.format(newAmountKhr));
                                     total(0, listCom);
+                                     box.setSubtotalPanel(subtotalPanel);
+                                     box.setListCom(listCom);
                                     return;
                                 }
                             }

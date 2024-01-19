@@ -176,7 +176,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-  
 
 
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
@@ -399,10 +398,17 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               getDetailItem().add(box);
                               // getDetailItem().add(Box.createRigidArea(new Dimension(2, 2)));
                               getDetailItem().revalidate();
+                              getDetailItem().repaint();
                               getDetailItem().setBorder(new BevelBorder(BevelBorder.RAISED));
                               getDetailItem().setLayout(new BoxLayout(getDetailItem(), BoxLayout.PAGE_AXIS));
                               getDetailItem().setBackground(WindowColor.white);
                               total(price, listCom);
+                              
+                              // add list has one box to BoxItem (note: must be add)
+                              Component[] listCom1 = detailItem.getComponents();
+                              box.setSubtotalPanel(subtotalPanel);
+                              box.setListCom(listCom1);
+                             
 
                          } catch (Exception e) {
                               System.out.println("err get product image " + e);

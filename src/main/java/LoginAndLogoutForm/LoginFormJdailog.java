@@ -378,7 +378,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
             Random rd = new Random();
             double weight = rd.nextDouble(5, 20);
             double price = rd.nextDouble(5, 20);
-            double barcode = rd.nextDouble(100, 200);
+//            double barcode = rd.nextDouble(100, 200);
             double amountUsd = price * qty;
             double amountKhr = price * qty * 4200;
 
@@ -453,7 +453,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
             product.setPrice(dm.format(price));
 
-            product.setBarcode(bar.format(barcode));
+            product.setBarcode(listData.getBarcode());
             
 
             // read image from api 

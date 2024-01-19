@@ -41,59 +41,59 @@ public class ButtonAddProduct extends javax.swing.JPanel {
     private int quantity;
 
     //=================================================Create Shadow Box
-    private ShadowType shadowType;
-    private int shadowSize = 3;
-    private float shadowOpacity = 0.8f;
-    private Color shadowColor = WindowColor.darkGreen;
-
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        setOpaque(false);
-        createShadow(grphcs);
-        super.paintComponent(grphcs);
-    }
-
-    private void createShadow(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs;
-        int size = shadowSize * 2;
-        int x = 0;
-        int y = 0;
-        int width = getWidth() - size;
-        int height = getHeight() - size;
-        if (shadowType == ShadowType.TOP) {
-            x = shadowSize;
-            y = size;
-        } else if (shadowType == ShadowType.BOT) {
-            x = shadowSize;
-            y = 0;
-        } else if (shadowType == ShadowType.TOP_LEFT) {
-            x = size;
-            y = size;
-        } else if (shadowType == ShadowType.TOP_RIGHT) {
-            x = 0;
-            y = size;
-        } else if (shadowType == ShadowType.BOT_LEFT) {
-            x = size;
-            y = 0;
-        } else if (shadowType == ShadowType.BOT_RIGHT) {
-            x = 0;
-            y = 0;
-        } else {
-            //  Center
-            x = shadowSize;
-            y = shadowSize;
-        }
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = img.createGraphics();
-        g.setColor(getBackground());
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.fillRoundRect(0, 0, width, height, 40, 40);
-
-        //  Create Shadow
-        ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
-        g2.drawImage(render.createShadow(img), 0, 0, null);
-        g2.drawImage(img, x, y, null);
-    }
+//    private ShadowType shadowType;
+//    private int shadowSize = 3;
+//    private float shadowOpacity = 0.8f;
+//    private Color shadowColor = WindowColor.darkGreen;
+//
+//    @Override
+//    protected void paintComponent(Graphics grphcs) {
+//        setOpaque(false);
+//        createShadow(grphcs);
+//        super.paintComponent(grphcs);
+//    }
+//
+//    private void createShadow(Graphics grphcs) {
+//        Graphics2D g2 = (Graphics2D) grphcs;
+//        int size = shadowSize * 2;
+//        int x = 0;
+//        int y = 0;
+//        int width = getWidth() - size;
+//        int height = getHeight() - size;
+//        if (shadowType == ShadowType.TOP) {
+//            x = shadowSize;
+//            y = size;
+//        } else if (shadowType == ShadowType.BOT) {
+//            x = shadowSize;
+//            y = 0;
+//        } else if (shadowType == ShadowType.TOP_LEFT) {
+//            x = size;
+//            y = size;
+//        } else if (shadowType == ShadowType.TOP_RIGHT) {
+//            x = 0;
+//            y = size;
+//        } else if (shadowType == ShadowType.BOT_LEFT) {
+//            x = size;
+//            y = 0;
+//        } else if (shadowType == ShadowType.BOT_RIGHT) {
+//            x = 0;
+//            y = 0;
+//        } else {
+//            //  Center
+//            x = shadowSize;
+//            y = shadowSize;
+//        }
+//        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+//        Graphics2D g = img.createGraphics();
+//        g.setColor(getBackground());
+//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        g.fillRoundRect(0, 0, width, height, 40, 40);
+//
+//        //  Create Shadow
+//        ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
+//        g2.drawImage(render.createShadow(img), 0, 0, null);
+//        g2.drawImage(img, x, y, null);
+//    }
 
     // new 18-01-2024 (hello world)
     public void initEvent(ButtonEvent event) {
@@ -151,6 +151,7 @@ public class ButtonAddProduct extends javax.swing.JPanel {
         lbQty = new javax.swing.JLabel();
         btnPlus = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 107, 67)));
         setPreferredSize(new java.awt.Dimension(100, 32));
 
         btnMinus.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -173,24 +174,19 @@ public class ButtonAddProduct extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(btnMinus, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPlus, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lbQty, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(btnMinus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbQty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

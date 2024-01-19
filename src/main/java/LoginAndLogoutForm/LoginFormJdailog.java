@@ -176,7 +176,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-  
 
 
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
@@ -187,7 +186,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          json.put("userCode", "0001");
          json.put("password", "TT@126$kh#");
 
-        
          try {
               Response response = JavaConnection.login(JavaRoute.login, json);
               if (response.isSuccessful()) {
@@ -398,10 +396,17 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               getDetailItem().add(box);
                               // getDetailItem().add(Box.createRigidArea(new Dimension(2, 2)));
                               getDetailItem().revalidate();
+                              getDetailItem().repaint();
                               getDetailItem().setBorder(new BevelBorder(BevelBorder.RAISED));
                               getDetailItem().setLayout(new BoxLayout(getDetailItem(), BoxLayout.PAGE_AXIS));
                               getDetailItem().setBackground(WindowColor.white);
                               total(price, listCom);
+                              
+                              // add list has one box to BoxItem (note: must be add)
+                              Component[] listCom1 = detailItem.getComponents();
+                              box.setSubtotalPanel(subtotalPanel);
+                              box.setListCom(listCom1);
+                             
 
                          } catch (Exception e) {
                               System.out.println("err get product image " + e);
@@ -428,7 +433,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
                     Response img = JavaConnection.get(JavaRoute.readImage + listData.getFlag());
                     byte[] imgs = img.body().bytes();
-                     product.setFlagImage(new ImageIcon(imgs));
+                    product.setFlagImage(new ImageIcon(imgs));
 
                } catch (Exception e) {
                     System.err.println("error read image = " + e);

@@ -2,11 +2,15 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import okhttp3.Response;
+import org.json.JSONObject;
 
 /**
  *
@@ -14,47 +18,48 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  */
 public class OpenShiftJdailog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form OpenShiftJdailog
-    */
-    private Button btnOpenShift;
-    
-    public OpenShiftJdailog(java.awt.Frame parent, boolean modal,Button btnOpenShift) {
-        super(parent, modal);
-        initComponents();
-        panelOpenShift.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        currenDateTime();
-        event();
-        setText();
-        this.btnOpenShift=btnOpenShift;
-    }
-    
-    private void currenDateTime(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");  
-        LocalDateTime date = LocalDateTime.now();  
-        txtDateTime.setUneditText(dtf.format(date));
-    }
-    
-    private void setText(){
-        txtCashierName.setUneditText(JavaConstant.fullName);
-        txtUserId.setUneditText(JavaConstant.userCode);
-    }
-    
-    void event(){
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
+     /**
+      * Creates new form
+      * OpenShiftJdailog
+      */
+     private Button btnOpenShift;
 
-            }
-           
-        };
-        txtTotalUsd.initEvent(btnevent);
-        txtTotalKhr.initEvent(btnevent);
-    }
+     public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
+          super(parent, modal);
+          initComponents();
+          panelOpenShift.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          currenDateTime();
+          event();
+          setText();
+          this.btnOpenShift = btnOpenShift;
+     }
 
-    @SuppressWarnings("unchecked")
+     private void currenDateTime() {
+          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
+          LocalDateTime date = LocalDateTime.now();
+          txtDateTime.setUneditText(dtf.format(date));
+     }
+
+     private void setText() {
+          txtCashierName.setUneditText(JavaConstant.fullName);
+          txtUserId.setUneditText(JavaConstant.userCode);
+     }
+
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
+
+               }
+
+          };
+          txtTotalUsd.initEvent(btnevent);
+          txtTotalKhr.initEvent(btnevent);
+     }
+
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -215,90 +220,58 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-  
-//        String reserveUsd = txtTotalUsd.getValueTextField();
-//        String reserveKhr = txtTotalKhr.getValueTextField();
-//        System.out.println(reserveUsd + " " + reserveKhr);
-//
-//        OkHttpClient client = new OkHttpClient();
-//        RequestBody formBody = new FormBody.Builder()
-//                .add("reserveUsd", reserveUsd)
-//                .add("reserveKhr", reserveKhr)
-//                .build();
-//
-//        Request request = new Request.Builder()
-//                .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.openShift)
-//                .post(formBody)
-//                .build();
-//
-//        try {
-//            Response response = client.newCall(request).execute();
-//            if (response.isSuccessful()) {
-//                String responseData = response.body().string();
-//                System.out.println("Helllo " + responseData);
-//                JSONObject jsonObject = new JSONObject(responseData);
-//                JavaConstant.token = jsonObject.getString("token");
-//                dispose();
-//                getBtnOpenShift().setButtonName("Close Shift");
-//            } else {
-//                System.err.println("fail");
-//            }
-//        } catch (Exception e) {
-//
-//        }
+
         
-//        getBtnOpenShift().setButtonName("Helllooo");
-        
-        btnOpenShift.setButtonName("Close Shift");
-        dispose();
-        
+
+
     }//GEN-LAST:event_buttonSaveMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                OpenShiftJdailog dialog = new OpenShiftJdailog(new javax.swing.JFrame(), true,null);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
                     }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          }
+          //</editor-fold>
+
+          /* Create and display the dialog */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    OpenShiftJdailog dialog = new OpenShiftJdailog(new javax.swing.JFrame(), true, null);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.Label IbUserId;

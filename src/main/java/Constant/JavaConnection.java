@@ -49,7 +49,7 @@ public class JavaConnection {
                     JavaConstant.JSON,
                     json.toString());
                Request request = new Request.Builder()
-                    .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.login)
+                    .url(new JavaBaseUrl().getBaseUrl() + route)
                     .header("Authorization", "Bearer " + JavaConstant.token)
                     .post(body).build();
                response = client.newCall(request).execute();

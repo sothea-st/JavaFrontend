@@ -23,7 +23,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Component id="img" min="-2" pref="60" max="-2" attributes="0"/>
+=======
+              <Component id="img" min="-2" pref="62" max="-2" attributes="0"/>
+>>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -39,7 +43,11 @@
                               <Component id="lbEach" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonAddProduct" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                               <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+=======
+                              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+>>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="lbBarcode" max="32767" attributes="0"/>
@@ -88,8 +96,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="img" min="-2" pref="75" max="-2" attributes="0"/>
+=======
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="img" max="32767" attributes="0"/>
+>>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>

@@ -16,12 +16,28 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="button" alignment="1" pref="52" max="32767" attributes="0"/>
+=======
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="button" pref="40" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+>>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="button" alignment="0" pref="20" max="32767" attributes="0"/>
+=======
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="button" pref="9" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+>>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
       </Group>
     </DimensionLayout>
   </Layout>
@@ -39,6 +55,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Buy"/>
+<<<<<<< HEAD
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder>
@@ -46,6 +63,8 @@
             </MatteColorBorder>
           </Border>
         </Property>
+=======
+>>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
       </Properties>
     </Component>
   </SubComponents>

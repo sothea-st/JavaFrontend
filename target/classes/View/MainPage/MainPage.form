@@ -59,25 +59,21 @@
                           <Component id="imgUser" min="-2" pref="49" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="boxUserName" min="-2" pref="352" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="lbPOSId" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="currentDate" min="-2" pref="255" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-<<<<<<< HEAD
                   <Component id="jScrollPane2" min="-2" pref="945" max="-2" attributes="0"/>
-=======
-                  <Component id="jScrollPane2" min="-2" pref="968" max="-2" attributes="0"/>
->>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPaneDetail" min="-2" pref="483" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneDetail" min="-2" pref="468" max="-2" attributes="0"/>
                       <Component id="panelprocessing" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -123,7 +119,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="panelprocessing" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane2" alignment="1" min="-2" pref="691" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" alignment="1" pref="691" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -137,7 +133,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelCategory" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="textField" min="-2" pref="259" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -219,23 +215,17 @@
         <Component class="javax.swing.JLabel" name="lbLogo">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-<<<<<<< HEAD
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="D:\POS_CASHIER\tt_pos_window\src\main\resources\image\King Mart Small Logo.png"/>
             </Property>
-=======
->>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="imgUser">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-<<<<<<< HEAD
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="D:\POS_CASHIER\tt_pos_window\src\main\resources\image\UserIcon.png"/>
             </Property>
-=======
->>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="day">
@@ -270,7 +260,7 @@
                                           <Component id="btnLogin" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnReturn" max="32767" attributes="0"/>
+                                          <Component id="btnReturn" pref="112" max="32767" attributes="0"/>
                                           <Component id="btnOpenShift" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -280,16 +270,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnReprint" max="32767" attributes="0"/>
-                                          <Component id="button3" max="32767" attributes="0"/>
+                                          <Component id="btnReprint" pref="0" max="32767" attributes="0"/>
+                                          <Component id="button3" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnPayment" max="32767" attributes="0"/>
-                                          <Component id="button8" max="32767" attributes="0"/>
+                                          <Component id="btnPayment" pref="0" max="32767" attributes="0"/>
+                                          <Component id="button8" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="button10" max="32767" attributes="0"/>
+                                  <Component id="button10" pref="202" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -485,14 +475,14 @@
                 <Container class="javax.swing.JPanel" name="detailItem">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="10" width="450" height="-1"/>
+                      <AbsoluteConstraints x="10" y="10" width="430" height="-1"/>
                     </Constraint>
                   </Constraints>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="430" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">

@@ -63,7 +63,7 @@ public class BoxItem extends javax.swing.JPanel {
 
     public void setLabelBarcode(String labelBarcode) {
         this.labelBarcode = labelBarcode;
-        lbBarcode.setText(labelBarcode);
+        lbBarcode.setText("Barcode : " + labelBarcode);
     }
 
     public String getLabelPrice() {
@@ -72,7 +72,7 @@ public class BoxItem extends javax.swing.JPanel {
 
     public void setLabelPrice(String labelPrice) {
         this.labelPrice = labelPrice;
-        lbPrice.setText(labelPrice);
+        lbPrice.setText(labelPrice + " each");
     }
 
     public String getLabelWeight() {
@@ -94,7 +94,7 @@ public class BoxItem extends javax.swing.JPanel {
 
     public void setDiscountAmount(String discountAmount) {
         this.discountAmount = discountAmount;
-        txtDiscount.setText(discountAmount);
+        txtDiscount.setText("Discount : " + discountAmount);
     }
 
     public void setIconImage(Icon iconImage) {
@@ -145,9 +145,6 @@ public class BoxItem extends javax.swing.JPanel {
           this.listCom = listCom;
      }
     
-    
-    
-
     //=================================================
     public void initEvent(ButtonEvent event) {
         btnDelete.addMouseListener(new MouseListener() {
@@ -215,12 +212,8 @@ public class BoxItem extends javax.swing.JPanel {
         amountUsd.setForeground(WindowColor.darkGreen);
         amountkh.setFont(WindowFonts.timeNewRomanBold11);
         amountkh.setForeground(WindowColor.darkGreen);
-        barcode.setFont(WindowFonts.timeNewRomanBold11);
-        lbBarcode.setFont(WindowFonts.timeNewRomanBold11);
-        discount.setFont(WindowFonts.timeNewRomanBold11);
+        lbBarcode.setFont(WindowFonts.timeNewRoman11);
         txtDiscount.setFont(WindowFonts.timeNewRomanBold11);
-        lbEach.setFont(WindowFonts.timeNewRomanBold11);
-        lbEach.setForeground(WindowColor.darkGreen);
 
         
         // new (hello world) 18-01-2024
@@ -330,16 +323,13 @@ public class BoxItem extends javax.swing.JPanel {
         lbWeight = new javax.swing.JLabel();
         lbSale = new javax.swing.JLabel();
         lbPrice = new javax.swing.JLabel();
-        barcode = new javax.swing.JLabel();
         lbBarcode = new javax.swing.JLabel();
-        discount = new javax.swing.JLabel();
         txtDiscount = new javax.swing.JLabel();
         amountUsd = new javax.swing.JLabel();
         amountkh = new javax.swing.JLabel();
         btnDelete = new javax.swing.JLabel();
         buttonAddProduct = new Button.ButtonAddProduct();
         jLabel1 = new javax.swing.JLabel();
-        lbEach = new javax.swing.JLabel();
         proId = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -356,19 +346,12 @@ public class BoxItem extends javax.swing.JPanel {
 
         lbPrice.setText("Price");
 
-        barcode.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        barcode.setText("Barcode :");
-
-        lbBarcode.setText("Barcode");
-
-        discount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        discount.setForeground(new java.awt.Color(204, 0, 0));
-        discount.setText("Discount :");
+        lbBarcode.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbBarcode.setText("Barcode :");
 
         txtDiscount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDiscount.setForeground(new java.awt.Color(204, 0, 0));
-        txtDiscount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        txtDiscount.setText("$ 0.00");
+        txtDiscount.setText("Discount :");
 
         amountUsd.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         amountUsd.setForeground(new java.awt.Color(16, 107, 67));
@@ -381,6 +364,7 @@ public class BoxItem extends javax.swing.JPanel {
         amountkh.setText("0");
 
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDelete.setIcon(new javax.swing.ImageIcon("D:\\POS_CASHIER\\tt_pos_window\\src\\main\\resources\\image\\Delete.png")); // NOI18N
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeleteMouseClicked(evt);
@@ -389,10 +373,9 @@ public class BoxItem extends javax.swing.JPanel {
 
         buttonAddProduct.setQuantity(1);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(16, 107, 67));
         jLabel1.setText("៛");
-
-        lbEach.setText("each");
 
         proId.setText("jLabel2");
 
@@ -406,45 +389,34 @@ public class BoxItem extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(barcode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbSale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbPrice)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbEach)
-                                .addGap(18, 18, 18)
-                                .addComponent(buttonAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 9, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(discount))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(39, 39, 39)))
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(proId)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(amountUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDiscount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(proId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addComponent(lbBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(117, 117, 117)
+                        .addComponent(txtDiscount))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(amountkh)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbSale)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)))))
-                .addContainerGap())
+                                .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(buttonAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(amountkh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(amountUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(3, 3, 3)))))
+                .addGap(9, 9, 9))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,31 +425,31 @@ public class BoxItem extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(amountkh)
-                            .addComponent(jLabel1)
-                            .addComponent(proId))
-                        .addGap(2, 2, 2)
-                        .addComponent(amountUsd))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(proId, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnDelete))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(amountkh)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbSale)
-                                    .addComponent(lbPrice)
-                                    .addComponent(lbEach)))
-                            .addComponent(buttonAddProduct, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbPrice)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(buttonAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(amountUsd, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(barcode)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbBarcode)
-                            .addComponent(discount)
                             .addComponent(txtDiscount))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -492,14 +464,11 @@ public class BoxItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amountUsd;
     private javax.swing.JLabel amountkh;
-    private javax.swing.JLabel barcode;
     private javax.swing.JLabel btnDelete;
     private Button.ButtonAddProduct buttonAddProduct;
-    private javax.swing.JLabel discount;
     private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbBarcode;
-    private javax.swing.JLabel lbEach;
     private javax.swing.JLabel lbPrice;
     private javax.swing.JLabel lbSale;
     private javax.swing.JLabel lbWeight;

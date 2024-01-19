@@ -2,6 +2,7 @@ Components\SearchField$1.class
 DeleteAndCancel\CancelDialog$2$1.class
 Components\LabelReceipt.class
 Payment\PaymentOption$1.class
+Components\BoxItem$3.class
 Components\SearchField.class
 Color\WindowColor.class
 Print\ReprintByInvoicenumber$3.class
@@ -133,11 +134,13 @@ Button\ButtonBuy.class
 Components\BoxItem.class
 Components\BoxItem$2.class
 Model\PackageProduct\ProductModel.class
+Button\ButtonAddProduct$2.class
 Button\ButtonAddProduct.class
 Components\ReceiptBox.class
 View\MainPage\MainPage$2.class
 Print\ReprintJdailog.class
 LoginAndLogoutForm\LoginFormJdailog$3.class
 OpenAndCloseShift\OpenShiftJdailog$3.class
+Button\ButtonAddProduct$1.class
 Payment\PaymentOption$3$1.class
 OpenAndCloseShift\CloseShift$1.class

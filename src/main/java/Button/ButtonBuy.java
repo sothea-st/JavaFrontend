@@ -41,60 +41,60 @@ public class ButtonBuy extends javax.swing.JPanel {
         setBackground(WindowColor.white);
     }
 
-//     //=================================================Create Shadow Box
-    private ShadowType shadowType;
-    private int shadowSize = 3;
-    private float shadowOpacity = 0.8f;
-    private Color shadowColor = WindowColor.darkGreen;
-    
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        setOpaque(false);
-        createShadow(grphcs);
-        super.paintComponent(grphcs);
-    }
-    
-    private void createShadow(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs;
-        int size = shadowSize * 2;
-        int x = 0;
-        int y = 0;
-        int width = getWidth() - size;
-        int height = getHeight() - size;
-        if (shadowType == ShadowType.TOP) {
-             x = shadowSize;
-             y = size;
-        } else if (shadowType == ShadowType.BOT) {
-             x = shadowSize;
-             y = 0;
-        } else if (shadowType == ShadowType.TOP_LEFT) {
-             x = size;
-             y = size;
-        } else if (shadowType == ShadowType.TOP_RIGHT) {
-             x = 0;
-             y = size;
-        } else if (shadowType == ShadowType.BOT_LEFT) {
-             x = size;
-             y = 0;
-        } else if (shadowType == ShadowType.BOT_RIGHT) {
-             x = 0;
-             y = 0;
-        } else {
-             //  Center
-             x = shadowSize;
-             y = shadowSize;
-        }
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = img.createGraphics();
-        g.setColor(getBackground());
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.fillRoundRect(0, 0, width, height, 40, 40);
-
-        //  Create Shadow
-        ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
-        g2.drawImage(render.createShadow(img), 0, 0, null);
-        g2.drawImage(img, x, y, null);
-    }
+//   //=================================================Create Shadow Box
+//    private ShadowType shadowType;
+//    private int shadowSize = 3;
+//    private float shadowOpacity = 0.8f;
+//    private Color shadowColor = WindowColor.darkGreen;
+//    
+//    @Override
+//    protected void paintComponent(Graphics grphcs) {
+//        setOpaque(false);
+//        createShadow(grphcs);
+//        super.paintComponent(grphcs);
+//    }
+//    
+//    private void createShadow(Graphics grphcs) {
+//        Graphics2D g2 = (Graphics2D) grphcs;
+//        int size = shadowSize * 2;
+//        int x = 0;
+//        int y = 0;
+//        int width = getWidth() - size;
+//        int height = getHeight() - size;
+//        if (shadowType == ShadowType.TOP) {
+//             x = shadowSize;
+//             y = size;
+//        } else if (shadowType == ShadowType.BOT) {
+//             x = shadowSize;
+//             y = 0;
+//        } else if (shadowType == ShadowType.TOP_LEFT) {
+//             x = size;
+//             y = size;
+//        } else if (shadowType == ShadowType.TOP_RIGHT) {
+//             x = 0;
+//             y = size;
+//        } else if (shadowType == ShadowType.BOT_LEFT) {
+//             x = size;
+//             y = 0;
+//        } else if (shadowType == ShadowType.BOT_RIGHT) {
+//             x = 0;
+//             y = 0;
+//        } else {
+//             //  Center
+//             x = shadowSize;
+//             y = shadowSize;
+//        }
+//        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+//        Graphics2D g = img.createGraphics();
+//        g.setColor(getBackground());
+//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        g.fillRoundRect(0, 0, width, height, 40, 40);
+//
+//        //  Create Shadow
+//        ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
+//        g2.drawImage(render.createShadow(img), 0, 0, null);
+//        g2.drawImage(img, x, y, null);
+//    }
     
     private String buttonName;
     
@@ -109,22 +109,17 @@ public class ButtonBuy extends javax.swing.JPanel {
         button.setForeground(new java.awt.Color(16, 107, 67));
         button.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         button.setText("Buy");
+        button.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(16, 107, 67)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(button, javax.swing.GroupLayout.PREFERRED_SIZE, 9, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

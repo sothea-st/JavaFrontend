@@ -7,12 +7,14 @@ import DeleteAndCancel.DeleteDialog;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -72,7 +74,7 @@ public class BoxItem extends javax.swing.JPanel {
         this.labelPrice = labelPrice;
         lbPrice.setText(labelPrice);
     }
-    
+
     public String getLabelWeight() {
         return labelWeight;
     }
@@ -81,9 +83,18 @@ public class BoxItem extends javax.swing.JPanel {
         this.labelWeight = labelWeight;
         lbWeight.setText(labelWeight);
     }
-    
-     public Icon getIconImage() {
+
+    public Icon getIconImage() {
         return iconImage;
+    }
+
+    public String getDiscountAmount() {
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(String discountAmount) {
+        this.discountAmount = discountAmount;
+        txtDiscount.setText(discountAmount);
     }
 
     public void setIconImage(Icon iconImage) {
@@ -92,17 +103,52 @@ public class BoxItem extends javax.swing.JPanel {
     }
 
     public String getLabelProductName() {
-         return LabelProductName;
+        return LabelProductName;
     }
 
     public void setLabelProductName(String LabelProductName) {
-         this.LabelProductName = LabelProductName;
-         title.setText(LabelProductName);
+        this.LabelProductName = LabelProductName;
+        title.setText(LabelProductName);
     }
 
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+        buttonAddProduct.setQuantity(qty);
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+        proId.setText("" + productId);
+    }
+
+    public SubtotalPanel getSubtotalPanel() {
+        return subtotalPanel;
+    }
+
+    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+        this.subtotalPanel = subtotalPanel;
+    }
+
+     public Component[] getListCom() {
+          return listCom;
+     }
+
+     public void setListCom(Component[] listCom) {
+          this.listCom = listCom;
+     }
     
+    
+    
+
     //=================================================
-   
     public void initEvent(ButtonEvent event) {
         btnDelete.addMouseListener(new MouseListener() {
             @Override
@@ -112,7 +158,7 @@ public class BoxItem extends javax.swing.JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
 
             @Override
@@ -131,11 +177,11 @@ public class BoxItem extends javax.swing.JPanel {
             }
 
         });
-     }
-    
+    }
+
     /**
-    * Creates new form BoxItem
-    */
+     * Creates new form BoxItem
+     */
     private String LabelProductName;
     private Icon iconImage;
     private String labelWeight;
@@ -143,47 +189,96 @@ public class BoxItem extends javax.swing.JPanel {
     private String labelBarcode;
     private String labelAmountUsd;
     private String labelAmountKh;
-    
+    private String discountAmount;
     private int labelQuantity;
+    private int qty;
+    private int productId;
+
+    private SubtotalPanel subtotalPanel;
+    private Component[] listCom;
+
+    DecimalFormat dm = new DecimalFormat("$ #,##0.00");    // new (hello world) 18-01-2024
+    DecimalFormat kh = new DecimalFormat("#,##0");  // new 18-01-2024 (hello world)
 
     public BoxItem() {
         initComponents();
         
-        
-        title.setFont(WindowFonts.timeNewRomanBold12);
+        title.setFont(WindowFonts.timeNewRomanBold11);
         title.setForeground(WindowColor.black);
         lbWeight.setFont(WindowFonts.timeNewRomanBold10);
         lbWeight.setForeground(WindowColor.gray);
-        lbSale.setFont(WindowFonts.timeNewRomanBold12);
+        lbSale.setFont(WindowFonts.timeNewRomanBold11);
         lbSale.setForeground(WindowColor.green);
-        lbPrice.setFont(WindowFonts.timeNewRomanBold12);
+        lbPrice.setFont(WindowFonts.timeNewRomanBold11);
         lbPrice.setForeground(WindowColor.darkGreen);
-        amountUsd.setFont(WindowFonts.timeNewRomanBold12);
+        amountUsd.setFont(WindowFonts.timeNewRomanBold11);
         amountUsd.setForeground(WindowColor.darkGreen);
-        amountkh.setFont(WindowFonts.timeNewRomanBold12);
+        amountkh.setFont(WindowFonts.timeNewRomanBold11);
         amountkh.setForeground(WindowColor.darkGreen);
-        barcode.setFont(WindowFonts.timeNewRomanBold12);
-        lbBarcode.setFont(WindowFonts.timeNewRomanBold12);
-        discount.setFont(WindowFonts.timeNewRomanBold12);
-        txtDiscount.setFont(WindowFonts.timeNewRomanBold12);
-        lbEach.setFont(WindowFonts.timeNewRomanBold12);
+        barcode.setFont(WindowFonts.timeNewRomanBold11);
+        lbBarcode.setFont(WindowFonts.timeNewRomanBold11);
+        discount.setFont(WindowFonts.timeNewRomanBold11);
+        txtDiscount.setFont(WindowFonts.timeNewRomanBold11);
+        lbEach.setFont(WindowFonts.timeNewRomanBold11);
         lbEach.setForeground(WindowColor.darkGreen);
-     }
-     
-     
+
+        
+        // new (hello world) 18-01-2024
+        proId.setVisible(false);
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void btnPlus() {
+                int getQty = getQty();
+                String priceUsd = getLabelPrice();
+                priceUsd = priceUsd.replace("$", "");
+                priceUsd = priceUsd.replace(",", "");
+                getQty++;
+                setQty(getQty);
+                double subAmountUsd = Double.valueOf(priceUsd) * getQty;
+                setLabelAmountUsd(dm.format(subAmountUsd));
+                double amountKh = Double.valueOf(subAmountUsd) * 4200;
+                setLabelAmountKh(kh.format(amountKh));
+                subtotalPanel.setLabelSubtotalUsd("ddddddddddddddddd");
+             
+//                    for( int i = 0 ; i < listCom.length  )
+            }
+
+            @Override
+            public void btnMinus() {
+                int getQty = getQty();
+                getQty--;
+                if (getQty != 0) {
+                    String priceUsd = getLabelPrice();
+                    priceUsd = priceUsd.replace("$", "");
+                    priceUsd = priceUsd.replace(",", "");
+
+                    setQty(getQty);
+                    double subAmountUsd = Double.valueOf(priceUsd) * getQty;
+                    setLabelAmountUsd(dm.format(subAmountUsd));
+                    double amountKh = Double.valueOf(subAmountUsd) * 4200;
+                    setLabelAmountKh(kh.format(amountKh));
+                   
+                }
+
+            }
+        };
+        buttonAddProduct.initEvent(event);
+
+    }
+
     //=================================================Create Shadow Box
     private ShadowType shadowType;
     private int shadowSize = 3;
     private float shadowOpacity = 0.8f;
     private Color shadowColor = Color.GRAY;
-    
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         setOpaque(false);
         createShadow(grphcs);
         super.paintComponent(grphcs);
     }
-    
+
     private void createShadow(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         int size = shadowSize * 2;
@@ -192,27 +287,27 @@ public class BoxItem extends javax.swing.JPanel {
         int width = getWidth() - size;
         int height = getHeight() - size;
         if (shadowType == ShadowType.TOP) {
-             x = shadowSize;
-             y = size;
+            x = shadowSize;
+            y = size;
         } else if (shadowType == ShadowType.BOT) {
-             x = shadowSize;
-             y = 0;
+            x = shadowSize;
+            y = 0;
         } else if (shadowType == ShadowType.TOP_LEFT) {
-             x = size;
-             y = size;
+            x = size;
+            y = size;
         } else if (shadowType == ShadowType.TOP_RIGHT) {
-             x = 0;
-             y = size;
+            x = 0;
+            y = size;
         } else if (shadowType == ShadowType.BOT_LEFT) {
-             x = size;
-             y = 0;
+            x = size;
+            y = 0;
         } else if (shadowType == ShadowType.BOT_RIGHT) {
-             x = 0;
-             y = 0;
+            x = 0;
+            y = 0;
         } else {
-             //  Center
-             x = shadowSize;
-             y = shadowSize;
+            //  Center
+            x = shadowSize;
+            y = shadowSize;
         }
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
@@ -226,7 +321,7 @@ public class BoxItem extends javax.swing.JPanel {
         g2.drawImage(img, x, y, null);
     }
 
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -245,11 +340,11 @@ public class BoxItem extends javax.swing.JPanel {
         buttonAddProduct = new Button.ButtonAddProduct();
         jLabel1 = new javax.swing.JLabel();
         lbEach = new javax.swing.JLabel();
+        proId = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        img.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\productImage\\Pizza.png")); // NOI18N
 
         title.setText("Pizza");
 
@@ -286,19 +381,20 @@ public class BoxItem extends javax.swing.JPanel {
         amountkh.setText("0");
 
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\Delete.png")); // NOI18N
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeleteMouseClicked(evt);
             }
         });
 
-        buttonAddProduct.setQuantity(10);
+        buttonAddProduct.setQuantity(1);
 
         jLabel1.setForeground(new java.awt.Color(16, 107, 67));
         jLabel1.setText("៛");
 
         lbEach.setText("each");
+
+        proId.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -306,7 +402,7 @@ public class BoxItem extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -321,15 +417,11 @@ public class BoxItem extends javax.swing.JPanel {
                                 .addComponent(lbEach)
                                 .addGap(18, 18, 18)
                                 .addComponent(buttonAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 8, Short.MAX_VALUE))
+                                .addGap(0, 9, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(discount)))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(amountUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDiscount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(discount))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,6 +429,15 @@ public class BoxItem extends javax.swing.JPanel {
                                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(39, 39, 39)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(proId)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(amountUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDiscount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -349,14 +450,15 @@ public class BoxItem extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnDelete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(amountkh)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(proId))
                         .addGap(2, 2, 2)
                         .addComponent(amountUsd))
                     .addGroup(layout.createSequentialGroup()
@@ -382,8 +484,8 @@ public class BoxItem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
-       DeleteDialog delete = new DeleteDialog(new JFrame(),true);
-       delete.setVisible(true);
+        DeleteDialog delete = new DeleteDialog(new JFrame(), true);
+        delete.setVisible(true);
     }//GEN-LAST:event_btnDeleteMouseClicked
 
 
@@ -401,6 +503,7 @@ public class BoxItem extends javax.swing.JPanel {
     private javax.swing.JLabel lbPrice;
     private javax.swing.JLabel lbSale;
     private javax.swing.JLabel lbWeight;
+    private javax.swing.JLabel proId;
     private javax.swing.JLabel title;
     private javax.swing.JLabel txtDiscount;
     // End of variables declaration//GEN-END:variables

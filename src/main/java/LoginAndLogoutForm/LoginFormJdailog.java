@@ -4,6 +4,7 @@ import Button.Button;
 import Color.WindowColor;
 import Components.BoxItem;
 import Components.LabelTitle;
+import Components.SubtotalPanel;
 import Constant.JavaBaseUrl;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
@@ -13,33 +14,26 @@ import Model.PackageProduct.CategoryModel;
 import Model.PackageProduct.ProductModel;
 import Products.ProductBox;
 //import View.MainPage.MainPage;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 import javax.swing.border.BevelBorder;
+import javax.swing.event.ListDataEvent;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -53,34 +47,19 @@ import org.json.JSONObject;
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
 
-    /**
-     * @return the jScrollPaneCategory
-     */
-    public JScrollPane getjScrollPaneCategory() {
-        return jScrollPaneCategory;
-    }
+    DecimalFormat df = new DecimalFormat("#,##0.00 kg");
+    DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+    DecimalFormat bar = new DecimalFormat("########00000000");
+    DecimalFormat kh = new DecimalFormat("#,##0");  // new 18-01-2024 (hello world)
 
-    /**
-     * @param jScrollPaneCategory the jScrollPaneCategory to set
-     */
-    public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
-        this.jScrollPaneCategory = jScrollPaneCategory;
-    }
-
-    //private Button.Button btnLogin;
     private Button btnLogin;
     private JLabel boxUserName;
     private JPanel category;
     private JPanel panelProduct;
     private JScrollPane jScrollPaneCategory;
-
-    public JPanel getPanelProduct() {
-        return panelProduct;
-    }
-
-    public void setPanelProduct(JPanel panelProduct) {
-        this.panelProduct = panelProduct;
-    }
+    private JPanel detailItem;
+    private JPanel boxOne;
+    private SubtotalPanel subtotalPanel;
 
     public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -203,18 +182,31 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         System.out.println(userId + " " + password);
 
         OkHttpClient client = new OkHttpClient();
-        RequestBody formBody = new FormBody.Builder()
-                .add("userCode", userId)
-                .add("password", password)
+
+//         RequestBody formBody = new FormBody.Builder()
+//              .add("userCode", "0001")
+//              .add("password", "TT@126$kh#")
+//              .build();
+//
+//         Request request = new Request.Builder()
+//              .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.login)
+//              .post(formBody)
+//              .build();
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("userCode", "0001")
+                .addFormDataPart("password", "TT@126$kh#")
                 .build();
 
         Request request = new Request.Builder()
                 .url(new JavaBaseUrl().getBaseUrl() + JavaRoute.login)
-                .post(formBody)
+                .post(requestBody)
                 .build();
-
+        System.err.println("3333333333335555555555555555553333 " + request);
         try {
+//              Response response = client.newCall(request).execute();
             Response response = client.newCall(request).execute();
+            System.err.println("333333333333333 " + response);
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
                 JSONObject jsonObject = new JSONObject(responseData);
@@ -244,8 +236,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void category() {
-        
-      
+
         try {
             ArrayList<CategoryModel> listCategory = new ArrayList<>();
             Response response = JavaConnection.get(JavaRoute.category);
@@ -269,7 +260,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                     int id = listCategory.get(i).getId();
                     LabelTitle categoryTitle = new LabelTitle();
                     category.add(categoryTitle);
-                   
+
                     String catName = listCategory.get(i).getCatNameEn();
                     categoryTitle.setLabelTitle(catName);
                     ButtonEvent event = new ButtonEvent() {
@@ -343,10 +334,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
     void appendProduct(ArrayList<ProductModel> listProduct) {
 
-//        scrollItem.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
-//        File f = new File("C:\\Users\\USER\\Pictures\\food");
-//        File[] list = f.listFiles();
-        // set panel to GridBagLayout
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0}; // one row has 5 column
         gridBagLayout.rowWeights = new double[]{0, 0, 0, 0, 1};
@@ -357,6 +344,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
         int x = 0;
         int y = 0;
+    
 
         for (int i = 0; i < listProduct.size(); i++) {
 
@@ -377,103 +365,112 @@ public class LoginFormJdailog extends javax.swing.JDialog {
             int qty = 1;
             Random rd = new Random();
             double weight = rd.nextDouble(5, 20);
-            double price = rd.nextDouble(5, 20);
-//            double barcode = rd.nextDouble(100, 200);
-            double amountUsd = price * qty;
+            double price = listData.getPrice().doubleValue();
+            double barcode = rd.nextDouble(100, 200);
+            double amountUsd = price * 1;
             double amountKhr = price * qty * 4200;
-
-            DecimalFormat df = new DecimalFormat("#,##0.00 kg");
-            DecimalFormat dm = new DecimalFormat("$ #,##0.00");
-            DecimalFormat bar = new DecimalFormat("########00000000");
-            DecimalFormat kh = new DecimalFormat("#,##0.00");
+            double discount = (listData.getDiscount() * price) / 100;
 
             ButtonEvent event = new ButtonEvent() {
                 @Override
                 public void onMouseClick() {
 
-//                    int id = arrInt.size();
-//                    BoxItem box = new BoxItem();
-//                         box.setLabelProductName("" + name);
-//                         box.setIconImage(image);
-//                    box.setLabelWeight(df.format(weight));
-//                    box.setLabelPrice(dm.format(price));
-//                    box.setLabelBarcode(bar.format(barcode));
-//                    box.setLabelAmountUsd(dm.format(amountUsd));
-//                    box.setLabelAmountKh(kh.format(amountKhr));
-//                    arrInt.add(box);
-//
-//                    double sum = 0;
-//                    for (int j = 0; j < arrInt.size(); j++) {
-//                        sum = sum + amountUsd;
-//                    }
-//
-//                    double sumKh = 0;
-//                    for (int j = 0; j < arrInt.size(); j++) {
-//                        sumKh = sumKh + amountKhr;
-//                    }
-//                        ButtonEvent event = new ButtonEvent() {
-//                            @Override
-//                            public void onMouseClick() {
-//
-//                                panelItem.remove(box);
-//                                panelItem.remove(Box.createRigidArea(new Dimension(10, 10)));
-//
-//                                panelItem.revalidate();
-//                            }
-//                        };                  
-//                        box.initEvent(event);  
-//                    panelItem.add(box);
-//                    panelItem.add(Box.createRigidArea(new Dimension(2, 2)));
-//                    panelItem.revalidate();
-//
-//                    panelItem.setBorder(new BevelBorder(BevelBorder.RAISED));
-//                    panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.PAGE_AXIS));
-//
-//                    totalPanel.setLabelSubtotalUsd(dm.format(sum));
-//                    totalPanel.setLabelSubtotalKhr(kh.format(sumKh));
-//
-//                    btnPayment.setBackground(WindowColor.lightBlue);
-//                    panelItem.setBackground(WindowColor.white);
+                    BoxItem box = new BoxItem();
+                   
+                    try {
+                        //   new 18-01-2024 (hello world)
+                        Component[] listCom = detailItem.getComponents();
+                        if (listCom.length != 0) {
+                            for (int i = 0; i < listCom.length; i++) {
+                                var obj = ((BoxItem) listCom[i]);
+                                int proId = obj.getProductId();
+                                int qty = obj.getQty();
+                                if (proId == listData.getId()) {
+                                    qty++;
+                                    obj.setQty(qty);
+                                    double newAmountUsd = qty * price;
+                                    double newAmountKhr = qty * price * 4200;
+                                    obj.setLabelAmountUsd(dm.format(newAmountUsd));
+                                    obj.setLabelAmountKh(kh.format(newAmountKhr));
+                                    total(0, listCom);
+                                     box.setSubtotalPanel(subtotalPanel);
+                                     box.setListCom(listCom);
+                                    return;
+                                }
+                            }
+                        }
+
+                        box.setLabelProductName(listData.getProductNameEn());
+                        box.setLabelWeight(listData.getWeight());
+                        box.setLabelPrice(dm.format(price));
+                        box.setLabelBarcode(bar.format(barcode));
+                        box.setLabelAmountUsd(dm.format(amountUsd));
+                        box.setLabelAmountKh(kh.format(amountKhr));
+                        box.setLabelBarcode(listData.getBarcode());
+                        box.setDiscountAmount(dm.format(discount));
+                        box.setQty(1);
+                        Response responseProductImage = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
+                        byte[] images = responseProductImage.body().bytes();
+                        box.setIconImage(new ImageIcon(images));
+                        box.setProductId(listData.getId());
+
+                        getDetailItem().add(box);
+                        // getDetailItem().add(Box.createRigidArea(new Dimension(2, 2)));
+                        getDetailItem().revalidate();
+                        getDetailItem().setBorder(new BevelBorder(BevelBorder.RAISED));
+                        getDetailItem().setLayout(new BoxLayout(getDetailItem(), BoxLayout.PAGE_AXIS));
+                        getDetailItem().setBackground(WindowColor.white);
+                        total(price, listCom);
+
+                    } catch (Exception e) {
+                        System.out.println("err get product image " + e);
+                    }
+
+                    //                    btnPayment.setBackground(WindowColor.lightBlue);
+                       // new 18-01-2024 (hello world)
                 }
             };
 
             ProductBox product = new ProductBox();
             product.initEvent(event);
             String productName;
-//               if (listData.getProductNameEn().length() > 15) {
-//                    productName = listData.getProductNameEn().substring(0, 14) + "...";
-//               } else {
-//                    productName = listData.getProductNameEn();
-//               }
-//               
-//               System.err.println(listData.getProductNameEn());
             product.setProductName("<html>" + listData.getProductNameEn() + "</html>");
-
-            product.setWeight(df.format(weight));
-
-            product.setPrice(dm.format(price));
-
+            product.setWeight(listData.getWeight());
+            product.setPrice(dm.format(listData.getPrice()));
+            // product.setProductStatus(listData.getProductStatus());
             product.setBarcode(listData.getBarcode());
-            
-
             // read image from api 
             try {
-                //Product
-                Response response = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
-                byte[] image = response.body().bytes();
-      
-                //flag
-                Response responseFlage = JavaConnection.get(JavaRoute.readImage + listData.getFlag());
-                byte[] flag = responseFlage.body().bytes();
+                Response responseProductImg = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
+                byte[] imagePro = responseProductImg.body().bytes();
+                product.setProductImage(new ImageIcon(imagePro));
                 
-                product.setImage(new ImageIcon(image));
-                product.setFlag(new ImageIcon(flag));
+                Response img = JavaConnection.get(JavaRoute.readImage + listData.getFlag());
+                byte[] imgs = img.body().bytes();
+                 product.setFlagImage(new ImageIcon(imgs));
+
             } catch (Exception e) {
                 System.err.println("error read image = " + e);
             }
 
             panelProduct.add(product, gbc);
         }
+    }
+
+     // new 18-01-2024 (hello world)
+    void total(double price, Component[] listCom) {
+        double sumAmount = price;
+
+        if (listCom.length != 0) {
+            for (int i = 0; i < listCom.length; i++) {
+                String getAmountUsd = ((BoxItem) listCom[i]).getLabelAmountUsd();
+                getAmountUsd = getAmountUsd.replace("$", "");
+                getAmountUsd = getAmountUsd.replace(",", "");
+                sumAmount += Double.valueOf(getAmountUsd);
+            }
+        }
+        subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmount));
+        subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmount * 4200));
     }
 
     public JLabel getBoxUserName() {
@@ -498,6 +495,38 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
     public JPanel getCategory() {
         return category;
+    }
+
+    public JScrollPane getjScrollPaneCategory() {
+        return jScrollPaneCategory;
+    }
+
+    public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
+        this.jScrollPaneCategory = jScrollPaneCategory;
+    }
+
+    public JPanel getPanelProduct() {
+        return panelProduct;
+    }
+
+    public void setPanelProduct(JPanel panelProduct) {
+        this.panelProduct = panelProduct;
+    }
+
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
+
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
+
+    public SubtotalPanel getSubtotalPanel() {
+        return subtotalPanel;
+    }
+
+    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+        this.subtotalPanel = subtotalPanel;
     }
 
     public static void main(String args[]) {
@@ -525,5 +554,19 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     private Components.PasswordField txtPassword;
     private Components.TextField txtUserId;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the boxOne
+     */
+    public JPanel getBoxOne() {
+        return boxOne;
+    }
+
+    /**
+     * @param boxOne the boxOne to set
+     */
+    public void setBoxOne(JPanel boxOne) {
+        this.boxOne = boxOne;
+    }
 
 }

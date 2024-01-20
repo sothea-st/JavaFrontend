@@ -31,13 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
-import javax.swing.event.ListDataEvent;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -196,6 +190,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    JavaConstant.token = jsonObject.getString("token");
                    JavaConstant.fullName = jsonObject.getString("fullName");
                    JavaConstant.userCode = jsonObject.getString("userCode");
+                   JavaConstant.posId = jsonObject.getString("posId");
+                   JavaConstant.cashierId = jsonObject.getInt("id");
 
                    dispose();
                    getBtnLogin().setButtonName("Logout");
@@ -401,12 +397,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               getDetailItem().setLayout(new BoxLayout(getDetailItem(), BoxLayout.PAGE_AXIS));
                               getDetailItem().setBackground(WindowColor.white);
                               total(price, listCom);
-                              
+
                               // add list has one box to BoxItem (note: must be add)
                               Component[] listCom1 = detailItem.getComponents();
                               box.setSubtotalPanel(subtotalPanel);
                               box.setListCom(listCom1);
-                             
 
                          } catch (Exception e) {
                               System.out.println("err get product image " + e);
@@ -418,6 +413,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                };
 
                ProductBox product = new ProductBox();
+
+              
+               product.setDiscountPercentag(listData.getDiscount());
+               
+
                product.initEvent(event);
                String productName;
                product.setProductName("<html>" + listData.getProductNameEn() + "</html>");

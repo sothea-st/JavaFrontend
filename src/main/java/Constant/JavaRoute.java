@@ -8,4 +8,6 @@ public class JavaRoute {
     public static String category = "/category/parentId/0";
     public static String readImage = "/imageData/readFileById/";
     public static String openShift = "/openShiftTime";
+    public static String customerType = "/customerType";
+    public static String source = "/source";
 }

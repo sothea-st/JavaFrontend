@@ -1,9 +1,17 @@
 package Payment;
 
 import Color.WindowColor;
+import Constant.JavaConnection;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
+import Model.CustomerType.CustomerTypeModel;
+import Model.CustomerType.SourceModel;
+import java.util.ArrayList;
 import java.util.HashMap;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -21,7 +29,8 @@ public class PaymentOption extends javax.swing.JDialog {
         panelTotal.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-        addCombo();
+        addComboCustomerType();
+        addComboSource();
         event();
     }
 
@@ -41,17 +50,73 @@ public class PaymentOption extends javax.swing.JDialog {
         txtCustomerEmail.initEvent(btnevent);
     }
     
-    //Set Combo box
-    void addCombo(){
+    //Set Combo box Customer Type
+    void addComboCustomerType(){
         HashMap<String,String> map = new HashMap<>();
-        map.put("", "Select Customer Type");
-        map.put("1", "General Customer");
-        cmbCustomerType.setMap(map);
+        try {
+            ArrayList<CustomerTypeModel> typeCustomer = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.customerType);   
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    CustomerTypeModel customer = new CustomerTypeModel(
+                         obj.getInt("id"),
+                         obj.getString("name")
+                    );
+                    typeCustomer.add(customer);
+                    int idType = typeCustomer.get(i).getCustomerTypeId();
+                    String type = typeCustomer.get(i).getCustomerTypeName();
+                    map.put("" + idType, type);
+                }
+                cmbCustomerType.setMap(map);
+                
+            } else {
+                 System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+             System.err.println("error = " + e);
+        }
+      
         
+        HashMap<String,String> coupon = new HashMap<>();
+        coupon.put("", "--Select--");
+        cmbCoupon.setMap(coupon);
+    }
+    
+    
+    //Set Combo box Source
+    void addComboSource(){
         HashMap<String,String> source = new HashMap<>();
-        source.put("", "Select Source");
-        source.put("1", "In Store");
-        cmbSource.setMap(source);
+        try {
+            ArrayList<SourceModel> modelSource = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.source);   
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    SourceModel sourceCombo = new SourceModel(
+                         obj.getInt("id"),
+                         obj.getString("name")
+                    );
+                    modelSource.add(sourceCombo);
+                    int idSource = modelSource.get(i).getSourceId();
+                    String sourceName = modelSource.get(i).getSourceName();
+                    source.put("" + idSource, sourceName);
+                }
+                cmbSource.setMap(source);
+                
+            } else {
+                 System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+             System.err.println("error = " + e);
+        }
+
         
         HashMap<String,String> coupon = new HashMap<>();
         coupon.put("", "--Select--");

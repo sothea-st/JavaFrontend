@@ -18,23 +18,23 @@ import org.json.JSONObject;
  */
 public class OpenShiftJdailog extends javax.swing.JDialog {
 
-     /**
-      * Creates new form
-      * OpenShiftJdailog
-      */
-     private Button btnOpenShift;
-
-     public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
-          super(parent, modal);
-          initComponents();
-          panelOpenShift.setBackground(WindowColor.mediumGreen);
-          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-          setResizable(false);
-          currenDateTime();
-          event();
-          setText();
-          this.btnOpenShift = btnOpenShift;
-     }
+    /**
+     * Creates new form OpenShiftJdailog
+    */
+    private Button btnOpenShift;
+    
+    public OpenShiftJdailog(java.awt.Frame parent, boolean modal,Button btnOpenShift) {
+        super(parent, modal);
+        initComponents();
+        panelOpenShift.setBackground(WindowColor.mediumGreen);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        currenDateTime();
+        event();
+        setText();
+        this.btnOpenShift=btnOpenShift;
+    }
+ 
 
      private void currenDateTime() {
           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
@@ -224,10 +224,38 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
+  
+        String reserveUsd = txtTotalUsd.getValueTextField();
+        String reserveKhr = txtTotalKhr.getValueTextField();
+        String posId = txtPosId.getUneditText();
+        String userCode = txtUserId.getUneditText();
+        String openTime = txtDateTime.getUneditText();
 
-        
+        JSONObject json = new JSONObject();
+        json.put("reserveUsd", reserveUsd);
+        json.put("reserveKhr", reserveKhr);
+        json.put("posId", posId);
+        json.put("userCode", userCode);
+        json.put("openTime", openTime);
+        json.put("createBy", JavaConstant.cashierId);
 
+        try {
+            Response response = JavaConnection.post(JavaRoute.openShift, json);
+            if (response.isSuccessful()) {
+                 String responseData = response.body().string();
+                 JSONObject jsonObject = new JSONObject(responseData);
+                 dispose();
+                 System.out.println("Success" + " " +response);
+                 btnOpenShift.setButtonName("Close Shift");
+            }
+            else
+            {
+                System.out.println("Failll");
+            }        
 
+        } catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
      /**

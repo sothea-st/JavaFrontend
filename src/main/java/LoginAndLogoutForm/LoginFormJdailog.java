@@ -31,13 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
-import javax.swing.event.ListDataEvent;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,6 +41,20 @@ import org.json.JSONObject;
  * @author FRONT-END.06
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
+
+    /**
+     * @return the panelPagination
+     */
+    public JPanel getPanelPagination() {
+        return panelPagination;
+    }
+
+    /**
+     * @param panelPagination the panelPagination to set
+     */
+    public void setPanelPagination(JPanel panelPagination) {
+        this.panelPagination = panelPagination;
+    }
 
      DecimalFormat df = new DecimalFormat("#,##0.00 kg");
      DecimalFormat dm = new DecimalFormat("$ #,##0.00");
@@ -61,6 +69,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private JPanel detailItem;
      private JPanel boxOne;
      private SubtotalPanel subtotalPanel;
+     private JPanel panelPagination;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -248,7 +257,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-
+                                   getPanelPagination().setVisible(true);
                                    // click on category actice background color
                                    Component[] listCom = category.getComponents();
                                    for (int i = 0; i < listCom.length; i++) {
@@ -403,12 +412,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               getDetailItem().setLayout(new BoxLayout(getDetailItem(), BoxLayout.PAGE_AXIS));
                               getDetailItem().setBackground(WindowColor.white);
                               total(price, listCom);
-                              
+
                               // add list has one box to BoxItem (note: must be add)
                               Component[] listCom1 = detailItem.getComponents();
                               box.setSubtotalPanel(subtotalPanel);
                               box.setListCom(listCom1);
-                             
 
                          } catch (Exception e) {
                               System.out.println("err get product image " + e);
@@ -420,9 +428,17 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                };
 
                ProductBox product = new ProductBox();
+               product.setDiscountPercentag(listData.getDiscount());
                product.initEvent(event);
                String productName;
-               product.setProductName("<html>" + listData.getProductNameEn() + "</html>");
+               
+                if (listData.getProductNameEn().length() > 35) {
+                    productName = listData.getProductNameEn().substring(0, 34) + "...";
+               } else {
+                    productName = listData.getProductNameEn();
+               }
+               
+               product.setProductName("<html>" + productName + "</html>");
                product.setWeight(listData.getWeight());
                product.setPrice(dm.format(listData.getPrice()));
                // product.setProductStatus(listData.getProductStatus());

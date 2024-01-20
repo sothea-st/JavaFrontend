@@ -16,44 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
           <Component id="button" alignment="0" pref="47" max="32767" attributes="0"/>
-=======
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="button" pref="35" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
->>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
-=======
-          <Component id="button" alignment="0" pref="47" max="32767" attributes="0"/>
->>>>>>> f4b77e5cc34cae8cb12322b2d9a48cd302d0bc94
-=======
-          <Component id="button" alignment="0" pref="47" max="32767" attributes="0"/>
->>>>>>> c31205ceddf923758c9ace56c328a31ad5512584
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
           <Component id="button" alignment="0" pref="17" max="32767" attributes="0"/>
-=======
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="button" pref="8" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
->>>>>>> a0dbcd2e1146e491fd747f0dfed4f00505b73ba7
-=======
-          <Component id="button" alignment="0" pref="17" max="32767" attributes="0"/>
->>>>>>> f4b77e5cc34cae8cb12322b2d9a48cd302d0bc94
-=======
-          <Component id="button" alignment="0" pref="17" max="32767" attributes="0"/>
->>>>>>> c31205ceddf923758c9ace56c328a31ad5512584
       </Group>
     </DimensionLayout>
   </Layout>

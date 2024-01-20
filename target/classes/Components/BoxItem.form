@@ -197,9 +197,6 @@
     <Component class="javax.swing.JLabel" name="btnDelete">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\mobile-app.02\Desktop\project\fronent java\branch master\tt_pos_window\src\main\resources\image\Delete.png"/>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDeleteMouseClicked"/>

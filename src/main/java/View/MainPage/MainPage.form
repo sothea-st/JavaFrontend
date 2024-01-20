@@ -70,7 +70,10 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="945" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jScrollPane2" pref="945" max="32767" attributes="0"/>
+                      <Component id="panelPagination" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPaneDetail" min="-2" pref="468" max="-2" attributes="0"/>
@@ -112,14 +115,18 @@
                       </Group>
                   </Group>
                   <Component id="menuBar" min="-2" pref="42" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jScrollPaneDetail" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPaneDetail" pref="440" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="panelprocessing" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane2" alignment="1" pref="691" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="panelPagination" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -497,6 +504,120 @@
             </Property>
           </Properties>
         </Component>
+        <Container class="javax.swing.JPanel" name="panelPagination">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="labelTitle1" min="-2" pref="107" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelTitle2" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="labelFontGreen2" pref="35" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelFontGreen3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelFontGreen4" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelFontGreen5" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelFontGreen6" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelFontGreen7" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelFontGreen1" min="-2" pref="35" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="cmboxBrand" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="cmboxBrand" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="labelFontGreen2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFontGreen3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFontGreen4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFontGreen5" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFontGreen6" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFontGreen7" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFontGreen1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="labelTitle2" pref="35" max="32767" attributes="0"/>
+                          <Component id="labelTitle1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="Components.ComboBox" name="cmboxBrand">
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen1">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen2">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="&lt;"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen3">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen4">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="2"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen5">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="3"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen6">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="4"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelFontGreen" name="labelFontGreen7">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="5"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelTitle" name="labelTitle1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="46" green="9b" red="2f" type="rgb"/>
+                </Property>
+                <Property name="labelTitle" type="java.lang.String" value="Home"/>
+              </Properties>
+            </Component>
+            <Component class="Components.LabelTitle" name="labelTitle2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="46" green="9b" red="2f" type="rgb"/>
+                </Property>
+                <Property name="labelTitle" type="java.lang.String" value="NEW ITEMS"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

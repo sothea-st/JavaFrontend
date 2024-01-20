@@ -231,6 +231,7 @@ public class BoxItem extends javax.swing.JPanel {
                     double amountKh = Double.valueOf(subAmountUsd) * 4200;
                     setLabelAmountKh(kh.format(amountKh));
                     sumTotal();
+                    
                }
 
                @Override

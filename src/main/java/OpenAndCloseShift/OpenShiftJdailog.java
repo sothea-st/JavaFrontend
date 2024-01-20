@@ -34,31 +34,30 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         setText();
         this.btnOpenShift=btnOpenShift;
     }
- 
+    
+    private void currenDateTime(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");  
+        LocalDateTime date = LocalDateTime.now();  
+        txtDateTime.setUneditText(dtf.format(date));
+    }
+    
+    private void setText(){
+        txtCashierName.setUneditText(JavaConstant.fullName);
+        txtUserId.setUneditText(JavaConstant.userCode);
+        txtPosId.setUneditText(JavaConstant.posId);
+    }
+    
+    void event(){
+        ButtonEvent btnevent = new ButtonEvent() {
+            @Override
+            public void onFocusGain() {
 
-     private void currenDateTime() {
-          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
-          LocalDateTime date = LocalDateTime.now();
-          txtDateTime.setUneditText(dtf.format(date));
-     }
-
-     private void setText() {
-          txtCashierName.setUneditText(JavaConstant.fullName);
-          txtUserId.setUneditText(JavaConstant.userCode);
-     }
-
-     void event() {
-          ButtonEvent btnevent = new ButtonEvent() {
-               @Override
-               public void onFocusGain() {
-
-               }
-
-          };
-          txtTotalUsd.initEvent(btnevent);
-          txtTotalKhr.initEvent(btnevent);
-     }
-
+            }
+        };
+        txtTotalUsd.initEvent(btnevent);
+        txtTotalKhr.initEvent(btnevent);
+    }
+    
      @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

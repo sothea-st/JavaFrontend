@@ -43,6 +43,20 @@ import Button.Button;
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
 
+    /**
+     * @return the panelPagination
+     */
+    public JPanel getPanelPagination() {
+        return panelPagination;
+    }
+
+    /**
+     * @param panelPagination the panelPagination to set
+     */
+    public void setPanelPagination(JPanel panelPagination) {
+        this.panelPagination = panelPagination;
+    }
+
      DecimalFormat df = new DecimalFormat("#,##0.00 kg");
      DecimalFormat dm = new DecimalFormat("$ #,##0.00");
      DecimalFormat bar = new DecimalFormat("########00000000");
@@ -57,6 +71,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private JPanel boxOne;
      private SubtotalPanel subtotalPanel;
      private Button btnPayment;
+     private JPanel panelPagination;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -181,7 +196,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          JSONObject json = new JSONObject();
          json.put("userCode", "0001");
          json.put("password", "TT@126$kh#");
-
+        
          try {
               Response response = JavaConnection.login(JavaRoute.login, json);
               if (response.isSuccessful()) {
@@ -244,7 +259,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-
+                                   getPanelPagination().setVisible(true);
                                    // click on category actice background color
                                    Component[] listCom = category.getComponents();
                                    for (int i = 0; i < listCom.length; i++) {
@@ -421,7 +436,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                product.setDiscountPercentag(listData.getDiscount());
                product.initEvent(event);
                String productName;
-               product.setProductName("<html>" + listData.getProductNameEn() + "</html>");
+               
+                if (listData.getProductNameEn().length() > 35) {
+                    productName = listData.getProductNameEn().substring(0, 34) + "...";
+               } else {
+                    productName = listData.getProductNameEn();
+               }
+               
+               product.setProductName("<html>" + productName + "</html>");
                product.setWeight(listData.getWeight());
                product.setPrice(dm.format(listData.getPrice()));
                // product.setProductStatus(listData.getProductStatus());

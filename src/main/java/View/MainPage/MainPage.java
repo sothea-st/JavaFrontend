@@ -438,6 +438,7 @@ public class MainPage extends javax.swing.JFrame {
             jdFormLogin.setDetailItem(detailItem);
             jdFormLogin.setBoxOne(boxOne);
             jdFormLogin.setSubtotalPanel(totalPanel);
+            jdFormLogin.setBtnPayment(btnPayment);
             jdFormLogin.setVisible(true);
         } else if (buttonName.equals("logout")) {
             LogoutDialog logout = new LogoutDialog(new JFrame(), true);

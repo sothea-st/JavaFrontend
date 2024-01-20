@@ -249,21 +249,24 @@ public class BoxItem extends javax.swing.JPanel {
                          setLabelAmountKh(kh.format(amountKh));
 
                          sumTotal();
-
                     }
-
                }
           };
           buttonAddProduct.initEvent(event);
-          
-        
-          
-
      }
 
      void sumTotal() {
-          double sumAmountUsd = 0;
-
+          subtotalPanel.setLabelSubtotalUsd("");
+          subtotalPanel.setLabelSubtotalKhr("");
+          subtotalPanel.setLableDiscountUsd("");
+          subtotalPanel.setLableDiscountKhr("");
+          subtotalPanel.setLableTotalUsd("");
+          subtotalPanel.setLableTotalKhr("");
+               
+          System.err.println("data length = " + listCom.length);
+          
+          double sumSubTotalUsd = 0;
+          double sumDiscount = 0;
           for (int i = 0; i < listCom.length; i++) {
                var boxList = ((BoxItem) listCom[i]);
                String priceStr = boxList.getLabelPrice();
@@ -272,12 +275,25 @@ public class BoxItem extends javax.swing.JPanel {
                double price = Double.valueOf(priceStr);
                int qty = boxList.getQty();
                double amount = price * qty;
-               sumAmountUsd += amount;
+               sumSubTotalUsd += amount;
+
+               String discount = boxList.getDiscountAmount();
+               discount = discount.replace("$", "");
+               discount = discount.replace(",", "");
+               double discountValue = Double.valueOf(discount) * qty;
+               sumDiscount += Double.valueOf(discountValue);
           }
 
-          subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
-          double sumAmountKh = Double.valueOf(sumAmountUsd) * 4200;
-          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountKh));
+          subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
+          subtotalPanel.setLabelSubtotalKhr(kh.format(sumSubTotalUsd * 4200));
+
+          subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
+          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * 4200));
+
+          // total
+          double total = sumSubTotalUsd - sumDiscount;
+          subtotalPanel.setLableTotalUsd(dm.format(total));
+          subtotalPanel.setLableTotalKhr(kh.format(total * 4200));
      }
 
      //=================================================Create Shadow Box

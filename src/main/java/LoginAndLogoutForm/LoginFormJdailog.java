@@ -35,6 +35,7 @@ import javax.swing.border.BevelBorder;
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import Button.Button;
 
 /**
  *
@@ -70,6 +71,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private JPanel boxOne;
      private SubtotalPanel subtotalPanel;
      private JPanel panelPagination;
+     private Button btnPayment;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -361,6 +363,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                double amountKhr = price * qty * 4200;
                double discount = (listData.getDiscount() * price) / 100;
 
+               // event button buy
                ButtonEvent event = new ButtonEvent() {
                     @Override
                     public void onMouseClick() {
@@ -368,7 +371,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          BoxItem box = new BoxItem();
 
                          try {
-                              //   new 18-01-2024 (hello world)
                               Component[] listCom = detailItem.getComponents();
                               if (listCom.length != 0) {
                                    for (int i = 0; i < listCom.length; i++) {
@@ -382,9 +384,12 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                              double newAmountKhr = qty * price * 4200;
                                              obj.setLabelAmountUsd(dm.format(newAmountUsd));
                                              obj.setLabelAmountKh(kh.format(newAmountKhr));
-                                             total(0, listCom);
+                                         
                                              box.setSubtotalPanel(subtotalPanel);
                                              box.setListCom(listCom);
+                                             
+                                             
+                                             total(0, listCom , 0);
                                              return;
                                         }
                                    }
@@ -411,19 +416,19 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               getDetailItem().setBorder(new BevelBorder(BevelBorder.RAISED));
                               getDetailItem().setLayout(new BoxLayout(getDetailItem(), BoxLayout.PAGE_AXIS));
                               getDetailItem().setBackground(WindowColor.white);
-                              total(price, listCom);
+                              total(price, listCom ,discount);
 
                               // add list has one box to BoxItem (note: must be add)
                               Component[] listCom1 = detailItem.getComponents();
                               box.setSubtotalPanel(subtotalPanel);
                               box.setListCom(listCom1);
+                              
+                              btnPayment.setBackground(WindowColor.lightBlue);
 
                          } catch (Exception e) {
                               System.out.println("err get product image " + e);
                          }
 
-                         //                    btnPayment.setBackground(WindowColor.lightBlue);
-                         // new 18-01-2024 (hello world)
                     }
                };
 
@@ -462,21 +467,40 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      }
 
      // new 18-01-2024 (hello world)
-     void total(double price, Component[] listCom) {
-          double sumAmount = price;
-
+     void total(double price, Component[] listCom , double discountProduct) {
+          double sumAmountUsd = price;
+          double sumDiscount = discountProduct;
           if (listCom.length != 0) {
                for (int i = 0; i < listCom.length; i++) {
-                    String getAmountUsd = ((BoxItem) listCom[i]).getLabelAmountUsd();
-                    getAmountUsd = getAmountUsd.replace("$", "");
-                    getAmountUsd = getAmountUsd.replace(",", "");
-                    sumAmount += Double.valueOf(getAmountUsd);
+                    var data = ((BoxItem) listCom[i]);
+                    // sub total usd
+                    String subTotalUsd = data.getLabelAmountUsd();
+                    subTotalUsd = subTotalUsd.replace("$", "");
+                    subTotalUsd = subTotalUsd.replace(",", "");
+                    sumAmountUsd += Double.valueOf(subTotalUsd);
+                    
+                    // discont usd
+                    int qty = data.getQty();
+                 
+                    String discount = data.getDiscountAmount();
+                    discount = discount.replace("$", "");
+                    discount = discount.replace(",", "");
+                    double discountValue = Double.valueOf(discount) * qty;
+                    sumDiscount += Double.valueOf(discountValue);
                }
           }
-          subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmount));
-          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmount * 4200));
+          subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
+          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * 4200));
+          subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
+          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * 4200));
+          // total
+          double total = sumAmountUsd - sumDiscount;
+          subtotalPanel.setLableTotalUsd(dm.format(total));
+          subtotalPanel.setLableTotalKhr(kh.format(total*4200));
      }
 
+     
+   
      public JLabel getBoxUserName() {
           return boxUserName;
      }
@@ -533,6 +557,22 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           this.subtotalPanel = subtotalPanel;
      }
 
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
+
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
+
+     public JPanel getBoxOne() {
+          return boxOne;
+     }
+
+     public void setBoxOne(JPanel boxOne) {
+          this.boxOne = boxOne;
+     }
+
      public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {
                public void run() {
@@ -558,19 +598,5 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     private Components.PasswordField txtPassword;
     private Components.TextField txtUserId;
     // End of variables declaration//GEN-END:variables
-
-     /**
-      * @return the boxOne
-      */
-     public JPanel getBoxOne() {
-          return boxOne;
-     }
-
-     /**
-      * @param boxOne the boxOne to set
-      */
-     public void setBoxOne(JPanel boxOne) {
-          this.boxOne = boxOne;
-     }
 
 }

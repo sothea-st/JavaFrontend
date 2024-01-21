@@ -33,6 +33,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         event();
         setText();
         this.btnOpenShift=btnOpenShift;
+        txtTotalUsd.requestFocus();
     }
     
     private void currenDateTime(){

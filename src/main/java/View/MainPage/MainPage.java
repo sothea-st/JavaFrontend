@@ -2,7 +2,9 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
+import Components.BoxItem;
 import Components.LabelTitle;
+import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
@@ -19,6 +21,7 @@ import Products.ProductPanel;
 import Receipt.CashierReport;
 import Return.ApprovalCode;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.time.LocalDateTime;
@@ -53,6 +56,7 @@ public class MainPage extends javax.swing.JFrame {
         panelProduct.repaint();
         jScrollPaneCategory.setVisible(false);
         panelPagination.setVisible(false);
+        searchBox.requestFocusInWindow();
     }
 
 
@@ -563,8 +567,14 @@ public class MainPage extends javax.swing.JFrame {
 
     //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
+        
+      
         if ( JavaConstant.token != null) {
+            Component[] listCom = detailItem.getComponents();
             PaymentOption pay = new PaymentOption(new JFrame(), true);
+            pay.setTotalUsd(totalPanel.getLableTotalUsd());
+            pay.setListCom(listCom);
+            pay.setSubtotalPanel(totalPanel);
             pay.setVisible(true);
         }else {
             System.err.println("System cannot open payment option");

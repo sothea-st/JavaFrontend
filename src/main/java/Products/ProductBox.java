@@ -12,6 +12,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.math.BigDecimal;
 import javax.swing.Icon;
 
 /**
@@ -74,19 +75,17 @@ public class ProductBox extends javax.swing.JPanel {
         lbName.setText(ProductName);
     }
 
-     public int getDiscountPercentag() {
-          return discountPercentag;
-     }
+    public int getDiscountPercentag() {
+        return discountPercentag;
+    }
 
-     public void setDiscountPercentag(int discountPercentag) {
-          this.discountPercentag = discountPercentag;
-          discount.setButtonName("Was $"+ discountPercentag);
-          if( discountPercentag > 0 ) {
-               discount.setVisible(true);
-          }
-     }
-    
-    
+    public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
+        this.discountPercentag = discountPercentag;
+        if (discountPercentag > 0) {
+            discount.setButtonName("Was $" + wasPrice);
+            discount.setVisible(true);
+        }
+    }
 
     /**
      * Creates new form ProductBox
@@ -103,11 +102,10 @@ public class ProductBox extends javax.swing.JPanel {
         lbPrice.setFont(WindowFonts.timeNewRomanBold12);
         lbPrice.setForeground(WindowColor.darkGreen);
         txtBarcode.setFont(WindowFonts.timeNewRomanBold9);
-        txtBarcode.setForeground(WindowColor.gray);    
+        txtBarcode.setForeground(WindowColor.gray);
     }
-    
+
     //=================================================
-   
     public void initEvent(ButtonEvent event) {
         btnBuy.addMouseListener(new MouseListener() {
             @Override
@@ -137,20 +135,20 @@ public class ProductBox extends javax.swing.JPanel {
 
         });
     }
-    
+
     //=================================================Create Shadow Box
     private ShadowType shadowType;
     private int shadowSize = 3;
     private float shadowOpacity = 0.8f;
     private Color shadowColor = Color.GRAY;
-    
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         setOpaque(false);
         createShadow(grphcs);
         super.paintComponent(grphcs);
     }
-    
+
     private void createShadow(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         int size = shadowSize * 2;
@@ -159,27 +157,27 @@ public class ProductBox extends javax.swing.JPanel {
         int width = getWidth() - size;
         int height = getHeight() - size;
         if (shadowType == ShadowType.TOP) {
-             x = shadowSize;
-             y = size;
+            x = shadowSize;
+            y = size;
         } else if (shadowType == ShadowType.BOT) {
-             x = shadowSize;
-             y = 0;
+            x = shadowSize;
+            y = 0;
         } else if (shadowType == ShadowType.TOP_LEFT) {
-             x = size;
-             y = size;
+            x = size;
+            y = size;
         } else if (shadowType == ShadowType.TOP_RIGHT) {
-             x = 0;
-             y = size;
+            x = 0;
+            y = size;
         } else if (shadowType == ShadowType.BOT_LEFT) {
-             x = size;
-             y = 0;
+            x = size;
+            y = 0;
         } else if (shadowType == ShadowType.BOT_RIGHT) {
-             x = 0;
-             y = 0;
+            x = 0;
+            y = 0;
         } else {
-             //  Center
-             x = shadowSize;
-             y = shadowSize;
+            //  Center
+            x = shadowSize;
+            y = shadowSize;
         }
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
@@ -200,6 +198,7 @@ public class ProductBox extends javax.swing.JPanel {
     private String barcode;
     private Icon flagImage;
     private int discountPercentag;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

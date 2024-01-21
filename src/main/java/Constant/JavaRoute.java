@@ -10,4 +10,5 @@ public class JavaRoute {
     public static String openShift = "/openShiftTime";
     public static String customerType = "/customerType";
     public static String source = "/source";
+    public static String sale = "/sale";
 }

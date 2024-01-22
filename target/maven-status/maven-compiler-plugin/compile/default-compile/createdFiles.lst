@@ -52,6 +52,7 @@ Receipt\CashierReport$1.class
 Print\ReprintByInvoicenumber$4.class
 LoginAndLogoutForm\LogoutDialog$3.class
 View\MainPage\MainPage$6.class
+Model\Reprint\ReprintModel.class
 Components\UnEditableTextField.class
 DeleteAndCancel\DeleteDialog$2.class
 LoginAndLogoutForm\LogoutDialog$2.class
@@ -125,12 +126,14 @@ Model\Sale\PaymentDetailModel.class
 Components\ComboBox.class
 Receipt\CashierReport$4$1.class
 OpenAndCloseShift\CloseShift$4.class
+Model\Reprint\DataSuccessModel.class
 Products\ProductBox$1.class
 ButtonPackage\ButtonSave.class
 Receipt\Receipt$2.class
 Model\CustomerType\SourceModel.class
 Payment\PaymentOption$24$1.class
 Components\LabelFontGreen.class
+Model\Reprint\SaleDetailModel.class
 Model\CustomerType\CustomerTypeModel.class
 Payment\PaymentOption$13.class
 Payment\PaymentOption$8.class

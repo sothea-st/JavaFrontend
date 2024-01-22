@@ -11,4 +11,5 @@ public class JavaRoute {
     public static String customerType = "/customerType";
     public static String source = "/source";
     public static String sale = "/sale";
+    public static String reprintByLast = "/reprint/";
 }

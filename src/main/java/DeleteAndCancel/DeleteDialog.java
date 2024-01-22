@@ -25,7 +25,8 @@ public class DeleteDialog extends javax.swing.JDialog {
     private SubtotalPanel subtotalPanel;
     DecimalFormat dm = new DecimalFormat("$#,##0.00");
     DecimalFormat kh = new DecimalFormat("#,##0");
-
+    private String reasonId;    
+    
     public DeleteDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -39,7 +40,7 @@ public class DeleteDialog extends javax.swing.JDialog {
         HashMap<String, String> map = new HashMap<>();
         try {
             ArrayList<ReasonModel> reason = new ArrayList<>();
-            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+            Response response = JavaConnection.get(JavaRoute.reason + "delete");
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
                 JSONObject jsonObject = new JSONObject(responseData);
@@ -53,11 +54,14 @@ public class DeleteDialog extends javax.swing.JDialog {
                     reason.add(modelReason);
                     int idReason = reason.get(i).getIdReason();
                     String reasonName = reason.get(i).getReason();
-                    map.put("" + idReason, reasonName);
+                    map.put(reasonName, "" + idReason);
+                    
+                    if (i == 0) {
+                         reasonId = "" + idReason;
+                    }
                 }
-                map.put("", "Select the reason");
                 comboBoxReason.setMap(map);
-
+                
             } else {
                 System.err.println("fail loading data");
             }

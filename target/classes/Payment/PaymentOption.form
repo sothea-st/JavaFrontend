@@ -407,6 +407,9 @@
             </Property>
             <Property name="labelName" type="java.lang.String" value="Cash"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbCashMouseClicked"/>
+          </Events>
         </Component>
         <Component class="Components.LabelFontBlack" name="lbCreditCard">
           <Properties>
@@ -415,6 +418,9 @@
             </Property>
             <Property name="labelName" type="java.lang.String" value="Credit Card"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbCreditCardMouseClicked"/>
+          </Events>
         </Component>
         <Component class="Components.LabelFontBlack" name="lbCashPayment">
           <Properties>

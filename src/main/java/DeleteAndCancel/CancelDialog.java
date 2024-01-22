@@ -5,6 +5,7 @@ import Color.WindowColor;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaRoute;
+import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
 import Model.Package.ReasonModel;
 import java.awt.Component;
@@ -26,10 +27,13 @@ public class CancelDialog extends javax.swing.JDialog {
     private JPanel detailItem;
     private SubtotalPanel totalPanel;
     private Button btnPayment;
+    private HashMap<String, String> map = new HashMap<>();
+    private String reasonId;
     
     /**
      * Creates new form DeleteDialog
      */
+
     public CancelDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,10 +41,18 @@ public class CancelDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         addComboReason();
+        // action get select customer type
+         ButtonEvent events = new ButtonEvent() {
+              @Override
+              public void onSelect(String key) {
+                   reasonId = key;
+              }
+         };
+         comboBoxReason.initEvent(events);
     }
     
     private void addComboReason() {
-        HashMap<String, String> map = new HashMap<>();
+        
         try {
             ArrayList<ReasonModel> reason = new ArrayList<>();
             Response response = JavaConnection.get(JavaRoute.reason + "cancel");
@@ -57,11 +69,14 @@ public class CancelDialog extends javax.swing.JDialog {
                     reason.add(modelReason);
                     int idReason = reason.get(i).getIdReason();
                     String reasonName = reason.get(i).getReason();
-                    map.put("" + idReason, reasonName);
+                    map.put(reasonName, "" + idReason);
+                    
+                    if (i == 0) {
+                         reasonId = "" + idReason;
+                    }
                 }
-                map.put("", "Select the reason");
                 comboBoxReason.setMap(map);
-
+                
             } else {
                 System.err.println("fail loading data");
             }
@@ -69,29 +84,31 @@ public class CancelDialog extends javax.swing.JDialog {
             System.err.println("error = " + e);
         }
     }
+    
+    
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+     private void initComponents() {
 
-        panelCancel = new javax.swing.JPanel();
-        labelPopUpTitle1 = new Components.LabelPopUpTitle();
-        lbReason = new Components.Label();
-        comboBoxReason = new Components.ComboBox();
-        buttonCancel = new ButtonPackage.ButtonCancel();
-        buttonSave = new ButtonPackage.ButtonSave();
+          panelCancel = new javax.swing.JPanel();
+          labelPopUpTitle1 = new Components.LabelPopUpTitle();
+          lbReason = new Components.Label();
+          comboBoxReason = new Components.ComboBox();
+          buttonCancel = new ButtonPackage.ButtonCancel();
+          buttonSave = new ButtonPackage.ButtonSave();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+          setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        labelPopUpTitle1.setLabelTitle("Cancel");
+          labelPopUpTitle1.setLabelTitle("Cancel");
 
-        lbReason.setLabelName("Reason");
+          lbReason.setLabelName("Reason");
 
-        buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonCancelMouseClicked(evt);
-            }
-        });
+          buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    buttonCancelMouseClicked(evt);
+               }
+          });
 
         buttonSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,20 +150,20 @@ public class CancelDialog extends javax.swing.JDialog {
                 .addGap(0, 17, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+          getContentPane().setLayout(layout);
+          layout.setHorizontalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          );
+          layout.setVerticalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          );
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+          pack();
+          setLocationRelativeTo(null);
+     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
         this.dispose();
@@ -251,12 +268,15 @@ public class CancelDialog extends javax.swing.JDialog {
 
     
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ButtonPackage.ButtonCancel buttonCancel;
-    private ButtonPackage.ButtonSave buttonSave;
-    private Components.ComboBox comboBoxReason;
-    private Components.LabelPopUpTitle labelPopUpTitle1;
-    private Components.Label lbReason;
-    private javax.swing.JPanel panelCancel;
-    // End of variables declaration//GEN-END:variables
+  
+    
+    
+     // Variables declaration - do not modify//GEN-BEGIN:variables
+     private ButtonPackage.ButtonCancel buttonCancel;
+     private ButtonPackage.ButtonSave buttonSave;
+     private Components.ComboBox comboBoxReason;
+     private Components.LabelPopUpTitle labelPopUpTitle1;
+     private Components.Label lbReason;
+     private javax.swing.JPanel panelCancel;
+     // End of variables declaration//GEN-END:variables
 }

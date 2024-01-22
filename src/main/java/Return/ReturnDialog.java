@@ -17,6 +17,7 @@ import org.json.JSONObject;
  */
 public class ReturnDialog extends javax.swing.JDialog {
 
+    private String reasonId;
     /**
      * Creates new form ReturnDialog
      */
@@ -60,11 +61,14 @@ public class ReturnDialog extends javax.swing.JDialog {
                     reason.add(modelReason);
                     int idReason = reason.get(i).getIdReason();
                     String reasonName = reason.get(i).getReason();
-                    map.put("" + idReason, reasonName);
+                    map.put(reasonName, "" + idReason);
+                    
+                    if (i == 0) {
+                         reasonId = "" + idReason;
+                    }
                 }
-                map.put("", "Select the reason");
                 comboBoxReason.setMap(map);
-
+                
             } else {
                 System.err.println("fail loading data");
             }

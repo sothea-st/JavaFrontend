@@ -5,7 +5,8 @@ package Event;
  * @author FRONT-END.06
  */
 public interface ButtonEvent {
-    default public void onClick() {
+
+     default public void onClick() {
      }
 
      default public void onDelete() {
@@ -19,11 +20,17 @@ public interface ButtonEvent {
 
      default public void onKeyRelease() {
      }
-     
-     default public void onFocusGain(){
-         
+
+     default public void onFocusGain() {
+
+     }
+
+     default public void btnPlus() {
+     }
+
+     default public void btnMinus() {
      }
      
-     default public void btnPlus(){}
-    default public void btnMinus(){}
+     default public void onSelect(String key) {
+     }
 }

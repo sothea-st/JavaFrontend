@@ -82,7 +82,7 @@ public class ProductBox extends javax.swing.JPanel {
     public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
         this.discountPercentag = discountPercentag;
         if (discountPercentag > 0) {
-            discount.setButtonName("Was $" + wasPrice);
+            discount.setDiscountPrice("Was $"+" "+ wasPrice);
             discount.setVisible(true);
         }
     }
@@ -212,8 +212,8 @@ public class ProductBox extends javax.swing.JPanel {
         buttonStatus = new Button.ButtonInstock();
         lbPrice = new javax.swing.JLabel();
         btnBuy = new Button.ButtonBuy();
-        discount = new Button.ButtonInstock();
         jLabel1 = new javax.swing.JLabel();
+        discount = new Button.ButtonDiscount();
 
         productImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\Product pack icon.jpg")); // NOI18N
@@ -228,20 +228,10 @@ public class ProductBox extends javax.swing.JPanel {
 
         lbPrice.setText("Price");
 
-        discount.setBackground(new java.awt.Color(0, 0, 0));
-        discount.setButtonName("Was $10.10");
-
         javax.swing.GroupLayout productBoxLayout = new javax.swing.GroupLayout(productBox);
         productBox.setLayout(productBoxLayout);
         productBoxLayout.setHorizontalGroup(
             productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(productBoxLayout.createSequentialGroup()
-                .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                .addComponent(lbPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,12 +243,20 @@ public class ProductBox extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(productBoxLayout.createSequentialGroup()
-                        .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(discount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbWeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(41, 41, 41)
                 .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(productBoxLayout.createSequentialGroup()
+                .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(productBoxLayout.createSequentialGroup()
+                        .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         productBoxLayout.setVerticalGroup(
             productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,8 +270,8 @@ public class ProductBox extends javax.swing.JPanel {
                     .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbPrice)
@@ -307,7 +305,7 @@ public class ProductBox extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.ButtonBuy btnBuy;
     private Button.ButtonInstock buttonStatus;
-    private Button.ButtonInstock discount;
+    private Button.ButtonDiscount discount;
     private javax.swing.JLabel flagImg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbName;

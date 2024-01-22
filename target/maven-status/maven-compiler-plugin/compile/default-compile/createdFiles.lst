@@ -1,5 +1,4 @@
 Components\SearchField$1.class
-DeleteAndCancel\CancelDialog$2$1.class
 Components\LabelReceipt.class
 Payment\PaymentOption$1.class
 Components\BoxItem$3.class
@@ -21,8 +20,8 @@ Components\ComboBox$1.class
 Constant\JavaRoute.class
 Return\ReturnDialog$3.class
 Receipt\Receipt$3.class
+DeleteAndCancel\CancelDialog$3.class
 Payment\PaymentOption$15.class
-Payment\PaymentOption$20$1.class
 Payment\PaymentOption$7.class
 Print\ReprintJdailog$1.class
 Components\SubtotalPanel.class
@@ -32,6 +31,7 @@ OpenAndCloseShift\OpenShiftJdailog.class
 Payment\PaymentOption$6.class
 Payment\PaymentOption$14.class
 LoginAndLogoutForm\LoginFormJdailog.class
+Payment\PaymentOption$23.class
 Button\ButtonInstock.class
 Components\PasswordField.class
 Payment\PaymentOption$16.class
@@ -67,6 +67,7 @@ Components\RadioButton.class
 OpenAndCloseShift\CloseShift.class
 Components\TextField$3.class
 Payment\PaymentOption$18.class
+Payment\PaymentOption$22.class
 Print\ReprintByInvoicenumber$2.class
 Print\ReprintByInvoicenumber.class
 DeleteAndCancel\DeleteDialog$3.class
@@ -109,6 +110,7 @@ Receipt\Receipt.class
 Fonts\WindowFonts.class
 Components\LabelFontBlack.class
 Products\ProductPanel$1.class
+Payment\PaymentOption$24.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
 Return\ReturnDialog$3$1.class
@@ -127,6 +129,7 @@ Products\ProductBox$1.class
 ButtonPackage\ButtonSave.class
 Receipt\Receipt$2.class
 Model\CustomerType\SourceModel.class
+Payment\PaymentOption$24$1.class
 Components\LabelFontGreen.class
 Model\CustomerType\CustomerTypeModel.class
 Payment\PaymentOption$13.class
@@ -168,3 +171,4 @@ Model\Sale\SaleModel.class
 Payment\PaymentOption$9.class
 Button\ButtonAddProduct$1.class
 OpenAndCloseShift\CloseShift$1.class
+DeleteAndCancel\CancelDialog$3$1.class

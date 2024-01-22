@@ -2,6 +2,7 @@ package DeleteAndCancel;
 
 import Color.WindowColor;
 import java.util.HashMap;
+import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -13,6 +14,8 @@ public class CancelDialog extends javax.swing.JDialog {
     /**
      * Creates new form DeleteDialog
      */
+     
+
     public CancelDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -33,80 +36,90 @@ public class CancelDialog extends javax.swing.JDialog {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+     private void initComponents() {
 
-        panelCancel = new javax.swing.JPanel();
-        labelPopUpTitle1 = new Components.LabelPopUpTitle();
-        lbReason = new Components.Label();
-        comboBoxReason = new Components.ComboBox();
-        buttonCancel = new ButtonPackage.ButtonCancel();
-        buttonSave = new ButtonPackage.ButtonSave();
+          panelCancel = new javax.swing.JPanel();
+          labelPopUpTitle1 = new Components.LabelPopUpTitle();
+          lbReason = new Components.Label();
+          comboBoxReason = new Components.ComboBox();
+          buttonCancel = new ButtonPackage.ButtonCancel();
+          buttonSave = new ButtonPackage.ButtonSave();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+          setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        labelPopUpTitle1.setLabelTitle("Cancel");
+          labelPopUpTitle1.setLabelTitle("Cancel");
 
-        lbReason.setLabelName("Reason");
+          lbReason.setLabelName("Reason");
 
-        buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonCancelMouseClicked(evt);
-            }
-        });
+          buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    buttonCancelMouseClicked(evt);
+               }
+          });
 
-        javax.swing.GroupLayout panelCancelLayout = new javax.swing.GroupLayout(panelCancel);
-        panelCancel.setLayout(panelCancelLayout);
-        panelCancelLayout.setHorizontalGroup(
-            panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCancelLayout.createSequentialGroup()
-                .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelCancelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lbReason, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
-                    .addGroup(panelCancelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
-        );
-        panelCancelLayout.setVerticalGroup(
-            panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancelLayout.createSequentialGroup()
-                .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
-        );
+          buttonSave.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    buttonSaveMouseClicked(evt);
+               }
+          });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+          javax.swing.GroupLayout panelCancelLayout = new javax.swing.GroupLayout(panelCancel);
+          panelCancel.setLayout(panelCancelLayout);
+          panelCancelLayout.setHorizontalGroup(
+               panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCancelLayout.createSequentialGroup()
+                    .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                         .addGroup(panelCancelLayout.createSequentialGroup()
+                              .addGap(17, 17, 17)
+                              .addComponent(lbReason, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+                         .addGroup(panelCancelLayout.createSequentialGroup()
+                              .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(18, 18, 18))
+          );
+          panelCancelLayout.setVerticalGroup(
+               panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(panelCancelLayout.createSequentialGroup()
+                    .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(23, 23, 23)
+                    .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                         .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                         .addComponent(lbReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                         .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                         .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 17, Short.MAX_VALUE))
+          );
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+          getContentPane().setLayout(layout);
+          layout.setHorizontalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          );
+          layout.setVerticalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(panelCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          );
+
+          pack();
+          setLocationRelativeTo(null);
+     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
+
+     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
+          // TODO add your handling code here:
+     }//GEN-LAST:event_buttonSaveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -151,12 +164,15 @@ public class CancelDialog extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ButtonPackage.ButtonCancel buttonCancel;
-    private ButtonPackage.ButtonSave buttonSave;
-    private Components.ComboBox comboBoxReason;
-    private Components.LabelPopUpTitle labelPopUpTitle1;
-    private Components.Label lbReason;
-    private javax.swing.JPanel panelCancel;
-    // End of variables declaration//GEN-END:variables
+  
+    
+    
+     // Variables declaration - do not modify//GEN-BEGIN:variables
+     private ButtonPackage.ButtonCancel buttonCancel;
+     private ButtonPackage.ButtonSave buttonSave;
+     private Components.ComboBox comboBoxReason;
+     private Components.LabelPopUpTitle labelPopUpTitle1;
+     private Components.Label lbReason;
+     private javax.swing.JPanel panelCancel;
+     // End of variables declaration//GEN-END:variables
 }

@@ -260,9 +260,10 @@
                                           <Component id="buttonCancel1" max="32767" attributes="0"/>
                                           <Component id="btnLogin" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnReturn" pref="112" max="32767" attributes="0"/>
-                                          <Component id="btnOpenShift" max="32767" attributes="0"/>
+                                          <Component id="btnReturn" pref="0" max="32767" attributes="0"/>
+                                          <Component id="btnOpenShift" pref="100" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="buttonCashier" max="32767" attributes="0"/>

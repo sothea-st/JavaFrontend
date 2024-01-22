@@ -1,8 +1,15 @@
 package Return;
 
 import Color.WindowColor;
+import Constant.JavaConnection;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
+import Model.Package.ReasonModel;
+import java.util.ArrayList;
 import java.util.HashMap;
+import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -20,7 +27,7 @@ public class ReturnDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         event();
-        addCombo();
+        addComboReason();
     }
     
     //Action call function placeholder
@@ -34,15 +41,36 @@ public class ReturnDialog extends javax.swing.JDialog {
         txtinvoice.initEvent(btnevent);
         txtBarcode.initEvent(btnevent);
     }
+    
+    private void addComboReason() {
+        HashMap<String, String> map = new HashMap<>();
+        try {
+            ArrayList<ReasonModel> reason = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.reason + "return");
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    ReasonModel modelReason = new ReasonModel(
+                            obj.getInt("id"),
+                            obj.getString("reason")
+                    );
+                    reason.add(modelReason);
+                    int idReason = reason.get(i).getIdReason();
+                    String reasonName = reason.get(i).getReason();
+                    map.put("" + idReason, reasonName);
+                }
+                map.put("", "Select the reason");
+                comboBoxReason.setMap(map);
 
-    void addCombo(){
-        HashMap<String,String> map = new HashMap<>();
-        map.put("", "Select the reason");
-        map.put("1", "Expired");
-        map.put("2", "Damaged");
-        map.put("3", "Wrong Price");
-        map.put("4", "Wrong Delivery");
-        comboBoxReason.setMap(map);
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
     }
 
     @SuppressWarnings("unchecked")

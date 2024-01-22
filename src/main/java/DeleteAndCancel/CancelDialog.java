@@ -1,8 +1,21 @@
 package DeleteAndCancel;
 
+import Button.Button;
 import Color.WindowColor;
+import Components.SubtotalPanel;
+import Constant.JavaConnection;
+import Constant.JavaRoute;
+import Model.CustomerType.CustomerTypeModel;
+import Model.Package.ReasonModel;
+import java.awt.Component;
+import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.border.BevelBorder;
+import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -10,6 +23,10 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  */
 public class CancelDialog extends javax.swing.JDialog {
 
+    private JPanel detailItem;
+    private SubtotalPanel totalPanel;
+    private Button btnPayment;
+    
     /**
      * Creates new form DeleteDialog
      */
@@ -19,17 +36,38 @@ public class CancelDialog extends javax.swing.JDialog {
         panelCancel.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-        addCombo();
+        addComboReason();
     }
     
-    void addCombo(){
-        HashMap<String,String> map = new HashMap<>();
-        map.put("", "Select the reason");
-        map.put("1", "Over Scanning");
-        map.put("2", "Customer Change Mind");
-        map.put("3", "Wrong Price");
-        map.put("4", "Bad Quality");
-        comboBoxReason.setMap(map);
+    private void addComboReason() {
+        HashMap<String, String> map = new HashMap<>();
+        try {
+            ArrayList<ReasonModel> reason = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    ReasonModel modelReason = new ReasonModel(
+                            obj.getInt("id"),
+                            obj.getString("reason")
+                    );
+                    reason.add(modelReason);
+                    int idReason = reason.get(i).getIdReason();
+                    String reasonName = reason.get(i).getReason();
+                    map.put("" + idReason, reasonName);
+                }
+                map.put("", "Select the reason");
+                comboBoxReason.setMap(map);
+
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -52,6 +90,12 @@ public class CancelDialog extends javax.swing.JDialog {
         buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonCancelMouseClicked(evt);
+            }
+        });
+
+        buttonSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSaveMouseClicked(evt);
             }
         });
 
@@ -108,6 +152,36 @@ public class CancelDialog extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
+    private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
+        detailItem.removeAll();
+        detailItem.revalidate();
+        detailItem.repaint();
+        this.dispose();
+        clearTotal();
+        changeColorButtonPayment();
+    }//GEN-LAST:event_buttonSaveMouseClicked
+
+    void changeColorButtonPayment(){
+        Component[] listCom1 = detailItem.getComponents();
+        System.out.println(listCom1.length);
+        if (listCom1.length == 0){
+            btnPayment.setBackground(WindowColor.lightGray);
+            getDetailItem().setBorder(null);
+        }
+    }
+    
+    void clearTotal(){
+        totalPanel.setLabelSubtotalKhr("0");
+        totalPanel.setLabelSubtotalUsd("$ 0.00");
+        totalPanel.setLableDiscountKhr("0");
+        totalPanel.setLableDiscountUsd("$ 0.00");
+        totalPanel.setLableDeliveryUsd("$ 0.00");
+        totalPanel.setLableTotalKhr("0");
+        totalPanel.setLableTotalUsd("$ 0.00");
+        totalPanel.setLableDeliveryKhr("0");
+        totalPanel.setLableDeliveryUsd("$ 0.00");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -150,6 +224,32 @@ public class CancelDialog extends javax.swing.JDialog {
             }
         });
     }
+    
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
+
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
+
+    public SubtotalPanel getTotalPanel() {
+        return totalPanel;
+    }
+
+    public void setTotalPanel(SubtotalPanel totalPanel) {
+        this.totalPanel = totalPanel;
+    }
+
+    public Button getBtnPayment() {
+        return btnPayment;
+    }
+
+    public void setBtnPayment(Button btnPayment) {
+        this.btnPayment = btnPayment;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel;

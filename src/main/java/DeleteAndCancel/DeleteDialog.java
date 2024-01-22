@@ -3,11 +3,18 @@ package DeleteAndCancel;
 import Color.WindowColor;
 import Components.BoxItem;
 import Components.SubtotalPanel;
+import Constant.JavaConnection;
+import Constant.JavaRoute;
+import Model.Package.ReasonModel;
 import java.awt.Component;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class DeleteDialog extends javax.swing.JDialog {
 
@@ -25,18 +32,40 @@ public class DeleteDialog extends javax.swing.JDialog {
         panelDelete.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-        addCombo();
+        addComboReason();
     }
 
-    void addCombo() {
+    private void addComboReason() {
         HashMap<String, String> map = new HashMap<>();
-        map.put("", "Select the reason");
-        map.put("1", "Over Scanning");
-        map.put("2", "Customer Change Mind");
-        map.put("3", "Wrong Price");
-        map.put("4", "Bad Quality");
-        comboBoxReason.setMap(map);
+        try {
+            ArrayList<ReasonModel> reason = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    ReasonModel modelReason = new ReasonModel(
+                            obj.getInt("id"),
+                            obj.getString("reason")
+                    );
+                    reason.add(modelReason);
+                    int idReason = reason.get(i).getIdReason();
+                    String reasonName = reason.get(i).getReason();
+                    map.put("" + idReason, reasonName);
+                }
+                map.put("", "Select the reason");
+                comboBoxReason.setMap(map);
+
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
     }
+    
 
     void deleteItem() {
         double sumSubTotalUsd = 0;

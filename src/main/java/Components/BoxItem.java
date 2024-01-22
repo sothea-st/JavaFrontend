@@ -400,7 +400,6 @@ public class BoxItem extends javax.swing.JPanel {
         amountkh.setText("0");
 
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Desktop\\project\\front end\\tt_pos_window\\src\\main\\resources\\image\\Delete.png")); // NOI18N
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeleteMouseClicked(evt);
@@ -409,7 +408,7 @@ public class BoxItem extends javax.swing.JPanel {
 
         buttonAddProduct.setQuantity(1);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Khmer OS Content", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(16, 107, 67));
         jLabel1.setText("៛");
 

@@ -11,4 +11,6 @@ public class JavaRoute {
     public static String customerType = "/customerType";
     public static String source = "/source";
     public static String sale = "/sale";
+    public static String reason = "/reason/getReasonByCode/";
+    public static String cancelAndDelete = "/cancelItem/";
 }

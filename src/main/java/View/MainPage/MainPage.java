@@ -59,7 +59,6 @@ public class MainPage extends javax.swing.JFrame {
         searchBox.requestFocusInWindow();
     }
 
-
     private void setBackground() {
         mainPanel.setBackground(WindowColor.slightGreen);
         panelCategory.setBackground(WindowColor.darkGreen);
@@ -183,10 +182,8 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbLogo.setIcon(new javax.swing.ImageIcon("D:\\POS_CASHIER\\tt_pos_window\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
 
         imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imgUser.setIcon(new javax.swing.ImageIcon("D:\\POS_CASHIER\\tt_pos_window\\src\\main\\resources\\image\\UserIcon.png")); // NOI18N
 
         javax.swing.GroupLayout dayLayout = new javax.swing.GroupLayout(day);
         day.setLayout(dayLayout);
@@ -281,9 +278,10 @@ public class MainPage extends javax.swing.JFrame {
                                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(buttonCancel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(btnOpenShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(btnOpenShift, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                             .addComponent(buttonCashier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,7 +541,6 @@ public class MainPage extends javax.swing.JFrame {
             if (buttonName.equals("open shift")) {
                OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true,btnOpenShift);
                jdOpenShift.setVisible(true);
-//               jdOpenShift.setBtnOpenShift(btnOpenShift);
             }
             else if (buttonName.equals("close shift")) {
                 CloseShift close = new CloseShift(new JFrame(), true);
@@ -567,15 +564,16 @@ public class MainPage extends javax.swing.JFrame {
 
     //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
-        
-      
+
         if ( JavaConstant.token != null) {
             Component[] listCom = detailItem.getComponents();
-            PaymentOption pay = new PaymentOption(new JFrame(), true);
-            pay.setTotalUsd(totalPanel.getLableTotalUsd());
-            pay.setListCom(listCom);
-            pay.setSubtotalPanel(totalPanel);
-            pay.setVisible(true);
+            if(listCom.length != 0){
+                PaymentOption pay = new PaymentOption(new JFrame(), true);
+                pay.setTotalUsd(totalPanel.getLableTotalUsd());
+                pay.setListCom(listCom);
+                pay.setSubtotalPanel(totalPanel);
+                pay.setVisible(true);
+            }
         }else {
             System.err.println("System cannot open payment option");
         }
@@ -596,6 +594,9 @@ public class MainPage extends javax.swing.JFrame {
 
         if ( JavaConstant.token != null) {
             CancelDialog cancel = new CancelDialog(new JFrame(), true);
+            cancel.setDetailItem(detailItem);
+            cancel.setTotalPanel(totalPanel);
+            cancel.setBtnPayment(btnPayment);
             cancel.setVisible(true);
         }else {
             System.err.println("System cannot open cancel option");

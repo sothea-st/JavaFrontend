@@ -12,6 +12,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.math.BigDecimal;
 import javax.swing.Icon;
 
 /**
@@ -74,19 +75,17 @@ public class ProductBox extends javax.swing.JPanel {
         lbName.setText(ProductName);
     }
 
-     public int getDiscountPercentag() {
-          return discountPercentag;
-     }
+    public int getDiscountPercentag() {
+        return discountPercentag;
+    }
 
-     public void setDiscountPercentag(int discountPercentag) {
-          this.discountPercentag = discountPercentag;
-          discount.setButtonName("Was $"+ discountPercentag);
-          if( discountPercentag > 0 ) {
-               discount.setVisible(true);
-          }
-     }
-    
-    
+    public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
+        this.discountPercentag = discountPercentag;
+        if (discountPercentag > 0) {
+            discount.setDiscountPrice("Was $"+" "+ wasPrice);
+            discount.setVisible(true);
+        }
+    }
 
     /**
      * Creates new form ProductBox
@@ -103,11 +102,10 @@ public class ProductBox extends javax.swing.JPanel {
         lbPrice.setFont(WindowFonts.timeNewRomanBold12);
         lbPrice.setForeground(WindowColor.darkGreen);
         txtBarcode.setFont(WindowFonts.timeNewRomanBold9);
-        txtBarcode.setForeground(WindowColor.gray);    
+        txtBarcode.setForeground(WindowColor.gray);
     }
-    
+
     //=================================================
-   
     public void initEvent(ButtonEvent event) {
         btnBuy.addMouseListener(new MouseListener() {
             @Override
@@ -137,20 +135,20 @@ public class ProductBox extends javax.swing.JPanel {
 
         });
     }
-    
+
     //=================================================Create Shadow Box
     private ShadowType shadowType;
     private int shadowSize = 3;
     private float shadowOpacity = 0.8f;
     private Color shadowColor = Color.GRAY;
-    
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         setOpaque(false);
         createShadow(grphcs);
         super.paintComponent(grphcs);
     }
-    
+
     private void createShadow(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         int size = shadowSize * 2;
@@ -159,27 +157,27 @@ public class ProductBox extends javax.swing.JPanel {
         int width = getWidth() - size;
         int height = getHeight() - size;
         if (shadowType == ShadowType.TOP) {
-             x = shadowSize;
-             y = size;
+            x = shadowSize;
+            y = size;
         } else if (shadowType == ShadowType.BOT) {
-             x = shadowSize;
-             y = 0;
+            x = shadowSize;
+            y = 0;
         } else if (shadowType == ShadowType.TOP_LEFT) {
-             x = size;
-             y = size;
+            x = size;
+            y = size;
         } else if (shadowType == ShadowType.TOP_RIGHT) {
-             x = 0;
-             y = size;
+            x = 0;
+            y = size;
         } else if (shadowType == ShadowType.BOT_LEFT) {
-             x = size;
-             y = 0;
+            x = size;
+            y = 0;
         } else if (shadowType == ShadowType.BOT_RIGHT) {
-             x = 0;
-             y = 0;
+            x = 0;
+            y = 0;
         } else {
-             //  Center
-             x = shadowSize;
-             y = shadowSize;
+            //  Center
+            x = shadowSize;
+            y = shadowSize;
         }
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
@@ -200,6 +198,7 @@ public class ProductBox extends javax.swing.JPanel {
     private String barcode;
     private Icon flagImage;
     private int discountPercentag;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -213,8 +212,8 @@ public class ProductBox extends javax.swing.JPanel {
         buttonStatus = new Button.ButtonInstock();
         lbPrice = new javax.swing.JLabel();
         btnBuy = new Button.ButtonBuy();
-        discount = new Button.ButtonInstock();
         jLabel1 = new javax.swing.JLabel();
+        discount = new Button.ButtonDiscount();
 
         productImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\Product pack icon.jpg")); // NOI18N
@@ -229,20 +228,10 @@ public class ProductBox extends javax.swing.JPanel {
 
         lbPrice.setText("Price");
 
-        discount.setBackground(new java.awt.Color(0, 0, 0));
-        discount.setButtonName("Was $10.10");
-
         javax.swing.GroupLayout productBoxLayout = new javax.swing.GroupLayout(productBox);
         productBox.setLayout(productBoxLayout);
         productBoxLayout.setHorizontalGroup(
             productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(productBoxLayout.createSequentialGroup()
-                .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                .addComponent(lbPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,12 +243,20 @@ public class ProductBox extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(productBoxLayout.createSequentialGroup()
-                        .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(discount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbWeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(41, 41, 41)
                 .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(productBoxLayout.createSequentialGroup()
+                .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(productBoxLayout.createSequentialGroup()
+                        .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         productBoxLayout.setVerticalGroup(
             productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,8 +270,8 @@ public class ProductBox extends javax.swing.JPanel {
                     .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbPrice)
@@ -308,7 +305,7 @@ public class ProductBox extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.ButtonBuy btnBuy;
     private Button.ButtonInstock buttonStatus;
-    private Button.ButtonInstock discount;
+    private Button.ButtonDiscount discount;
     private javax.swing.JLabel flagImg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbName;

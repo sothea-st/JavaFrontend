@@ -5,6 +5,7 @@ import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
 import Fonts.WindowFonts;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -32,10 +33,24 @@ public class ButtonInstock extends javax.swing.JPanel {
     public ButtonInstock() {
         initComponents();
         button.setForeground(WindowColor.white);
-
-        setBackground(WindowColor.darkGreen);
+        button.setFont(WindowFonts.timeNewRomanBold8);
+        setBackground(WindowColor.white);
     }
 
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Dimension arcs = new Dimension(15,15); //Border corners arcs {width,height}, change this to whatever you want
+        int width = getWidth();
+        int height = getHeight();
+        Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        //Draws the rounded panel with borders.
+        graphics.setColor(WindowColor.darkGreen);
+        graphics.fillRoundRect(0, 0, width-2, height-2, arcs.width, arcs.height);//paint background
+        graphics.setColor(WindowColor.darkGreen);
+        graphics.drawRoundRect(0, 0, width-2, height-2, arcs.width, arcs.height);//paint border
+    }
     
     //=================================================Create Shadow Box
 //    private ShadowType shadowType;

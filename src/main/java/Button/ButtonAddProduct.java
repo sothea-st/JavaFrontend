@@ -41,19 +41,20 @@ public class ButtonAddProduct extends javax.swing.JPanel {
     }
     
     protected void paintComponent(Graphics g) {
-           super.paintComponent(g);
-           Dimension arcs = new Dimension(15,15); //Border corners arcs {width,height}, change this to whatever you want
-           int width = getWidth();
-           int height = getHeight();
-           Graphics2D graphics = (Graphics2D) g;
-           graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        super.paintComponent(g);
+        Dimension arcs = new Dimension(15,15); //Border corners arcs {width,height}, change this to whatever you want
+        int width = getWidth();
+        int height = getHeight();
+        Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-           //Draws the rounded panel with borders.
-           graphics.setColor(WindowColor.white);
-           graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height);//paint background
-           graphics.setColor(WindowColor.darkGreen);
-           graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height);//paint border
-        }
+        //Draws the rounded panel with borders.
+        graphics.setColor(WindowColor.white);
+        graphics.fillRoundRect(0, 0, width-2, height-2, arcs.width, arcs.height);//paint background
+        graphics.setColor(WindowColor.darkGreen);
+        graphics.drawRoundRect(0, 0, width-2, height-2, arcs.width, arcs.height);//paint border
+    }
+    
     private int quantity;
 
     //=================================================Create Shadow Box

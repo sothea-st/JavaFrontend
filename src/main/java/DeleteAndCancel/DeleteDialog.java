@@ -2,23 +2,23 @@ package DeleteAndCancel;
 
 import Color.WindowColor;
 import Components.BoxItem;
-import View.MainPage.MainPage;
-import java.awt.Dimension;
+import Components.SubtotalPanel;
+import java.awt.Component;
+import java.text.DecimalFormat;
 import java.util.HashMap;
-import javax.swing.Box;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-/**
- *
- * @author FRONT-END.06
- */
 public class DeleteDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form DeleteDialog
-    */
+    // declar variable
+    private JPanel detailItem;
+    private Component[] listCom;
+    private int productId;
+    private SubtotalPanel subtotalPanel;
+    DecimalFormat dm = new DecimalFormat("$#,##0.00");
+    DecimalFormat kh = new DecimalFormat("#,##0");
+
     public DeleteDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -27,15 +27,54 @@ public class DeleteDialog extends javax.swing.JDialog {
         setResizable(false);
         addCombo();
     }
-    
-    void addCombo(){
-        HashMap<String,String> map = new HashMap<>();
+
+    void addCombo() {
+        HashMap<String, String> map = new HashMap<>();
         map.put("", "Select the reason");
         map.put("1", "Over Scanning");
         map.put("2", "Customer Change Mind");
         map.put("3", "Wrong Price");
         map.put("4", "Bad Quality");
         comboBoxReason.setMap(map);
+    }
+
+    void deleteItem() {
+        double sumSubTotalUsd = 0;
+        double sumDiscount = 0;
+        for (int i = 0; i < listCom.length; i++) {
+            var d = (BoxItem) listCom[i];
+            if (productId == d.getProductId()) {
+                detailItem.remove(i);
+                detailItem.revalidate();
+                detailItem.repaint();
+            } else {
+                var data = (BoxItem) listCom[i];
+                String priceStr = data.getLabelPrice();
+                priceStr = priceStr.replace("$", "");
+                priceStr = priceStr.replace(",", "");
+                double price = Double.valueOf(priceStr);
+                int qty = data.getQty();
+                double amount = price * qty;
+                sumSubTotalUsd += amount;
+
+                String discount = data.getDiscountAmount();
+                discount = discount.replace("$", "");
+                discount = discount.replace(",", "");
+                double discountValue = Double.valueOf(discount) * qty;
+                sumDiscount += Double.valueOf(discountValue);
+            }
+        }
+
+        subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
+        subtotalPanel.setLabelSubtotalKhr(kh.format(sumSubTotalUsd * 4200));
+
+        subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
+        subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * 4200));
+
+        // total
+        double total = sumSubTotalUsd - sumDiscount;
+        subtotalPanel.setLableTotalUsd(dm.format(total));
+        subtotalPanel.setLableTotalKhr(kh.format(total * 4200));
     }
 
     @SuppressWarnings("unchecked")
@@ -129,38 +168,13 @@ public class DeleteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
+        deleteItem();
+        System.err.println("success");
+        this.dispose();
 
-        this.dispose();   
     }//GEN-LAST:event_buttonSave1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 DeleteDialog dialog = new DeleteDialog(new javax.swing.JFrame(), true);
@@ -174,6 +188,39 @@ public class DeleteDialog extends javax.swing.JDialog {
             }
         });
     }
+
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
+
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
+
+    public Component[] getListCom() {
+        return listCom;
+    }
+
+    public void setListCom(Component[] listCom) {
+        this.listCom = listCom;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public SubtotalPanel getSubtotalPanel() {
+        return subtotalPanel;
+    }
+
+    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+        this.subtotalPanel = subtotalPanel;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel1;

@@ -96,38 +96,38 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="labelFontBlack1" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbOne" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack6" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbTwo" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack7" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbThree" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack8" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbDelete" min="-2" pref="68" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelFontBlack3" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbFour" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack13" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbFive" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack14" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbSix" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelFontBlack15" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="lbDot" min="-2" pref="68" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="labelFontBlack5" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="labelFontBlack4" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbSeven" min="-2" pref="68" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="labelFontBlack16" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbEight" min="-2" pref="68" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="labelFontBlack17" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbNine" min="-2" pref="68" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="labelFontBlack18" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbZero" min="-2" pref="68" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="labelFontBlack9" max="32767" attributes="0"/>
                                   </Group>
@@ -244,8 +244,8 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="panelTotal" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="panelTotal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -269,26 +269,26 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="labelFontBlack7" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack6" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbThree" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbTwo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbOne" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbCash" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack8" max="32767" attributes="0"/>
+                              <Component id="lbDelete" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="labelFontBlack14" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack13" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbSix" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbFive" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbFour" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbCreditCard" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack15" max="32767" attributes="0"/>
+                              <Component id="lbDot" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="labelFontBlack17" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack16" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelFontBlack18" max="32767" attributes="0"/>
+                              <Component id="lbNine" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbEight" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbSeven" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbZero" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -430,7 +430,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="label8" pref="0" max="32767" attributes="0"/>
                           <Component id="label7" alignment="1" pref="0" max="32767" attributes="0"/>
@@ -438,30 +438,32 @@
                           <Component id="label5" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label9" min="-2" pref="9" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label13" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label4" min="-2" pref="9" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label12" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="label9" min="-2" pref="9" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbChangeUsd" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="label4" min="-2" pref="9" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbRemainingUsd" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="label2" min="-2" pref="9" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbTotalUsd" min="-2" pref="60" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="label3" min="-2" pref="9" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label11" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="label2" min="-2" pref="9" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label10" min="-2" pref="77" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="txtReceiveUsd" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -470,27 +472,30 @@
                                   </Group>
                                   <Component id="label14" alignment="0" min="-2" pref="9" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="label20" min="-2" pref="8" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="label18" min="-2" pref="46" max="-2" attributes="0"/>
-                                          <Component id="label19" alignment="1" min="-2" pref="8" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="lbRemainingKhr" min="-2" pref="60" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lbTotalKhr" min="-2" pref="60" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="txtReceiveKhr" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="label17" min="-2" pref="9" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="label21" min="-2" pref="8" max="-2" attributes="0"/>
+                              <Component id="lbChangeKhr" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" pref="3" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="3" max="-2" attributes="0"/>
@@ -504,13 +509,13 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label10" max="32767" attributes="0"/>
+                          <Component id="lbTotalUsd" max="32767" attributes="0"/>
                           <Component id="label2" max="32767" attributes="0"/>
                           <Component id="label5" max="32767" attributes="0"/>
                           <Component id="label14" alignment="1" max="32767" attributes="0"/>
-                          <Component id="label18" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lbTotalKhr" alignment="1" max="32767" attributes="0"/>
                           <Component id="jLabel1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -518,23 +523,23 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="label3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="label11" alignment="0" max="32767" attributes="0"/>
                                   <Component id="label6" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="label19" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtReceiveKhr" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="label15" max="32767" attributes="0"/>
-                          <Component id="jLabel2" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtReceiveUsd" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label7" alignment="0" max="32767" attributes="0"/>
                           <Component id="label16" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label20" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="label12" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbRemainingKhr" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbRemainingUsd" alignment="0" max="32767" attributes="0"/>
                                   <Component id="label4" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
@@ -543,7 +548,7 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label13" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbChangeUsd" alignment="0" max="32767" attributes="0"/>
                           <Component id="label9" alignment="0" max="32767" attributes="0"/>
                           <Component id="label8" alignment="0" max="32767" attributes="0"/>
                           <Component id="label17" min="-2" pref="27" max="-2" attributes="0"/>
@@ -551,9 +556,9 @@
                               <Component id="jLabel4" max="32767" attributes="0"/>
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="label21" max="32767" attributes="0"/>
+                          <Component id="lbChangeKhr" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -599,22 +604,17 @@
                 <Property name="labelName" type="java.lang.String" value=":"/>
               </Properties>
             </Component>
-            <Component class="Components.Label" name="label10">
-              <Properties>
-                <Property name="labelName" type="java.lang.String" value="$ 7.04"/>
-              </Properties>
-            </Component>
-            <Component class="Components.Label" name="label11">
-              <Properties>
-                <Property name="labelName" type="java.lang.String" value="$ 8.00"/>
-              </Properties>
-            </Component>
-            <Component class="Components.Label" name="label12">
+            <Component class="Components.Label" name="lbTotalUsd">
               <Properties>
                 <Property name="labelName" type="java.lang.String" value="$ 0.00"/>
               </Properties>
             </Component>
-            <Component class="Components.Label" name="label13">
+            <Component class="Components.Label" name="lbRemainingUsd">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="$ 0.00"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbChangeUsd">
               <Properties>
                 <Property name="labelName" type="java.lang.String" value="$ 0.00"/>
               </Properties>
@@ -639,22 +639,17 @@
                 <Property name="labelName" type="java.lang.String" value=":"/>
               </Properties>
             </Component>
-            <Component class="Components.Label" name="label18">
-              <Properties>
-                <Property name="labelName" type="java.lang.String" value="29,200"/>
-              </Properties>
-            </Component>
-            <Component class="Components.Label" name="label19">
+            <Component class="Components.Label" name="lbTotalKhr">
               <Properties>
                 <Property name="labelName" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
-            <Component class="Components.Label" name="label20">
+            <Component class="Components.Label" name="lbRemainingKhr">
               <Properties>
                 <Property name="labelName" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
-            <Component class="Components.Label" name="label21">
+            <Component class="Components.Label" name="lbChangeKhr">
               <Properties>
                 <Property name="labelName" type="java.lang.String" value="0"/>
               </Properties>
@@ -691,103 +686,152 @@
                 <Property name="text" type="java.lang.String" value="&#x17db;"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JTextField" name="txtReceiveUsd">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtReceiveUsdMouseClicked"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtReceiveUsdKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtReceiveKhr">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtReceiveKhrMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtReceiveKhrMouseEntered"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtReceiveKhrKeyReleased"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack1">
+        <Component class="Components.LabelFontBlack" name="lbOne">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbOneMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack6">
+        <Component class="Components.LabelFontBlack" name="lbTwo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbTwoMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack7">
+        <Component class="Components.LabelFontBlack" name="lbThree">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbThreeMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack8">
+        <Component class="Components.LabelFontBlack" name="lbDelete">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="Del"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbDeleteMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack3">
+        <Component class="Components.LabelFontBlack" name="lbFour">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="4"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFourMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack13">
+        <Component class="Components.LabelFontBlack" name="lbFive">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFiveMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack14">
+        <Component class="Components.LabelFontBlack" name="lbSix">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="6"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbSixMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack15">
+        <Component class="Components.LabelFontBlack" name="lbDot">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="."/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbDotMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack4">
+        <Component class="Components.LabelFontBlack" name="lbSeven">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="7"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbSevenMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack16">
+        <Component class="Components.LabelFontBlack" name="lbEight">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="8"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbEightMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack17">
+        <Component class="Components.LabelFontBlack" name="lbNine">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="9"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbNineMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="Components.LabelFontBlack" name="labelFontBlack18">
+        <Component class="Components.LabelFontBlack" name="lbZero">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="labelName" type="java.lang.String" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbZeroMouseClicked"/>
+          </Events>
         </Component>
         <Component class="Components.LabelFontBlack" name="labelFontBlack2">
           <Properties>
@@ -815,6 +859,9 @@
             </Property>
             <Property name="labelName" type="java.lang.String" value="Charge&amp;Print"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelFontBlack9MouseClicked"/>
+          </Events>
         </Component>
         <Component class="Components.TextFieldCenter" name="txtCustomerId">
           <Properties>

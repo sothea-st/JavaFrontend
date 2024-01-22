@@ -5,6 +5,7 @@ import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
 import Event.ButtonEvent;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -36,8 +37,23 @@ public class ButtonAddProduct extends javax.swing.JPanel {
     public ButtonAddProduct() {
         initComponents();
         setBackground(WindowColor.white);
+        
     }
+    
+    protected void paintComponent(Graphics g) {
+           super.paintComponent(g);
+           Dimension arcs = new Dimension(15,15); //Border corners arcs {width,height}, change this to whatever you want
+           int width = getWidth();
+           int height = getHeight();
+           Graphics2D graphics = (Graphics2D) g;
+           graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+           //Draws the rounded panel with borders.
+           graphics.setColor(WindowColor.white);
+           graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height);//paint background
+           graphics.setColor(WindowColor.darkGreen);
+           graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height);//paint border
+        }
     private int quantity;
 
     //=================================================Create Shadow Box
@@ -151,7 +167,6 @@ public class ButtonAddProduct extends javax.swing.JPanel {
         lbQty = new javax.swing.JLabel();
         btnPlus = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 107, 67)));
         setPreferredSize(new java.awt.Dimension(100, 32));
 
         btnMinus.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -176,17 +191,15 @@ public class ButtonAddProduct extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnMinus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnMinus, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
             .addComponent(lbQty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnPlus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

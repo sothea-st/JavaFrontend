@@ -193,9 +193,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="vattin" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Component id="vattin" min="-2" pref="157" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -231,7 +231,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer OS Content" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&#x179b;&#x17c1;&#x1781;&#x17a2;&#x178f;&#x17d2;&#x178f;&#x179f;&#x1789;&#x17d2;&#x1789;&#x17b6;&#x178e;&#x179f;&#x17b6;&#x179a;&#x1796;&#x17be;&#x1796;&#x1793;&#x17d2;&#x1792;&#x200b;"/>
+                    <Property name="text" type="java.lang.String" value="&#x179b;&#x17c1;&#x1781;&#x17a2;&#x178f;&#x17d2;&#x178f;&#x179f;&#x1789;&#x17d2;&#x1789;&#x17b6;&#x178e;&#x179f;&#x17b6;&#x179a;&#x1796;&#x17be;&#x1796;&#x1793;&#x17d2;&#x1792;&#x200b;(VATTIN)&#x17d6;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="vattin">
@@ -239,7 +239,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="(VATTIN):038545848965886"/>
+                    <Property name="text" type="java.lang.String" value="038545848965886"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="address">

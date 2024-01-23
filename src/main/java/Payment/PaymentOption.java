@@ -2,31 +2,24 @@ package Payment;
 
 import Color.WindowColor;
 import Components.BoxItem;
+import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
-import Constant.JavaBaseUrl;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
 import Model.CustomerType.SourceModel;
-import Model.Sale.PaymentDetailModel;
 import Model.Sale.ProductSaleModel;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -76,6 +69,9 @@ public class PaymentOption extends javax.swing.JDialog {
           cmbSource.initEvent(events);
 
           lbCash.setBackground(Color.black);
+          
+          txtCustomerId.requestFocusInWindow();
+          
      }
 
      //Action call function placeholder
@@ -1009,12 +1005,15 @@ public class PaymentOption extends javax.swing.JDialog {
     private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
 
          if (txtReceiveKhr.getText().isEmpty() && txtReceiveUsd.getText().isEmpty()) {
-              JOptionPane.showMessageDialog(this, "Box Receive must be have one value!");
+            
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage("Box Receive must be have one value!");
+              j.setVisible(true);
               return;
          }
-
+ 
          double discount = JavaConstant.getReplace(subtotalPanel.getLableDiscountUsd());
-         //        double deliveryFee = JavaConstant.getReplace(subtotalPanel.getLableDeliveryUsd());
+         // double deliveryFee = JavaConstant.getReplace(subtotalPanel.getLableDeliveryUsd());
          double subTotal = JavaConstant.getReplace(subtotalPanel.getLabelSubtotalUsd());
          double total = JavaConstant.getReplace(subtotalPanel.getLableTotalUsd());
          double remainningUsd = JavaConstant.getReplace(lbRemainingUsd.getLabelName());

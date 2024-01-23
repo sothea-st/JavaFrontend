@@ -1,11 +1,18 @@
 package Print;
 
 import Color.WindowColor;
+import Components.JavaAlertMessage;
+import Constant.JavaConnection;
+import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
+import Model.Reprint.DataSuccessModel;
 import Receipt.Receipt;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import okhttp3.Response;
 
 /**
  *
@@ -13,32 +20,27 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  */
 public class ReprintByInvoicenumber extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ReprintByInvoice
-     */
-    public ReprintByInvoicenumber(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        panelReprint.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        event();
-    }
-    
-    
-    //Action call function placeholder
-    void event(){
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
+     public ReprintByInvoicenumber(java.awt.Frame parent, boolean modal) {
+          super(parent, modal);
+          initComponents();
+          panelReprint.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          event();
+     }
 
-            }
-        };
-        txtInvoiceNumber.initEvent(btnevent);
-    }
+     //Action call function placeholder
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
 
+               }
+          };
+          txtInvoiceNumber.initEvent(btnevent);
+     }
 
-    @SuppressWarnings("unchecked")
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -129,56 +131,54 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_btnBackMouseClicked
 
     private void btnPreviewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviewMouseClicked
-        Receipt rec= new Receipt(new JFrame(),true);
-        rec.setVisible(true);
+
+         String paymentNo = txtInvoiceNumber.getValueTextField();
+
+         if (paymentNo == null) {
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage("Invoice № can not be empty!");
+              j.setVisible(true);
+              return;
+         }
+
+         try {
+
+              Receipt rec = new Receipt(new JFrame(), true);
+              Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId + "/" + paymentNo);
+
+              if (response.isSuccessful()) {
+                   String myObject = response.body().string();
+                   ObjectMapper objMap = new ObjectMapper();
+                   DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
+                   rec.setDataSuccess(d);
+                   rec.setVisible(true);
+              }
+
+         } catch (Exception e) {
+              System.err.println("error = " + e);
+         }
+
     }//GEN-LAST:event_btnPreviewMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReprintByInvoicenumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReprintByInvoicenumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReprintByInvoicenumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReprintByInvoicenumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+     public static void main(String args[]) {
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ReprintByInvoicenumber dialog = new ReprintByInvoicenumber(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    ReprintByInvoicenumber dialog = new ReprintByInvoicenumber(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.Button btnBack;

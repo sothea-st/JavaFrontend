@@ -21,10 +21,6 @@ import org.json.JSONObject;
  * @author FRONT-END.06
  */
 public class ReprintJdailog extends javax.swing.JDialog {
-
-     /**
-      * Creates new form Reprint
-      */
      public ReprintJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
           initComponents();
@@ -109,13 +105,9 @@ public class ReprintJdailog extends javax.swing.JDialog {
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
          Receipt rec = new Receipt(new JFrame(), true);
-
          Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-
          try {
               String myObject = response.body().string();
-              System.err.println("myobject = " + myObject);
-
               ObjectMapper objMap = new ObjectMapper();
               DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
               rec.setDataSuccess(d);
@@ -133,35 +125,9 @@ public class ReprintJdailog extends javax.swing.JDialog {
          rep.setVisible(true);
     }//GEN-LAST:event_btnPrintByInvoiceMouseClicked
 
-     /**
-      * @param args the command line
-      * arguments
-      */
+   
      public static void main(String args[]) {
-          /* Set the Nimbus look and feel */
-          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-           */
-          try {
-               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                         break;
-                    }
-               }
-          } catch (ClassNotFoundException ex) {
-               java.util.logging.Logger.getLogger(ReprintJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex) {
-               java.util.logging.Logger.getLogger(ReprintJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex) {
-               java.util.logging.Logger.getLogger(ReprintJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-               java.util.logging.Logger.getLogger(ReprintJdailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
-          //</editor-fold>
-          //</editor-fold>
-
+    
           /* Create and display the dialog */
           java.awt.EventQueue.invokeLater(new Runnable() {
                public void run() {

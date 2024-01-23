@@ -1,9 +1,26 @@
 package DeleteAndCancel;
 
+import Button.Button;
 import Color.WindowColor;
+import Components.BoxItem;
+import Components.SubtotalPanel;
+import Constant.JavaConnection;
+import Constant.JavaConstant;
+import Constant.JavaRoute;
+import Event.ButtonEvent;
+import Model.CustomerType.CustomerTypeModel;
+import Model.Package.ReasonModel;
+import Model.PackageProduct.ProductIDModel;
+import Model.Sale.ProductSaleModel;
+import java.awt.Component;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.border.BevelBorder;
+import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -11,10 +28,16 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  */
 public class CancelDialog extends javax.swing.JDialog {
 
+    private JPanel detailItem;
+    private SubtotalPanel totalPanel;
+    private Button btnPayment;
+    private HashMap<String, String> map = new HashMap<>();
+    private String reasonId;
+    private Component[] listCom;
+    
     /**
      * Creates new form DeleteDialog
      */
-     
 
     public CancelDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -22,19 +45,51 @@ public class CancelDialog extends javax.swing.JDialog {
         panelCancel.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-        addCombo();
+        addComboReason();
+        // action get select customer type
+         ButtonEvent events = new ButtonEvent() {
+              @Override
+              public void onSelect(String key) {
+                   reasonId = key;
+              }
+         };
+         comboBoxReason.initEvent(events);
     }
     
-    void addCombo(){
-        HashMap<String,String> map = new HashMap<>();
-        map.put("", "Select the reason");
-        map.put("1", "Over Scanning");
-        map.put("2", "Customer Change Mind");
-        map.put("3", "Wrong Price");
-        map.put("4", "Bad Quality");
-        comboBoxReason.setMap(map);
+    private void addComboReason() {
+        
+        try {
+            ArrayList<ReasonModel> reason = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    ReasonModel modelReason = new ReasonModel(
+                            obj.getInt("id"),
+                            obj.getString("reason")
+                    );
+                    reason.add(modelReason);
+                    int idReason = reason.get(i).getIdReason();
+                    String reasonName = reason.get(i).getReason();
+                    map.put(reasonName, "" + idReason);
+                    
+                    if (i == 0) {
+                         reasonId = "" + idReason;
+                    }
+                }
+                comboBoxReason.setMap(map);
+                
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
     }
-
+    
     @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
@@ -58,45 +113,45 @@ public class CancelDialog extends javax.swing.JDialog {
                }
           });
 
-          buttonSave.addMouseListener(new java.awt.event.MouseAdapter() {
-               public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    buttonSaveMouseClicked(evt);
-               }
-          });
+        buttonSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSaveMouseClicked(evt);
+            }
+        });
 
-          javax.swing.GroupLayout panelCancelLayout = new javax.swing.GroupLayout(panelCancel);
-          panelCancel.setLayout(panelCancelLayout);
-          panelCancelLayout.setHorizontalGroup(
-               panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCancelLayout.createSequentialGroup()
-                    .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                         .addGroup(panelCancelLayout.createSequentialGroup()
-                              .addGap(17, 17, 17)
-                              .addComponent(lbReason, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
-                         .addGroup(panelCancelLayout.createSequentialGroup()
-                              .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                              .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(18, 18, 18))
-          );
-          panelCancelLayout.setVerticalGroup(
-               panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(panelCancelLayout.createSequentialGroup()
-                    .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(23, 23, 23)
-                    .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                         .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                         .addComponent(lbReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                         .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 17, Short.MAX_VALUE))
-          );
+        javax.swing.GroupLayout panelCancelLayout = new javax.swing.GroupLayout(panelCancel);
+        panelCancel.setLayout(panelCancelLayout);
+        panelCancelLayout.setHorizontalGroup(
+            panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCancelLayout.createSequentialGroup()
+                .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCancelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lbReason, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+                    .addGroup(panelCancelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
+        );
+        panelCancelLayout.setVerticalGroup(
+            panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancelLayout.createSequentialGroup()
+                .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboBoxReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 17, Short.MAX_VALUE))
+        );
 
           javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
           getContentPane().setLayout(layout);
@@ -117,10 +172,59 @@ public class CancelDialog extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
-     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-          // TODO add your handling code here:
-     }//GEN-LAST:event_buttonSaveMouseClicked
+    private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
 
+        JSONObject jsonData = new JSONObject();
+        
+        ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
+        for (int i = 0; i < listCom.length; i++) {
+            var obj = ((BoxItem) listCom[i]);
+            ProductIDModel pro = new ProductIDModel(
+                 obj.getProductId()
+            );
+            listCancelDetail.add(pro);
+        }
+        
+        jsonData.put("listCancelDetail", listCancelDetail);
+        jsonData.put("reasonId", reasonId);
+        jsonData.put("createBy", JavaConstant.cashierId);
+        
+        try {
+            Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "cancel", jsonData);
+            if (response.isSuccessful()) {
+                this.dispose();
+                detailItem.removeAll();
+                detailItem.revalidate();
+                detailItem.repaint();
+                clearTotal();
+                changeColorButtonPayment();
+            }
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_buttonSaveMouseClicked
+
+    void changeColorButtonPayment(){
+        Component[] listCom1 = detailItem.getComponents();
+        if (listCom1.length == 0){
+            btnPayment.setBackground(WindowColor.lightGray);
+            getDetailItem().setBorder(null);
+        }
+    }
+    
+    void clearTotal(){
+        totalPanel.setLabelSubtotalKhr("0");
+        totalPanel.setLabelSubtotalUsd("$ 0.00");
+        totalPanel.setLableDiscountKhr("0");
+        totalPanel.setLableDiscountUsd("$ 0.00");
+        totalPanel.setLableDeliveryUsd("$ 0.00");
+        totalPanel.setLableTotalKhr("0");
+        totalPanel.setLableTotalUsd("$ 0.00");
+        totalPanel.setLableDeliveryKhr("0");
+        totalPanel.setLableDeliveryUsd("$ 0.00");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -163,10 +267,40 @@ public class CancelDialog extends javax.swing.JDialog {
             }
         });
     }
+    
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
+
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
+
+    public SubtotalPanel getTotalPanel() {
+        return totalPanel;
+    }
+
+    public void setTotalPanel(SubtotalPanel totalPanel) {
+        this.totalPanel = totalPanel;
+    }
+
+    public Button getBtnPayment() {
+        return btnPayment;
+    }
+
+    public void setBtnPayment(Button btnPayment) {
+        this.btnPayment = btnPayment;
+    }
+
+    public Component[] getListCom() {
+        return listCom;
+    }
+
+    public void setListCom(Component[] listCom) {
+        this.listCom = listCom;
+    }
 
   
-    
-    
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private ButtonPackage.ButtonCancel buttonCancel;
      private ButtonPackage.ButtonSave buttonSave;

@@ -385,7 +385,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                                   newAmountUsd = discountPrice * qty;
                                              }
                                              obj.setLabelAmountUsd(dm.format(newAmountUsd));
-                                             obj.setLabelAmountKh(kh.format(newAmountUsd * 4200));
+                                             obj.setLabelAmountKh(kh.format(newAmountUsd * JavaConstant.exchangeRate));
                                              box.setSubtotalPanel(subtotalPanel);
                                              box.setListCom(listCom);
                                              box.setDetailItem(detailItem);
@@ -403,11 +403,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                    double discountPrice = price - (listData.getDiscount() * price) / 100;
                                    box.setLabelPrice(dm.format(discountPrice));
                                    box.setLabelAmountUsd(dm.format(discountPrice));
-                                   box.setLabelAmountKh(kh.format(discountPrice * 4200));
+                                   box.setLabelAmountKh(kh.format(discountPrice * JavaConstant.exchangeRate));
                               } else {
                                    box.setLabelPrice(dm.format(price));
                                    box.setLabelAmountUsd(dm.format(price));
-                                   box.setLabelAmountKh(kh.format(price * 4200));
+                                   box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
                               }
 
                               box.setDiscountAmount(dm.format(discount));
@@ -505,13 +505,13 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                }
           }
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
-          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * 4200));
+          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * JavaConstant.exchangeRate));
           subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
-          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * 4200));
+          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
           // total
           double total = sumAmountUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));
-          subtotalPanel.setLableTotalKhr(kh.format(total * 4200));
+          subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
      }
 
      public JLabel getBoxUserName() {

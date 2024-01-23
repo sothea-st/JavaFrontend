@@ -167,9 +167,6 @@
             <Component class="javax.swing.JLabel" name="logo">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\resources\image\redant.png"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="companyname">
@@ -192,17 +189,20 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="jLabel4" min="-2" pref="135" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Component id="vattin" min="-2" pref="182" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel7" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="addressLabel" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="address" min="-2" pref="271" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -210,16 +210,17 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="vattin" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="address" min="-2" pref="51" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -233,7 +234,7 @@
                     <Property name="text" type="java.lang.String" value="&#x179b;&#x17c1;&#x1781;&#x17a2;&#x178f;&#x17d2;&#x178f;&#x179f;&#x1789;&#x17d2;&#x1789;&#x17b6;&#x178e;&#x179f;&#x17b6;&#x179a;&#x1796;&#x17be;&#x1796;&#x1793;&#x17d2;&#x1792;&#x200b;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="vattin">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="0"/>
@@ -241,22 +242,23 @@
                     <Property name="text" type="java.lang.String" value="(VATTIN):038545848965886"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="address">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer OS Content" size="12" style="0"/>
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="&#x17a2;&#x17b6;&#x179f;&#x1799;&#x178a;&#x17d2;&#x178b;&#x17b6;&#x1793;&#x17d6; &#x1795;&#x17d2;&#x1791;&#x17c7;&#x179b;&#x17c1;&#x1781;&#x17e1;&#x17e3;&#x17e9;&#x17e1;&#x17e2; &#x1795;&#x17d2;&#x179b;&#x17bc;&#x179c; &#x17e5;&#x17e9;&#x17e8; &#x1797;&#x17bc;&#x1798;&#x17b7;&#x1781;&#x17e1; &#x179f;&#x1784;&#x17d2;&#x1780;&#x17b6;&#x178f;&#x17cb;&#x1785;&#x17d2;&#x179a;&#x17b6;&#x17c6;&#x1784;&#x1785;&#x17c6;&#x179a;&#x17c1;&#x17c7;&#x1791;&#x17b8;&#x17e2;"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="&#x1795;&#x17d2;&#x1791;&#x17c7;&#x179b;&#x17c1;&#x1781;&#x17e1;&#x17e3;&#x17e9;&#x17e1;&#x17e2; &#x1795;&#x17d2;&#x179b;&#x17bc;&#x179c; &#x17e5;&#x17e9;&#x17e8; &#x1797;&#x17bc;&#x1798;&#x17b7;&#x1781;&#x17e1; &#x179f;&#x1784;&#x17d2;&#x1780;&#x17b6;&#x178f;&#x17cb;&#x1785;&#x17d2;&#x179a;&#x17b6;&#x17c6;&#x1784;&#x1785;&#x17c6;&#x179a;&#x17c1;&#x17c7;&#x1791;&#x17b8;&#x17e2;"/>
+                    <Property name="verticalAlignment" type="int" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="addressLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer OS Content" size="12" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="&#x1781;&#x178e;&#x17d2;&#x178c;&#x17ac;&#x179f;&#x17d2;&#x179f;&#x17b8;&#x1780;&#x17c2;&#x179c; &#x179a;&#x17b6;&#x1787;&#x1792;&#x17b6;&#x1793;&#x17b8;&#x1797;&#x17d2;&#x1793;&#x17c6;&#x1796;&#x17c1;&#x1789;"/>
+                    <Property name="text" type="java.lang.String" value="&#x17a2;&#x17b6;&#x179f;&#x1799;&#x178a;&#x17d2;&#x178b;&#x17b6;&#x1793;&#x17d6;"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -288,7 +290,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="invoiceNo" min="-2" pref="98" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -303,7 +305,7 @@
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel15" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                                              <Component id="contact" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
                                               <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -312,7 +314,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cashierName" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -329,7 +331,7 @@
                                           <Component id="jLabel8" min="-2" pref="87" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cusName" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                                   <Component id="jLabel20" min="-2" pref="78" max="-2" attributes="0"/>
@@ -339,7 +341,7 @@
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel17" min="-2" pref="103" max="-2" attributes="0"/>
+                                          <Component id="saleDate" min="-2" pref="103" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -359,23 +361,23 @@
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cusName" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="invoiceNo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="contact" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="saleDate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cashierName" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
@@ -391,7 +393,7 @@
                     <Property name="text" type="java.lang.String" value="&#x1788;&#x17d2;&#x1798;&#x17c4;&#x17c7;&#x17a2;&#x178f;&#x17b7;&#x1790;&#x17b7;&#x1787;&#x1793; &#x17d6;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="cusName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer OS Content" size="12" style="0"/>
@@ -423,7 +425,7 @@
                     <Property name="text" type="java.lang.String" value="&#x179b;&#x17c1;&#x1781;&#x179c;&#x17b7;&#x1780;&#x17d2;&#x1780;&#x17d0;&#x1799;&#x1794;&#x17d0;&#x178f;&#x17d2;&#x179a; &#x17d6;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="invoiceNo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="0"/>
@@ -439,7 +441,7 @@
                     <Property name="text" type="java.lang.String" value="&#x179b;&#x17c1;&#x1781;&#x1791;&#x17bc;&#x179a;&#x179f;&#x1796;&#x17d2;&#x178c; &#x17d6;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
+                <Component class="javax.swing.JLabel" name="contact">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="0"/>
@@ -455,7 +457,7 @@
                     <Property name="text" type="java.lang.String" value="&#x1780;&#x17b6;&#x179b;&#x1794;&#x179a;&#x17b7;&#x1785;&#x17d2;&#x1786;&#x17c1;&#x1791; &#x17d6;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel17">
+                <Component class="javax.swing.JLabel" name="saleDate">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="0"/>
@@ -471,7 +473,7 @@
                     <Property name="text" type="java.lang.String" value="&#x17a2;&#x17d2;&#x1793;&#x1780;&#x1782;&#x17b7;&#x178f;&#x179b;&#x17bb;&#x1799; &#x17d6;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="cashierName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="0"/>
@@ -736,31 +738,35 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel44" min="-2" pref="87" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel42" min="-2" pref="122" max="-2" attributes="0"/>
+                                              <Component id="changeUsd" min="-2" pref="122" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel33" min="-2" pref="53" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel43" min="-2" pref="85" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jLabel47" min="-2" pref="105" max="-2" attributes="0"/>
+                                              <Component id="receiveUsd" min="-2" pref="105" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Component id="jLabel63" max="32767" attributes="0"/>
+                                          <Component id="jLabel63" pref="17" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel41" pref="42" max="32767" attributes="0"/>
+                                          <Component id="totalKhr" pref="47" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel64" max="32767" attributes="0"/>
+                                              <Component id="jLabel65" max="32767" attributes="0"/>
+                                          </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel48" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          <Component id="jLabel49" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel49" alignment="1" pref="66" max="32767" attributes="0"/>
+                                              <Component id="receiveKhr" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -788,16 +794,17 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel41" alignment="3" max="32767" attributes="0"/>
+                              <Component id="totalKhr" alignment="3" max="32767" attributes="0"/>
                               <Component id="jLabel63" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel47" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="receiveUsd" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel33" alignment="3" max="32767" attributes="0"/>
                                   <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel48" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="receiveKhr" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="jLabel64" alignment="3" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -809,8 +816,9 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel42" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Component id="changeUsd" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
                                       <Component id="jLabel49" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="jLabel65" alignment="3" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -886,7 +894,7 @@
                     <Property name="text" type="java.lang.String" value="$ 5.55"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel41">
+                <Component class="javax.swing.JLabel" name="totalKhr">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="14" style="1"/>
@@ -911,7 +919,7 @@
                     <Property name="text" type="java.lang.String" value=" /  Received :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel47">
+                <Component class="javax.swing.JLabel" name="receiveUsd">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="12" style="0"/>
@@ -920,7 +928,7 @@
                     <Property name="text" type="java.lang.String" value="$-"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel48">
+                <Component class="javax.swing.JLabel" name="receiveKhr">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="11"/>
                     <Property name="text" type="java.lang.String" value="&#x17db;-"/>
@@ -942,7 +950,7 @@
                     <Property name="text" type="java.lang.String" value="/  Change :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel42">
+                <Component class="javax.swing.JLabel" name="changeUsd">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="12" style="0"/>
@@ -958,6 +966,24 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel63">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Khmer OS Content" size="14" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="11"/>
+                    <Property name="text" type="java.lang.String" value="&#x17db; "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel64">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Khmer OS Content" size="14" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="11"/>
+                    <Property name="text" type="java.lang.String" value="&#x17db; "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel65">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer OS Content" size="14" style="1"/>

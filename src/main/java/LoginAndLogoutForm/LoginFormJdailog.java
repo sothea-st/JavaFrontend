@@ -294,6 +294,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           try {
                ArrayList<ProductModel> listProduct = new ArrayList<>();
                Response response = JavaConnection.get(JavaRoute.getProductByCatId + id);
+            
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
                     JSONObject jsonObject = new JSONObject(responseData);

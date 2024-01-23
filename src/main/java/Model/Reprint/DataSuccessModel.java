@@ -1,8 +1,6 @@
  
 package Model.Reprint;
 
-import java.util.HashMap;
-
 
 public class DataSuccessModel {
      private String msg;
@@ -31,6 +29,5 @@ public class DataSuccessModel {
      public void setData(ReprintModel data) {
           this.data = data;
      }
-     
-     
+      
 }

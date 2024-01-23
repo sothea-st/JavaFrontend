@@ -1,4 +1,5 @@
 Components\SearchField$1.class
+Controller\ReceiptController.class
 Components\LabelReceipt.class
 Payment\PaymentOption$1.class
 Components\BoxItem$3.class

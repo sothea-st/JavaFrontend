@@ -111,27 +111,21 @@ public class ReprintJdailog extends javax.swing.JDialog {
          Receipt rec = new Receipt(new JFrame(), true);
 
          Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-         System.err.println("data respis = " + response);
+
          try {
               String myObject = response.body().string();
               System.err.println("myobject = " + myObject);
 
               ObjectMapper objMap = new ObjectMapper();
               DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
-              System.err.println("ddd = " + d.getData().getCompanyName());
-              System.err.println("ddd = " + d.getData().getTotal());
-              System.err.println("ddd = " + d.getData().getSaleDetails());
-
-              SaleDetailModel[] list = d.getData().getSaleDetails();
-              for (int i = 0; i < list.length; i++) {
-                   System.err.println("daaaaaaaaaaaaa = " + list[i].getProNameEn());
-              }
-
+              rec.setDataSuccess(d);
+          
+              rec.setVisible(true);
          } catch (Exception e) {
               System.err.println("err while loding = " + e);
          }
 
-         rec.setVisible(true);
+
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
     private void btnPrintByInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseClicked

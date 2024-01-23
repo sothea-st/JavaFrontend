@@ -102,14 +102,21 @@ public class SubtotalPanel extends javax.swing.JPanel {
           txtTotalKhr.setText(lableTotalKhr);
      }
 
-     /**
-      * Creates new form Subtotal
-      */
+     public void setLabelSubTitleToZero() {
+          setLabelSubtotalUsd("$0.00");
+          setLabelSubtotalKhr("0");
+          setLableDiscountUsd("$0.00");
+          setLableDiscountKhr("0");
+          setLableDeliveryUsd("$0.00");
+          setLableDeliveryKhr("0");
+          setLableTotalUsd("$0.00");
+          setLableTotalKhr("0");
+     }
+
      public SubtotalPanel() {
           initComponents();
           setBackground(WindowColor.mediumGreen);
           setFont(WindowFonts.timeNewRomanBold14);
-         
      }
 
      private String labelSubtotalUsd;

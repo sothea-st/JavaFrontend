@@ -19,6 +19,7 @@ public class JavaConstant {
      public static String typeQRaba = "aba";
      public static String typeQRmnk = "mnk";
      public static String typeExpress = "express";
+     public static double exchangeRate = 4200;
 
      public static double getReplace(String value) {
           String data = value.replace("$", "");

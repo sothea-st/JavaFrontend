@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.OkHttpClient;
@@ -41,7 +42,9 @@ public class PaymentOption extends javax.swing.JDialog {
      private SubtotalPanel subtotalPanel;
      private String cusTypeId;
      private String sourceId;
-     private String paymentType=JavaConstant.typeCash;
+     private String paymentType = JavaConstant.typeCash;
+     private JPanel detailItem;
+     private JPanel boxOne;
 
      public PaymentOption(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -1062,6 +1065,13 @@ public class PaymentOption extends javax.swing.JDialog {
 
          if (response.isSuccessful()) {
               dispose();
+              detailItem.removeAll();
+              detailItem.revalidate();
+              detailItem.repaint();
+              boxOne.removeAll();
+              boxOne.revalidate();
+              boxOne.repaint();
+              subtotalPanel.setLabelSubTitleToZero();
          }
 
 
@@ -1134,6 +1144,23 @@ public class PaymentOption extends javax.swing.JDialog {
           this.subtotalPanel = subtotalPanel;
      }
 
+     public JPanel getDetailItem() {
+          return detailItem;
+     }
+
+     public void setDetailItem(JPanel detailItem) {
+          this.detailItem = detailItem;
+     }
+
+     public JPanel getBoxOne() {
+          return boxOne;
+     }
+
+     public void setBoxOne(JPanel boxOne) {
+          this.boxOne = boxOne;
+     }
+
+     
 
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private Components.ComboBox cmbCoupon;

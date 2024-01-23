@@ -37,6 +37,7 @@ D:\POS_CASHIER\tt_pos_window\src\main\java\Color\WindowColor.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Sale\SaleModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\TextField.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Products\ProductBox.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\PackageProduct\ProductIDModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\SubtotalPanel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Sale\PaymentDetailModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Fonts\WindowFonts.java

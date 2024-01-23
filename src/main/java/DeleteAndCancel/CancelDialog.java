@@ -2,12 +2,16 @@ package DeleteAndCancel;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.BoxItem;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
+import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
 import Model.Package.ReasonModel;
+import Model.PackageProduct.ProductIDModel;
+import Model.Sale.ProductSaleModel;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +33,7 @@ public class CancelDialog extends javax.swing.JDialog {
     private Button btnPayment;
     private HashMap<String, String> map = new HashMap<>();
     private String reasonId;
+    private Component[] listCom;
     
     /**
      * Creates new form DeleteDialog
@@ -85,8 +90,6 @@ public class CancelDialog extends javax.swing.JDialog {
         }
     }
     
-    
-
     @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
@@ -170,17 +173,40 @@ public class CancelDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-        detailItem.removeAll();
-        detailItem.revalidate();
-        detailItem.repaint();
-        this.dispose();
-        clearTotal();
-        changeColorButtonPayment();
+
+        JSONObject jsonData = new JSONObject();
+        
+        ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
+        for (int i = 0; i < listCom.length; i++) {
+            var obj = ((BoxItem) listCom[i]);
+            ProductIDModel pro = new ProductIDModel(
+                 obj.getProductId()
+            );
+            listCancelDetail.add(pro);
+        }
+        
+        jsonData.put("listCancelDetail", listCancelDetail);
+        jsonData.put("reasonId", reasonId);
+        jsonData.put("createBy", JavaConstant.cashierId);
+        
+        try {
+            Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "cancel", jsonData);
+            if (response.isSuccessful()) {
+                this.dispose();
+                detailItem.removeAll();
+                detailItem.revalidate();
+                detailItem.repaint();
+                clearTotal();
+                changeColorButtonPayment();
+            }
+
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     void changeColorButtonPayment(){
         Component[] listCom1 = detailItem.getComponents();
-        System.out.println(listCom1.length);
         if (listCom1.length == 0){
             btnPayment.setBackground(WindowColor.lightGray);
             getDetailItem().setBorder(null);
@@ -266,11 +292,15 @@ public class CancelDialog extends javax.swing.JDialog {
         this.btnPayment = btnPayment;
     }
 
-    
+    public Component[] getListCom() {
+        return listCom;
+    }
+
+    public void setListCom(Component[] listCom) {
+        this.listCom = listCom;
+    }
 
   
-    
-    
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private ButtonPackage.ButtonCancel buttonCancel;
      private ButtonPackage.ButtonSave buttonSave;

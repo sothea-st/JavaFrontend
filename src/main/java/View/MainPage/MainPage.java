@@ -593,11 +593,15 @@ public class MainPage extends javax.swing.JFrame {
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
 
         if ( JavaConstant.token != null) {
-            CancelDialog cancel = new CancelDialog(new JFrame(), true);
-            cancel.setDetailItem(detailItem);
-            cancel.setTotalPanel(totalPanel);
-            cancel.setBtnPayment(btnPayment);
-            cancel.setVisible(true);
+            Component[] listCom = detailItem.getComponents();
+            if(listCom.length != 0){
+                CancelDialog cancel = new CancelDialog(new JFrame(), true);
+                cancel.setDetailItem(detailItem);
+                cancel.setTotalPanel(totalPanel);
+                cancel.setBtnPayment(btnPayment);
+                cancel.setListCom(listCom);
+                cancel.setVisible(true);
+            }
         }else {
             System.err.println("System cannot open cancel option");
         }

@@ -160,6 +160,7 @@ Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
 Button\ButtonAddProduct.class
 Components\ReceiptBox.class
+Model\PackageProduct\ProductIDModel.class
 View\MainPage\MainPage$2.class
 Print\ReprintJdailog.class
 LoginAndLogoutForm\LoginFormJdailog$3.class
@@ -168,4 +169,3 @@ Model\Sale\SaleModel.class
 Payment\PaymentOption$9.class
 Button\ButtonAddProduct$1.class
 OpenAndCloseShift\CloseShift$1.class
-DeleteAndCancel\CancelDialog$3$1.class

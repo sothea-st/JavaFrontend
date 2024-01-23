@@ -1,7 +1,6 @@
 package com.mycompany.kingmart;
 
 import View.MainPage.MainPage;
-
 /**
  *
  * @author FRONT-END.06

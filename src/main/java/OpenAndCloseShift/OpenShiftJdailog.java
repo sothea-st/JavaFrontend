@@ -18,47 +18,48 @@ import org.json.JSONObject;
  */
 public class OpenShiftJdailog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form OpenShiftJdailog
-    */
-    private Button btnOpenShift;
-    
-    public OpenShiftJdailog(java.awt.Frame parent, boolean modal,Button btnOpenShift) {
-        super(parent, modal);
-        initComponents();
-        panelOpenShift.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        currenDateTime();
-        event();
-        setText();
-        this.btnOpenShift=btnOpenShift;
-        txtTotalUsd.requestFocus();
-    }
-    
-    private void currenDateTime(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");  
-        LocalDateTime date = LocalDateTime.now();  
-        txtDateTime.setUneditText(dtf.format(date));
-    }
-    
-    private void setText(){
-        txtCashierName.setUneditText(JavaConstant.fullName);
-        txtUserId.setUneditText(JavaConstant.userCode);
-        txtPosId.setUneditText(JavaConstant.posId);
-    }
-    
-    void event(){
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
+     /**
+      * Creates new form
+      * OpenShiftJdailog
+      */
+     private Button btnOpenShift;
 
-            }
-        };
-        txtTotalUsd.initEvent(btnevent);
-        txtTotalKhr.initEvent(btnevent);
-    }
-    
+     public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
+          super(parent, modal);
+          initComponents();
+          panelOpenShift.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          currenDateTime();
+          event();
+          setText();
+          this.btnOpenShift = btnOpenShift;
+          txtTotalUsd.requestFocus();
+     }
+
+     private void currenDateTime() {
+          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
+          LocalDateTime date = LocalDateTime.now();
+          txtDateTime.setUneditText(dtf.format(date));
+     }
+
+     private void setText() {
+          txtCashierName.setUneditText(JavaConstant.fullName);
+          txtUserId.setUneditText(JavaConstant.userCode);
+          txtPosId.setUneditText(JavaConstant.posId);
+     }
+
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
+
+               }
+          };
+          txtTotalUsd.initEvent(btnevent);
+          txtTotalKhr.initEvent(btnevent);
+     }
+
      @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -224,38 +225,33 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-  
-        String reserveUsd = txtTotalUsd.getValueTextField();
-        String reserveKhr = txtTotalKhr.getValueTextField();
-        String posId = txtPosId.getUneditText();
-        String userCode = txtUserId.getUneditText();
-        String openTime = txtDateTime.getUneditText();
 
-        JSONObject json = new JSONObject();
-        json.put("reserveUsd", reserveUsd);
-        json.put("reserveKhr", reserveKhr);
-        json.put("posId", posId);
-        json.put("userCode", userCode);
-        json.put("openTime", openTime);
-        json.put("createBy", JavaConstant.cashierId);
+         String reserveUsd = txtTotalUsd.getValueTextField();
+         String reserveKhr = txtTotalKhr.getValueTextField();
+         String posId = txtPosId.getUneditText();
+         String userCode = txtUserId.getUneditText();
+         String openTime = txtDateTime.getUneditText();
 
-        try {
-            Response response = JavaConnection.post(JavaRoute.openShift, json);
-            if (response.isSuccessful()) {
-                 String responseData = response.body().string();
-                 JSONObject jsonObject = new JSONObject(responseData);
-                 dispose();
-                 System.out.println("Success" + " " +response);
-                 btnOpenShift.setButtonName("Close Shift");
-            }
-            else
-            {
-                System.out.println("Failll");
-            }        
+         JSONObject json = new JSONObject();
+         json.put("reserveUsd", reserveUsd);
+         json.put("reserveKhr", reserveKhr);
+         json.put("posId", posId);
+         json.put("userCode", userCode);
+         json.put("openTime", openTime);
+         json.put("createBy", JavaConstant.cashierId);
 
-        } catch (Exception e) {
-            
-        }
+         try {
+              Response response = JavaConnection.post(JavaRoute.openShift, json);
+              if (response.isSuccessful()) {
+                   String responseData = response.body().string();
+                   dispose();
+              } else {
+                   System.out.println("Failll");
+              }
+
+         } catch (Exception e) {
+
+         }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
      /**

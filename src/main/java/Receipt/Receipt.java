@@ -160,10 +160,10 @@ public class Receipt extends javax.swing.JDialog {
           jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
           jLabel4.setFont(new java.awt.Font("Khmer OS Content", 0, 12)); // NOI18N
-          jLabel4.setText("លេខអត្តសញ្ញាណសារពើពន្ធ​");
+          jLabel4.setText("លេខអត្តសញ្ញាណសារពើពន្ធ​(VATTIN)៖");
 
           vattin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-          vattin.setText("(VATTIN):038545848965886");
+          vattin.setText("038545848965886");
 
           address.setFont(new java.awt.Font("Khmer OS Content", 0, 12)); // NOI18N
           address.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -183,9 +183,9 @@ public class Receipt extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                               .addGap(0, 0, Short.MAX_VALUE)
-                              .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addComponent(jLabel4)
                               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(vattin, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addComponent(vattin, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                               .addContainerGap())
                          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                               .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)

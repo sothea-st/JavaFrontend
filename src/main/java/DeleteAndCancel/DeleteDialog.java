@@ -2,14 +2,19 @@ package DeleteAndCancel;
 
 import Color.WindowColor;
 import Components.BoxItem;
+import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
+import Constant.JavaConstant;
 import Constant.JavaRoute;
+import Event.ButtonEvent;
 import Model.Package.ReasonModel;
+import Model.PackageProduct.ProductIDModel;
 import java.awt.Component;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
@@ -25,8 +30,8 @@ public class DeleteDialog extends javax.swing.JDialog {
     private SubtotalPanel subtotalPanel;
     DecimalFormat dm = new DecimalFormat("$#,##0.00");
     DecimalFormat kh = new DecimalFormat("#,##0");
-    private String reasonId;    
-    
+    private String reasonId;
+
     public DeleteDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -34,13 +39,24 @@ public class DeleteDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         addComboReason();
+
+        // action get select reason type
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onSelect(String key) {
+                reasonId = key;
+                System.err.println("key = " + key);
+            }
+        };
+        comboBoxReason.initEvent(event);
     }
 
     private void addComboReason() {
         HashMap<String, String> map = new HashMap<>();
         try {
             ArrayList<ReasonModel> reason = new ArrayList<>();
-            Response response = JavaConnection.get(JavaRoute.reason + "delete");
+            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
                 JSONObject jsonObject = new JSONObject(responseData);
@@ -55,13 +71,9 @@ public class DeleteDialog extends javax.swing.JDialog {
                     int idReason = reason.get(i).getIdReason();
                     String reasonName = reason.get(i).getReason();
                     map.put(reasonName, "" + idReason);
-                    
-                    if (i == 0) {
-                         reasonId = "" + idReason;
-                    }
                 }
                 comboBoxReason.setMap(map);
-                
+
             } else {
                 System.err.println("fail loading data");
             }
@@ -69,7 +81,6 @@ public class DeleteDialog extends javax.swing.JDialog {
             System.err.println("error = " + e);
         }
     }
-    
 
     void deleteItem() {
         double sumSubTotalUsd = 0;
@@ -99,15 +110,17 @@ public class DeleteDialog extends javax.swing.JDialog {
         }
 
         subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
-        subtotalPanel.setLabelSubtotalKhr(kh.format(sumSubTotalUsd * 4200));
+        subtotalPanel.setLabelSubtotalKhr(kh.format(sumSubTotalUsd * JavaConstant.exchangeRate));
 
         subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
-        subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * 4200));
+        subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
 
         // total
         double total = sumSubTotalUsd - sumDiscount;
         subtotalPanel.setLableTotalUsd(dm.format(total));
-        subtotalPanel.setLableTotalKhr(kh.format(total * 4200));
+        subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
+
+        this.dispose();
     }
 
     @SuppressWarnings("unchecked")
@@ -201,10 +214,31 @@ public class DeleteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
-        deleteItem();
-        System.err.println("success");
-        this.dispose();
+        
+        if( reasonId == null) {
+            JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+            j.setMessage("Pleas select reason!");
+            j.setVisible(true);
+            return;
+        }
+        
+        try {
+            JSONObject json = new JSONObject();
+            json.put("createBy", JavaConstant.cashierId);
+            json.put("reasonId", 1);
+            ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
+            listCancelDetail.add(new ProductIDModel(productId));
+            json.put("listCancelDetail", listCancelDetail);
 
+            Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "delete", json);
+            System.err.println("response " + response);
+            if (response.isSuccessful()) {
+                dispose();
+                deleteItem();
+            }
+        } catch (Exception e) {
+        }
+     
     }//GEN-LAST:event_buttonSave1MouseClicked
 
     public static void main(String args[]) {

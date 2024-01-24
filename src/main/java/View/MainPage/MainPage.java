@@ -2,84 +2,68 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
-import Components.BoxItem;
-import Components.LabelTitle;
-import Components.SubtotalPanel;
-import Constant.JavaConnection;
 import Constant.JavaConstant;
-import Constant.JavaRoute;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
-// import Model.Category.CategoryModel;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
 import Print.ReprintJdailog;
-import Products.ProductPanel;
 import Receipt.CashierReport;
 import Return.ApprovalCode;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Frame;
-import java.awt.GridLayout;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-/**
- *
- * @author FRONT-END.06
- */
 public class MainPage extends javax.swing.JFrame {
 
-    private Color bgColor = new Color(204, 204, 204);
-    private Color activeColor = new Color(56, 56, 56);
-    private JPanel detailProduct;
-    
-   
+     private Color bgColor = new Color(204, 204, 204);
+     private Color activeColor = new Color(56, 56, 56);
+     private JPanel detailProduct;
 
-    public MainPage(String data) {
-        initComponents();
-        event();
-        setBackground();
-        currenDateTime();
-        jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-        BackgroundImage bgimg = new BackgroundImage();
-        panelProduct.removeAll();
-        panelProduct.add(bgimg);
-        panelProduct.revalidate();
-        panelProduct.repaint();
-        jScrollPaneCategory.setVisible(false);
-        panelPagination.setVisible(false);
-        searchBox.requestFocusInWindow();
-    }
+     public MainPage(String data) {
+          initComponents();
+          event();
+          setBackground();
+          currenDateTime();
+          jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+          jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+          jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+          BackgroundImage bgimg = new BackgroundImage();
+          panelProduct.removeAll();
+          panelProduct.add(bgimg);
+          panelProduct.revalidate();
+          panelProduct.repaint();
+          jScrollPaneCategory.setVisible(false);
+          panelPagination.setVisible(false);
+          searchBox.requestFocusInWindow();
+     }
 
-    private void setBackground() {
-        mainPanel.setBackground(WindowColor.slightGreen);
-        panelCategory.setBackground(WindowColor.darkGreen);
-        category.setBackground(WindowColor.darkGreen);
-        menuBar.setBackground(WindowColor.darkGreen);
-        jScrollPaneCategory.setBackground(WindowColor.darkGreen);
-        day.setBackground(WindowColor.slightGreen);
-        panelprocessing.setBackground(WindowColor.slightGreen);
-        panelProduct.setBackground(WindowColor.slightGreen);
-        panelPagination.setBackground(WindowColor.slightGreen);
-        boxOne.setBackground(WindowColor.slightGreen);
-        detailItem.setBackground(WindowColor.slightGreen);
-    }
+     private void setBackground() {
+          mainPanel.setBackground(WindowColor.slightGreen);
+          panelCategory.setBackground(WindowColor.darkGreen);
+          category.setBackground(WindowColor.darkGreen);
+          menuBar.setBackground(WindowColor.darkGreen);
+          jScrollPaneCategory.setBackground(WindowColor.darkGreen);
+          day.setBackground(WindowColor.slightGreen);
+          panelprocessing.setBackground(WindowColor.slightGreen);
+          panelProduct.setBackground(WindowColor.slightGreen);
+          panelPagination.setBackground(WindowColor.slightGreen);
+          boxOne.setBackground(WindowColor.slightGreen);
+          detailItem.setBackground(WindowColor.slightGreen);
+     }
 
-    private void currenDateTime() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
-        LocalDateTime date = LocalDateTime.now();
-        currentDate.setText(dtf.format(date));
-    }
+     private void currenDateTime() {
+          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
+          LocalDateTime date = LocalDateTime.now();
+          currentDate.setText(dtf.format(date));
+     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -520,55 +504,54 @@ public class MainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        String buttonName = btnLogin.getButtonName().toLowerCase();
-        if (buttonName.equals("login")) {
-            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
-            jdFormLogin.setBoxUserName(boxUserName);
-            jdFormLogin.setBtnLogin(btnLogin);
-            jdFormLogin.setCategory(category);
-            jdFormLogin.setPanelProduct(panelProduct);
-            jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
-            jdFormLogin.setPanelPagination(panelPagination);
-            jdFormLogin.setDetailItem(detailItem);
-            jdFormLogin.setBoxOne(boxOne);
-            jdFormLogin.setSubtotalPanel(totalPanel);
-            jdFormLogin.setBtnPayment(btnPayment);
-            
-            jdFormLogin.setVisible(true);
-        } else if (buttonName.equals("logout")) {
-            LogoutDialog logout = new LogoutDialog(new JFrame(), true);
-            logout.setVisible(true);
-        }
+         String buttonName = btnLogin.getButtonName().toLowerCase();
+         if (buttonName.equals("login")) {
+              LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
+              jdFormLogin.setBoxUserName(boxUserName);
+              jdFormLogin.setBtnLogin(btnLogin);
+              jdFormLogin.setCategory(category);
+              jdFormLogin.setPanelProduct(panelProduct);
+              jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
+              jdFormLogin.setPanelPagination(panelPagination);
+              jdFormLogin.setDetailItem(detailItem);
+              jdFormLogin.setBoxOne(boxOne);
+              jdFormLogin.setSubtotalPanel(totalPanel);
+              jdFormLogin.setBtnPayment(btnPayment);
+
+              jdFormLogin.setVisible(true);
+         } else if (buttonName.equals("logout")) {
+              LogoutDialog logout = new LogoutDialog(new JFrame(), true);
+              logout.setVisible(true);
+         }
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnOpenShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenShiftMouseClicked
-        String buttonName = btnOpenShift.getButtonName().toLowerCase();
-        if ( JavaConstant.token != null) {
-            if (buttonName.equals("open shift")) {
-               OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true,btnOpenShift);
-               jdOpenShift.setVisible(true);
-            }
-            else if (buttonName.equals("close shift")) {
-                CloseShift close = new CloseShift(new JFrame(), true);
-                close.setVisible(true);
-            }
-        } else {
-            System.err.println("System Cannot Open Shift");
-        }
+         String buttonName = btnOpenShift.getButtonName().toLowerCase();
+         if (JavaConstant.token != null) {
+              if (buttonName.equals("open shift")) {
+                   OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
+                   jdOpenShift.setVisible(true);
+              } else if (buttonName.equals("close shift")) {
+                   CloseShift close = new CloseShift(new JFrame(), true);
+                   close.setVisible(true);
+              }
+         } else {
+              System.err.println("System Cannot Open Shift");
+         }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
-    //Action Button Reprint
+     //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
 
-        if ( JavaConstant.token != null) {
-            ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
-            rep.setVisible(true);
-        }else {
-             System.err.println("System cannot open reprint option");
-        }
+         if (JavaConstant.token != null) {
+              ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
+              rep.setVisible(true);
+         } else {
+              System.err.println("System cannot open reprint option");
+         }
     }//GEN-LAST:event_btnReprintMouseClicked
 
-    //Action Button payment
+     //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
 
         if ( JavaConstant.token != null) {
@@ -587,123 +570,123 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPaymentMouseClicked
 
-    //Action Button Return
+     //Action Button Return
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        if ( JavaConstant.token != null) {
-            ApprovalCode approval = new ApprovalCode(new JFrame(), true);
-            approval.setVisible(true);
-        }else {
-            System.err.println("System cannot open return option");
-        }
+         if (JavaConstant.token != null) {
+              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+              approval.setVisible(true);
+         } else {
+              System.err.println("System cannot open return option");
+         }
     }//GEN-LAST:event_btnReturnMouseClicked
 
-    //Action Button Cancel
+     //Action Button Cancel
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
 
-        if ( JavaConstant.token != null) {
-            Component[] listCom = detailItem.getComponents();
-            if(listCom.length != 0){
-                CancelDialog cancel = new CancelDialog(new JFrame(), true);
-                cancel.setDetailItem(detailItem);
-                cancel.setTotalPanel(totalPanel);
-                cancel.setBtnPayment(btnPayment);
-                cancel.setListCom(listCom);
-                cancel.setVisible(true);
-            }
-        }else {
-            System.err.println("System cannot open cancel option");
-        }
+         if (JavaConstant.token != null) {
+              Component[] listCom = detailItem.getComponents();
+              if (listCom.length != 0) {
+                   CancelDialog cancel = new CancelDialog(new JFrame(), true);
+                   cancel.setDetailItem(detailItem);
+                   cancel.setTotalPanel(totalPanel);
+                   cancel.setBtnPayment(btnPayment);
+                   cancel.setListCom(listCom);
+                   cancel.setVisible(true);
+              }
+         } else {
+              System.err.println("System cannot open cancel option");
+         }
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCashierMouseClicked
-       
-        if ( JavaConstant.token != null) {
-            CashierReport cashier = new CashierReport(new JFrame(), true);
-            cashier.setVisible(true);
-        }else {
-            System.err.println("System cannot oprn Cashier Report");
-        }
-        
+
+         if (JavaConstant.token != null) {
+              CashierReport cashier = new CashierReport(new JFrame(), true);
+              cashier.setVisible(true);
+         } else {
+              System.err.println("System cannot oprn Cashier Report");
+         }
+
     }//GEN-LAST:event_buttonCashierMouseClicked
 
      private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
-        // TODO add your handling code here:
-        System.err.println("333333333333333");
-        this.setBackground(Color.red);
-        revalidate();
-        repaint();
-        validate();
+          // TODO add your handling code here:
+          System.err.println("333333333333333");
+          this.setBackground(Color.red);
+          revalidate();
+          repaint();
+          validate();
      }//GEN-LAST:event_button3MouseClicked
 
      private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
           // TODO add your handling code here:
      }//GEN-LAST:event_btnLoginMouseEntered
 
-    //Function call Placeholder
-    void event() {
-        ButtonEvent btnevent = new ButtonEvent() {
-             @Override
-             public void onFocusGain() {
+     //Function call Placeholder
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
 
-             }
-        };
-        searchBox.initEvent(btnevent);
-        textField.initEvent(btnevent);
-    }
+               }
+          };
+          searchBox.initEvent(btnevent);
+          textField.initEvent(btnevent);
+     }
 
-    public JPanel getDetailProduct() {
-        return detailProduct;
-    }
+     public JPanel getDetailProduct() {
+          return detailProduct;
+     }
 
-    public void setDetailProduct(JPanel detailProduct) {
-        this.detailProduct = detailProduct;
-    }
+     public void setDetailProduct(JPanel detailProduct) {
+          this.detailProduct = detailProduct;
+     }
 
-    public Color getActiveColor() {
-        return activeColor;
-    }
+     public Color getActiveColor() {
+          return activeColor;
+     }
 
-    public void setActiveColor(Color activeColor) {
-        this.activeColor = activeColor;
+     public void setActiveColor(Color activeColor) {
+          this.activeColor = activeColor;
 //        menuNewItem.setBackground(activeColor);
-    }
+     }
 
-    /**
-     * @param args the command line
-     * arguments
-     */
-    public static void main(String args[]) {
-         /* Set the Nimbus look and feel */
-         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-          */
-         try {
-              for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                   if ("Nimbus".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                   }
-              }
-         } catch (ClassNotFoundException ex) {
-              java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-         } catch (InstantiationException ex) {
-              java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-         } catch (IllegalAccessException ex) {
-              java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-              java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-         }
-         //</editor-fold>
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
+                    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          }
+          //</editor-fold>
 
-         /* Create and display the form */
-         java.awt.EventQueue.invokeLater(new Runnable() {
-              public void run() {
-                   MainPage obj = new MainPage(null);
-                   obj.setVisible(true);
-              }
-         });
-    }
+          /* Create and display the form */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    MainPage obj = new MainPage(null);
+                    obj.setVisible(true);
+               }
+          });
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel boxOne;

@@ -32,6 +32,7 @@ public class ComboBox extends javax.swing.JPanel {
                combo.addItem(cm.getKey());
                combo.setFont(WindowFonts.timeNewRoman14);
           }
+          
      }
 
      public ComboBox() {
@@ -109,44 +110,44 @@ public class ComboBox extends javax.swing.JPanel {
      }
 
      @SuppressWarnings("unchecked")
-     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-     private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-          combo = new javax.swing.JComboBox<>();
+        combo = new javax.swing.JComboBox<>();
 
-          combo.setBackground(new java.awt.Color(255, 255, 255));
-          combo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-          combo.setFocusable(false);
-          combo.addActionListener(new java.awt.event.ActionListener() {
-               public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    comboActionPerformed(evt);
-               }
-          });
+        combo.setBackground(new java.awt.Color(255, 255, 255));
+        combo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        combo.setFocusable(false);
+        combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboActionPerformed(evt);
+            }
+        });
 
-          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-          this.setLayout(layout);
-          layout.setHorizontalGroup(
-               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(combo, 0, 202, Short.MAX_VALUE)
-                    .addContainerGap())
-          );
-          layout.setVerticalGroup(
-               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
-                    .addContainerGap())
-          );
-     }// </editor-fold>//GEN-END:initComponents
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(combo, 0, 202, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
     private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
 
     }//GEN-LAST:event_comboActionPerformed
 
 
-     // Variables declaration - do not modify//GEN-BEGIN:variables
-     private javax.swing.JComboBox<String> combo;
-     // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combo;
+    // End of variables declaration//GEN-END:variables
 }

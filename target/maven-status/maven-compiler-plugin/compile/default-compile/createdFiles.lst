@@ -12,6 +12,7 @@ Return\ApprovalCode$4.class
 View\MainPage\MainPage$7.class
 Components\LabelTitle$1.class
 Receipt\Receipt$4.class
+Components\JavaAlertMessage.class
 DeleteAndCancel\DeleteDialog.class
 Components\TextField$1.class
 Constant\JavaBaseUrl.class
@@ -22,6 +23,7 @@ Return\ReturnDialog$3.class
 Receipt\Receipt$3.class
 DeleteAndCancel\CancelDialog$3.class
 Payment\PaymentOption$15.class
+DeleteAndCancel\DeleteDialog$4$1.class
 Payment\PaymentOption$7.class
 Print\ReprintJdailog$1.class
 Components\SubtotalPanel.class
@@ -87,8 +89,8 @@ View\MainPage\MainPage.class
 Return\ApprovalCode$1.class
 LoginAndLogoutForm\LogoutDialog$4$1.class
 Receipt\CashierReport$3.class
-DeleteAndCancel\DeleteDialog$3$1.class
 com\mycompany\kingmart\KingMart.class
+DeleteAndCancel\DeleteDialog$4.class
 Payment\PaymentOption.class
 Receipt\Receipt$4$1.class
 Payment\PaymentOption$4.class
@@ -109,6 +111,7 @@ Constant\JavaConstant.class
 Receipt\Receipt$1.class
 Receipt\Receipt.class
 Fonts\WindowFonts.class
+Components\JavaAlertMessage$2$1.class
 Components\LabelFontBlack.class
 Products\ProductPanel$1.class
 Payment\PaymentOption$24.class
@@ -137,6 +140,7 @@ Model\CustomerType\CustomerTypeModel.class
 Payment\PaymentOption$13.class
 Payment\PaymentOption$8.class
 Components\LabelTitle$2.class
+Components\JavaAlertMessage$2.class
 OpenAndCloseShift\OpenShiftJdailog$4.class
 LoginAndLogoutForm\LoginFormJdailog$1.class
 OpenAndCloseShift\OpenShiftJdailog$1.class
@@ -162,6 +166,7 @@ Components\BoxItem.class
 Components\BoxItem$2.class
 Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
+Components\JavaAlertMessage$1.class
 Button\ButtonAddProduct.class
 Components\ReceiptBox.class
 Model\PackageProduct\ProductIDModel.class

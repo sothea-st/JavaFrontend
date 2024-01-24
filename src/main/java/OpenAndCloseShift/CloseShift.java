@@ -214,19 +214,13 @@ public class CloseShift extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-//        String express = ;
-//        String khqrMnk = qrMnk.getValueTextField();
-//        String khqrAba = qrAba.getValueTextField();
-//        String creditCard = abaCreditCard.getValueTextField();
-//        String cashKhr = cashKh.getValueTextField();
-//        String cashUsd = cashUs.getValueTextField();
         
-        BigDecimal express= new BigDecimal(redexpress.getValueTextField());
-        BigDecimal khqrMnk= new BigDecimal(qrMnk.getValueTextField());
-        BigDecimal khqrAba= new BigDecimal(qrAba.getValueTextField());
-        BigDecimal creditCard= new BigDecimal(abaCreditCard.getValueTextField());
-        BigDecimal cashKhr= new BigDecimal(cashKh.getValueTextField());
-        BigDecimal cashUsd= new BigDecimal(cashUs.getValueTextField());
+        double express = JavaConstant.getReplace(redexpress.getValueTextField());
+        double khqrMnk = JavaConstant.getReplace(qrMnk.getValueTextField());
+        double khqrAba = JavaConstant.getReplace(qrAba.getValueTextField());
+        double creditCard = JavaConstant.getReplace(abaCreditCard.getValueTextField());
+        double cashKhr = JavaConstant.getReplace(cashKh.getValueTextField());
+        double cashUsd = JavaConstant.getReplace(cashUs.getValueTextField());
 
         JSONObject json = new JSONObject();
         json.put("express", express);
@@ -237,19 +231,15 @@ public class CloseShift extends javax.swing.JDialog {
         json.put("cashUsd", cashUsd);
         json.put("userCode", JavaConstant.userCode);
         json.put("userId", JavaConstant.cashierId);
-        
-        System.out.println("Hell"+json);
 
         try {
-             Response response = JavaConnection.post(JavaRoute.closeShift, json);
-             System.out.println("Hellloooo"+response);
-             if (response.isSuccessful()) {
-                  dispose();
-                  btnOpenShift.setButtonName("Open Shift");
-                  
-             } else {
-                  System.out.println("Failll");
-             }
+            Response response = JavaConnection.post(JavaRoute.closeShift, json);
+            if (response.isSuccessful()) {
+                dispose();
+                btnOpenShift.setButtonName("Open Shift");
+            } else {
+                System.out.println("Failll");
+            }
 
         } catch (Exception e) {
 

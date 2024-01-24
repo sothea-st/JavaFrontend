@@ -1005,7 +1005,6 @@ public class PaymentOption extends javax.swing.JDialog {
     private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
 
          if (txtReceiveKhr.getText().isEmpty() && txtReceiveUsd.getText().isEmpty()) {
-            
               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
               j.setMessage("Box Receive must be have one value!");
               j.setVisible(true);

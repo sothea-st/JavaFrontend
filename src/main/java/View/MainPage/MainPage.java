@@ -530,7 +530,7 @@ public class MainPage extends javax.swing.JFrame {
                    OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
                    jdOpenShift.setVisible(true);
               } else if (buttonName.equals("close shift")) {
-                   CloseShift close = new CloseShift(new JFrame(), true);
+                   CloseShift close = new CloseShift(new JFrame(), true,btnOpenShift);
                    close.setVisible(true);
               }
          } else {
@@ -561,6 +561,7 @@ public class MainPage extends javax.swing.JFrame {
                 pay.setSubtotalPanel(totalPanel);
                 pay.setDetailItem(detailItem);
                 pay.setBoxOne(boxOne);
+                pay.setBtnPayment(btnPayment);
                 pay.setVisible(true);
             }
         }else {

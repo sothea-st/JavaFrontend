@@ -19,22 +19,9 @@ import java.awt.image.BufferedImage;
  */
 public class TextFieldCenter extends javax.swing.JPanel {
 
-    /**
-     * @return the labelTextKh
-     */
-    public String getLabelTextCenter() {
-        return labelTextCenter;
-    }
+    private String labelTextCenter;
+    private String valueTextFieldCenter;
 
-    /**
-     * @param labelTextKh the labelTextKh to set
-     */
-    public void setLabelTextCenter(String labelTextCenter) {
-        this.labelTextCenter = labelTextCenter;
-        txtTextCenter.setText(labelTextCenter);
-        txtTextCenter.setForeground(Color.LIGHT_GRAY);
-    }
-    
     //Create Placeholder
     public void initEvent(ButtonEvent event) {
         txtTextCenter.addFocusListener(new FocusListener() {
@@ -125,7 +112,6 @@ public class TextFieldCenter extends javax.swing.JPanel {
         txtTextCenter.setFont(WindowFonts.timeNewRoman14);
     }
 
-    private String labelTextCenter;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -138,6 +124,11 @@ public class TextFieldCenter extends javax.swing.JPanel {
         txtTextCenter.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtTextCenterFocusGained(evt);
+            }
+        });
+        txtTextCenter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTextCenterKeyReleased(evt);
             }
         });
 
@@ -159,9 +150,32 @@ public class TextFieldCenter extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public String getLabelTextCenter() {
+        return labelTextCenter;
+    }
+
+    public void setLabelTextCenter(String labelTextCenter) {
+        this.labelTextCenter = labelTextCenter;
+        txtTextCenter.setText(labelTextCenter);
+        txtTextCenter.setForeground(Color.LIGHT_GRAY);
+    }
+
+    public String getValueTextFieldCenter() {
+        return valueTextFieldCenter;
+    }
+
+    public void setValueTextFieldCenter(String valueTextFieldCenter) {
+        this.valueTextFieldCenter = valueTextFieldCenter;
+    }
+    
     private void txtTextCenterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTextCenterFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTextCenterFocusGained
+
+    private void txtTextCenterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTextCenterKeyReleased
+        String text = txtTextCenter.getText();
+        setValueTextFieldCenter(text);
+    }//GEN-LAST:event_txtTextCenterKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,5 +1,6 @@
 package Payment;
 
+import Button.Button;
 import Color.WindowColor;
 import Components.BoxItem;
 import Components.JavaAlertMessage;
@@ -12,11 +13,11 @@ import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
 import Model.CustomerType.SourceModel;
 import Model.Sale.ProductSaleModel;
-import java.awt.Color;
 import java.awt.Component;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -39,12 +40,11 @@ public class PaymentOption extends javax.swing.JDialog {
      private String paymentType = JavaConstant.typeCash;
      private JPanel detailItem;
      private JPanel boxOne;
+     private Button btnPayment;
 
      public PaymentOption(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
           initComponents();
-          panelPayment.setBackground(WindowColor.mediumGreen);
-          panelTotal.setBackground(WindowColor.mediumGreen);
           setDefaultCloseOperation(DISPOSE_ON_CLOSE);
           setResizable(false);
           addComboCustomerType();
@@ -68,6 +68,46 @@ public class PaymentOption extends javax.swing.JDialog {
                }
           };
           cmbSource.initEvent(events);
+          
+          genderGroupButton();
+          nationalityGroupButton();
+          setColor();
+          
+          paymentType = "cash";
+          
+     }
+     
+     //=================================================
+     private void setColor(){
+         
+          panelPayment.setBackground(WindowColor.mediumGreen);
+          panelTotal.setBackground(WindowColor.mediumGreen);
+          lbCashPayment.setFontColor(WindowColor.white);
+          lbCash.setFontColor(WindowColor.white);
+          lbCreditCard.setFontColor(WindowColor.white);
+          labelFontBlack2.setFontColor(WindowColor.white);
+          labelFontBlack5.setFontColor(WindowColor.white);
+          labelFontBlack9.setFontColor(WindowColor.white);
+          lbCreditCard.setBackground(WindowColor.blue);
+          lbCash.setBackground(WindowColor.green);
+     }
+     
+     //================ Gender Option ===================
+     private void genderGroupButton(){
+       
+        ButtonGroup group = new ButtonGroup();
+        group.add(radioButtonMale);
+        group.add(radioButtonFemale);
+     }
+     
+     //================ Nationality Option ===================
+     private void nationalityGroupButton(){
+        ButtonGroup group = new ButtonGroup();
+        group.add(radioButtonKhmer);
+        group.add(radioButtonAsian);
+        group.add(radioButtonChinese);
+        group.add(radioButtonWhite);
+        group.add(radioButtonBlack);
      }
 
      //Action call function placeholder
@@ -301,6 +341,7 @@ public class PaymentOption extends javax.swing.JDialog {
         lbNationality.setLabelName(" Nationality");
 
         lbCash.setBackground(new java.awt.Color(0, 204, 255));
+        lbCash.setFontColor(java.awt.Color.white);
         lbCash.setLabelName("Cash");
         lbCash.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -309,6 +350,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbCreditCard.setBackground(new java.awt.Color(0, 204, 255));
+        lbCreditCard.setFontColor(java.awt.Color.white);
         lbCreditCard.setLabelName("Credit Card");
         lbCreditCard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -317,6 +359,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbCashPayment.setBackground(new java.awt.Color(0, 204, 255));
+        lbCashPayment.setFontColor(java.awt.Color.white);
         lbCashPayment.setLabelName("Cash Payment");
 
         label5.setLabelName("Total Pay");
@@ -493,6 +536,8 @@ public class PaymentOption extends javax.swing.JDialog {
         );
 
         lbOne.setBackground(new java.awt.Color(255, 255, 255));
+        lbOne.setForeground(new java.awt.Color(255, 255, 255));
+        lbOne.setFontColor(new java.awt.Color(56, 56, 56));
         lbOne.setLabelName("1");
         lbOne.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -501,6 +546,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbTwo.setBackground(new java.awt.Color(255, 255, 255));
+        lbTwo.setFontColor(new java.awt.Color(56, 56, 56));
         lbTwo.setLabelName("2");
         lbTwo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -509,6 +555,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbThree.setBackground(new java.awt.Color(255, 255, 255));
+        lbThree.setFontColor(new java.awt.Color(56, 56, 56));
         lbThree.setLabelName("3");
         lbThree.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -517,6 +564,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbDelete.setBackground(new java.awt.Color(255, 255, 255));
+        lbDelete.setFontColor(new java.awt.Color(56, 56, 56));
         lbDelete.setLabelName("Del");
         lbDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -525,6 +573,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbFour.setBackground(new java.awt.Color(255, 255, 255));
+        lbFour.setFontColor(new java.awt.Color(56, 56, 56));
         lbFour.setLabelName("4");
         lbFour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -533,6 +582,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbFive.setBackground(new java.awt.Color(255, 255, 255));
+        lbFive.setFontColor(new java.awt.Color(56, 56, 56));
         lbFive.setLabelName("5");
         lbFive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -541,6 +591,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbSix.setBackground(new java.awt.Color(255, 255, 255));
+        lbSix.setFontColor(new java.awt.Color(56, 56, 56));
         lbSix.setLabelName("6");
         lbSix.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -549,6 +600,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbDot.setBackground(new java.awt.Color(255, 255, 255));
+        lbDot.setFontColor(new java.awt.Color(56, 56, 56));
         lbDot.setLabelName(".");
         lbDot.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -557,6 +609,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbSeven.setBackground(new java.awt.Color(255, 255, 255));
+        lbSeven.setFontColor(new java.awt.Color(56, 56, 56));
         lbSeven.setLabelName("7");
         lbSeven.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -565,6 +618,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbEight.setBackground(new java.awt.Color(255, 255, 255));
+        lbEight.setFontColor(new java.awt.Color(56, 56, 56));
         lbEight.setLabelName("8");
         lbEight.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -573,6 +627,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbNine.setBackground(new java.awt.Color(255, 255, 255));
+        lbNine.setFontColor(new java.awt.Color(56, 56, 56));
         lbNine.setLabelName("9");
         lbNine.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -581,6 +636,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         lbZero.setBackground(new java.awt.Color(255, 255, 255));
+        lbZero.setFontColor(new java.awt.Color(56, 56, 56));
         lbZero.setLabelName("0");
         lbZero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -589,6 +645,7 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         labelFontBlack2.setBackground(new java.awt.Color(204, 0, 0));
+        labelFontBlack2.setFontColor(java.awt.Color.white);
         labelFontBlack2.setLabelName("Back");
         labelFontBlack2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -597,9 +654,11 @@ public class PaymentOption extends javax.swing.JDialog {
         });
 
         labelFontBlack5.setBackground(new java.awt.Color(47, 152, 70));
+        labelFontBlack5.setFontColor(java.awt.Color.white);
         labelFontBlack5.setLabelName("Charge&eInvoice");
 
         labelFontBlack9.setBackground(new java.awt.Color(47, 152, 70));
+        labelFontBlack9.setFontColor(java.awt.Color.white);
         labelFontBlack9.setLabelName("Charge&Print");
         labelFontBlack9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -619,37 +678,37 @@ public class PaymentOption extends javax.swing.JDialog {
 
         radioButtonKhmer.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonKhmer.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonKhmer.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonKhmer.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonKhmer.setText("Khmer");
 
         radioButtonAsian.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonAsian.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonAsian.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonAsian.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonAsian.setText("Asian");
 
         radioButtonChinese.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonChinese.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonChinese.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonChinese.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonChinese.setText("Chinese");
 
         radioButtonWhite.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonWhite.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonWhite.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonWhite.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonWhite.setText("White");
 
         radioButtonBlack.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonBlack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonBlack.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonBlack.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonBlack.setText("Black");
 
         radioButtonMale.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonMale.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonMale.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonMale.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonMale.setText("Male");
 
         radioButtonFemale.setBackground(new java.awt.Color(176, 215, 181));
         radioButtonFemale.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        radioButtonFemale.setForeground(new java.awt.Color(51, 51, 51));
+        radioButtonFemale.setForeground(new java.awt.Color(56, 56, 56));
         radioButtonFemale.setText("Female");
 
         javax.swing.GroupLayout panelPaymentLayout = new javax.swing.GroupLayout(panelPayment);
@@ -1024,6 +1083,7 @@ public class PaymentOption extends javax.swing.JDialog {
          jsonData.put("deliveryFee", "0");
          jsonData.put("total", total);
 
+         //get dataPay
          HashMap<String, Object> dataPay = new HashMap<>();
          dataPay.put("sourceId", sourceId);
          dataPay.put("customerTypeId", cusTypeId);
@@ -1034,15 +1094,14 @@ public class PaymentOption extends javax.swing.JDialog {
          dataPay.put("remainingKhr", remainningKhr);
          dataPay.put("changeUsd", changeUsd);
          dataPay.put("changeKhr", changeKhr);
-
          jsonData.put("dataPay", dataPay);
-
+         
+         //get customer 
          HashMap<String, Object> customer = new HashMap<>();
-         customer.put("cusName", txtCustomerName.getLabelTextCenter());
-         customer.put("contact", txtCustomerPhone.getLabelTextCenter());
-         customer.put("email", txtCustomerEmail.getLabelTextCenter());
-         customer.put("earning", txtEarning.getLabelTextCenter());
-
+         customer.put("cusName", txtCustomerName.getValueTextFieldCenter());
+         customer.put("contact", txtCustomerPhone.getValueTextFieldCenter());
+         customer.put("email", txtCustomerEmail.getValueTextFieldCenter());
+         customer.put("earning", txtEarning.getValueTextFieldCenter());
          if (radioButtonKhmer.isSelected()) {
               customer.put("nationality", radioButtonKhmer.getText());
          } else if (radioButtonAsian.isSelected()) {
@@ -1054,15 +1113,14 @@ public class PaymentOption extends javax.swing.JDialog {
          } else if (radioButtonBlack.isSelected()) {
               customer.put("nationality", radioButtonBlack.getText());
          }
-
          if (radioButtonMale.isSelected()) {
               customer.put("gender", radioButtonMale.getText());
          } else if (radioButtonFemale.isSelected()) {
               customer.put("gender", radioButtonFemale.getText());
          }
-         
-//         jsonData.put("customer", customer);
+         jsonData.put("customer", customer);
 
+         //get dataSale 
          ArrayList<ProductSaleModel> dataSale = new ArrayList<>();
          for (int i = 0; i < listCom.length; i++) {
               var obj = ((BoxItem) listCom[i]);
@@ -1081,16 +1139,14 @@ public class PaymentOption extends javax.swing.JDialog {
          jsonData.put("dataSale", dataSale);
 
          Response response = JavaConnection.post(JavaRoute.sale, jsonData);
-
+         
          if (response.isSuccessful()) {
               dispose();
               detailItem.removeAll();
               detailItem.revalidate();
               detailItem.repaint();
-              boxOne.removeAll();
-              boxOne.revalidate();
-              boxOne.repaint();
               subtotalPanel.setLabelSubTitleToZero();
+              getBtnPayment().setBackground(WindowColor.lightGray);
          }
 
     }//GEN-LAST:event_labelFontBlack9MouseClicked
@@ -1178,6 +1234,15 @@ public class PaymentOption extends javax.swing.JDialog {
           this.boxOne = boxOne;
      }
 
+    public Button getBtnPayment() {
+        return btnPayment;
+    }
+
+    public void setBtnPayment(Button btnPayment) {
+        this.btnPayment = btnPayment;
+    }
+
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.ComboBox cmbCoupon;

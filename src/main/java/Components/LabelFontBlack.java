@@ -17,16 +17,22 @@ import java.awt.image.BufferedImage;
  */
 public class LabelFontBlack extends javax.swing.JPanel {
 
-    /**
-     * @return the labelName
-     */
+    private String labelName;
+    private Color fontColor;
+    
+    public Color getFontColor() {
+        return fontColor;
+    }
+
+    public void setFontColor(Color fontColor) {
+        this.fontColor = fontColor;
+        lbLabel.setForeground(fontColor);
+    }
+
     public String getLabelName() {
         return labelName;
     }
 
-    /**
-     * @param labelName the labelName to set
-     */
     public void setLabelName(String labelName) {
         this.labelName = labelName;
         lbLabel.setText(labelName);
@@ -34,7 +40,7 @@ public class LabelFontBlack extends javax.swing.JPanel {
 
     /**
      * Creates new form LabelFontBlack
-     */
+    */
     public LabelFontBlack() {
         initComponents();
         setBackground(WindowColor.mediumGreen);
@@ -97,7 +103,7 @@ public class LabelFontBlack extends javax.swing.JPanel {
         g2.drawImage(img, x, y, null);
     }
 
-    private String labelName;
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

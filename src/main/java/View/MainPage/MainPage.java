@@ -326,8 +326,6 @@ public class MainPage extends javax.swing.JFrame {
 
         jScrollPaneDetail.setBorder(null);
 
-        boxOne.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         javax.swing.GroupLayout detailItemLayout = new javax.swing.GroupLayout(detailItem);
         detailItem.setLayout(detailItemLayout);
         detailItemLayout.setHorizontalGroup(
@@ -339,7 +337,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        boxOne.add(detailItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 430, -1));
+        boxOne.add(detailItem);
 
         jScrollPaneDetail.setViewportView(boxOne);
 
@@ -563,6 +561,7 @@ public class MainPage extends javax.swing.JFrame {
                 pay.setSubtotalPanel(totalPanel);
                 pay.setDetailItem(detailItem);
                 pay.setBoxOne(boxOne);
+                pay.setBtnPayment(btnPayment);
                 pay.setVisible(true);
             }
         }else {

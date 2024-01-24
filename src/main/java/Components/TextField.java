@@ -19,25 +19,14 @@ import java.awt.image.BufferedImage;
  */
 public class TextField extends javax.swing.JPanel {
 
-     private String valueTextField;
-     
-    public String getLabelTextField() {
-        return labelTextField;
-    }
-
- 
-    public void setLabelTextField(String labelTextField) {
-        this.labelTextField = labelTextField;
-        txtText.setText(labelTextField);
-        txtText.setForeground(Color.LIGHT_GRAY);
-    }
+    private String labelTextField;
+    private String valueTextField;
     
     public TextField() {
         initComponents();
         setBackground(WindowColor.white); 
         txtText.setFont(WindowFonts.timeNewRoman14);
     }
-    
     
     //Create Placeholder
     public void initEvent(ButtonEvent event) {
@@ -63,7 +52,6 @@ public class TextField extends javax.swing.JPanel {
             }
         });
     }
-    
 
     //=================================================Create Shadow Box
     private ShadowType shadowType;
@@ -161,19 +149,22 @@ public class TextField extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTextFocusGained
 
+    public String getLabelTextField() {
+        return labelTextField;
+    }
+ 
+    public void setLabelTextField(String labelTextField) {
+        this.labelTextField = labelTextField;
+        txtText.setText(labelTextField);
+        txtText.setForeground(Color.LIGHT_GRAY);
+    }
+    
      private void txtTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTextKeyReleased
           // TODO add your handling code here:
           String text = txtText.getText();
           setValueTextField(text);
      }//GEN-LAST:event_txtTextKeyReleased
 
-    private String labelTextField;
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField txtText;
-    // End of variables declaration//GEN-END:variables
-
-      
      public String getValueTextField() {
           return valueTextField;
      }
@@ -182,4 +173,9 @@ public class TextField extends javax.swing.JPanel {
      public void setValueTextField(String valueTextField) {
           this.valueTextField = valueTextField;
      }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField txtText;
+    // End of variables declaration//GEN-END:variables
+     
 }

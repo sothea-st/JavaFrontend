@@ -22,5 +22,6 @@ public class WindowColor {
     public static Color green = new Color(47,152,70);
     public static Color darkred = new Color(204,0,0);
     public static Color lightBlue = new Color(51,153,255);
+    public static Color blue = new Color(0,204,255);
     public static boolean isCheck = true;
 }

@@ -2,26 +2,30 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Constant.JavaConnection;
+import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
+import java.math.BigDecimal;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import okhttp3.Response;
+import org.json.JSONObject;
 
 /**
  *
  * @author FRONT-END.06
  */
 public class CloseShift extends javax.swing.JDialog {
-
-    /**
-     * Creates new form CloseShift
-    */
+    private Button btnOpenShift;
     
-    public CloseShift(java.awt.Frame parent, boolean modal) {
+    public CloseShift(java.awt.Frame parent, boolean modal,Button btnOpenShift) {
         super(parent, modal);
         initComponents();
         panelCloseShift.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         event();
+        this.btnOpenShift=btnOpenShift;
     }
     
     void event(){
@@ -33,11 +37,11 @@ public class CloseShift extends javax.swing.JDialog {
            
         };
         redexpress.initEvent(btnevent);
-        khqrMnk.initEvent(btnevent);
-        khqrAba.initEvent(btnevent);
+        qrMnk.initEvent(btnevent);
+        qrAba.initEvent(btnevent);
         abaCreditCard.initEvent(btnevent);
-        cashUsd.initEvent(btnevent);
-        cashKhr.initEvent(btnevent);
+        cashUs.initEvent(btnevent);
+        cashKh.initEvent(btnevent);
     }
 
 
@@ -58,11 +62,11 @@ public class CloseShift extends javax.swing.JDialog {
         label5 = new Components.Label();
         label6 = new Components.Label();
         redexpress = new Components.TextField();
-        khqrMnk = new Components.TextField();
-        khqrAba = new Components.TextField();
+        qrMnk = new Components.TextField();
+        qrAba = new Components.TextField();
         abaCreditCard = new Components.TextField();
-        cashUsd = new Components.TextField();
-        cashKhr = new Components.TextField();
+        cashUs = new Components.TextField();
+        cashKh = new Components.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -100,15 +104,15 @@ public class CloseShift extends javax.swing.JDialog {
 
         redexpress.setLabelTextField("$ 0.00");
 
-        khqrMnk.setLabelTextField("$ 0.00");
+        qrMnk.setLabelTextField("$ 0.00");
 
-        khqrAba.setLabelTextField("$ 0.00");
+        qrAba.setLabelTextField("$ 0.00");
 
         abaCreditCard.setLabelTextField("$ 0.00");
 
-        cashUsd.setLabelTextField("$ 0.00");
+        cashUs.setLabelTextField("$ 0.00");
 
-        cashKhr.setLabelTextField("0.00");
+        cashKh.setLabelTextField("0.00");
 
         javax.swing.GroupLayout panelCloseShiftLayout = new javax.swing.GroupLayout(panelCloseShift);
         panelCloseShift.setLayout(panelCloseShiftLayout);
@@ -130,10 +134,10 @@ public class CloseShift extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(abaCreditCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(khqrAba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cashUsd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cashKhr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(khqrMnk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qrAba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cashUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cashKh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qrMnk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(redexpress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCloseShiftLayout.createSequentialGroup()
@@ -161,11 +165,11 @@ public class CloseShift extends javax.swing.JDialog {
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(khqrMnk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(qrMnk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(khqrAba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(qrAba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -173,12 +177,12 @@ public class CloseShift extends javax.swing.JDialog {
                     .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cashUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cashUs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cashKhr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cashKh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelCloseShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +214,46 @@ public class CloseShift extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
+//        String express = ;
+//        String khqrMnk = qrMnk.getValueTextField();
+//        String khqrAba = qrAba.getValueTextField();
+//        String creditCard = abaCreditCard.getValueTextField();
+//        String cashKhr = cashKh.getValueTextField();
+//        String cashUsd = cashUs.getValueTextField();
+        
+        BigDecimal express= new BigDecimal(redexpress.getValueTextField());
+        BigDecimal khqrMnk= new BigDecimal(qrMnk.getValueTextField());
+        BigDecimal khqrAba= new BigDecimal(qrAba.getValueTextField());
+        BigDecimal creditCard= new BigDecimal(abaCreditCard.getValueTextField());
+        BigDecimal cashKhr= new BigDecimal(cashKh.getValueTextField());
+        BigDecimal cashUsd= new BigDecimal(cashUs.getValueTextField());
 
+        JSONObject json = new JSONObject();
+        json.put("express", express);
+        json.put("khqrMnk", khqrMnk);
+        json.put("khqrAba", khqrAba);
+        json.put("creditCard", creditCard);
+        json.put("cashKhr", cashKhr);
+        json.put("cashUsd", cashUsd);
+        json.put("userCode", JavaConstant.userCode);
+        json.put("userId", JavaConstant.cashierId);
+        
+        System.out.println("Hell"+json);
+
+        try {
+             Response response = JavaConnection.post(JavaRoute.closeShift, json);
+             System.out.println("Hellloooo"+response);
+             if (response.isSuccessful()) {
+                  dispose();
+                  btnOpenShift.setButtonName("Open Shift");
+                  
+             } else {
+                  System.out.println("Failll");
+             }
+
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     /**
@@ -243,7 +286,7 @@ public class CloseShift extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true);
+                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -260,10 +303,8 @@ public class CloseShift extends javax.swing.JDialog {
     private Components.TextField abaCreditCard;
     private ButtonPackage.ButtonCancel buttonCancel;
     private ButtonPackage.ButtonSave buttonSave;
-    private Components.TextField cashKhr;
-    private Components.TextField cashUsd;
-    private Components.TextField khqrAba;
-    private Components.TextField khqrMnk;
+    private Components.TextField cashKh;
+    private Components.TextField cashUs;
     private Components.Label label1;
     private Components.Label label2;
     private Components.Label label3;
@@ -273,6 +314,8 @@ public class CloseShift extends javax.swing.JDialog {
     private Components.LabelPopUpTitle labelPopUpTitle1;
     private Components.Label lbPosId;
     private javax.swing.JPanel panelCloseShift;
+    private Components.TextField qrAba;
+    private Components.TextField qrMnk;
     private Components.TextField redexpress;
     // End of variables declaration//GEN-END:variables
 }

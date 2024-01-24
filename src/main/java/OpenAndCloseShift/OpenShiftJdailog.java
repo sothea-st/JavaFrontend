@@ -243,8 +243,8 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
          try {
               Response response = JavaConnection.post(JavaRoute.openShift, json);
               if (response.isSuccessful()) {
-                   String responseData = response.body().string();
                    dispose();
+                   btnOpenShift.setButtonName("Close Shift");
               } else {
                    System.out.println("Failll");
               }

@@ -28,41 +28,41 @@ public class MainPage extends javax.swing.JFrame {
      private JPanel detailProduct;
 
      public MainPage(String data) {
-          initComponents();
-          event();
-          setBackground();
-          currenDateTime();
-          jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-          jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-          jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-          BackgroundImage bgimg = new BackgroundImage();
-          panelProduct.removeAll();
-          panelProduct.add(bgimg);
-          panelProduct.revalidate();
-          panelProduct.repaint();
-          jScrollPaneCategory.setVisible(false);
-          panelPagination.setVisible(false);
-          searchBox.requestFocusInWindow();
+        initComponents();
+        event();
+        setBackground();
+        currenDateTime();
+        jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        BackgroundImage bgimg = new BackgroundImage();
+        panelProduct.removeAll();
+        panelProduct.add(bgimg);
+        panelProduct.revalidate();
+        panelProduct.repaint();
+        jScrollPaneCategory.setVisible(false);
+        panelPagination.setVisible(false);
+        searchBox.requestFocusInWindow();
      }
 
      private void setBackground() {
-          mainPanel.setBackground(WindowColor.slightGreen);
-          panelCategory.setBackground(WindowColor.darkGreen);
-          category.setBackground(WindowColor.darkGreen);
-          menuBar.setBackground(WindowColor.darkGreen);
-          jScrollPaneCategory.setBackground(WindowColor.darkGreen);
-          day.setBackground(WindowColor.slightGreen);
-          panelprocessing.setBackground(WindowColor.slightGreen);
-          panelProduct.setBackground(WindowColor.slightGreen);
-          panelPagination.setBackground(WindowColor.slightGreen);
-          boxOne.setBackground(WindowColor.slightGreen);
-          detailItem.setBackground(WindowColor.slightGreen);
+        mainPanel.setBackground(WindowColor.slightGreen);
+        panelCategory.setBackground(WindowColor.darkGreen);
+        category.setBackground(WindowColor.darkGreen);
+        menuBar.setBackground(WindowColor.darkGreen);
+        jScrollPaneCategory.setBackground(WindowColor.darkGreen);
+        day.setBackground(WindowColor.slightGreen);
+        panelprocessing.setBackground(WindowColor.slightGreen);
+        panelProduct.setBackground(WindowColor.slightGreen);
+        panelPagination.setBackground(WindowColor.slightGreen);
+        boxOne.setBackground(WindowColor.slightGreen);
+        detailItem.setBackground(WindowColor.slightGreen);
      }
 
      private void currenDateTime() {
-          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
-          LocalDateTime date = LocalDateTime.now();
-          currentDate.setText(dtf.format(date));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
+        LocalDateTime date = LocalDateTime.now();
+        currentDate.setText(dtf.format(date));
      }
 
     @SuppressWarnings("unchecked")
@@ -504,40 +504,40 @@ public class MainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-         String buttonName = btnLogin.getButtonName().toLowerCase();
-         if (buttonName.equals("login")) {
-              LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
-              jdFormLogin.setBoxUserName(boxUserName);
-              jdFormLogin.setBtnLogin(btnLogin);
-              jdFormLogin.setCategory(category);
-              jdFormLogin.setPanelProduct(panelProduct);
-              jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
-              jdFormLogin.setPanelPagination(panelPagination);
-              jdFormLogin.setDetailItem(detailItem);
-              jdFormLogin.setBoxOne(boxOne);
-              jdFormLogin.setSubtotalPanel(totalPanel);
-              jdFormLogin.setBtnPayment(btnPayment);
-
-              jdFormLogin.setVisible(true);
-         } else if (buttonName.equals("logout")) {
-              LogoutDialog logout = new LogoutDialog(new JFrame(), true);
-              logout.setVisible(true);
-         }
+        String buttonName = btnLogin.getButtonName().toLowerCase();
+        if (buttonName.equals("login")) {
+            LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
+            jdFormLogin.setBoxUserName(boxUserName);
+            jdFormLogin.setBtnLogin(btnLogin);
+            jdFormLogin.setCategory(category);
+            jdFormLogin.setPanelProduct(panelProduct);
+            jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
+            jdFormLogin.setPanelPagination(panelPagination);
+            jdFormLogin.setDetailItem(detailItem);
+            jdFormLogin.setBoxOne(boxOne);
+            jdFormLogin.setSubtotalPanel(totalPanel);
+            jdFormLogin.setBtnPayment(btnPayment);
+            jdFormLogin.setVisible(true);
+        } else if (buttonName.equals("logout")) {
+            LogoutDialog logout = new LogoutDialog(new JFrame(), true);
+            logout.setVisible(true);
+        }
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnOpenShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenShiftMouseClicked
-         String buttonName = btnOpenShift.getButtonName().toLowerCase();
-         if (JavaConstant.token != null) {
-              if (buttonName.equals("open shift")) {
-                   OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
-                   jdOpenShift.setVisible(true);
-              } else if (buttonName.equals("close shift")) {
-                   CloseShift close = new CloseShift(new JFrame(), true);
-                   close.setVisible(true);
-              }
-         } else {
-              System.err.println("System Cannot Open Shift");
-         }
+
+        if (JavaConstant.token != null) {
+            String buttonName = btnOpenShift.getButtonName().toLowerCase();
+            if (buttonName.equals("open shift")) {
+                OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
+                jdOpenShift.setVisible(true);
+            } else if (buttonName.equals("close shift")) {
+                CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
+                close.setVisible(true);
+            }
+        } else {
+            System.err.println("System Cannot Open Shift");
+        }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
      //Action Button Reprint

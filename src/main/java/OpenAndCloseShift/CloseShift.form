@@ -66,10 +66,10 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="abaCreditCard" min="-2" max="-2" attributes="0"/>
-                              <Component id="khqrAba" min="-2" max="-2" attributes="0"/>
-                              <Component id="cashUsd" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cashKhr" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="khqrMnk" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="qrAba" min="-2" max="-2" attributes="0"/>
+                              <Component id="cashUs" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cashKh" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="qrMnk" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="redexpress" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -106,12 +106,12 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="khqrMnk" max="32767" attributes="0"/>
+                      <Component id="qrMnk" max="32767" attributes="0"/>
                       <Component id="label2" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="khqrAba" max="32767" attributes="0"/>
+                      <Component id="qrAba" max="32767" attributes="0"/>
                       <Component id="label3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -121,13 +121,13 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="cashUsd" max="32767" attributes="0"/>
+                      <Component id="cashUs" max="32767" attributes="0"/>
                       <Component id="label5" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="label6" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="cashKhr" min="-2" max="-2" attributes="0"/>
+                      <Component id="cashKh" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -200,12 +200,12 @@
             <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
           </Properties>
         </Component>
-        <Component class="Components.TextField" name="khqrMnk">
+        <Component class="Components.TextField" name="qrMnk">
           <Properties>
             <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
           </Properties>
         </Component>
-        <Component class="Components.TextField" name="khqrAba">
+        <Component class="Components.TextField" name="qrAba">
           <Properties>
             <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
           </Properties>
@@ -215,12 +215,12 @@
             <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
           </Properties>
         </Component>
-        <Component class="Components.TextField" name="cashUsd">
+        <Component class="Components.TextField" name="cashUs">
           <Properties>
             <Property name="labelTextField" type="java.lang.String" value="$ 0.00"/>
           </Properties>
         </Component>
-        <Component class="Components.TextField" name="cashKhr">
+        <Component class="Components.TextField" name="cashKh">
           <Properties>
             <Property name="labelTextField" type="java.lang.String" value="0.00"/>
           </Properties>

@@ -60,7 +60,7 @@ public class MainPage extends javax.swing.JFrame {
           
           ButtonEvent event = new ButtonEvent() {
                @Override
-               public void onKeyRelease() {
+               public void onKeyType() {
                     // this event was called 2 time it's error
                     Component[] listCom = detailItem.getComponents();
                     System.err.println("listcome is zero3333 = " + listCom.length);
@@ -75,7 +75,7 @@ public class MainPage extends javax.swing.JFrame {
           // this event was called when user type on searchTextField 
           ButtonEvent event = new ButtonEvent() {
                @Override
-               public void onKeyRelease() {
+               public void onKeyType() {
                     valueSearch = searchBox.getValueTextSearch();
                     ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
                }

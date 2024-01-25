@@ -57,6 +57,7 @@ Button\Button.class
 Return\ApprovalCode$2.class
 Components\SearchField$2.class
 View\MainPage\MainPage$9.class
+Controller\ActionSearchProductController\ActionSearchProduct.class
 OpenAndCloseShift\OpenShiftJdailog$4$1.class
 Receipt\CashierReport$1.class
 Model\Brand\BrandModel.class
@@ -111,6 +112,7 @@ Payment\PaymentOption$4.class
 LoginAndLogoutForm\LogoutDialog$4.class
 Return\ReturnDialog$1.class
 Return\ReturnDialog.class
+Components\TextFieldCenter$3.class
 ButtonPackage\ButtonNo.class
 OpenAndCloseShift\CloseShift$4$1.class
 LoginAndLogoutForm\LoginFormJdailog$5.class
@@ -174,6 +176,7 @@ Components\TextFieldCenter.class
 Print\ReprintJdailog$3.class
 Return\ReturnDialog$2.class
 ButtonPackage\ButtonLogin.class
+Controller\ActionProduct\ActionProduct.class
 Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
@@ -184,6 +187,7 @@ Payment\PaymentOption$11.class
 Button\ButtonBuy.class
 Components\BoxItem.class
 Components\BoxItem$2.class
+Controller\ActionProduct\ActionProduct$1.class
 Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
 Components\JavaAlertMessage$1.class

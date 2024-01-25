@@ -18,7 +18,7 @@ public interface ButtonEvent {
      default public void onMouseClick() {
      }
 
-     default public void onKeyRelease() {
+     default public void onKeyType() {
      }
 
      default public void onFocusGain() {

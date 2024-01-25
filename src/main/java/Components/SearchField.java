@@ -76,7 +76,7 @@ public class SearchField extends javax.swing.JPanel {
                public void keyReleased(KeyEvent e) {
                     String valueText = textSearch.getText();
                     setValueTextSearch(valueText);
-                    event.onKeyRelease();
+                    event.onKeyType();
                }
           });
      }

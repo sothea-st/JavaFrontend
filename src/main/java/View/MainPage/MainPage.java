@@ -2,34 +2,26 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
-import Constant.JavaConnection;
 import Constant.JavaConstant;
-import Constant.JavaRoute;
-import Controller.ActionProdcut.ActionProduct;
-import Controller.ActionSearchProduct.ActionSearchProduct;
+import Controller.ActionSearchProductController.ActionSearchProduct;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
-import Model.ProductModel.ProductDataModel;
-import Model.ProductModel.ProductSuccessData;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
 import Print.ReprintJdailog;
 import Receipt.CashierReport;
 import Return.ApprovalCode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import okhttp3.Response;
+
 
 public class MainPage extends javax.swing.JFrame {
 
@@ -90,9 +82,9 @@ public class MainPage extends javax.swing.JFrame {
           currentDate.setText(dtf.format(date));
      }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+     @SuppressWarnings("unchecked")
+     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JPanel();
@@ -532,7 +524,6 @@ public class MainPage extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
          String buttonName = btnLogin.getButtonName().toLowerCase();
          if (buttonName.equals("login")) {
-
               jdFormLogin.setBoxUserName(boxUserName);
               jdFormLogin.setBtnLogin(btnLogin);
               jdFormLogin.setCategory(category);

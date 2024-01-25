@@ -1,4 +1,4 @@
-package Controller.ActionSearchProduct;
+package Controller.ActionSearchProductController;
 
 import Constant.JavaConnection;
 import Constant.JavaRoute;

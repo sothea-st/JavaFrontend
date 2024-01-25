@@ -2,7 +2,11 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
+import Controller.ActionRequestBrand.ActionRequestBrand;
+import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
 import Controller.ActionSearchProductController.ActionSearchProduct;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
@@ -21,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
+import okhttp3.Response;
 
 public class MainPage extends javax.swing.JFrame {
 
@@ -48,6 +52,23 @@ public class MainPage extends javax.swing.JFrame {
           panelPagination.setVisible(false);
           searchBox.requestFocusInWindow();
           eventSearchProduct();
+          eventInputOrScanBarcode();
+     }
+
+     private void eventInputOrScanBarcode() {
+          // this event was called when user type on textField 
+          
+          ButtonEvent event = new ButtonEvent() {
+               @Override
+               public void onKeyRelease() {
+                    // this event was called 2 time it's error
+                    Component[] listCom = detailItem.getComponents();
+                    System.err.println("listcome is zero3333 = " + listCom.length);
+                    String barcode = textField.getValueTextField();
+                    ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
+               }
+          };
+          textField.initEvent(event);
      }
 
      private void eventSearchProduct() {
@@ -56,7 +77,7 @@ public class MainPage extends javax.swing.JFrame {
                @Override
                public void onKeyRelease() {
                     valueSearch = searchBox.getValueTextSearch();
-                    ActionSearchProduct.searchProduct(valueSearch, panelProduct, jdFormLogin);
+                    ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
                }
           };
           searchBox.initEvent(event);
@@ -520,7 +541,7 @@ public class MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //Action Button Login and Logout
+     //Action Button Login and Logout
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
          String buttonName = btnLogin.getButtonName().toLowerCase();
          if (buttonName.equals("login")) {
@@ -534,7 +555,7 @@ public class MainPage extends javax.swing.JFrame {
               jdFormLogin.setBoxOne(boxOne);
               jdFormLogin.setSubtotalPanel(totalPanel);
               jdFormLogin.setBtnPayment(btnPayment);
-
+              jdFormLogin.setCmboxBrand(cmboxBrand);
               jdFormLogin.setVisible(true);
          } else if (buttonName.equals("logout")) {
               LogoutDialog logout = new LogoutDialog(new JFrame(), true);
@@ -542,7 +563,7 @@ public class MainPage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_btnLoginMouseClicked
 
-    //Action Button Open And Close Shift
+     //Action Button Open And Close Shift
     private void btnOpenShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenShiftMouseClicked
          String buttonName = btnOpenShift.getButtonName().toLowerCase();
          if (JavaConstant.token != null) {
@@ -558,7 +579,7 @@ public class MainPage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
-    //Action Button Reprint
+     //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
 
          if (JavaConstant.token != null) {
@@ -569,7 +590,7 @@ public class MainPage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_btnReprintMouseClicked
 
-    //Action Button payment
+     //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
 
          if (JavaConstant.token != null) {
@@ -589,7 +610,7 @@ public class MainPage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_btnPaymentMouseClicked
 
-    //Action Button Return
+     //Action Button Return
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
          if (JavaConstant.token != null) {
               ApprovalCode approval = new ApprovalCode(new JFrame(), true);
@@ -599,7 +620,7 @@ public class MainPage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_btnReturnMouseClicked
 
-    //Action Button Cancel
+     //Action Button Cancel
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
 
          if (JavaConstant.token != null) {
@@ -617,7 +638,7 @@ public class MainPage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
-    //Action Button Cashier Report
+     //Action Button Cashier Report
     private void buttonCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCashierMouseClicked
 
          if (JavaConstant.token != null) {
@@ -629,7 +650,7 @@ public class MainPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonCashierMouseClicked
 
-    //Action Button Holder
+     //Action Button Holder
      private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
           // TODO add your handling code here:
           System.err.println("333333333333333");
@@ -640,7 +661,7 @@ public class MainPage extends javax.swing.JFrame {
      }//GEN-LAST:event_button3MouseClicked
 
      private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
-          
+
      }//GEN-LAST:event_btnLoginMouseEntered
 
      //Function call Placeholder

@@ -36,8 +36,14 @@ import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import Button.Button;
+import Components.ComboBox;
 import Controller.ActionProduct.ActionProduct;
+import Controller.ActionRequestBrand.ActionRequestBrand;
+import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
+import Controller.ActionSearchProductController.ActionSearchProduct;
 import Model.ProductModel.ProductDataModel;
+import Model.ProductModel.ProductSuccessData;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -68,6 +74,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private SubtotalPanel subtotalPanel;
      private Button btnPayment;
      private JPanel panelPagination;
+     ActionProduct pro = new ActionProduct();
+     private ComboBox cmboxBrand;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -86,12 +94,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                public void onFocusGain() {
 
                }
-
           };
           txtUserId.initEvent(btnevent);
      }
 
      public void assignProduct(ProductDataModel[] listData) {
+          panelProduct.removeAll();
+          panelProduct.revalidate();
+          panelProduct.repaint();
           // setter of actionProduct
           pro.setBtnLogin(btnLogin);
           pro.setBoxOne(boxOne);
@@ -103,7 +113,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           pro.setjScrollPaneCategory(jScrollPaneCategory);
           pro.setBoxUserName(boxUserName);
           pro.setPanelProduct(panelProduct);
-          pro.assignProduct(listData);
+          if (listData != null) {
+               pro.assignProduct(listData);
+          }
      }
 
      @SuppressWarnings("unchecked")
@@ -200,6 +212,10 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+     public void scanbarCodeAddProduct(ProductModel proModel) {
+          ActionScanBarcodeAddProduct action = new ActionScanBarcodeAddProduct();
+          pro.eventBtnBuy(proModel);
+     }
 
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
          String userId = txtUserId.getValueTextField();
@@ -229,6 +245,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    getBoxUserName().setText(userName + " USER ID : " + userCode);
                    category();
                    getjScrollPaneCategory().setVisible(true);
+                   ActionRequestBrand.requestBrand(cmboxBrand);
+                   eventSelect();
               }
 
          } catch (Exception e) {
@@ -239,12 +257,34 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
          this.dispose();
     }//GEN-LAST:event_buttonCancel1MouseClicked
-      ActionProduct pro = new ActionProduct();
+
+     void eventSelect() {
+          ButtonEvent events = new ButtonEvent() {
+               @Override
+               public void onSelect(String key) {
+                    Response response = JavaConnection.get(JavaRoute.getProductByBrandId + key);
+                    try {
+                         if (response.isSuccessful()) {
+                              String responseData = response.body().string();
+                              ObjectMapper objMap = new ObjectMapper();
+                              ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
+
+                              ProductDataModel[] listProduct = model.getData();
+                              assignProduct(listProduct);
+                         }
+                    } catch (Exception e) {
+                         System.err.println("error get produt by brand = " + e);
+                    }
+               }
+          };
+          cmboxBrand.initEvent(events);
+     }
+
      private void category() {
           try {
                ArrayList<CategoryModel> listCategory = new ArrayList<>();
                Response response = JavaConnection.get(JavaRoute.category);
-             
+
                if (response.isSuccessful()) {
                     String strData = response.body().string(); // convert response to string 
                     JSONObject jsonObject = new JSONObject(strData); // conver string to jsonobject
@@ -292,16 +332,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                     }
                     category.setLayout(new GridLayout());
                     // setter of actionProduct
-                    pro.setBtnLogin(btnLogin);
-                    pro.setBoxOne(boxOne);
-                    pro.setBtnPayment(btnPayment);
-                    pro.setCategory(category);
-                    pro.setDetailItem(detailItem);
-                    pro.setPanelPagination(panelPagination);
-                    pro.setSubtotalPanel(subtotalPanel);
-                    pro.setjScrollPaneCategory(jScrollPaneCategory);
-                    pro.setBoxUserName(boxUserName);
-                    pro.setPanelProduct(panelProduct);
+                    assignProduct(null);
 
                } else {
                     System.err.println("fail load category");
@@ -382,6 +413,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
      public void setBoxOne(JPanel boxOne) {
           this.boxOne = boxOne;
+     }
+
+     public ComboBox getCmboxBrand() {
+          return cmboxBrand;
+     }
+
+     public void setCmboxBrand(ComboBox cmboxBrand) {
+          this.cmboxBrand = cmboxBrand;
      }
 
      public static void main(String args[]) {

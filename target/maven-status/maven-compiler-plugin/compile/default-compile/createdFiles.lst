@@ -20,6 +20,7 @@ Constant\JavaBaseUrl.class
 OpenAndCloseShift\OpenShiftJdailog$2.class
 Components\ComboBox$1.class
 Constant\JavaRoute.class
+Controller\ActionRequestBrand\ActionRequestBrand.class
 Return\ReturnDialog$3.class
 Receipt\Receipt$3.class
 DeleteAndCancel\CancelDialog$3.class
@@ -33,6 +34,7 @@ Components\SubtotalPanel.class
 ButtonPackage\ButtonYes.class
 Products\ProductBox.class
 OpenAndCloseShift\OpenShiftJdailog.class
+Controller\ActionScanBarcodeAddProduct\ActionScanBarcodeAddProduct.class
 Payment\PaymentOption$6.class
 Payment\PaymentOption$14.class
 LoginAndLogoutForm\LoginFormJdailog.class
@@ -45,6 +47,7 @@ Payment\PaymentOption$5.class
 DeleteAndCancel\CancelDialog$4.class
 Components\Shadow\ShadowRenderer.class
 Payment\PaymentOption$20.class
+View\MainPage\MainPage$12.class
 Components\LabelTitle.class
 Payment\PaymentOption$2.class
 Payment\PaymentOption$19.class
@@ -56,6 +59,7 @@ Components\SearchField$2.class
 View\MainPage\MainPage$9.class
 OpenAndCloseShift\OpenShiftJdailog$4$1.class
 Receipt\CashierReport$1.class
+Model\Brand\BrandModel.class
 Print\ReprintByInvoicenumber$4.class
 DeleteAndCancel\CancelDialog$4$1.class
 LoginAndLogoutForm\LogoutDialog$3.class
@@ -94,11 +98,11 @@ Return\ApprovalCode$3.class
 Payment\PaymentOption$3.class
 Receipt\CashierReport.class
 Components\PasswordField$1.class
+Components\TextField$4.class
 View\MainPage\MainPage.class
 Return\ApprovalCode$1.class
 LoginAndLogoutForm\LogoutDialog$4$1.class
 Receipt\CashierReport$3.class
-LoginAndLogoutForm\LoginFormJdailog$5$1.class
 com\mycompany\kingmart\KingMart.class
 DeleteAndCancel\DeleteDialog$4.class
 Payment\PaymentOption.class
@@ -129,6 +133,7 @@ Payment\PaymentOption$24.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
 Return\ReturnDialog$3$1.class
+LoginAndLogoutForm\LoginFormJdailog$6.class
 View\MainPage\MainPage$5.class
 Event\ButtonEvent.class
 View\MainPage\MainPage$4.class
@@ -173,6 +178,7 @@ Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
 View\MainPage\MainPage$1.class
+LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class
 Payment\PaymentOption$11.class
 Button\ButtonBuy.class
@@ -182,6 +188,7 @@ Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
 Components\JavaAlertMessage$1.class
 Button\ButtonAddProduct.class
+Model\Brand\BrandSuccessModel.class
 Components\ReceiptBox.class
 Model\PackageProduct\ProductIDModel.class
 View\MainPage\MainPage$2.class

@@ -64,44 +64,44 @@ public class ProductPanel extends javax.swing.JPanel {
         cmboxBrand.setMap(map);
     }
 
-    void readProduct() {
-        try {
-            ArrayList<ProductModel> listProduct = new ArrayList<>();
-            Response response = JavaConnection.get(JavaRoute.product);
-            if (response.isSuccessful()) {
-                String responseData = response.body().string();
-                JSONObject jsonObject = new JSONObject(responseData);
-                JSONObject data = jsonObject.getJSONObject("data");
-                JSONArray result = data.getJSONArray("result");
-
-                for (int i = 0; i < result.length(); i++) {
-                    JSONObject obj = result.getJSONObject(i);
-                    ProductModel product = new ProductModel(
-                            obj.getInt("id"),
-                            obj.getInt("catId"),
-                            obj.getString("flag"),
-                            obj.getString("weight"),
-                            obj.getBigDecimal("cost"),
-                            obj.getString("proImageName"),
-                            obj.getBigDecimal("price"),
-                            obj.getString("barcode"),
-                            obj.getString("proNameKh"),
-                            obj.getString("proNameEn"),
-                            obj.getString("productStatus"),
-                            obj.getInt("discount")
-                    );
-                    listProduct.add(product);
-                }
-
-//                    appendProduct(listProduct);
-            } else {
-                System.err.println("fail loading data");
-            }
-        } catch (Exception e) {
-            System.err.println("error = " + e);
-        }
-
-    }
+//    void readProduct() {
+//        try {
+//            ArrayList<ProductModel> listProduct = new ArrayList<>();
+//            Response response = JavaConnection.get(JavaRoute.product);
+//            if (response.isSuccessful()) {
+//                String responseData = response.body().string();
+//                JSONObject jsonObject = new JSONObject(responseData);
+//                JSONObject data = jsonObject.getJSONObject("data");
+//                JSONArray result = data.getJSONArray("result");
+//
+//                for (int i = 0; i < result.length(); i++) {
+//                    JSONObject obj = result.getJSONObject(i);
+//                    ProductModel product = new ProductModel(
+//                            obj.getInt("id"),
+//                            obj.getInt("catId"),
+//                            obj.getString("flag"),
+//                            obj.getString("weight"),
+//                            obj.getBigDecimal("cost"),
+//                            obj.getString("proImageName"),
+//                            obj.getBigDecimal("price"),
+//                            obj.getString("barcode"),
+//                            obj.getString("proNameKh"),
+//                            obj.getString("proNameEn"),
+//                            obj.getString("productStatus"),
+//                            obj.getInt("discount")
+//                    );
+//                    listProduct.add(product);
+//                }
+//
+////                    appendProduct(listProduct);
+//            } else {
+//                System.err.println("fail loading data");
+//            }
+//        } catch (Exception e) {
+//            System.err.println("error = " + e);
+//        }
+//
+//    }
 
     ArrayList<BoxItem> arrInt = new ArrayList<>();
     //=========================Append Product into panelProductBox===============================

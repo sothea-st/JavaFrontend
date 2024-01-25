@@ -2,30 +2,42 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
+import Controller.ActionProdcut.ActionProduct;
+import Controller.ActionSearchProduct.ActionSearchProduct;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
+import Model.ProductModel.ProductDataModel;
+import Model.ProductModel.ProductSuccessData;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
 import Print.ReprintJdailog;
 import Receipt.CashierReport;
 import Return.ApprovalCode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import okhttp3.Response;
 
 public class MainPage extends javax.swing.JFrame {
 
      private Color bgColor = new Color(204, 204, 204);
      private Color activeColor = new Color(56, 56, 56);
      private JPanel detailProduct;
+     private String valueSearch;
+     LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
 
      public MainPage(String data) {
           initComponents();
@@ -43,6 +55,19 @@ public class MainPage extends javax.swing.JFrame {
           jScrollPaneCategory.setVisible(false);
           panelPagination.setVisible(false);
           searchBox.requestFocusInWindow();
+          eventSearchProduct();
+     }
+
+     private void eventSearchProduct() {
+          // this event was called when user type on searchTextField 
+          ButtonEvent event = new ButtonEvent() {
+               @Override
+               public void onKeyRelease() {
+                    valueSearch = searchBox.getValueTextSearch();
+                    ActionSearchProduct.searchProduct(valueSearch, panelProduct, jdFormLogin);
+               }
+          };
+          searchBox.initEvent(event);
      }
 
      private void setBackground() {
@@ -65,7 +90,7 @@ public class MainPage extends javax.swing.JFrame {
           currentDate.setText(dtf.format(date));
      }
 
-    @SuppressWarnings("unchecked")
+     @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
 
@@ -504,7 +529,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
          String buttonName = btnLogin.getButtonName().toLowerCase();
          if (buttonName.equals("login")) {
-              LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
+
               jdFormLogin.setBoxUserName(boxUserName);
               jdFormLogin.setBtnLogin(btnLogin);
               jdFormLogin.setCategory(category);
@@ -530,7 +555,7 @@ public class MainPage extends javax.swing.JFrame {
                    OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
                    jdOpenShift.setVisible(true);
               } else if (buttonName.equals("close shift")) {
-                   CloseShift close = new CloseShift(new JFrame(), true,btnOpenShift);
+                   CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
                    close.setVisible(true);
               }
          } else {
@@ -552,21 +577,21 @@ public class MainPage extends javax.swing.JFrame {
      //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
 
-        if ( JavaConstant.token != null) {
-            Component[] listCom = detailItem.getComponents();
-            if(listCom.length != 0){
-                PaymentOption pay = new PaymentOption(new JFrame(), true);
-                pay.setTotalUsd(totalPanel.getLableTotalUsd());
-                pay.setListCom(listCom);
-                pay.setSubtotalPanel(totalPanel);
-                pay.setDetailItem(detailItem);
-                pay.setBoxOne(boxOne);
-                pay.setBtnPayment(btnPayment);
-                pay.setVisible(true);
-            }
-        }else {
-            System.err.println("System cannot open payment option");
-        }
+         if (JavaConstant.token != null) {
+              Component[] listCom = detailItem.getComponents();
+              if (listCom.length != 0) {
+                   PaymentOption pay = new PaymentOption(new JFrame(), true);
+                   pay.setTotalUsd(totalPanel.getLableTotalUsd());
+                   pay.setListCom(listCom);
+                   pay.setSubtotalPanel(totalPanel);
+                   pay.setDetailItem(detailItem);
+                   pay.setBoxOne(boxOne);
+                   pay.setBtnPayment(btnPayment);
+                   pay.setVisible(true);
+              }
+         } else {
+              System.err.println("System cannot open payment option");
+         }
     }//GEN-LAST:event_btnPaymentMouseClicked
 
      //Action Button Return

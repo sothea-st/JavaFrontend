@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="panelPayment" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="panelPayment" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="panelPayment">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbCustomerId" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lbSource" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="lbCustomerType" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="lbEarning" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="cmbSource" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmbCustomerType" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCustomerId" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtEarning" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbCustomerPhone" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbCustomerEmail" min="-2" pref="117" max="-2" attributes="0"/>
+                              <Component id="lbGift" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbGender" min="-2" pref="141" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="radioButtonMale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Component id="radioButtonFemale" min="-2" pref="141" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lbNationality" alignment="0" pref="147" max="32767" attributes="0"/>
+                              <Component id="radioButtonKhmer" max="32767" attributes="0"/>
+                              <Component id="radioButtonAsian" max="32767" attributes="0"/>
+                              <Component id="radioButtonChinese" max="32767" attributes="0"/>
+                              <Component id="radioButtonWhite" max="32767" attributes="0"/>
+                              <Component id="radioButtonBlack" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtCustomerEmail" max="32767" attributes="0"/>
+                                  <Component id="cmbCoupon" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="txtCustomerPhone" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCustomerName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="panelTotal" max="32767" attributes="0"/>
+                              <Component id="lbCashPayment" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbCreditCard" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbCash" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelFontBlack2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lbSeven" min="-2" pref="80" max="-2" attributes="0"/>
+                                              <Component id="labelFontBlack5" min="-2" pref="172" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lbNine" pref="0" max="32767" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="lbZero" min="-2" pref="80" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="labelFontBlack9" pref="172" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lbOne" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="lbTwo" min="-2" pref="80" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lbFour" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="lbFive" min="-2" pref="80" max="-2" attributes="0"/>
+                                                      <Component id="lbEight" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lbThree" min="-2" pref="80" max="-2" attributes="0"/>
+                                              <Component id="lbSix" min="-2" pref="80" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="lbDelete" pref="80" max="32767" attributes="0"/>
+                                              <Component id="lbDot" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
+              </Group>
+              <Component id="labelPopUpTitle1" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="labelPopUpTitle1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbCustomerId" alignment="0" max="32767" attributes="0"/>
+                              <Component id="label1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtCustomerId" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerName" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbCustomerType" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbCustomerPhone" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cmbCustomerType" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="cmbSource" max="32767" attributes="0"/>
+                                      <Component id="lbCustomerEmail" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lbSource" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtCustomerEmail" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="cmbCoupon" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lbEarning" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lbGift" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtEarning" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lbCashPayment" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="panelTotal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lbThree" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTwo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbOne" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbCash" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbDelete" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lbSix" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbFive" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbFour" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbCreditCard" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbDot" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lbNine" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbEight" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbSeven" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbZero" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelFontBlack2" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelFontBlack5" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelFontBlack9" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbNationality" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="lbGender" min="-2" pref="29" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="radioButtonKhmer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="radioButtonMale" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="radioButtonFemale" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="radioButtonAsian" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="radioButtonChinese" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="radioButtonWhite" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="radioButtonBlack" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="Components.ComboBox" name="cmbCoupon">
+        </Component>
+        <Component class="Components.ComboBox" name="cmbCustomerType">
+        </Component>
+        <Component class="Components.ComboBox" name="cmbSource">
+        </Component>
+        <Component class="Components.LabelPopUpTitle" name="labelPopUpTitle1">
+          <Properties>
+            <Property name="labelTitle" type="java.lang.String" value="Payment Option"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbCustomerId">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Customer ID"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbCustomerType">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Customer Type"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbSource">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Source"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbEarning">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Earning ($)"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="label1">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Customer Name"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbCustomerPhone">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Customer Phone"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbCustomerEmail">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Customer Email"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbGift">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value="Gift Coupon ($)"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbGender">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value=" Gender"/>
+          </Properties>
+        </Component>
+        <Component class="Components.Label" name="lbNationality">
+          <Properties>
+            <Property name="labelName" type="java.lang.String" value=" Nationality"/>
+          </Properties>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbCash">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="0" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Cash"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbCashMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbCreditCard">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="0" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Credit Card"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbCreditCardMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbCashPayment">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="0" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Cash Payment"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="panelTotal">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="label8" pref="0" max="32767" attributes="0"/>
+                          <Component id="label7" alignment="1" pref="0" max="32767" attributes="0"/>
+                          <Component id="label6" alignment="1" pref="0" max="32767" attributes="0"/>
+                          <Component id="label5" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="label9" min="-2" pref="9" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbChangeUsd" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="label2" min="-2" pref="9" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbTotalUsd" min="-2" pref="104" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="label4" min="-2" pref="9" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbRemainingUsd" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="label3" min="-2" pref="9" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtReceiveUsd" min="-2" pref="104" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="label16" pref="0" max="32767" attributes="0"/>
+                              <Component id="label15" min="-2" pref="9" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="label14" alignment="0" min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="label17" alignment="0" min="-2" pref="9" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lbChangeKhr" pref="94" max="32767" attributes="0"/>
+                          <Component id="txtReceiveKhr" pref="94" max="32767" attributes="0"/>
+                          <Component id="lbRemainingKhr" pref="0" max="32767" attributes="0"/>
+                          <Component id="lbTotalKhr" alignment="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="3" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbTotalUsd" max="32767" attributes="0"/>
+                          <Component id="label2" max="32767" attributes="0"/>
+                          <Component id="label5" max="32767" attributes="0"/>
+                          <Component id="label14" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lbTotalKhr" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="label3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="label6" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtReceiveKhr" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="label15" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtReceiveUsd" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="label7" alignment="0" max="32767" attributes="0"/>
+                          <Component id="label16" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbRemainingKhr" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbRemainingUsd" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="label4" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbChangeUsd" alignment="0" max="32767" attributes="0"/>
+                          <Component id="label9" alignment="0" max="32767" attributes="0"/>
+                          <Component id="label8" alignment="0" max="32767" attributes="0"/>
+                          <Component id="label17" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel4" max="32767" attributes="0"/>
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lbChangeKhr" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="Components.Label" name="label5">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="Total Pay"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label6">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="Receive"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label7">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="Remaining"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label8">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="Change"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label2">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label3">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label4">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label9">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbTotalUsd">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="$ 0.00"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbRemainingUsd">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="$ 0.00"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbChangeUsd">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="$ 0.00"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label14">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label15">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label16">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="label17">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbTotalKhr">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbRemainingKhr">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="Components.Label" name="lbChangeKhr">
+              <Properties>
+                <Property name="labelName" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Khmer OS Content" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x17db;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtReceiveUsd">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtReceiveUsdMouseClicked"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtReceiveUsdKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtReceiveKhr">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtReceiveKhrMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtReceiveKhrMouseEntered"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtReceiveKhrKeyReleased"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="Components.LabelFontBlack" name="lbOne">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbOneMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbTwo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbTwoMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbThree">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbThreeMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbDelete">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Del"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbDeleteMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbFour">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="4"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFourMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbFive">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="5"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFiveMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbSix">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="6"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbSixMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbDot">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="."/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbDotMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbSeven">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="7"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbSevenMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbEight">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="8"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbEightMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbNine">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="9"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbNineMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="lbZero">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbZeroMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="labelFontBlack2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="cc" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelFontBlack2MouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="labelFontBlack5">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="46" green="98" red="2f" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Charge&amp;eInvoice"/>
+          </Properties>
+        </Component>
+        <Component class="Components.LabelFontBlack" name="labelFontBlack9">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="46" green="98" red="2f" type="rgb"/>
+            </Property>
+            <Property name="fontColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="labelName" type="java.lang.String" value="Charge&amp;Print"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelFontBlack9MouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerId">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="Scan or input"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtEarning">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="$ 0.00"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerName">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerPhone">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
+          </Properties>
+        </Component>
+        <Component class="Components.TextFieldCenter" name="txtCustomerEmail">
+          <Properties>
+            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonKhmer">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Khmer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonAsian">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Asian"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonChinese">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Chinese"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonWhite">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="White"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonBlack">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Black"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonMale">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Male"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonFemale">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b5" green="d7" red="b0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="38" green="38" red="38" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Female"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

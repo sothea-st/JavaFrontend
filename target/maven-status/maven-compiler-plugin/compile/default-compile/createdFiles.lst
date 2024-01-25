@@ -23,6 +23,7 @@ Constant\JavaRoute.class
 Return\ReturnDialog$3.class
 Receipt\Receipt$3.class
 DeleteAndCancel\CancelDialog$3.class
+Model\ProductModel\ProductSuccessData.class
 Components\LabelQtyForCashierReport.class
 Payment\PaymentOption$15.class
 DeleteAndCancel\DeleteDialog$4$1.class
@@ -51,6 +52,7 @@ Model\Category\CategoryModel.class
 Return\ApprovalCode.class
 Button\Button.class
 Return\ApprovalCode$2.class
+Components\SearchField$2.class
 View\MainPage\MainPage$9.class
 OpenAndCloseShift\OpenShiftJdailog$4$1.class
 Receipt\CashierReport$1.class
@@ -58,6 +60,7 @@ Print\ReprintByInvoicenumber$4.class
 DeleteAndCancel\CancelDialog$4$1.class
 LoginAndLogoutForm\LogoutDialog$3.class
 View\MainPage\MainPage$6.class
+Controller\ActionSearchProduct\ActionSearchProduct.class
 Model\Reprint\ReprintModel.class
 Components\UnEditableTextField.class
 DeleteAndCancel\DeleteDialog$2.class
@@ -70,6 +73,7 @@ Return\ApprovalCode$4$1.class
 View\MainPage\MainPage$8.class
 Components\TextField$2.class
 Payment\PaymentOption$21.class
+Components\SearchField$3.class
 Components\TextFieldCenter$1.class
 Components\RadioButton.class
 OpenAndCloseShift\CloseShift.class
@@ -94,7 +98,9 @@ Components\PasswordField$1.class
 View\MainPage\MainPage.class
 Return\ApprovalCode$1.class
 LoginAndLogoutForm\LogoutDialog$4$1.class
+Controller\ActionProdcut\ActionProduct.class
 Receipt\CashierReport$3.class
+LoginAndLogoutForm\LoginFormJdailog$5$1.class
 com\mycompany\kingmart\KingMart.class
 DeleteAndCancel\DeleteDialog$4.class
 Payment\PaymentOption.class
@@ -106,6 +112,7 @@ Return\ReturnDialog.class
 ButtonPackage\ButtonNo.class
 OpenAndCloseShift\CloseShift$4$1.class
 LoginAndLogoutForm\LoginFormJdailog$5.class
+View\MainPage\MainPage$11.class
 Constant\JavaConnection.class
 Components\Label.class
 Components\PasswordField$3.class
@@ -124,7 +131,6 @@ Payment\PaymentOption$24.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
 Return\ReturnDialog$3$1.class
-LoginAndLogoutForm\LoginFormJdailog$6.class
 View\MainPage\MainPage$5.class
 Event\ButtonEvent.class
 View\MainPage\MainPage$4.class
@@ -144,6 +150,7 @@ Payment\PaymentOption$24$1.class
 Components\LabelFontGreen.class
 Model\Reprint\SaleDetailModel.class
 Model\CustomerType\CustomerTypeModel.class
+Model\ProductModel\ProductDataModel.class
 Payment\PaymentOption$13.class
 Payment\PaymentOption$8.class
 Components\LabelTitle$2.class
@@ -168,12 +175,12 @@ Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
 View\MainPage\MainPage$1.class
-LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class
 Payment\PaymentOption$11.class
 Button\ButtonBuy.class
 Components\BoxItem.class
 Components\BoxItem$2.class
+Controller\ActionProdcut\ActionProduct$1.class
 Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
 Components\JavaAlertMessage$1.class

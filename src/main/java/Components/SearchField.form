@@ -38,11 +38,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\front-end.06\Documents\NetBeansProjects\tt_pos_window-danin\src\main\resources\image\Search Icon.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textSearch">
       <Properties>
@@ -50,6 +45,9 @@
           <Border info="null"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textSearchKeyReleased"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -1,4 +1,4 @@
-package Controller.ActionProdcut;
+package Controller.ActionProduct;
 
 import Button.Button;
 import Color.WindowColor;

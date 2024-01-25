@@ -107,6 +107,7 @@ public class UnEditableTextField extends javax.swing.JPanel {
         textField.setEditable(false);
         textField.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         textField.setBorder(null);
+        textField.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

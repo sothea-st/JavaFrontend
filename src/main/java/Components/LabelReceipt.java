@@ -2,6 +2,7 @@ package Components;
 
 import Color.WindowColor;
 import Fonts.WindowFonts;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -30,7 +31,7 @@ public class LabelReceipt extends javax.swing.JPanel {
     public LabelReceipt() {
         initComponents();
         setBackground(WindowColor.white);
-        lbLabel.setFont(WindowFonts.timeNewRoman14);
+        lbLabel.setFont(WindowFonts.timeNewRoman12);
         lbLabel.setForeground(WindowColor.black);
     }
     

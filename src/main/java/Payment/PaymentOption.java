@@ -74,7 +74,9 @@ public class PaymentOption extends javax.swing.JDialog {
           setColor();
           
           paymentType = "cash";
-          
+          txtCustomerId.requestFocus(); 
+          radioButtonKhmer.setSelected(true);
+          radioButtonMale.setSelected(true);
      }
      
      //=================================================

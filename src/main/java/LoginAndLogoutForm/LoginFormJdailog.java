@@ -43,17 +43,10 @@ import Button.Button;
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
 
-     /**
-      * @return the panelPagination
-      */
      public JPanel getPanelPagination() {
           return panelPagination;
      }
 
-     /**
-      * @param panelPagination the
-      * panelPagination to set
-      */
      public void setPanelPagination(JPanel panelPagination) {
           this.panelPagination = panelPagination;
      }
@@ -81,6 +74,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           setDefaultCloseOperation(DISPOSE_ON_CLOSE);
           setResizable(false);
           event();
+          txtUserId.requestFocus();
      }
 
      //Function call Placeholder

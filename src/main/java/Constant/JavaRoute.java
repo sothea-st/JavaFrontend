@@ -16,5 +16,6 @@ public class JavaRoute {
      public static String reprintByLast = "/reprint/";
      public static String closeShift = "/closeShiftTime";
      public static String searchProductByBarcodeOrName = "/searchProductByBarcodeOrName";
+     public static String cashierReport = "/cashierReport?userCode=";
 
 }

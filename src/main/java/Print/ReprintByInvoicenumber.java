@@ -27,6 +27,7 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
           setDefaultCloseOperation(DISPOSE_ON_CLOSE);
           setResizable(false);
           event();
+          txtInvoiceNumber.requestFocus();
      }
 
      //Action call function placeholder

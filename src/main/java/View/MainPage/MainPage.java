@@ -2,18 +2,25 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Controller.ActionSearchProductController.ActionSearchProduct;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
+import Model.CashierReport.DataSuccessModelReport;
+import Model.CashierReport.ReportCashier;
+import Model.Reprint.DataSuccessModel;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
 import Print.ReprintJdailog;
 import Receipt.CashierReport;
+import Receipt.Receipt;
 import Return.ApprovalCode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDateTime;
@@ -21,6 +28,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import okhttp3.Response;
 
 
 public class MainPage extends javax.swing.JFrame {
@@ -620,12 +628,24 @@ public class MainPage extends javax.swing.JFrame {
     //Action Button Cashier Report
     private void buttonCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCashierMouseClicked
 
-         if (JavaConstant.token != null) {
-              CashierReport cashier = new CashierReport(new JFrame(), true);
-              cashier.setVisible(true);
-         } else {
-              System.err.println("System cannot oprn Cashier Report");
-         }
+        if (JavaConstant.token != null) {
+            try {
+               CashierReport cashier = new CashierReport(new JFrame(), true);
+               Response response = JavaConnection.get(JavaRoute.cashierReport + JavaConstant.userCode + "&userId="+JavaConstant.cashierId);
+               if (response.isSuccessful()) {
+                    String myObject = response.body().string();
+                    ObjectMapper objMap = new ObjectMapper();
+                    DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
+                    cashier.setDataSuccessReport(d);
+                    cashier.setVisible(true);
+               }
+
+           } catch (Exception e) {
+                System.err.println("error = " + e);
+           }
+        } else {
+             System.err.println("System cannot oprn Cashier Report");
+        }
 
     }//GEN-LAST:event_buttonCashierMouseClicked
 

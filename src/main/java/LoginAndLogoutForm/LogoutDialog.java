@@ -1,26 +1,23 @@
 package LoginAndLogoutForm;
 
+import Button.Button;
 import Color.WindowColor;
+import Components.SubtotalPanel;
 import Constant.JavaConstant;
 import Fonts.WindowFonts;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
-/**
- *
- * @author FRONT-END.06
- */
 public class LogoutDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form LogoutDialog
-    */
-
-    
     public LogoutDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         txtLabel.setFont(WindowFonts.timeNewRomanBold14);
-        panelLogout.setBackground(WindowColor.mediumGreen);  
+        panelLogout.setBackground(WindowColor.mediumGreen);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
     }
@@ -168,41 +165,37 @@ public class LogoutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonYesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonYesMouseClicked
-        
+        lbPOSId.setText("POS ID :");
+        boxUserName.setText("");
+//        category.setBackground(WindowColor.darkGreen);
+        category.removeAll();
+        category.revalidate();
+        category.repaint();
+        subtotalPanel.setLabelSubTitleToZero();
+        detailItem.removeAll();
+        detailItem.revalidate();
+        detailItem.repaint();
+        panelProduct.removeAll();
+        panelProduct.revalidate();
+        panelProduct.repaint();
+        btnLogin.setButtonName("Login");
+        panelPagination.setVisible(false);
+
+        //Session
+        JavaConstant.token = null;
+        JavaConstant.fullName = null;
+        JavaConstant.userCode = null;
+        JavaConstant.posId = null;
+        JavaConstant.cashierId = null;
+        dispose();
     }//GEN-LAST:event_buttonYesMouseClicked
 
     private void buttonNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonNoMouseClicked
         this.dispose();
     }//GEN-LAST:event_buttonNoMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogoutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogoutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogoutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogoutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
@@ -216,6 +209,107 @@ public class LogoutDialog extends javax.swing.JDialog {
             }
         });
     }
+
+    private JLabel lbPOSId;
+    private Button btnLogin;
+    private JLabel boxUserName;
+    private JPanel category;
+    private JPanel panelProduct;
+    private JScrollPane jScrollPaneCategory;
+    private JPanel detailItem;
+    private JPanel boxOne;
+    private SubtotalPanel subtotalPanel;
+    private Button btnPayment;
+    private JPanel panelPagination;
+
+    public SubtotalPanel getSubtotalPanel() {
+        return subtotalPanel;
+    }
+
+    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+        this.subtotalPanel = subtotalPanel;
+    }
+
+    public JLabel getLbPOSId() {
+        return lbPOSId;
+    }
+
+    public void setLbPOSId(JLabel lbPOSId) {
+        this.lbPOSId = lbPOSId;
+    }
+
+    public Button getBtnLogin() {
+        return btnLogin;
+    }
+
+    public void setBtnLogin(Button btnLogin) {
+        this.btnLogin = btnLogin;
+    }
+
+    public JLabel getBoxUserName() {
+        return boxUserName;
+    }
+
+    public void setBoxUserName(JLabel boxUserName) {
+        this.boxUserName = boxUserName;
+    }
+
+    public JPanel getCategory() {
+        return category;
+    }
+
+    public void setCategory(JPanel category) {
+        this.category = category;
+    }
+
+    public JPanel getPanelProduct() {
+        return panelProduct;
+    }
+
+    public void setPanelProduct(JPanel panelProduct) {
+        this.panelProduct = panelProduct;
+    }
+
+    public JScrollPane getjScrollPaneCategory() {
+        return jScrollPaneCategory;
+    }
+
+    public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
+        this.jScrollPaneCategory = jScrollPaneCategory;
+    }
+
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
+
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
+
+    public JPanel getBoxOne() {
+        return boxOne;
+    }
+
+    public void setBoxOne(JPanel boxOne) {
+        this.boxOne = boxOne;
+    }
+
+    public Button getBtnPayment() {
+        return btnPayment;
+    }
+
+    public void setBtnPayment(Button btnPayment) {
+        this.btnPayment = btnPayment;
+    }
+
+    public JPanel getPanelPagination() {
+        return panelPagination;
+    }
+
+    public void setPanelPagination(JPanel panelPagination) {
+        this.panelPagination = panelPagination;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel;

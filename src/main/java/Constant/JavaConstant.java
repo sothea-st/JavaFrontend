@@ -11,7 +11,7 @@ public class JavaConstant {
      public static String fullName;
      public static String userCode;
      public static String posId;
-     public static int cashierId;
+     public static Integer cashierId;
      public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
      public static String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
      public static String typeCash = "cash";

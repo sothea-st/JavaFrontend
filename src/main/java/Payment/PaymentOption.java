@@ -68,20 +68,20 @@ public class PaymentOption extends javax.swing.JDialog {
                }
           };
           cmbSource.initEvent(events);
-          
+
           genderGroupButton();
           nationalityGroupButton();
           setColor();
-          
+
           paymentType = "cash";
-          txtCustomerId.requestFocus(); 
+          txtCustomerId.requestFocus();
           radioButtonKhmer.setSelected(true);
           radioButtonMale.setSelected(true);
      }
-     
+
      //=================================================
-     private void setColor(){
-         
+     private void setColor() {
+
           panelPayment.setBackground(WindowColor.mediumGreen);
           panelTotal.setBackground(WindowColor.mediumGreen);
           lbCashPayment.setFontColor(WindowColor.white);
@@ -93,23 +93,23 @@ public class PaymentOption extends javax.swing.JDialog {
           lbCreditCard.setBackground(WindowColor.blue);
           lbCash.setBackground(WindowColor.green);
      }
-     
+
      //================ Gender Option ===================
-     private void genderGroupButton(){
-       
-        ButtonGroup group = new ButtonGroup();
-        group.add(radioButtonMale);
-        group.add(radioButtonFemale);
+     private void genderGroupButton() {
+
+          ButtonGroup group = new ButtonGroup();
+          group.add(radioButtonMale);
+          group.add(radioButtonFemale);
      }
-     
+
      //================ Nationality Option ===================
-     private void nationalityGroupButton(){
-        ButtonGroup group = new ButtonGroup();
-        group.add(radioButtonKhmer);
-        group.add(radioButtonAsian);
-        group.add(radioButtonChinese);
-        group.add(radioButtonWhite);
-        group.add(radioButtonBlack);
+     private void nationalityGroupButton() {
+          ButtonGroup group = new ButtonGroup();
+          group.add(radioButtonKhmer);
+          group.add(radioButtonAsian);
+          group.add(radioButtonChinese);
+          group.add(radioButtonWhite);
+          group.add(radioButtonBlack);
      }
 
      //Action call function placeholder
@@ -1059,9 +1059,8 @@ public class PaymentOption extends javax.swing.JDialog {
     }//GEN-LAST:event_txtReceiveKhrKeyReleased
 
     private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
-
+         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
          if (txtReceiveKhr.getText().isEmpty() && txtReceiveUsd.getText().isEmpty()) {
-              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
               j.setMessage("Box Receive must be have one value!");
               j.setVisible(true);
               return;
@@ -1097,7 +1096,7 @@ public class PaymentOption extends javax.swing.JDialog {
          dataPay.put("changeUsd", changeUsd);
          dataPay.put("changeKhr", changeKhr);
          jsonData.put("dataPay", dataPay);
-         
+
          //get customer 
          HashMap<String, Object> customer = new HashMap<>();
          customer.put("cusName", txtCustomerName.getValueTextFieldCenter());
@@ -1120,11 +1119,10 @@ public class PaymentOption extends javax.swing.JDialog {
          } else if (radioButtonFemale.isSelected()) {
               customer.put("gender", radioButtonFemale.getText());
          }
-         
-         if( txtCustomerName.getValueTextFieldCenter()!= null ) {
-               jsonData.put("customer", customer);
+
+         if (txtCustomerName.getValueTextFieldCenter() != null) {
+              jsonData.put("customer", customer);
          }
-       
 
          //get dataSale 
          ArrayList<ProductSaleModel> dataSale = new ArrayList<>();
@@ -1145,16 +1143,16 @@ public class PaymentOption extends javax.swing.JDialog {
          jsonData.put("dataSale", dataSale);
 
          Response response = JavaConnection.post(JavaRoute.sale, jsonData);
-         
+
          if (response.isSuccessful()) {
               dispose();
               detailItem.removeAll();
               detailItem.revalidate();
               detailItem.repaint();
               subtotalPanel.setLabelSubTitleToZero();
-             btnPayment.setBackground(WindowColor.lightGray);
-              
+              btnPayment.setBackground(WindowColor.lightGray);
          }
+
 
     }//GEN-LAST:event_labelFontBlack9MouseClicked
 
@@ -1241,15 +1239,14 @@ public class PaymentOption extends javax.swing.JDialog {
           this.boxOne = boxOne;
      }
 
-    public Button getBtnPayment() {
-        return btnPayment;
-    }
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
 
-    public void setBtnPayment(Button btnPayment) {
-        this.btnPayment = btnPayment;
-    }
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
 
-     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.ComboBox cmbCoupon;

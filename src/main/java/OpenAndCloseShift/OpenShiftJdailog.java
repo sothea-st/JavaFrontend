@@ -6,6 +6,7 @@ import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
+import LoginAndLogoutForm.LoginFormJdailog;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -18,11 +19,9 @@ import org.json.JSONObject;
  */
 public class OpenShiftJdailog extends javax.swing.JDialog {
 
-     /**
-      * Creates new form
-      * OpenShiftJdailog
-      */
+ 
      private Button btnOpenShift;
+     private LoginFormJdailog jdLoginForm;
 
      public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
           super(parent, modal);
@@ -244,7 +243,9 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
              Response response = JavaConnection.post(JavaRoute.openShift, json);
              if (response.isSuccessful()) {
                   dispose();
-                  btnOpenShift.setButtonName("Close Shift");
+                  btnOpenShift.setButtonName(JavaConstant.closeShift);
+                  jdLoginForm.setCheckOpenShift(true);
+                  
              } else {
                   System.out.println("Failll");
              }
@@ -297,6 +298,16 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         });
     }
 
+     public LoginFormJdailog getJdLoginForm() {
+          return jdLoginForm;
+     }
+
+     public void setJdLoginForm(LoginFormJdailog jdLoginForm) {
+          this.jdLoginForm = jdLoginForm;
+     }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.Label IbUserId;
     private Components.Label LbTotalKhr;

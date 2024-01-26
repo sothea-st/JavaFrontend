@@ -18,5 +18,6 @@ public class JavaRoute {
      public static String searchProductByBarcodeOrName = "/searchProductByBarcodeOrName";
      public static String brand = "/brand";
      public static String getProductByBrandId = "/product/getProductByBrandId/";
+ 
 
 }

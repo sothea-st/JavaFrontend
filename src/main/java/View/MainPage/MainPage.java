@@ -28,13 +28,13 @@ import javax.swing.JScrollPane;
 import okhttp3.Response;
 
 public class MainPage extends javax.swing.JFrame {
-
+     
      private Color bgColor = new Color(204, 204, 204);
      private Color activeColor = new Color(56, 56, 56);
      private JPanel detailProduct;
      private String valueSearch;
      LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
-
+     
      public MainPage(String data) {
           initComponents();
           event();
@@ -54,7 +54,7 @@ public class MainPage extends javax.swing.JFrame {
           eventSearchProduct();
           eventInputOrScanBarcode();
      }
-
+     
      private void eventInputOrScanBarcode() {
           // this event was called when user type on textField 
           
@@ -70,7 +70,7 @@ public class MainPage extends javax.swing.JFrame {
           };
           textField.initEvent(event);
      }
-
+     
      private void eventSearchProduct() {
           // this event was called when user type on searchTextField 
           ButtonEvent event = new ButtonEvent() {
@@ -82,7 +82,7 @@ public class MainPage extends javax.swing.JFrame {
           };
           searchBox.initEvent(event);
      }
-
+     
      private void setBackground() {
           mainPanel.setBackground(WindowColor.slightGreen);
           panelCategory.setBackground(WindowColor.darkGreen);
@@ -96,13 +96,13 @@ public class MainPage extends javax.swing.JFrame {
           boxOne.setBackground(WindowColor.slightGreen);
           detailItem.setBackground(WindowColor.slightGreen);
      }
-
+     
      private void currenDateTime() {
           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
           LocalDateTime date = LocalDateTime.now();
           currentDate.setText(dtf.format(date));
      }
-
+     
      @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
@@ -556,6 +556,7 @@ public class MainPage extends javax.swing.JFrame {
               jdFormLogin.setSubtotalPanel(totalPanel);
               jdFormLogin.setBtnPayment(btnPayment);
               jdFormLogin.setCmboxBrand(cmboxBrand);
+              jdFormLogin.setBtnOpenShift(btnOpenShift);
               jdFormLogin.setVisible(true);
          } else if (buttonName.equals("logout")) {
               LogoutDialog logout = new LogoutDialog(new JFrame(), true);
@@ -569,6 +570,7 @@ public class MainPage extends javax.swing.JFrame {
          if (JavaConstant.token != null) {
               if (buttonName.equals("open shift")) {
                    OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
+                   jdOpenShift.setJdLoginForm(jdFormLogin);
                    jdOpenShift.setVisible(true);
               } else if (buttonName.equals("close shift")) {
                    CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
@@ -581,7 +583,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
-
+         
          if (JavaConstant.token != null) {
               ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
               rep.setVisible(true);
@@ -592,7 +594,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
-
+         
          if (JavaConstant.token != null) {
               Component[] listCom = detailItem.getComponents();
               if (listCom.length != 0) {
@@ -622,7 +624,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button Cancel
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
-
+         
          if (JavaConstant.token != null) {
               Component[] listCom = detailItem.getComponents();
               if (listCom.length != 0) {
@@ -640,7 +642,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button Cashier Report
     private void buttonCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCashierMouseClicked
-
+         
          if (JavaConstant.token != null) {
               CashierReport cashier = new CashierReport(new JFrame(), true);
               cashier.setVisible(true);
@@ -653,7 +655,6 @@ public class MainPage extends javax.swing.JFrame {
      //Action Button Holder
      private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
           // TODO add your handling code here:
-          System.err.println("333333333333333");
           this.setBackground(Color.red);
           revalidate();
           repaint();
@@ -669,25 +670,25 @@ public class MainPage extends javax.swing.JFrame {
           ButtonEvent btnevent = new ButtonEvent() {
                @Override
                public void onFocusGain() {
-
+                    
                }
           };
           searchBox.initEvent(btnevent);
           textField.initEvent(btnevent);
      }
-
+     
      public JPanel getDetailProduct() {
           return detailProduct;
      }
-
+     
      public void setDetailProduct(JPanel detailProduct) {
           this.detailProduct = detailProduct;
      }
-
+     
      public Color getActiveColor() {
           return activeColor;
      }
-
+     
      public void setActiveColor(Color activeColor) {
           this.activeColor = activeColor;
 //        menuNewItem.setBackground(activeColor);

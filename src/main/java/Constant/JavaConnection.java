@@ -1,5 +1,7 @@
 package Constant;
 
+import Model.MessageCode.MessageCodeModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -55,7 +57,7 @@ public class JavaConnection {
                     .post(body).build();
                response = client.newCall(request).execute();
                String data = response.body().string();
-               System.err.println("message = " + data);
+               
           } catch (Exception e) {
                System.err.println("getting error during call request " + e);
           }

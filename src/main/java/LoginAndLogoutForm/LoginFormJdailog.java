@@ -76,6 +76,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private JPanel panelPagination;
      ActionProduct pro = new ActionProduct();
      private ComboBox cmboxBrand;
+     private boolean checkOpenShift = false;
+     private Button btnOpenShift;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -222,7 +224,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          String password = txtPassword.getValuePassword();
 
          JSONObject json = new JSONObject();
-         json.put("userCode", "0002");
+         json.put("userCode", "0003");
          json.put("password", "TT@126$kh#");
 
          try {
@@ -237,6 +239,12 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    JavaConstant.userCode = jsonObject.getString("userCode");
                    JavaConstant.posId = jsonObject.getString("posId");
                    JavaConstant.cashierId = jsonObject.getInt("id");
+
+                   Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
+                   if (responseOpenShift.isSuccessful()) {
+                        checkOpenShift = true;
+                        btnOpenShift.setButtonName(JavaConstant.closeShift);
+                   }
 
                    dispose();
                    getBtnLogin().setButtonName("Logout");
@@ -268,7 +276,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               String responseData = response.body().string();
                               ObjectMapper objMap = new ObjectMapper();
                               ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
-
+                              
                               ProductDataModel[] listProduct = model.getData();
                               assignProduct(listProduct);
                          }
@@ -311,21 +319,23 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-                                   getPanelPagination().setVisible(true);
-                                   // click on category actice background color
-                                   Component[] listCom = category.getComponents();
-                                   for (int i = 0; i < listCom.length; i++) {
-                                        String title = ((LabelTitle) listCom[i]).getLabelTitle();
-                                        if (catName.equals(title)) {
-                                             listCom[i].setBackground(WindowColor.black);
-                                        } else {
-                                             listCom[i].setBackground(WindowColor.darkGreen);
+                                   if (checkOpenShift) {
+                                        getPanelPagination().setVisible(true);
+                                        // click on category actice background color
+                                        Component[] listCom = category.getComponents();
+                                        for (int i = 0; i < listCom.length; i++) {
+                                             String title = ((LabelTitle) listCom[i]).getLabelTitle();
+                                             if (catName.equals(title)) {
+                                                  listCom[i].setBackground(WindowColor.black);
+                                             } else {
+                                                  listCom[i].setBackground(WindowColor.darkGreen);
+                                             }
                                         }
+                                        panelProduct.removeAll();
+                                        pro.product(catId);
+                                        panelProduct.revalidate();
+                                        panelProduct.repaint();
                                    }
-                                   panelProduct.removeAll();
-                                   pro.product(catId);
-                                   panelProduct.revalidate();
-                                   panelProduct.repaint();
                               }
                          };
                          categoryTitle.initEvent(event);
@@ -342,6 +352,24 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           }
 
      }
+
+     public Button getBtnOpenShift() {
+          return btnOpenShift;
+     }
+
+     public void setBtnOpenShift(Button btnOpenShift) {
+          this.btnOpenShift = btnOpenShift;
+     }
+
+
+     public boolean isCheckOpenShift() {
+          return checkOpenShift;
+     }
+
+     public void setCheckOpenShift(boolean checkOpenShift) {
+          this.checkOpenShift = checkOpenShift;
+     }
+
 
      public JLabel getBoxUserName() {
           return boxUserName;

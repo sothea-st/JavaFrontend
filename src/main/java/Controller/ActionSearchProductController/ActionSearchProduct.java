@@ -20,7 +20,7 @@ public class ActionSearchProduct {
           return true;
      }
 
-     public static void searchProduct(String valueSearch,JPanel panelProduct , LoginFormJdailog jdFormLogin ) {
+     public static void searchProduct(String valueSearch, LoginFormJdailog jdFormLogin ) {
           String code = "";
           boolean isCheck = ActionSearchProduct.checkOnlyDigits(valueSearch);
           if (isCheck) {
@@ -34,9 +34,6 @@ public class ActionSearchProduct {
                     String responseData = response.body().string();
                     ObjectMapper obj = new ObjectMapper();
                     ProductSuccessData model = obj.readValue(responseData, ProductSuccessData.class);
-                    panelProduct.removeAll();
-                    panelProduct.revalidate();
-                    panelProduct.repaint();
                     ProductDataModel[] listProduct = model.getData();
                     jdFormLogin.assignProduct(listProduct);
                } catch (Exception e) {

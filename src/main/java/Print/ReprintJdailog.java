@@ -5,21 +5,12 @@ import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Model.Reprint.DataSuccessModel;
-import Model.Reprint.ReprintModel;
-import Model.Reprint.SaleDetailModel;
 import Receipt.Receipt;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
-import org.json.JSONObject;
 
-/**
- *
- * @author FRONT-END.06
- */
 public class ReprintJdailog extends javax.swing.JDialog {
      public ReprintJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);

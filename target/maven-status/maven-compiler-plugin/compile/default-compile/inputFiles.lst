@@ -1,9 +1,12 @@
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\BoxItem.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\SearchField.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\CashierReport\ReportCashier.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Brand\BrandSuccessModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Products\ProductPanel.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Brand\BrandModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\LabelFontGreen.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\LabelTitle.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Controller\ActionScanBarcodeAddProduct\ActionScanBarcodeAddProduct.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Combobox\ComboItem.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\ButtonPackage\ButtonNo.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\PackageProduct\CategoryModel.java
@@ -30,10 +33,12 @@ D:\POS_CASHIER\tt_pos_window\src\main\java\Return\ReturnDialog.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\Label.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\Shadow\GraphicsUtilities.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\Shadow\ShadowType.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\MessageCode\MessageCodeModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Constant\JavaRoute.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\PackageProduct\ProductModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\ReportBox.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\CashierReport\SummerySale.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Model\OpenShiftModel\OpenShiftModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Receipt\Receipt.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\Shadow\ShadowRenderer.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Button\ButtonBuy.java
@@ -41,7 +46,6 @@ D:\POS_CASHIER\tt_pos_window\src\main\java\Color\WindowColor.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Sale\SaleModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\TextField.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Products\ProductBox.java
-D:\POS_CASHIER\tt_pos_window\src\main\java\Components\LabelQtyForCashierReport.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\Reprint\SaleDetailModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\ProductModel\ProductDataModel.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\CashierReport\Data.java
@@ -69,6 +73,7 @@ D:\POS_CASHIER\tt_pos_window\src\main\java\Components\TextFieldCenter.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Model\ProductModel\ProductSuccessData.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\ComboBox.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Components\UnEditableTextField.java
+D:\POS_CASHIER\tt_pos_window\src\main\java\Controller\ActionRequestBrand\ActionRequestBrand.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Controller\ReceiptController.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\Controller\ActionSearchProductController\ActionSearchProduct.java
 D:\POS_CASHIER\tt_pos_window\src\main\java\DeleteAndCancel\CancelDialog.java

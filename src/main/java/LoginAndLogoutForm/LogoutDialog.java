@@ -1,6 +1,7 @@
 package LoginAndLogoutForm;
 
 import Color.WindowColor;
+import Constant.JavaConstant;
 import Fonts.WindowFonts;
 
 /**
@@ -167,7 +168,7 @@ public class LogoutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonYesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonYesMouseClicked
-    
+        
     }//GEN-LAST:event_buttonYesMouseClicked
 
     private void buttonNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonNoMouseClicked

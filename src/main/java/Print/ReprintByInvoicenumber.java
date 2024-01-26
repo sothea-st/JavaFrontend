@@ -138,9 +138,8 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
     private void btnPreviewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviewMouseClicked
 
          String paymentNo = txtInvoiceNumber.getValueTextField();
-
+         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
          if (paymentNo == null) {
-              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
               j.setMessage("Invoice № can not be empty!");
               j.setVisible(true);
               return;
@@ -157,6 +156,9 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
                    DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
                    rec.setDataSuccess(d);
                    rec.setVisible(true);
+              } else {
+                   j.setMessage("Wrong Invoice №!");
+                   j.setVisible(true);
               }
 
          } catch (Exception e) {

@@ -20,6 +20,7 @@ public class JavaConstant {
      public static String typeQRmnk = "mnk";
      public static String typeExpress = "express";
      public static String titleClose = "Close";
+    
 
      public static double exchangeRate = 4200;
 
@@ -29,5 +30,10 @@ public class JavaConstant {
           double doubleValue = Double.valueOf(data);
           return doubleValue;
      }
+     
+     public static String success = "success";
+     
+     public static String closeShift = "Close Shift";
+
 
 }

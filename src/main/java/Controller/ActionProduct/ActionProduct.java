@@ -66,8 +66,6 @@ public class ActionProduct {
                System.err.println("error getting product " + e);
           }
      }
-     
- 
 
      public void assignProduct(ProductDataModel[] listData) {
           ArrayList<ProductModel> listProduct = new ArrayList<>();
@@ -107,8 +105,6 @@ public class ActionProduct {
 
           for (int i = 0; i < listProduct.size(); i++) {
 
-               var listData = listProduct.get(i);
-
                GridBagConstraints gbc = new GridBagConstraints();
                gbc.gridx = x;
                gbc.gridy = y;
@@ -120,7 +116,7 @@ public class ActionProduct {
                     x = 0;
                     y++;
                }
-
+               var listData = listProduct.get(i);
                double price = listData.getPrice();
                double discount = (listData.getDiscount() * price) / 100;
 
@@ -128,78 +124,7 @@ public class ActionProduct {
                ButtonEvent event = new ButtonEvent() {
                     @Override
                     public void onMouseClick() {
-
-                         BoxItem box = new BoxItem();
-
-                         try {
-                              Component[] listCom = detailItem.getComponents();
-                              if (listCom.length != 0) {
-                                   for (int i = 0; i < listCom.length; i++) {
-                                        var obj = ((BoxItem) listCom[i]);
-                                        int proId = obj.getProductId();
-                                        int qty = obj.getQty();
-                                        if (proId == listData.getId()) {
-                                             qty++;
-                                             obj.setQty(qty);
-                                             double newAmountUsd = qty * price;
-                                             if (listData.getDiscount() > 0) {
-                                                  double discountPrice = price - (listData.getDiscount() * price) / 100;
-                                                  newAmountUsd = discountPrice * qty;
-                                             }
-                                             obj.setLabelAmountUsd(dm.format(newAmountUsd));
-                                             obj.setLabelAmountKh(kh.format(newAmountUsd * JavaConstant.exchangeRate));
-                                             box.setSubtotalPanel(subtotalPanel);
-                                             box.setListCom(listCom);
-                                             box.setDetailItem(detailItem);
-                                             total(0, listCom, 0);
-                                             return;
-                                        }
-                                   }
-                              }
-
-                              box.setLabelProductName(listData.getProductNameEn());
-                              box.setLabelWeight(listData.getWeight());
-                              box.setLabelBarcode(listData.getBarcode());
-
-                              if (listData.getDiscount() > 0) {
-                                   double discountPrice = price - (listData.getDiscount() * price) / 100;
-                                   box.setLabelPrice(dm.format(discountPrice));
-                                   box.setLabelAmountUsd(dm.format(discountPrice));
-                                   box.setLabelAmountKh(kh.format(discountPrice * JavaConstant.exchangeRate));
-                              } else {
-                                   box.setLabelPrice(dm.format(price));
-                                   box.setLabelAmountUsd(dm.format(price));
-                                   box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
-                              }
-
-                              box.setDiscountAmount(dm.format(discount));
-                              box.setQty(1);
-                              Response responseProductImage = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
-                              byte[] images = responseProductImage.body().bytes();
-                              box.setIconImage(new ImageIcon(images));
-                              box.setProductId(listData.getId());
-
-                              detailItem.add(box);
-                              // detailItem.add(Box.createRigidArea(new Dimension(2, 2)));
-                              detailItem.revalidate();
-                              detailItem.repaint();
-                              detailItem.setBorder(new BevelBorder(BevelBorder.RAISED));
-                              detailItem.setLayout(new BoxLayout(detailItem, BoxLayout.PAGE_AXIS));
-                              detailItem.setBackground(WindowColor.white);
-                              total(price, listCom, discount);
-
-                              // add list has one box to BoxItem (note: must be add)
-                              Component[] listCom1 = detailItem.getComponents();
-                              box.setDetailItem(detailItem);
-                              box.setSubtotalPanel(subtotalPanel);
-                              box.setListCom(listCom1);
-
-                              btnPayment.setBackground(WindowColor.lightBlue);
-
-                         } catch (Exception e) {
-                              System.out.println("err get product image " + e);
-                         }
-
+                         eventBtnBuy(listData);
                     }
                };
 
@@ -266,6 +191,81 @@ public class ActionProduct {
           double total = sumAmountUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
+     }
+
+     public void eventBtnBuy(ProductModel listData) {
+          double price = listData.getPrice();
+          double discount = (listData.getDiscount() * price) / 100;
+
+          try {
+               BoxItem box = new BoxItem();
+               Component[] listCom = detailItem.getComponents();
+               if (listCom.length != 0) {
+                    for (int i = 0; i < listCom.length; i++) {
+                         var obj = ((BoxItem) listCom[i]);
+                         int proId = obj.getProductId();
+                         int qty = obj.getQty();
+                         if (proId == listData.getId()) {
+                              qty++;
+                              obj.setQty(qty);
+                              double newAmountUsd = qty * price;
+                              if (listData.getDiscount() > 0) {
+                                   double discountPrice = price - (listData.getDiscount() * price) / 100;
+                                   newAmountUsd = discountPrice * qty;
+                              }
+                              obj.setLabelAmountUsd(dm.format(newAmountUsd));
+                              obj.setLabelAmountKh(kh.format(newAmountUsd * JavaConstant.exchangeRate));
+                              box.setSubtotalPanel(subtotalPanel);
+                              box.setListCom(listCom);
+                              box.setDetailItem(detailItem);
+                              total(0, listCom, 0);
+                              return;
+                         }
+                    }
+               }
+
+               box.setLabelProductName(listData.getProductNameEn());
+               box.setLabelWeight(listData.getWeight());
+               box.setLabelBarcode(listData.getBarcode());
+
+               if (listData.getDiscount() > 0) {
+                    double discountPrice = price - (listData.getDiscount() * price) / 100;
+                    box.setLabelPrice(dm.format(discountPrice));
+                    box.setLabelAmountUsd(dm.format(discountPrice));
+                    box.setLabelAmountKh(kh.format(discountPrice * JavaConstant.exchangeRate));
+               } else {
+                    box.setLabelPrice(dm.format(price));
+                    box.setLabelAmountUsd(dm.format(price));
+                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
+               }
+
+               box.setDiscountAmount(dm.format(discount));
+               box.setQty(1);
+               Response responseProductImage = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
+               byte[] images = responseProductImage.body().bytes();
+               box.setIconImage(new ImageIcon(images));
+               box.setProductId(listData.getId());
+
+               detailItem.add(box);
+               // detailItem.add(Box.createRigidArea(new Dimension(2, 2)));
+               detailItem.revalidate();
+               detailItem.repaint();
+               detailItem.setBorder(new BevelBorder(BevelBorder.RAISED));
+               detailItem.setLayout(new BoxLayout(detailItem, BoxLayout.PAGE_AXIS));
+               detailItem.setBackground(WindowColor.white);
+               total(price, listCom, discount);
+
+               // add list has one box to BoxItem (note: must be add)
+               Component[] listCom1 = detailItem.getComponents();
+               box.setDetailItem(detailItem);
+               box.setSubtotalPanel(subtotalPanel);
+               box.setListCom(listCom1);
+
+               btnPayment.setBackground(WindowColor.lightBlue);
+
+          } catch (Exception e) {
+               System.out.println("err get product image " + e);
+          }
      }
 
      public Button getBtnLogin() {

@@ -17,11 +17,11 @@ public class ReportBox extends javax.swing.JPanel {
     public ReportBox() {
         initComponents();
         name.setForeground(WindowColor.black);
-        name.setFont(WindowFonts.timeNewRoman12);
+        name.setFont(WindowFonts.timeNewRoman10);
         qty.setForeground(WindowColor.black);
-        qty.setFont(WindowFonts.timeNewRoman12);
+        qty.setFont(WindowFonts.timeNewRoman10);
         total.setForeground(WindowColor.black);
-        total.setFont(WindowFonts.timeNewRoman12);
+        total.setFont(WindowFonts.timeNewRoman10);
         setBackground(WindowColor.white);
     }
 
@@ -53,11 +53,11 @@ public class ReportBox extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(qty, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

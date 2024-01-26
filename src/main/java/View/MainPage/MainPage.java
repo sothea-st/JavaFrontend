@@ -74,18 +74,18 @@ public class MainPage extends javax.swing.JFrame {
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onMouseClick() {
-                    
-                    System.err.println("dddddddd = " + jdFormLogin.getCatId());
-                    
+
+                 
+
                     int count = jdFormLogin.getCount();
                     if (limit <= count) {
                          limit += 3;
-                    } 
-//                    if( limit > count ) {
-//                         limit += limit - count;
-//                    }
-//                    System.err.println("limit = " + limit);
 
+                    }
+                    if (limit > count) {
+                         limit = count;
+                    }
+ 
                     try {
                          Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
                          if (response.isSuccessful()) {

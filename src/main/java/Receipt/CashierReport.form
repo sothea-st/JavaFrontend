@@ -76,15 +76,15 @@
                                       <Component id="logo" min="-2" pref="128" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel36" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
-                                  <Component id="jPanel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                       <Component id="labelReceipt32" min="-2" pref="84" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jPanel3" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
+                                  <Component id="jPanel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -688,7 +688,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="subTotalQty" min="-2" pref="61" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="subTotalPrice" pref="134" max="32767" attributes="0"/>
+                              <Component id="subTotalPrice" pref="117" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -777,23 +777,20 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel51" min="-2" pref="360" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="panelSummaryPayment" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel25" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel26" min="-2" pref="85" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel27" max="32767" attributes="0"/>
+                                  <Component id="jLabel27" pref="105" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="panelSummaryPayment" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel51" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -903,7 +900,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel30" min="-2" pref="89" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel31" pref="121" max="32767" attributes="0"/>
+                                  <Component id="jLabel31" pref="101" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jLabel58" max="32767" attributes="0"/>
                               <Component id="panelSummaryDiscount" alignment="0" max="32767" attributes="0"/>

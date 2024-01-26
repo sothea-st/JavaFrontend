@@ -16,10 +16,9 @@ import java.awt.image.BufferedImage;
  * @author FRONT-END.06
  */
 public class ButtonInstock extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ButtonInstock
-     */
+     
+     private Color bgColor = WindowColor.darkGreen;
+     
      private String buttonName;
 
      public String getButtonName() {
@@ -30,6 +29,17 @@ public class ButtonInstock extends javax.swing.JPanel {
           this.buttonName = buttonName;
           button.setText(buttonName);
      }
+
+     public Color getBgColor() {
+          return bgColor;
+     }
+
+     public void setBgColor(Color bgColor) {
+          this.bgColor = bgColor;
+     }
+     
+     
+     
     public ButtonInstock() {
         initComponents();
         button.setForeground(WindowColor.white);
@@ -46,7 +56,7 @@ public class ButtonInstock extends javax.swing.JPanel {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         //Draws the rounded panel with borders.
-        graphics.setColor(WindowColor.darkGreen);
+        graphics.setColor(bgColor);
         graphics.fillRoundRect(0, 0, width-2, height-2, arcs.width, arcs.height);//paint background
         graphics.setColor(WindowColor.darkGreen);
         graphics.drawRoundRect(0, 0, width-2, height-2, arcs.width, arcs.height);//paint border

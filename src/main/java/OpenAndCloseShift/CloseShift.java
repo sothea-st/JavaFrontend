@@ -16,37 +16,37 @@ import org.json.JSONObject;
  * @author FRONT-END.06
  */
 public class CloseShift extends javax.swing.JDialog {
-    private Button btnOpenShift;
-    
-    public CloseShift(java.awt.Frame parent, boolean modal,Button btnOpenShift) {
-        super(parent, modal);
-        initComponents();
-        panelCloseShift.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        event();
-        this.btnOpenShift=btnOpenShift;
-        redexpress.requestFocus();
-    }
-    
-    void event(){
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
 
-            }
-           
-        };
-        redexpress.initEvent(btnevent);
-        qrMnk.initEvent(btnevent);
-        qrAba.initEvent(btnevent);
-        abaCreditCard.initEvent(btnevent);
-        cashUs.initEvent(btnevent);
-        cashKh.initEvent(btnevent);
-    }
+     private Button btnOpenShift;
 
+     public CloseShift(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
+          super(parent, modal);
+          initComponents();
+          panelCloseShift.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          event();
+          this.btnOpenShift = btnOpenShift;
+          redexpress.requestFocus();
+     }
 
-    @SuppressWarnings("unchecked")
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
+
+               }
+
+          };
+          redexpress.initEvent(btnevent);
+          qrMnk.initEvent(btnevent);
+          qrAba.initEvent(btnevent);
+          abaCreditCard.initEvent(btnevent);
+          cashUs.initEvent(btnevent);
+          cashKh.initEvent(btnevent);
+     }
+
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -211,83 +211,86 @@ public class CloseShift extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-        
-        double express = JavaConstant.getReplace(redexpress.getValueTextField());
-        double khqrMnk = JavaConstant.getReplace(qrMnk.getValueTextField());
-        double khqrAba = JavaConstant.getReplace(qrAba.getValueTextField());
-        double creditCard = JavaConstant.getReplace(abaCreditCard.getValueTextField());
-        double cashKhr = JavaConstant.getReplace(cashKh.getValueTextField());
-        double cashUsd = JavaConstant.getReplace(cashUs.getValueTextField());
+ 
 
-        JSONObject json = new JSONObject();
-        json.put("express", express);
-        json.put("khqrMnk", khqrMnk);
-        json.put("khqrAba", khqrAba);
-        json.put("creditCard", creditCard);
-        json.put("cashKhr", cashKhr);
-        json.put("cashUsd", cashUsd);
-        json.put("userCode", JavaConstant.userCode);
-        json.put("userId", JavaConstant.cashierId);
+         double express = JavaConstant.getReplace(redexpress.getValueTextField());
+         double khqrMnk = JavaConstant.getReplace(qrMnk.getValueTextField());
+         double khqrAba = JavaConstant.getReplace(qrAba.getValueTextField());
+         double creditCard = JavaConstant.getReplace(abaCreditCard.getValueTextField());
+         double cashKhr = JavaConstant.getReplace(cashKh.getValueTextField());
+         double cashUsd = JavaConstant.getReplace(cashUs.getValueTextField());
 
-        try {
-            Response response = JavaConnection.post(JavaRoute.closeShift, json);
-            if (response.isSuccessful()) {
-                dispose();
-                btnOpenShift.setButtonName("Open Shift");
-            } else {
-                System.out.println("Failll");
-            }
+         JSONObject json = new JSONObject();
+         json.put("express", express);
+         json.put("khqrMnk", khqrMnk);
+         json.put("khqrAba", khqrAba);
+         json.put("creditCard", creditCard);
+         json.put("cashKhr", cashKhr);
+         json.put("cashUsd", cashUsd);
+         json.put("userCode", JavaConstant.userCode);
+         json.put("userId", JavaConstant.cashierId);
 
-        } catch (Exception e) {
+         try {
+              Response response = JavaConnection.post(JavaRoute.closeShift, json);
+              if (response.isSuccessful()) {
+                   dispose();
+                   btnOpenShift.setButtonName("Open Shift");
+                   JavaConstant.checkCloseShift = 0l;
+              } else {
+                   System.out.println("Failll");
+              }
 
-        }
+         } catch (Exception e) {
+
+         }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true,null);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
                     }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(CloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          }
+          //</editor-fold>
+
+          /* Create and display the dialog */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    CloseShift dialog = new CloseShift(new javax.swing.JFrame(), true, null);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.Label IbUserId;

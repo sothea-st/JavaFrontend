@@ -1130,7 +1130,9 @@ public class PaymentOption extends javax.swing.JDialog {
               var obj = ((BoxItem) listCom[i]);
               double price = JavaConstant.getReplace(obj.getLabelPrice());
               double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
-              double discountAmount = JavaConstant.getReplace(obj.getDiscountAmount());
+//              double discountAmount = JavaConstant.getReplace(obj.getDiscountAmount());
+               int discountAmount = obj.getDiscountDigit();
+
               ProductSaleModel pro = new ProductSaleModel(
                    obj.getProductId(),
                    obj.getQty(),

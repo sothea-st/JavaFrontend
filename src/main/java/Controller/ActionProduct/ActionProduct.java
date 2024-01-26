@@ -3,6 +3,7 @@ package Controller.ActionProduct;
 import Button.Button;
 import Color.WindowColor;
 import Components.BoxItem;
+import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
@@ -21,6 +22,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -46,18 +48,20 @@ public class ActionProduct {
      private SubtotalPanel subtotalPanel;
      private Button btnPayment;
      private JPanel panelPagination;
+     private int count;
 
      public ActionProduct() {
      }
 
-     public void product(int catId) {
+     public void product(int catId,int limit) {
           try {
-               Response response = JavaConnection.get(JavaRoute.getProductByCatId + catId);
+               Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId="+catId+"&limit="+limit+"");
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
                     ProductDataModel[] listData = data.getData();
+                    setCount(data.getCount());
                     assignProduct(listData);
                } else {
                     System.err.println("fail loading product");
@@ -124,13 +128,20 @@ public class ActionProduct {
                ButtonEvent event = new ButtonEvent() {
                     @Override
                     public void onMouseClick() {
-                         eventBtnBuy(listData);
+                         System.err.println(" prodcut statuc = " + listData.getProductStatus().isEmpty());
+                         if( !listData.getProductStatus().isEmpty() ) {
+                              eventBtnBuy(listData);
+                         } else {
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame() , true);
+                              j.setMessage("Product not avalible for sale!");
+                              j.setVisible(true);
+                         }
                     }
                };
 
                ProductBox product = new ProductBox();
                product.initEvent(event);
-
+               product.setProductStatus(listData.getProductStatus());
                product.setDiscountPercentag(listData.getDiscount(), price);
                String productName;
                if (listData.getProductNameEn().length() > 35) {
@@ -198,6 +209,7 @@ public class ActionProduct {
           double discount = (listData.getDiscount() * price) / 100;
 
           try {
+               
                BoxItem box = new BoxItem();
                Component[] listCom = detailItem.getComponents();
                if (listCom.length != 0) {
@@ -223,7 +235,7 @@ public class ActionProduct {
                          }
                     }
                }
-
+               box.setDiscountDigit(listData.getDiscount());
                box.setLabelProductName(listData.getProductNameEn());
                box.setLabelWeight(listData.getWeight());
                box.setLabelBarcode(listData.getBarcode());
@@ -268,6 +280,17 @@ public class ActionProduct {
           }
      }
 
+     public int getCount() {
+          return count;
+     }
+
+     public void setCount(int count) {
+          this.count = count;
+     }
+
+     
+     
+     
      public Button getBtnLogin() {
           return btnLogin;
      }

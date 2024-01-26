@@ -6,12 +6,12 @@ public class ProductSaleModel {
     private int qty;
     private double price;
     private double amount;
-    private double discount;
+    private int discount;
 
     public ProductSaleModel() {
     }
 
-    public ProductSaleModel(int productId, int qty, double price, double amount, double discount) {
+    public ProductSaleModel(int productId, int qty, double price, double amount, int discount) {
         this.productId = productId;
         this.qty = qty;
         this.price = price;
@@ -51,11 +51,11 @@ public class ProductSaleModel {
         this.amount = amount;
     }
 
-    public double getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
     

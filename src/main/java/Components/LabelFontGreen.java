@@ -3,11 +3,14 @@ package Components;
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
+import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 /**
@@ -40,6 +43,34 @@ public class LabelFontGreen extends javax.swing.JPanel {
         lbLabel.setFont(WindowFonts.timeNewRomanBold14);
         lbLabel.setForeground(WindowColor.darkGreen);
     }
+    
+    
+    public void initEvent(ButtonEvent event) {
+         lbLabel.addMouseListener(new MouseListener(){
+              @Override
+              public void mouseClicked(MouseEvent e) {
+                   event.onMouseClick();
+              }
+
+              @Override
+              public void mousePressed(MouseEvent e) {
+              }
+
+              @Override
+              public void mouseReleased(MouseEvent e) {
+              }
+
+              @Override
+              public void mouseEntered(MouseEvent e) {
+              }
+
+              @Override
+              public void mouseExited(MouseEvent e) {
+              }
+         
+         });
+    }
+    
 
     //=================================================Create Shadow Box
     private ShadowType shadowType;
@@ -97,36 +128,45 @@ public class LabelFontGreen extends javax.swing.JPanel {
     }
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+     private void initComponents() {
 
-        lbLabel = new javax.swing.JLabel();
+          lbLabel = new javax.swing.JLabel();
 
-        lbLabel.setForeground(new java.awt.Color(255, 255, 255));
-        lbLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbLabel.setText("jLabel1");
+          lbLabel.setForeground(new java.awt.Color(255, 255, 255));
+          lbLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+          lbLabel.setText("jLabel1");
+          lbLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    lbLabelMouseClicked(evt);
+               }
+          });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
+          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+          this.setLayout(layout);
+          layout.setHorizontalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lbLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE)
+                    .addContainerGap())
+          );
+          layout.setVerticalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lbLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE)
+                    .addContainerGap())
+          );
+     }// </editor-fold>//GEN-END:initComponents
+
+     private void lbLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLabelMouseClicked
+          // TODO add your handling code here:
+     }//GEN-LAST:event_lbLabelMouseClicked
 
     private String labelName;
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lbLabel;
-    // End of variables declaration//GEN-END:variables
+     // Variables declaration - do not modify//GEN-BEGIN:variables
+     private javax.swing.JLabel lbLabel;
+     // End of variables declaration//GEN-END:variables
 }

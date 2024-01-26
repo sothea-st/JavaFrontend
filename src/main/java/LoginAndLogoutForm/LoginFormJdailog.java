@@ -41,6 +41,8 @@ import Controller.ActionProduct.ActionProduct;
 import Controller.ActionRequestBrand.ActionRequestBrand;
 import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
 import Controller.ActionSearchProductController.ActionSearchProduct;
+import Model.OpenShift.OpenShiftDataModel;
+import Model.OpenShiftModel.OpenShiftModel;
 import Model.ProductModel.ProductDataModel;
 import Model.ProductModel.ProductSuccessData;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,6 +66,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      DecimalFormat bar = new DecimalFormat("########00000000");
      DecimalFormat kh = new DecimalFormat("#,##0");
 
+     private JLabel lbPOSId;
      private Button btnLogin;
      private JLabel boxUserName;
      private JPanel category;
@@ -78,6 +81,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private ComboBox cmboxBrand;
      private boolean checkOpenShift = false;
      private Button btnOpenShift;
+     private int limit;
+     private int catId;
+     private int count;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -216,6 +222,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
      public void scanbarCodeAddProduct(ProductModel proModel) {
           ActionScanBarcodeAddProduct action = new ActionScanBarcodeAddProduct();
+          
           pro.eventBtnBuy(proModel);
      }
 
@@ -224,7 +231,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          String password = txtPassword.getValuePassword();
 
          JSONObject json = new JSONObject();
-         json.put("userCode", "0002");
+         json.put("userCode", "0006");
          json.put("password", "TT@126$kh#");
 
          try {
@@ -240,10 +247,17 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    JavaConstant.posId = jsonObject.getString("posId");
                    JavaConstant.cashierId = jsonObject.getInt("id");
 
+                  
                    Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
                    if (responseOpenShift.isSuccessful()) {
-                        checkOpenShift = true;
-                        btnOpenShift.setButtonName(JavaConstant.closeShift);
+                        String result = responseOpenShift.body().string();
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        OpenShiftDataModel data = objectMapper.readValue(result, OpenShiftDataModel.class);
+                        if (data.getData().getNumberOpenShift() == 1) { // == 1 user still open shift
+                             checkOpenShift = true;
+                             btnOpenShift.setButtonName(JavaConstant.closeShift);
+                             JavaConstant.checkCloseShift = data.getData().getNumberOpenShift();
+                        }
                    }
 
                    dispose();
@@ -251,6 +265,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    String userName = jsonObject.getString("fullName");
                    String userCode = jsonObject.getString("userCode");
                    getBoxUserName().setText(userName + " USER ID : " + userCode);
+                   lbPOSId.setText("POS ID : " + JavaConstant.posId);
                    category();
                    getjScrollPaneCategory().setVisible(true);
                    ActionRequestBrand.requestBrand(cmboxBrand);
@@ -276,7 +291,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               String responseData = response.body().string();
                               ObjectMapper objMap = new ObjectMapper();
                               ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
-                              
+
                               ProductDataModel[] listProduct = model.getData();
                               assignProduct(listProduct);
                          }
@@ -320,6 +335,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                               @Override
                               public void onMouseClick() {
                                    if (checkOpenShift) {
+                                        setCatId(catId);
                                         getPanelPagination().setVisible(true);
                                         // click on category actice background color
                                         Component[] listCom = category.getComponents();
@@ -332,9 +348,10 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                              }
                                         }
                                         panelProduct.removeAll();
-                                        pro.product(catId);
+                                        pro.product(catId,limit);
                                         panelProduct.revalidate();
                                         panelProduct.repaint();
+                                        setCount(pro.getCount());
                                    }
                               }
                          };
@@ -353,6 +370,41 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
      }
 
+     public int getCount() {
+          return count;
+     }
+
+     public void setCount(int count) {
+          this.count = count;
+     }
+
+     
+     
+     public int getLimit() {
+          return limit;
+     }
+
+     public void setLimit(int limit) {
+          this.limit = limit;
+     }
+
+     public int getCatId() {
+          return catId;
+     }
+
+     public void setCatId(int catId) {
+          this.catId = catId;
+     }
+
+     
+     public JLabel getLbPOSId() {
+          return lbPOSId;
+     }
+
+     public void setLbPOSId(JLabel lbPOSId) {
+          this.lbPOSId = lbPOSId;
+     }
+
      public Button getBtnOpenShift() {
           return btnOpenShift;
      }
@@ -361,7 +413,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           this.btnOpenShift = btnOpenShift;
      }
 
-
      public boolean isCheckOpenShift() {
           return checkOpenShift;
      }
@@ -369,7 +420,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      public void setCheckOpenShift(boolean checkOpenShift) {
           this.checkOpenShift = checkOpenShift;
      }
-
 
      public JLabel getBoxUserName() {
           return boxUserName;

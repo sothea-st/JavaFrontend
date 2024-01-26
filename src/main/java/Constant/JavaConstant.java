@@ -34,6 +34,7 @@ public class JavaConstant {
      public static String success = "success";
      
      public static String closeShift = "Close Shift";
+     public static Long checkCloseShift;
 
 
 }

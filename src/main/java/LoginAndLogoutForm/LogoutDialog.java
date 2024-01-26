@@ -102,7 +102,7 @@ public class LogoutDialog extends javax.swing.JDialog {
 
         panelLogout.setForeground(new java.awt.Color(0, 0, 0));
 
-        labelPopUpTitle.setLabelTitle("Login");
+        labelPopUpTitle.setLabelTitle("Logout");
 
         txtLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtLabel.setText("Are you sure to logout ?");

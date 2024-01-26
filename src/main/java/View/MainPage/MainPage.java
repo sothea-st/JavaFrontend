@@ -12,12 +12,17 @@ import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
+import Model.CashierReport.DataSuccessModelReport;
+import Model.CashierReport.ReportCashier;
+import Model.Reprint.DataSuccessModel;
 import OpenAndCloseShift.CloseShift;
 import OpenAndCloseShift.OpenShiftJdailog;
 import Payment.PaymentOption;
 import Print.ReprintJdailog;
 import Receipt.CashierReport;
+import Receipt.Receipt;
 import Return.ApprovalCode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDateTime;
@@ -28,13 +33,13 @@ import javax.swing.JScrollPane;
 import okhttp3.Response;
 
 public class MainPage extends javax.swing.JFrame {
-     
+
      private Color bgColor = new Color(204, 204, 204);
      private Color activeColor = new Color(56, 56, 56);
      private JPanel detailProduct;
      private String valueSearch;
      LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
-     
+
      public MainPage(String data) {
           initComponents();
           event();
@@ -54,10 +59,10 @@ public class MainPage extends javax.swing.JFrame {
           eventSearchProduct();
           eventInputOrScanBarcode();
      }
-     
+
      private void eventInputOrScanBarcode() {
           // this event was called when user type on textField 
-          
+
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onKeyType() {
@@ -70,7 +75,7 @@ public class MainPage extends javax.swing.JFrame {
           };
           textField.initEvent(event);
      }
-     
+
      private void eventSearchProduct() {
           // this event was called when user type on searchTextField 
           ButtonEvent event = new ButtonEvent() {
@@ -82,7 +87,7 @@ public class MainPage extends javax.swing.JFrame {
           };
           searchBox.initEvent(event);
      }
-     
+
      private void setBackground() {
           mainPanel.setBackground(WindowColor.slightGreen);
           panelCategory.setBackground(WindowColor.darkGreen);
@@ -96,13 +101,13 @@ public class MainPage extends javax.swing.JFrame {
           boxOne.setBackground(WindowColor.slightGreen);
           detailItem.setBackground(WindowColor.slightGreen);
      }
-     
+
      private void currenDateTime() {
           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
           LocalDateTime date = LocalDateTime.now();
           currentDate.setText(dtf.format(date));
      }
-     
+
      @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
@@ -583,7 +588,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
-         
+
          if (JavaConstant.token != null) {
               ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
               rep.setVisible(true);
@@ -594,7 +599,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
-         
+
          if (JavaConstant.token != null) {
               Component[] listCom = detailItem.getComponents();
               if (listCom.length != 0) {
@@ -624,7 +629,7 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button Cancel
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
-         
+
          if (JavaConstant.token != null) {
               Component[] listCom = detailItem.getComponents();
               if (listCom.length != 0) {
@@ -642,10 +647,24 @@ public class MainPage extends javax.swing.JFrame {
 
      //Action Button Cashier Report
     private void buttonCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCashierMouseClicked
-         
+
          if (JavaConstant.token != null) {
-              CashierReport cashier = new CashierReport(new JFrame(), true);
-              cashier.setVisible(true);
+              try {
+                   CashierReport cashier = new CashierReport(new JFrame(), true);
+                   Response response = JavaConnection.get(
+                        JavaRoute.cashierReport + JavaConstant.userCode + "&userId=" + JavaConstant.cashierId + "&posId=" + JavaConstant.posId);
+
+                   if (response.isSuccessful()) {
+                        String myObject = response.body().string();
+                        ObjectMapper objMap = new ObjectMapper();
+                        DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
+                        cashier.setDataSuccessReport(d);
+                        cashier.setVisible(true);
+                   }
+
+              } catch (Exception e) {
+                   System.err.println("error = " + e);
+              }
          } else {
               System.err.println("System cannot oprn Cashier Report");
          }
@@ -670,25 +689,25 @@ public class MainPage extends javax.swing.JFrame {
           ButtonEvent btnevent = new ButtonEvent() {
                @Override
                public void onFocusGain() {
-                    
+
                }
           };
           searchBox.initEvent(btnevent);
           textField.initEvent(btnevent);
      }
-     
+
      public JPanel getDetailProduct() {
           return detailProduct;
      }
-     
+
      public void setDetailProduct(JPanel detailProduct) {
           this.detailProduct = detailProduct;
      }
-     
+
      public Color getActiveColor() {
           return activeColor;
      }
-     
+
      public void setActiveColor(Color activeColor) {
           this.activeColor = activeColor;
 //        menuNewItem.setBackground(activeColor);

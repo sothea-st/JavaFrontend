@@ -19,5 +19,6 @@ public class JavaRoute {
      public static String brand = "/brand";
      public static String getProductByBrandId = "/product/getProductByBrandId/";
  
+     public static String cashierReport = "/cashierReport?userCode=";
 
 }

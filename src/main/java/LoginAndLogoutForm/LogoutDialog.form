@@ -169,7 +169,7 @@
       <SubComponents>
         <Component class="Components.LabelPopUpTitle" name="labelPopUpTitle">
           <Properties>
-            <Property name="labelTitle" type="java.lang.String" value="Login"/>
+            <Property name="labelTitle" type="java.lang.String" value="Logout"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="txtLabel">

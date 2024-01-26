@@ -26,6 +26,7 @@ public class CloseShift extends javax.swing.JDialog {
         setResizable(false);
         event();
         this.btnOpenShift=btnOpenShift;
+        redexpress.requestFocus();
     }
     
     void event(){

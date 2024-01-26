@@ -29,6 +29,7 @@ public class ReturnDialog extends javax.swing.JDialog {
         setResizable(false);
         event();
         addComboReason();
+        txtinvoice.requestFocus();
     }
     
     //Action call function placeholder

@@ -231,7 +231,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          String password = txtPassword.getValuePassword();
 
          JSONObject json = new JSONObject();
-         json.put("userCode", "0002");
+         json.put("userCode", "0006");
          json.put("password", "TT@126$kh#");
 
          try {

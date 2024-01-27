@@ -28,7 +28,6 @@ Return\ReturnDialog$3.class
 Receipt\Receipt$3.class
 DeleteAndCancel\CancelDialog$3.class
 Model\ProductModel\ProductSuccessData.class
-Components\LabelQtyForCashierReport.class
 Payment\PaymentOption$15.class
 DeleteAndCancel\DeleteDialog$4$1.class
 Payment\PaymentOption$7.class

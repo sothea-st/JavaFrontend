@@ -31,7 +31,7 @@ public class LabelReceipt extends javax.swing.JPanel {
     public LabelReceipt() {
         initComponents();
         setBackground(WindowColor.white);
-        lbLabel.setFont(WindowFonts.timeNewRoman12);
+        lbLabel.setFont(WindowFonts.timeNewRoman10);
         lbLabel.setForeground(WindowColor.black);
     }
     

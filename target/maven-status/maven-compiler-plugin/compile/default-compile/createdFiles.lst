@@ -192,6 +192,7 @@ Controller\ActionProduct\ActionProduct.class
 Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
+Model\Login\LoginModel.class
 View\MainPage\MainPage$1.class
 LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class

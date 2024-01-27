@@ -40,143 +40,143 @@ import org.json.JSONObject;
 
 public class MainPage extends javax.swing.JFrame {
 
-     private Color bgColor = new Color(204, 204, 204);
-     private Color activeColor = new Color(56, 56, 56);
-     private JPanel detailProduct;
-     private String valueSearch;
-     private int limit = 10;
+    private Color bgColor = new Color(204, 204, 204);
+    private Color activeColor = new Color(56, 56, 56);
+    private JPanel detailProduct;
+    private String valueSearch;
+    private int limit = 10;
 
-     LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
+    LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
 
-     public MainPage(String data) {
-          initComponents();
-          event();
-          setBackground();
-          currenDateTime();
-          jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-          jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-          jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-          BackgroundImage bgimg = new BackgroundImage();
-          panelProduct.removeAll();
-          panelProduct.add(bgimg);
-          panelProduct.revalidate();
-          panelProduct.repaint();
-          jScrollPaneCategory.setVisible(false);
-          panelPagination.setVisible(false);
-          searchBox.requestFocusInWindow();
-          eventSearchProduct();
-          eventInputOrScanBarcode();
-          nextEvent();
-          previousEvent();
-     }
+    public MainPage(String data) {
+        initComponents();
+        event();
+        setBackground();
+        currenDateTime();
+        jScrollPaneDetail.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneCategory.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        BackgroundImage bgimg = new BackgroundImage();
+        panelProduct.removeAll();
+        panelProduct.add(bgimg);
+        panelProduct.revalidate();
+        panelProduct.repaint();
+        jScrollPaneCategory.setVisible(false);
+        panelPagination.setVisible(false);
+        searchBox.requestFocusInWindow();
+        eventSearchProduct();
+        eventInputOrScanBarcode();
+        nextEvent();
+        previousEvent();
+    }
 
-     private void nextEvent() {
-          ButtonEvent event = new ButtonEvent() {
-               @Override
-               public void onMouseClick() {
+    private void nextEvent() {
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onMouseClick() {
 
-                    int count = jdFormLogin.getCount();
-                    if (limit <= count) {
-                         limit += 10;
+                int count = jdFormLogin.getCount();
+                if (limit < count) {
+                    limit += 10;
+                }
+
+                try {
+                    Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
+                    if (response.isSuccessful()) {
+                        String responseData = response.body().string();
+                        ObjectMapper objMap = new ObjectMapper();
+                        ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
+                        ProductDataModel[] listData = data.getData();
+                        jdFormLogin.assignProduct(listData);
+                    } else {
+                        System.err.println("fail loading product");
                     }
+                } catch (Exception e) {
+                    System.err.println("error getting product " + e);
+                }
+            }
+        };
+        next.initEvent(event);
+    }
 
+    private void previousEvent() {
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onMouseClick() {
+                if (limit != 10) {
+                    limit -= 10;
+                }
+
+                if (limit != 0) {
                     try {
-                         Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
-                         if (response.isSuccessful()) {
-                              String responseData = response.body().string();
-                              ObjectMapper objMap = new ObjectMapper();
-                              ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
-                              ProductDataModel[] listData = data.getData();
-                              jdFormLogin.assignProduct(listData);
-                         } else {
-                              System.err.println("fail loading product");
-                         }
+                        Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
+                        if (response.isSuccessful()) {
+                            String responseData = response.body().string();
+                            ObjectMapper objMap = new ObjectMapper();
+                            ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
+                            ProductDataModel[] listData = data.getData();
+                            jdFormLogin.assignProduct(listData);
+                        } else {
+                            System.err.println("fail loading product");
+                        }
                     } catch (Exception e) {
-                         System.err.println("error getting product " + e);
+                        System.err.println("error getting product " + e);
                     }
-               }
-          };
-          next.initEvent(event);
-     }
+                }
 
-     private void previousEvent() {
-          ButtonEvent event = new ButtonEvent() {
-               @Override
-               public void onMouseClick() {
-                    if (limit != 10) {
-                         limit -= 10;
-                    }
+            }
+        };
+        previous.initEvent(event);
+    }
 
-                    if (limit != 0) {
-                         try {
-                              Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
-                              if (response.isSuccessful()) {
-                                   String responseData = response.body().string();
-                                   ObjectMapper objMap = new ObjectMapper();
-                                   ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
-                                   ProductDataModel[] listData = data.getData();
-                                   jdFormLogin.assignProduct(listData);
-                              } else {
-                                   System.err.println("fail loading product");
-                              }
-                         } catch (Exception e) {
-                              System.err.println("error getting product " + e);
-                         }
-                    }
+    private void eventInputOrScanBarcode() {
+        // this event was called when user type on textField 
 
-               }
-          };
-          previous.initEvent(event);
-     }
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onKeyType() {
+                // this event was called 2 time it's error
+                Component[] listCom = detailItem.getComponents();
+                String barcode = textField.getValueTextField();
+                ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
+            }
+        };
+        textField.initEvent(event);
+    }
 
-     private void eventInputOrScanBarcode() {
-          // this event was called when user type on textField 
+    private void eventSearchProduct() {
+        // this event was called when user type on searchTextField 
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onKeyType() {
+                valueSearch = searchBox.getValueTextSearch();
+                ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+            }
+        };
+        searchBox.initEvent(event);
+    }
 
-          ButtonEvent event = new ButtonEvent() {
-               @Override
-               public void onKeyType() {
-                    // this event was called 2 time it's error
-                    Component[] listCom = detailItem.getComponents();
-                    String barcode = textField.getValueTextField();
-                    ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
-               }
-          };
-          textField.initEvent(event);
-     }
+    private void setBackground() {
+        mainPanel.setBackground(WindowColor.slightGreen);
+        panelCategory.setBackground(WindowColor.darkGreen);
+        category.setBackground(WindowColor.darkGreen);
+        menuBar.setBackground(WindowColor.darkGreen);
+        jScrollPaneCategory.setBackground(WindowColor.darkGreen);
+        day.setBackground(WindowColor.slightGreen);
+        panelprocessing.setBackground(WindowColor.slightGreen);
+        panelProduct.setBackground(WindowColor.slightGreen);
+        panelPagination.setBackground(WindowColor.slightGreen);
+        boxOne.setBackground(WindowColor.slightGreen);
+        detailItem.setBackground(WindowColor.slightGreen);
+    }
 
-     private void eventSearchProduct() {
-          // this event was called when user type on searchTextField 
-          ButtonEvent event = new ButtonEvent() {
-               @Override
-               public void onKeyType() {
-                    valueSearch = searchBox.getValueTextSearch();
-                    ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
-               }
-          };
-          searchBox.initEvent(event);
-     }
+    private void currenDateTime() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
+        LocalDateTime date = LocalDateTime.now();
+        currentDate.setText(dtf.format(date));
+    }
 
-     private void setBackground() {
-          mainPanel.setBackground(WindowColor.slightGreen);
-          panelCategory.setBackground(WindowColor.darkGreen);
-          category.setBackground(WindowColor.darkGreen);
-          menuBar.setBackground(WindowColor.darkGreen);
-          jScrollPaneCategory.setBackground(WindowColor.darkGreen);
-          day.setBackground(WindowColor.slightGreen);
-          panelprocessing.setBackground(WindowColor.slightGreen);
-          panelProduct.setBackground(WindowColor.slightGreen);
-          panelPagination.setBackground(WindowColor.slightGreen);
-          boxOne.setBackground(WindowColor.slightGreen);
-          detailItem.setBackground(WindowColor.slightGreen);
-     }
-
-     private void currenDateTime() {
-          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy hh:mm:ss a");
-          LocalDateTime date = LocalDateTime.now();
-          currentDate.setText(dtf.format(date));
-     }
-
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -274,8 +274,10 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Desktop\\project\\front end\\tt_pos_window\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
 
         imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Desktop\\project\\front end\\tt_pos_window\\src\\main\\resources\\image\\UserIcon.png")); // NOI18N
 
         javax.swing.GroupLayout dayLayout = new javax.swing.GroupLayout(day);
         day.setLayout(dayLayout);
@@ -582,230 +584,229 @@ public class MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-     //Action Button Login and Logout
+    //Action Button Login and Logout
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-         String buttonName = btnLogin.getButtonName().toLowerCase();
-         if (buttonName.equals("login")) {
-              jdFormLogin.setBoxUserName(boxUserName);
-              jdFormLogin.setBtnLogin(btnLogin);
-              jdFormLogin.setCategory(category);
-              jdFormLogin.setPanelProduct(panelProduct);
-              jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
-              jdFormLogin.setPanelPagination(panelPagination);
-              jdFormLogin.setDetailItem(detailItem);
-              jdFormLogin.setBoxOne(boxOne);
-              jdFormLogin.setSubtotalPanel(totalPanel);
-              jdFormLogin.setBtnPayment(btnPayment);
-              jdFormLogin.setCmboxBrand(cmboxBrand);
-              jdFormLogin.setBtnOpenShift(btnOpenShift);
-              jdFormLogin.setLbPOSId(lbPOSId);
-              jdFormLogin.setLimit(limit);
-              jdFormLogin.setVisible(true);
-         } else if (buttonName.equals("logout")) {
-              LogoutDialog logout = new LogoutDialog(new JFrame(), true);
-              logout.setBoxUserName(boxUserName);
-              logout.setBtnLogin(btnLogin);
-              logout.setCategory(category);
-              logout.setPanelProduct(panelProduct);
-              logout.setjScrollPaneCategory(jScrollPaneCategory);
-              logout.setPanelPagination(panelPagination);
-              logout.setDetailItem(detailItem);
-              logout.setBoxOne(boxOne);
-              logout.setBtnPayment(btnPayment);
-              logout.setLbPOSId(lbPOSId);
-              logout.setSubtotalPanel(totalPanel);
-              logout.setVisible(true);
-         }
+        String buttonName = btnLogin.getButtonName().toLowerCase();
+        if (buttonName.equals("login")) {
+            jdFormLogin.setBoxUserName(boxUserName);
+            jdFormLogin.setBtnLogin(btnLogin);
+            jdFormLogin.setCategory(category);
+            jdFormLogin.setPanelProduct(panelProduct);
+            jdFormLogin.setjScrollPaneCategory(jScrollPaneCategory);
+            jdFormLogin.setPanelPagination(panelPagination);
+            jdFormLogin.setDetailItem(detailItem);
+            jdFormLogin.setBoxOne(boxOne);
+            jdFormLogin.setSubtotalPanel(totalPanel);
+            jdFormLogin.setBtnPayment(btnPayment);
+            jdFormLogin.setCmboxBrand(cmboxBrand);
+            jdFormLogin.setBtnOpenShift(btnOpenShift);
+            jdFormLogin.setLbPOSId(lbPOSId);
+            jdFormLogin.setLimit(limit);
+            jdFormLogin.setVisible(true);
+        } else if (buttonName.equals("logout")) {
+            LogoutDialog logout = new LogoutDialog(new JFrame(), true);
+            logout.setBoxUserName(boxUserName);
+            logout.setBtnLogin(btnLogin);
+            logout.setCategory(category);
+            logout.setPanelProduct(panelProduct);
+            logout.setjScrollPaneCategory(jScrollPaneCategory);
+            logout.setPanelPagination(panelPagination);
+            logout.setDetailItem(detailItem);
+            logout.setBoxOne(boxOne);
+            logout.setBtnPayment(btnPayment);
+            logout.setLbPOSId(lbPOSId);
+            logout.setSubtotalPanel(totalPanel);
+            logout.setVisible(true);
+        }
     }//GEN-LAST:event_btnLoginMouseClicked
 
-     //Action Button Open And Close Shift
+    //Action Button Open And Close Shift
     private void btnOpenShiftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenShiftMouseClicked
-         String buttonName = btnOpenShift.getButtonName().toLowerCase();
-         if (JavaConstant.token != null) {
-              if (buttonName.equals("open shift")) {
-                   OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
-                   jdOpenShift.setJdLoginForm(jdFormLogin);
-                   jdOpenShift.setVisible(true);
-              } else if (buttonName.equals("close shift")) {
-                   CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
-                   close.setVisible(true);
-              }
-         } else {
-              System.err.println("System Cannot Open Shift");
-         }
+        String buttonName = btnOpenShift.getButtonName().toLowerCase();
+        if (JavaConstant.token != null) {
+            if (buttonName.equals("open shift")) {
+                OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
+                jdOpenShift.setJdLoginForm(jdFormLogin);
+                jdOpenShift.setVisible(true);
+            } else if (buttonName.equals("close shift")) {
+                CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
+                close.setVisible(true);
+            }
+        } else {
+            System.err.println("System Cannot Open Shift");
+        }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
-     //Action Button Reprint
+    //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
 
-         if (JavaConstant.token != null) {
-              ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
-              rep.setVisible(true);
-         } else {
-              System.err.println("System cannot open reprint option");
-         }
+        if (JavaConstant.token != null) {
+            ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
+            rep.setVisible(true);
+        } else {
+            System.err.println("System cannot open reprint option");
+        }
     }//GEN-LAST:event_btnReprintMouseClicked
 
-     //Action Button payment
+    //Action Button payment
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
 
-         if (JavaConstant.token != null) {
-              Component[] listCom = detailItem.getComponents();
-              if (listCom.length != 0) {
-                   PaymentOption pay = new PaymentOption(new JFrame(), true);
-                   pay.setTotalUsd(totalPanel.getLableTotalUsd());
-                   pay.setListCom(listCom);
-                   pay.setSubtotalPanel(totalPanel);
-                   pay.setDetailItem(detailItem);
-                   pay.setBoxOne(boxOne);
-                   pay.setBtnPayment(btnPayment);
-                   pay.setVisible(true);
-              }
-         } else {
-              System.err.println("System cannot open payment option");
-         }
+        if (JavaConstant.token != null) {
+            Component[] listCom = detailItem.getComponents();
+            if (listCom.length != 0) {
+                PaymentOption pay = new PaymentOption(new JFrame(), true);
+                pay.setTotalUsd(totalPanel.getLableTotalUsd());
+                pay.setListCom(listCom);
+                pay.setSubtotalPanel(totalPanel);
+                pay.setDetailItem(detailItem);
+                pay.setBoxOne(boxOne);
+                pay.setBtnPayment(btnPayment);
+                pay.setVisible(true);
+            }
+        } else {
+            System.err.println("System cannot open payment option");
+        }
     }//GEN-LAST:event_btnPaymentMouseClicked
 
-     //Action Button Return
+    //Action Button Return
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-         if (JavaConstant.token != null) {
-              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
-              approval.setVisible(true);
-         } else {
-              System.err.println("System cannot open return option");
-         }
+        if (JavaConstant.token != null) {
+            ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+            approval.setVisible(true);
+        } else {
+            System.err.println("System cannot open return option");
+        }
     }//GEN-LAST:event_btnReturnMouseClicked
 
-     //Action Button Cancel
+    //Action Button Cancel
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
 
-         if (JavaConstant.token != null) {
-              Component[] listCom = detailItem.getComponents();
-              if (listCom.length != 0) {
-                   CancelDialog cancel = new CancelDialog(new JFrame(), true);
-                   cancel.setDetailItem(detailItem);
-                   cancel.setTotalPanel(totalPanel);
-                   cancel.setBtnPayment(btnPayment);
-                   cancel.setListCom(listCom);
-                   cancel.setVisible(true);
-              }
-         } else {
-              System.err.println("System cannot open cancel option");
-         }
+        if (JavaConstant.token != null) {
+            Component[] listCom = detailItem.getComponents();
+            if (listCom.length != 0) {
+                CancelDialog cancel = new CancelDialog(new JFrame(), true);
+                cancel.setDetailItem(detailItem);
+                cancel.setTotalPanel(totalPanel);
+                cancel.setBtnPayment(btnPayment);
+                cancel.setListCom(listCom);
+                cancel.setVisible(true);
+            }
+        } else {
+            System.err.println("System cannot open cancel option");
+        }
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
-     //Action Button Cashier Report
+    //Action Button Cashier Report
     private void buttonCashierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCashierMouseClicked
-         reportCashier();
+        reportCashier();
     }//GEN-LAST:event_buttonCashierMouseClicked
 
-     public void reportCashier() {
-          if (JavaConstant.token != null) {
+    public void reportCashier() {
+        if (JavaConstant.token != null) {
 
-               if (JavaConstant.checkCloseShift != null && JavaConstant.checkCloseShift == 1) {
-                    JavaAlertMessage j = new JavaAlertMessage(this, true);
-                    j.setMessage("You have to close shift first to get report cashier!");
-                    j.setVisible(true);
-                    return;
-               }
+            if (JavaConstant.checkCloseShift != null && JavaConstant.checkCloseShift == 1) {
+                JavaAlertMessage j = new JavaAlertMessage(this, true);
+                j.setMessage("You have to close shift first to get report cashier!");
+                j.setVisible(true);
+                return;
+            }
 
-               try {
-                    CashierReport cashier = new CashierReport(new JFrame(), true);
-                    Response response = JavaConnection.get(
-                         JavaRoute.cashierReport + JavaConstant.userCode + "&userId=" + JavaConstant.cashierId + "&posId=" + JavaConstant.posId);
-                    if (response.isSuccessful()) {
-                         String myObject = response.body().string();
-                         ObjectMapper objMap = new ObjectMapper();
-                         DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
-                         cashier.setDataSuccessReport(d);
-                         cashier.setVisible(true);
-                    }
-               } catch (Exception e) {
-                    System.err.println("error = " + e);
-               }
-          } else {
-               System.err.println("System cannot oprn Cashier Report");
-          }
-     }
+            try {
+                CashierReport cashier = new CashierReport(new JFrame(), true);
+                Response response = JavaConnection.get(
+                        JavaRoute.cashierReport + JavaConstant.userCode + "&userId=" + JavaConstant.cashierId + "&posId=" + JavaConstant.posId);
+                if (response.isSuccessful()) {
+                    String myObject = response.body().string();
+                    ObjectMapper objMap = new ObjectMapper();
+                    DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
+                    cashier.setDataSuccessReport(d);
+                    cashier.setVisible(true);
+                }
+            } catch (Exception e) {
+                System.err.println("error = " + e);
+            }
+        } else {
+            System.err.println("System cannot oprn Cashier Report");
+        }
+    }
 
-     //Action Button Holder
+    //Action Button Holder
      private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
-          // TODO add your handling code here:
-          this.setBackground(Color.red);
-          revalidate();
-          repaint();
-          validate();
+         // TODO add your handling code here:
+         this.setBackground(Color.red);
+         revalidate();
+         repaint();
+         validate();
      }//GEN-LAST:event_button3MouseClicked
 
      private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
 
      }//GEN-LAST:event_btnLoginMouseEntered
 
-     //Function call Placeholder
-     void event() {
-          ButtonEvent btnevent = new ButtonEvent() {
-               @Override
-               public void onFocusGain() {
+    //Function call Placeholder
+    void event() {
+        ButtonEvent btnevent = new ButtonEvent() {
+            @Override
+            public void onFocusGain() {
 
-               }
-          };
-          searchBox.initEvent(btnevent);
-          textField.initEvent(btnevent);
-     }
+            }
+        };
+        searchBox.initEvent(btnevent);
+        textField.initEvent(btnevent);
+    }
 
-     public JPanel getDetailProduct() {
-          return detailProduct;
-     }
+    public JPanel getDetailProduct() {
+        return detailProduct;
+    }
 
-     public void setDetailProduct(JPanel detailProduct) {
-          this.detailProduct = detailProduct;
-     }
+    public void setDetailProduct(JPanel detailProduct) {
+        this.detailProduct = detailProduct;
+    }
 
-     public Color getActiveColor() {
-          return activeColor;
-     }
+    public Color getActiveColor() {
+        return activeColor;
+    }
 
-     public void setActiveColor(Color activeColor) {
-          this.activeColor = activeColor;
+    public void setActiveColor(Color activeColor) {
+        this.activeColor = activeColor;
 //        menuNewItem.setBackground(activeColor);
-     }
+    }
 
-     /**
-      * @param args the command line
-      * arguments
-      */
-     public static void main(String args[]) {
-          /* Set the Nimbus look and feel */
-          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-           */
-          try {
-               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                         break;
-                    }
-               }
-          } catch (ClassNotFoundException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
-          //</editor-fold>
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-          /* Create and display the form */
-          java.awt.EventQueue.invokeLater(new Runnable() {
-               public void run() {
-                    MainPage obj = new MainPage(null);
-                    obj.setVisible(true);
-               }
-          });
-     }
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                MainPage obj = new MainPage(null);
+                obj.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel boxOne;

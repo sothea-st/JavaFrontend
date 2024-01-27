@@ -1077,6 +1077,7 @@ public class PaymentOption extends javax.swing.JDialog {
 
          JSONObject jsonData = new JSONObject();
          jsonData.put("userId", JavaConstant.cashierId);
+       
          jsonData.put("userCode", JavaConstant.userCode);
          jsonData.put("saleDate", JavaConstant.currentDate);
          jsonData.put("discount", discount);
@@ -1131,7 +1132,7 @@ public class PaymentOption extends javax.swing.JDialog {
               double price = JavaConstant.getReplace(obj.getLabelPrice());
               double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
 //              double discountAmount = JavaConstant.getReplace(obj.getDiscountAmount());
-               int discountAmount = obj.getDiscountDigit();
+              int discountAmount = obj.getDiscountDigit();
 
               ProductSaleModel pro = new ProductSaleModel(
                    obj.getProductId(),

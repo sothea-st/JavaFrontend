@@ -2,19 +2,17 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.JavaAlertMessage;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
-import java.math.BigDecimal;
+import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 import org.json.JSONObject;
 
-/**
- *
- * @author FRONT-END.06
- */
+
 public class CloseShift extends javax.swing.JDialog {
 
      private Button btnOpenShift;
@@ -215,7 +213,14 @@ public class CloseShift extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
- 
+
+        JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+         if( JavaConstant.listHoldData != null ) {
+             j.setMessage("There are any trancsactions not complete yet in Hold function!");
+             j.setVisible(true);
+             return;
+         }
+        
 
          double express = JavaConstant.getReplace(redexpress.getValueTextField());
          double khqrMnk = JavaConstant.getReplace(qrMnk.getValueTextField());

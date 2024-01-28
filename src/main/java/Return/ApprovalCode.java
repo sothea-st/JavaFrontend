@@ -1,18 +1,22 @@
 package Return;
 
 import Color.WindowColor;
+import Components.JavaAlertMessage;
+import Constant.JavaConnection;
+import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
+import LoginAndLogoutForm.LoginFormJdailog;
+import Model.Login.LoginModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.JFrame;
+import okhttp3.Response;
+import org.json.JSONObject;
 
-/**
- *
- * @author FRONT-END.06
- */
 public class ApprovalCode extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ApprovalCode
-     */
+    private LoginFormJdailog jdFormLogin;
+
     public ApprovalCode(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -22,9 +26,9 @@ public class ApprovalCode extends javax.swing.JDialog {
         event();
         txtCode.requestFocus();
     }
-    
+
     //Action call function placeholder
-    void event(){
+    void event() {
         ButtonEvent btnevent = new ButtonEvent() {
             @Override
             public void onFocusGain() {
@@ -33,7 +37,6 @@ public class ApprovalCode extends javax.swing.JDialog {
         };
         txtCode.initEvent(btnevent);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -57,6 +60,8 @@ public class ApprovalCode extends javax.swing.JDialog {
         labelPopUpTitle1.setLabelTitle("Approval Code");
 
         txtCode.setLabelTextField("Code");
+
+        txtPassword.setValuePassword("password");
 
         buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,8 +141,39 @@ public class ApprovalCode extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLoginMouseClicked
-        ReturnDialog returnD = new ReturnDialog(new JFrame(),true);
-        returnD.setVisible(true);
+
+        String userCode = txtCode.getValueTextField();
+        String password = txtPassword.getValuePassword();
+
+        JSONObject json = new JSONObject();
+        json.put("userCode", "0002");
+        json.put("password", "TT@126$kh#");
+
+        Response response = JavaConnection.login(JavaRoute.login, json);
+        System.err.println("Response = " + response);
+        try {
+            String data = response.body().string();
+            if (response.isSuccessful()) {
+                ObjectMapper objMap = new ObjectMapper();
+                LoginModel model = objMap.readValue(data, LoginModel.class);
+              
+                if (model.getRoleName().equals(JavaConstant.supervisor)
+                        || model.getRoleName().equals(JavaConstant.admin)) {
+                    ReturnDialog returnD = new ReturnDialog(new JFrame(), true);
+                    returnD.setJdFormLogin(jdFormLogin);
+                    returnD.setVisible(true);
+                    JavaConstant.returnerId = model.getID();
+                    this.dispose();
+                } else {
+                    JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                    j.setMessage("You have no permission use this function!");
+                    j.setVisible(true);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("err  = " + e);
+        }
+
     }//GEN-LAST:event_buttonLoginMouseClicked
 
     /**
@@ -181,6 +217,15 @@ public class ApprovalCode extends javax.swing.JDialog {
             }
         });
     }
+
+    public LoginFormJdailog getJdFormLogin() {
+        return jdFormLogin;
+    }
+
+    public void setJdFormLogin(LoginFormJdailog jdFormLogin) {
+        this.jdFormLogin = jdFormLogin;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel;

@@ -12,7 +12,9 @@ import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
 import Model.CustomerType.SourceModel;
+import Model.ReturnModel.ReturnProductModel;
 import Model.Sale.ProductSaleModel;
+import Return.ReturnDialog;
 import java.awt.Component;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -1079,6 +1081,12 @@ public class PaymentOption extends javax.swing.JDialog {
             return;
         }
 
+        // data is return 
+        if (JavaConstant.isReturn != null) {
+            returnProduct();
+            return;
+        }
+
         double discount = JavaConstant.getReplace(subtotalPanel.getLableDiscountUsd());
         // double deliveryFee = JavaConstant.getReplace(subtotalPanel.getLableDeliveryUsd());
         double subTotal = JavaConstant.getReplace(subtotalPanel.getLabelSubtotalUsd());
@@ -1145,14 +1153,14 @@ public class PaymentOption extends javax.swing.JDialog {
             double price = JavaConstant.getReplace(obj.getLabelPrice());
             double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
 //              double discountAmount = JavaConstant.getReplace(obj.getDiscountAmount());
-            int discountAmount = obj.getDiscountDigit();
+            int discountDigit = obj.getDiscountDigit();
 
             ProductSaleModel pro = new ProductSaleModel(
                     obj.getProductId(),
                     obj.getQty(),
                     price,
                     amount,
-                    discountAmount
+                    discountDigit
             );
             dataSale.add(pro);
         }
@@ -1171,6 +1179,62 @@ public class PaymentOption extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_labelFontBlack9MouseClicked
+
+    void returnProduct() {
+        double totalReturn = 0;
+        if (!txtReceiveUsd.getText().isEmpty()) {
+            totalReturn = Double.valueOf(txtReceiveUsd.getText());
+        }
+
+        if (!txtReceiveKhr.getText().isEmpty()) {
+            double returnAmountKhr = Double.valueOf(txtReceiveKhr.getText());
+            totalReturn = returnAmountKhr / JavaConstant.exchangeRate;
+        }
+        System.err.println("JavaConstant.returnerId = " + JavaConstant.returnerId);
+        JSONObject jsonReturnData = new JSONObject();
+        jsonReturnData.put("paymentNo", JavaConstant.invoiceNo);
+        jsonReturnData.put("reasonId", Integer.valueOf(JavaConstant.reasonId));
+        jsonReturnData.put("createBy", JavaConstant.returnerId);
+        jsonReturnData.put("returnAmount", totalReturn);
+
+        //get dataSale 
+        ArrayList<ReturnProductModel> dataDetails = new ArrayList<>();
+        for (int i = 0; i < listCom.length; i++) {
+            var obj = ((BoxItem) listCom[i]);
+            double price = JavaConstant.getReplace(obj.getLabelPrice());
+            double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
+            int discountDigit = obj.getDiscountDigit();
+
+            ReturnProductModel pro = new ReturnProductModel(
+                    obj.getProductId(),
+                    obj.getQty(),
+                    price,
+                    amount,
+                    discountDigit
+            );
+            dataDetails.add(pro);
+        }
+        jsonReturnData.put("dataDetails", dataDetails);
+
+
+        Response responseReturn = JavaConnection.post(JavaRoute.returnProduct, jsonReturnData);
+
+            if (responseReturn.isSuccessful()) {
+                dispose();
+                detailItem.removeAll();
+                detailItem.revalidate();
+                detailItem.repaint();
+                subtotalPanel.setLabelSubTitleToZero();
+                btnPayment.setBackground(WindowColor.lightGray);
+                // assign JavaConstant.isReturn , reasonId , inovoiceNo to null
+                ReturnDialog r = new ReturnDialog(new JFrame(), true);
+                r.setResetReturn();
+            } else {
+                System.err.println("err = 4444");
+            }
+       
+    }
+
 
      private void lbCashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCashMouseClicked
          paymentType = "cash";

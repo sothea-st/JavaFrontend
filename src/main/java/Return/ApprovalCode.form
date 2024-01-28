@@ -116,6 +116,9 @@
           </Properties>
         </Component>
         <Component class="Components.PasswordField" name="txtPassword">
+          <Properties>
+            <Property name="valuePassword" type="java.lang.String" value="password"/>
+          </Properties>
         </Component>
         <Component class="ButtonPackage.ButtonCancel" name="buttonCancel">
           <Events>

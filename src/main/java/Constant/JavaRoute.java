@@ -20,5 +20,6 @@ public class JavaRoute {
      public static String getProductByBrandId = "/product/getProductByBrandId/";
  
      public static String cashierReport = "/cashierReport?userCode=";
+     public static String returnProduct = "/returnProduct";
 
 }

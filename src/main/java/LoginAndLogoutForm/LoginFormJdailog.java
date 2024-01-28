@@ -232,12 +232,12 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         String password = txtPassword.getValuePassword();
 
         JSONObject json = new JSONObject();
-        json.put("userCode", "0002");
+        json.put("userCode", "0004");
         json.put("password", "TT@126$kh#");
 
         try {
             Response response = JavaConnection.login(JavaRoute.login, json);
-            System.err.println("respone " + response);
+          
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
                 ObjectMapper objMap = new ObjectMapper();
@@ -248,6 +248,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                 JavaConstant.userCode = model.getUserCode();
                 JavaConstant.posId = model.getPosID();
                 JavaConstant.cashierId = model.getID();
+              
 
                 Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
                 if (responseOpenShift.isSuccessful()) {
@@ -258,6 +259,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                         checkOpenShift = true;
                         btnOpenShift.setButtonName(JavaConstant.closeShift);
                         JavaConstant.checkCloseShift = data.getData().getNumberOpenShift();
+                        JavaConstant.numberOpenShift = Integer.valueOf(""+data.getData().getNumberOpenShift());
                     }
                 }
 

@@ -2,6 +2,7 @@ package View.MainPage;
 
 import Color.WindowColor;
 import Components.BackgroundImage;
+import Components.BoxItem;
 import Components.JavaAlertMessage;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
@@ -131,29 +132,32 @@ public class MainPage extends javax.swing.JFrame {
 
     private void eventInputOrScanBarcode() {
         // this event was called when user type on textField 
-
-        ButtonEvent event = new ButtonEvent() {
-            @Override
-            public void onKeyType() {
-                // this event was called 2 time it's error
-                Component[] listCom = detailItem.getComponents();
-                String barcode = textField.getValueTextField();
-                ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
-            }
-        };
-        textField.initEvent(event);
+       
+//        if (JavaConstant.numberOpenShift == 1) { // user already openShift
+            ButtonEvent event = new ButtonEvent() {
+                @Override
+                public void onKeyType() {
+                    Component[] listCom = detailItem.getComponents();
+                    String barcode = textField.getValueTextField();
+                    ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
+                }
+            };
+            textField.initEvent(event);
+//        }
     }
 
     private void eventSearchProduct() {
         // this event was called when user type on searchTextField 
-        ButtonEvent event = new ButtonEvent() {
-            @Override
-            public void onKeyType() {
-                valueSearch = searchBox.getValueTextSearch();
-                ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
-            }
-        };
-        searchBox.initEvent(event);
+//        if (JavaConstant.numberOpenShift == 1) { // user already openShift 
+            ButtonEvent event = new ButtonEvent() {
+                @Override
+                public void onKeyType() {
+                    valueSearch = searchBox.getValueTextSearch();
+                    ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                }
+            };
+            searchBox.initEvent(event);
+//        }
     }
 
     private void setBackground() {
@@ -672,6 +676,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
         if (JavaConstant.token != null) {
             ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+            approval.setJdFormLogin(jdFormLogin);
             approval.setVisible(true);
         } else {
             System.err.println("System cannot open return option");
@@ -732,11 +737,12 @@ public class MainPage extends javax.swing.JFrame {
 
     //Action Button Holder
      private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
-         // TODO add your handling code here:
-         this.setBackground(Color.red);
-         revalidate();
-         repaint();
-         validate();
+
+         if (JavaConstant.token != null) {
+             JavaConstant.listHoldData = detailItem.getComponents();
+             System.err.println("done hold");
+         }
+
      }//GEN-LAST:event_button3MouseClicked
 
      private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered

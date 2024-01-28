@@ -2,8 +2,11 @@ package Return;
 
 import Color.WindowColor;
 import Constant.JavaConnection;
+import Constant.JavaConstant;
 import Constant.JavaRoute;
+import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
 import Event.ButtonEvent;
+import LoginAndLogoutForm.LoginFormJdailog;
 import Model.Package.ReasonModel;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,9 +21,8 @@ import org.json.JSONObject;
 public class ReturnDialog extends javax.swing.JDialog {
 
     private String reasonId;
-    /**
-     * Creates new form ReturnDialog
-     */
+    private LoginFormJdailog jdFormLogin;
+
     public ReturnDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -30,10 +32,22 @@ public class ReturnDialog extends javax.swing.JDialog {
         event();
         addComboReason();
         txtinvoice.requestFocus();
+        eventSelectReason();
     }
-    
+
+    void eventSelectReason() {
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onSelect(String key) {
+                System.err.println("key value = " + key);
+                reasonId = key;
+            }
+        };
+        comboBoxReason.initEvent(event);
+    }
+
     //Action call function placeholder
-    void event(){
+    void event() {
         ButtonEvent btnevent = new ButtonEvent() {
             @Override
             public void onFocusGain() {
@@ -43,7 +57,7 @@ public class ReturnDialog extends javax.swing.JDialog {
         txtinvoice.initEvent(btnevent);
         txtBarcode.initEvent(btnevent);
     }
-    
+
     private void addComboReason() {
         HashMap<String, String> map = new HashMap<>();
         try {
@@ -63,13 +77,13 @@ public class ReturnDialog extends javax.swing.JDialog {
                     int idReason = reason.get(i).getIdReason();
                     String reasonName = reason.get(i).getReason();
                     map.put(reasonName, "" + idReason);
-                    
+
                     if (i == 0) {
-                         reasonId = "" + idReason;
+                        reasonId = "" + idReason;
                     }
                 }
                 comboBoxReason.setMap(map);
-                
+
             } else {
                 System.err.println("fail loading data");
             }
@@ -115,6 +129,11 @@ public class ReturnDialog extends javax.swing.JDialog {
 
         button1.setBackground(new java.awt.Color(47, 152, 70));
         button1.setButtonName("Search");
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelReturnLayout = new javax.swing.GroupLayout(panelReturn);
         panelReturn.setLayout(panelReturnLayout);
@@ -182,6 +201,24 @@ public class ReturnDialog extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        String barcode = txtBarcode.getValueTextField();
+        String invoiceNo = txtinvoice.getValueTextField();
+
+        ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
+        JavaConstant.isReturn = "return";
+        JavaConstant.reasonId = reasonId;
+        JavaConstant.invoiceNo = invoiceNo;
+        dispose();
+    }//GEN-LAST:event_button1MouseClicked
+
+    public void setResetReturn() {
+        JavaConstant.isReturn = null;
+        JavaConstant.reasonId = null;
+        JavaConstant.invoiceNo = null;
+        JavaConstant.returnerId = null;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -223,6 +260,15 @@ public class ReturnDialog extends javax.swing.JDialog {
             }
         });
     }
+
+    public LoginFormJdailog getJdFormLogin() {
+        return jdFormLogin;
+    }
+
+    public void setJdFormLogin(LoginFormJdailog jdFormLogin) {
+        this.jdFormLogin = jdFormLogin;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.Button button1;

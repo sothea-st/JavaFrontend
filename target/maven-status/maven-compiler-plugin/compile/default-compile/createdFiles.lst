@@ -11,6 +11,7 @@ DeleteAndCancel\DeleteDialog$1.class
 Print\ReprintJdailog$2.class
 Return\ApprovalCode$4.class
 View\MainPage\MainPage$7.class
+Return\ReturnDialog$4.class
 Components\LabelTitle$1.class
 Receipt\Receipt$4.class
 Components\JavaAlertMessage.class
@@ -67,6 +68,7 @@ Receipt\CashierReport$1.class
 Model\Brand\BrandModel.class
 Print\ReprintByInvoicenumber$4.class
 DeleteAndCancel\CancelDialog$4$1.class
+Return\ReturnDialog$5.class
 LoginAndLogoutForm\LogoutDialog$3.class
 View\MainPage\MainPage$6.class
 Model\Reprint\ReprintModel.class
@@ -144,7 +146,6 @@ Products\ProductPanel$1.class
 Payment\PaymentOption$24.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
-Return\ReturnDialog$3$1.class
 LoginAndLogoutForm\LoginFormJdailog$6.class
 View\MainPage\MainPage$5.class
 Event\ButtonEvent.class
@@ -176,6 +177,7 @@ LoginAndLogoutForm\LoginFormJdailog$1.class
 OpenAndCloseShift\OpenShiftJdailog$1.class
 Payment\PaymentOption$10.class
 Model\Package\ReasonModel.class
+Model\ReturnModel\ReturnProductModel.class
 DeleteAndCancel\CancelDialog$1.class
 LoginAndLogoutForm\LoginFormJdailog$4.class
 Model\OpenShift\OpenShiftDataModel.class
@@ -193,6 +195,7 @@ Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
 Model\Login\LoginModel.class
+Return\ReturnDialog$5$1.class
 View\MainPage\MainPage$1.class
 LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class

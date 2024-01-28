@@ -12,15 +12,16 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 
 public class ReprintJdailog extends javax.swing.JDialog {
-     public ReprintJdailog(java.awt.Frame parent, boolean modal) {
-          super(parent, modal);
-          initComponents();
-          panelReprint.setBackground(WindowColor.mediumGreen);
-          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-          setResizable(false);
-     }
 
-     @SuppressWarnings("unchecked")
+    public ReprintJdailog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        panelReprint.setBackground(WindowColor.mediumGreen);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -95,44 +96,44 @@ public class ReprintJdailog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
-         Receipt rec = new Receipt(new JFrame(), true);
-         Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-         try {
-              String myObject = response.body().string();
-              ObjectMapper objMap = new ObjectMapper();
-              DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
-              rec.setDataSuccess(d);
-          
-              rec.setVisible(true);
-         } catch (Exception e) {
-              System.err.println("err while loding = " + e);
-         }
+        Receipt rec = new Receipt(new JFrame(), true);
+        Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
+     
+        try {
+            String myObject = response.body().string();
+            ObjectMapper objMap = new ObjectMapper();
+            DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
+            rec.setDataSuccess(d);
+
+            rec.setVisible(true);
+        } catch (Exception e) {
+            System.err.println("err while loding = " + e);
+        }
 
 
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
     private void btnPrintByInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseClicked
-         ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
-         rep.setVisible(true);
+        ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
+        rep.setVisible(true);
     }//GEN-LAST:event_btnPrintByInvoiceMouseClicked
 
-   
-     public static void main(String args[]) {
-    
-          /* Create and display the dialog */
-          java.awt.EventQueue.invokeLater(new Runnable() {
-               public void run() {
-                    ReprintJdailog dialog = new ReprintJdailog(new javax.swing.JFrame(), true);
-                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                         @Override
-                         public void windowClosing(java.awt.event.WindowEvent e) {
-                              System.exit(0);
-                         }
-                    });
-                    dialog.setVisible(true);
-               }
-          });
-     }
+    public static void main(String args[]) {
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ReprintJdailog dialog = new ReprintJdailog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.Button btnPrintByInvoice;

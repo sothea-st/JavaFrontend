@@ -41,6 +41,7 @@ import Controller.ActionProduct.ActionProduct;
 import Controller.ActionRequestBrand.ActionRequestBrand;
 import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
 import Controller.ActionSearchProductController.ActionSearchProduct;
+import Model.Login.LoginModel;
 import Model.OpenShift.OpenShiftDataModel;
 import Model.OpenShiftModel.OpenShiftModel;
 import Model.ProductModel.ProductDataModel;
@@ -222,7 +223,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
      public void scanbarCodeAddProduct(ProductModel proModel) {
           ActionScanBarcodeAddProduct action = new ActionScanBarcodeAddProduct();
-          
+
           pro.eventBtnBuy(proModel);
      }
 
@@ -231,23 +232,23 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          String password = txtPassword.getValuePassword();
 
          JSONObject json = new JSONObject();
-         json.put("userCode", "0004");
+         json.put("userCode", "0002");
          json.put("password", "TT@126$kh#");
 
          try {
               Response response = JavaConnection.login(JavaRoute.login, json);
+              System.err.println("response  = " + response);
               if (response.isSuccessful()) {
                    String responseData = response.body().string();
-                   JSONObject jsonObject = new JSONObject(responseData);
+                   ObjectMapper objMap = new ObjectMapper();
+                   LoginModel model = objMap.readValue(responseData, LoginModel.class);
 
-                   //Session
-                   JavaConstant.token = jsonObject.getString("token");
-                   JavaConstant.fullName = jsonObject.getString("fullName");
-                   JavaConstant.userCode = jsonObject.getString("userCode");
-                   JavaConstant.posId = jsonObject.getString("posId");
-                   JavaConstant.cashierId = jsonObject.getInt("id");
+                   JavaConstant.token = model.getToken();
+                   JavaConstant.fullName = model.getUserName();
+                   JavaConstant.userCode = model.getUserCode();
+                   JavaConstant.posId = model.getPosID();
+                   JavaConstant.cashierId = model.getID();
 
-                  
                    Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
                    if (responseOpenShift.isSuccessful()) {
                         String result = responseOpenShift.body().string();
@@ -257,14 +258,13 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                              checkOpenShift = true;
                              btnOpenShift.setButtonName(JavaConstant.closeShift);
                              JavaConstant.checkCloseShift = data.getData().getNumberOpenShift();
+                             JavaConstant.numberOpenShift = Integer.valueOf("" + data.getData().getNumberOpenShift());
                         }
                    }
 
                    dispose();
                    getBtnLogin().setButtonName("Logout");
-                   String userName = jsonObject.getString("fullName");
-                   String userCode = jsonObject.getString("userCode");
-                   getBoxUserName().setText(userName + " USER ID : " + userCode);
+                   getBoxUserName().setText(JavaConstant.fullName + " USER ID : " + JavaConstant.userCode);
                    lbPOSId.setText("POS ID : " + JavaConstant.posId);
                    category();
                    getjScrollPaneCategory().setVisible(true);
@@ -348,7 +348,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                              }
                                         }
                                         panelProduct.removeAll();
-                                        pro.product(catId,limit);
+                                        pro.product(catId, limit);
                                         panelProduct.revalidate();
                                         panelProduct.repaint();
                                         setCount(pro.getCount());
@@ -378,8 +378,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           this.count = count;
      }
 
-     
-     
      public int getLimit() {
           return limit;
      }
@@ -396,7 +394,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           this.catId = catId;
      }
 
-     
      public JLabel getLbPOSId() {
           return lbPOSId;
      }

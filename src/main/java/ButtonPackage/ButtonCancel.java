@@ -16,9 +16,7 @@ import java.awt.image.BufferedImage;
  */
 public class ButtonCancel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ButtonCancel
-     */
+    private String buttonName;
     public ButtonCancel() {
         initComponents();
         setBackground(WindowColor.darkred);
@@ -104,6 +102,17 @@ public class ButtonCancel extends javax.swing.JPanel {
         g2.drawImage(render.createShadow(img), 0, 0, null);
         g2.drawImage(img, x, y, null);
     }
+
+     public String getButtonName() {
+          return buttonName;
+     }
+
+     public void setButtonName(String buttonName) {
+          this.buttonName = buttonName;
+          btnCancel.setText(buttonName);
+     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnCancel;

@@ -175,6 +175,8 @@ public class LogoutDialog extends javax.swing.JDialog {
               return;
          } 
 
+        System.err.println("JavaConstant.checkCloseShift = " + JavaConstant.checkCloseShift);
+
          lbPOSId.setText("POS ID :");
          boxUserName.setText("");
          category.removeAll();

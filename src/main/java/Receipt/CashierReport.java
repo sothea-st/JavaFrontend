@@ -15,6 +15,7 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.Box;
@@ -31,28 +32,29 @@ import okhttp3.Response;
  */
 public class CashierReport extends javax.swing.JDialog {
 
-     private DataSuccessModelReport dataSuccessReport;
+    private DataSuccessModelReport dataSuccessReport;
+    DecimalFormat dm = new DecimalFormat("$ #,##0.00");
 
-     public CashierReport(java.awt.Frame parent, boolean modal) {
-          super(parent, modal);
-          initComponents();
-          jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-          setResizable(false);
-          currenDateTime();
-     }
+    public CashierReport(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        currenDateTime();
+    }
 
-     private void currenDateTime() {
-          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
-          DateTimeFormatter dateClose = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-          LocalDateTime date = LocalDateTime.now();
+    private void currenDateTime() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
+        DateTimeFormatter dateClose = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime date = LocalDateTime.now();
 
-          currentDate.setLabelName(dtf.format(date));
-          openDate.setLabelName(dtf.format(date));
-          closeDate.setLabelName(dateClose.format(date) + " 5:30:00 PM");
-     }
+        currentDate.setLabelName(dtf.format(date));
+        openDate.setLabelName(dtf.format(date));
+        closeDate.setLabelName(dateClose.format(date) + " 5:30:00 PM");
+    }
 
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -713,167 +715,166 @@ public class CashierReport extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnBackMouseClicked
 
     private void btnPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseClicked
-         printComponenet(print);
+        printComponenet(print);
     }//GEN-LAST:event_btnPrintMouseClicked
 
-     public void printComponenet(Component component) {
-          PrinterJob pj = PrinterJob.getPrinterJob();
-          pj.setJobName(" Print Component ");
+    public void printComponenet(Component component) {
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        pj.setJobName(" Print Component ");
 
-          pj.setPrintable(new Printable() {
-               public int print(Graphics pg, PageFormat pf, int pageNum) {
-                    if (pageNum > 0) {
-                         return Printable.NO_SUCH_PAGE;
-                    }
+        pj.setPrintable(new Printable() {
+            public int print(Graphics pg, PageFormat pf, int pageNum) {
+                if (pageNum > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
 
-                    Graphics2D g2 = (Graphics2D) pg;
-                    g2.translate(pf.getImageableX(), pf.getImageableY());
-                    component.paint(g2);
-                    return Printable.PAGE_EXISTS;
-               }
-          });
-          if (pj.printDialog() == false) {
-               return;
-          }
+                Graphics2D g2 = (Graphics2D) pg;
+                g2.translate(pf.getImageableX(), pf.getImageableY());
+                component.paint(g2);
+                return Printable.PAGE_EXISTS;
+            }
+        });
+        if (pj.printDialog() == false) {
+            return;
+        }
 
-          try {
-               pj.print();
-          } catch (PrinterException ex) {
-               // handle exception
-          }
-     }
+        try {
+            pj.print();
+        } catch (PrinterException ex) {
+            // handle exception
+        }
+    }
 
-     public DataSuccessModelReport getDataSuccessReport() {
-          return dataSuccessReport;
-     }
+    public DataSuccessModelReport getDataSuccessReport() {
+        return dataSuccessReport;
+    }
 
-     public void setDataSuccessReport(DataSuccessModelReport dataSuccessReport) {
-          this.dataSuccessReport = dataSuccessReport;
-          assignValue(dataSuccessReport);
-     }
+    public void setDataSuccessReport(DataSuccessModelReport dataSuccessReport) {
+        this.dataSuccessReport = dataSuccessReport;
+        assignValue(dataSuccessReport);
+    }
 
-     private void assignValue(DataSuccessModelReport dataSuccessReport) {
-          var data = dataSuccessReport.getData();
-          try {
-               Response response = JavaConnection.get(JavaRoute.readImage + data.getCompanyLogo());
-               byte[] images = response.body().bytes();
-               logo.setIcon(new ImageIcon(images));
-               companyname.setText(data.getCompanyName());
-               comapnyAddress.setText("<html>" + "អាសយដ្ឋាន៖ " + data.getCompanyAddress() + "</html>");
-               userName.setLabelName(data.getUserName());
-               posId.setLabelName(data.getPosID());
-               openCash.setLabelName("$ " + data.getOpenCash());
-               closeCash.setLabelName("$ " + data.getCloseCash());
-               openDate.setLabelName(data.getOpenDate());
-               closeDate.setLabelName(data.getCloseDate());
-               openInvoice.setLabelName(data.getPaymentNoFirst());
-               closeInvoice.setLabelName(data.getPaymentNoLast());
-               displaySummarySale(data);
-               displaySummaryPayment(data);
-               displaySummaryDiscount(data);
+    private void assignValue(DataSuccessModelReport dataSuccessReport) {
+        var data = dataSuccessReport.getData();
+        try {
+            Response response = JavaConnection.get(JavaRoute.readImage + data.getCompanyLogo());
+            byte[] images = response.body().bytes();
+            logo.setIcon(new ImageIcon(images));
+            companyname.setText(data.getCompanyName());
+            comapnyAddress.setText("<html>" + "អាសយដ្ឋាន៖ " + data.getCompanyAddress() + "</html>");
+            userName.setLabelName(data.getUserName());
+            posId.setLabelName(data.getPosID());
+            openCash.setLabelName("$ " + data.getOpenCash());
+            closeCash.setLabelName("$ " + data.getCloseCash());
+            openDate.setLabelName(data.getOpenDate());
+            closeDate.setLabelName(data.getCloseDate());
+            openInvoice.setLabelName(data.getPaymentNoFirst());
+            closeInvoice.setLabelName(data.getPaymentNoLast());
+            displaySummarySale(data);
+            displaySummaryPayment(data);
+            displaySummaryDiscount(data);
 
-          } catch (Exception e) {
-               System.err.println("getting error at " + e);
-          }
-     }
+        } catch (Exception e) {
+            System.err.println("getting error at " + e);
+        }
+    }
 
-     private void displaySummarySale(Data data) {
-          SummerySale[] listSummaySale = data.getSummerySale();
+    private void displaySummarySale(Data data) {
+        SummerySale[] listSummaySale = data.getSummerySale();
 
-          for (int i = 0; i < listSummaySale.length; i++) {
-               var list = listSummaySale[i];
-               ReportBox report = new ReportBox();
-               report.setTitle(list.getTitle());
-               report.setQuantity("" + list.getQty());
-               report.setTotalpice("$" + " " + list.getTotal());
-               panelSummarySale.add(report);
-               panelSummarySale.add(Box.createRigidArea(new Dimension(2, 2)));
-          }
-          var subTotal = listSummaySale[0].getTotal() - (listSummaySale[1].getTotal() + listSummaySale[2].getTotal());
-          subTotalPrice.setText("$" + " " + subTotal);
-          subTotalQty.setText("" + listSummaySale[0].getQty());
-          panelSummarySale.setLayout(new BoxLayout(panelSummarySale, BoxLayout.Y_AXIS));
-          panelSummarySale.setBorder(new EmptyBorder(2, 2, 2, 2));
-     }
+        for (int i = 0; i < listSummaySale.length; i++) {
+            var list = listSummaySale[i];
+            ReportBox report = new ReportBox();
+            report.setTitle(list.getTitle());
+            report.setQuantity("" + list.getQty());
+            report.setTotalpice("$" + " " + list.getTotal());
+            panelSummarySale.add(report);
+            panelSummarySale.add(Box.createRigidArea(new Dimension(2, 2)));
+        }
+        var subTotal = listSummaySale[0].getTotal() - (listSummaySale[1].getTotal() + listSummaySale[2].getTotal());
+        subTotalPrice.setText(dm.format(subTotal));
+        subTotalQty.setText("" + listSummaySale[0].getQty());
+        panelSummarySale.setLayout(new BoxLayout(panelSummarySale, BoxLayout.Y_AXIS));
+        panelSummarySale.setBorder(new EmptyBorder(2, 2, 2, 2));
+    }
 
-     private void displaySummaryPayment(Data data) {
-          SummerySale[] listSummayPayment = data.getSummeryPayemnt();
+    private void displaySummaryPayment(Data data) {
+        SummerySale[] listSummayPayment = data.getSummeryPayemnt();
 
-          for (int i = 0; i < listSummayPayment.length; i++) {
-               var list = listSummayPayment[i];
-               ReportBox report = new ReportBox();
-               report.setTitle(list.getTitle());
-               report.setQuantity("" + list.getQty());
-               report.setTotalpice("$" + " " + list.getTotal());
-               panelSummaryPayment.add(report);
-               panelSummaryPayment.add(Box.createRigidArea(new Dimension(2, 2)));
-          }
-          panelSummaryPayment.setLayout(new BoxLayout(panelSummaryPayment, BoxLayout.Y_AXIS));
-          panelSummaryPayment.setBorder(new EmptyBorder(2, 2, 2, 2));
-     }
+        for (int i = 0; i < listSummayPayment.length; i++) {
+            var list = listSummayPayment[i];
+            ReportBox report = new ReportBox();
+            report.setTitle(list.getTitle());
+            report.setQuantity("" + list.getQty());
+            report.setTotalpice("$" + " " + list.getTotal());
+            panelSummaryPayment.add(report);
+            panelSummaryPayment.add(Box.createRigidArea(new Dimension(2, 2)));
+        }
+        panelSummaryPayment.setLayout(new BoxLayout(panelSummaryPayment, BoxLayout.Y_AXIS));
+        panelSummaryPayment.setBorder(new EmptyBorder(2, 2, 2, 2));
+    }
 
-     private void displaySummaryDiscount(Data data) {
-          SummerySale[] listSummayDiscount = data.getDiscountSummery();
+    private void displaySummaryDiscount(Data data) {
+        SummerySale[] listSummayDiscount = data.getDiscountSummery();
 
-          for (int i = 0; i < listSummayDiscount.length; i++) {
-               var list = listSummayDiscount[i];
-               ReportBox report = new ReportBox();
-               report.setTitle(list.getTitle());
-               report.setQuantity("" + list.getQty());
-               report.setTotalpice("$" + " " + list.getTotal());
-               panelSummaryDiscount.add(report);
-               panelSummaryDiscount.add(Box.createRigidArea(new Dimension(2, 2)));
-          }
-          panelSummaryDiscount.setLayout(new BoxLayout(panelSummaryDiscount, BoxLayout.Y_AXIS));
-          panelSummaryDiscount.setBorder(new EmptyBorder(2, 2, 2, 2));
-     }
+        for (int i = 0; i < listSummayDiscount.length; i++) {
+            var list = listSummayDiscount[i];
+            ReportBox report = new ReportBox();
+            report.setTitle(list.getTitle());
+            report.setQuantity("" + list.getQty());
+            report.setTotalpice("$" + " " + list.getTotal());
+            panelSummaryDiscount.add(report);
+            panelSummaryDiscount.add(Box.createRigidArea(new Dimension(2, 2)));
+        }
+        panelSummaryDiscount.setLayout(new BoxLayout(panelSummaryDiscount, BoxLayout.Y_AXIS));
+        panelSummaryDiscount.setBorder(new EmptyBorder(2, 2, 2, 2));
+    }
 
-     /**
-      * @param args the command line
-      * arguments
-      */
-     public static void main(String args[]) {
-          /* Set the Nimbus look and feel */
-          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-           */
-          try {
-               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                         break;
-                    }
-               }
-          } catch (ClassNotFoundException ex) {
-               java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex) {
-               java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex) {
-               java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-               java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
-          //</editor-fold>
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CashierReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-          /* Create and display the dialog */
-          java.awt.EventQueue.invokeLater(new Runnable() {
-               public void run() {
-                    CashierReport dialog = new CashierReport(new javax.swing.JFrame(), true);
-                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                         @Override
-                         public void windowClosing(java.awt.event.WindowEvent e) {
-                              System.exit(0);
-                         }
-                    });
-                    dialog.setVisible(true);
-               }
-          });
-     }
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                CashierReport dialog = new CashierReport(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.Button btnBack;

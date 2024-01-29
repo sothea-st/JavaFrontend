@@ -128,7 +128,7 @@ public class ActionProduct {
                ButtonEvent event = new ButtonEvent() {
                     @Override
                     public void onMouseClick() {
-                         System.err.println(" prodcut statuc = " + listData.getProductStatus().isEmpty());
+                        
                          if( !listData.getProductStatus().isEmpty() ) {
                               eventBtnBuy(listData);
                          } else {

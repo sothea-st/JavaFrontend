@@ -71,6 +71,9 @@ public class DeleteDialog extends javax.swing.JDialog {
                     int idReason = reason.get(i).getIdReason();
                     String reasonName = reason.get(i).getReason();
                     map.put(reasonName, "" + idReason);
+                    if (i == 0) {
+                         reasonId = "" + idReason;
+                    }
                 }
                 comboBoxReason.setMap(map);
 
@@ -214,6 +217,8 @@ public class DeleteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
+        
+        System.out.println("Reason ID :" + reasonId);
         
         if( reasonId == null) {
             JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);

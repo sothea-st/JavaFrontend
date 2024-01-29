@@ -175,8 +175,6 @@ public class LogoutDialog extends javax.swing.JDialog {
               return;
          } 
 
-        
-
          lbPOSId.setText("POS ID :");
          boxUserName.setText("");
          category.removeAll();

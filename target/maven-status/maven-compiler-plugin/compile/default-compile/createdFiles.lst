@@ -11,6 +11,7 @@ DeleteAndCancel\DeleteDialog$1.class
 Print\ReprintJdailog$2.class
 Return\ApprovalCode$4.class
 View\MainPage\MainPage$7.class
+Return\ReturnDialog$4.class
 Components\LabelTitle$1.class
 Receipt\Receipt$4.class
 Components\JavaAlertMessage.class
@@ -23,6 +24,7 @@ Model\CashierReport\Data.class
 OpenAndCloseShift\OpenShiftJdailog$2.class
 Components\ComboBox$1.class
 Constant\JavaRoute.class
+Components\HistoryHoldOrder$1.class
 Controller\ActionRequestBrand\ActionRequestBrand.class
 Return\ReturnDialog$3.class
 Receipt\Receipt$3.class
@@ -39,17 +41,20 @@ Products\ProductBox.class
 OpenAndCloseShift\OpenShiftJdailog.class
 Controller\ActionScanBarcodeAddProduct\ActionScanBarcodeAddProduct.class
 Payment\PaymentOption$6.class
+Components\HistoryHoldOrder$2$1.class
 Payment\PaymentOption$14.class
 LoginAndLogoutForm\LoginFormJdailog.class
 Payment\PaymentOption$23.class
 Button\ButtonInstock.class
 Components\PasswordField.class
+View\MainPage\MainPage$15.class
 Payment\PaymentOption$16.class
 Components\LabelPopUpTitle.class
 Payment\PaymentOption$5.class
 DeleteAndCancel\CancelDialog$4.class
 Components\Shadow\ShadowRenderer.class
 Components\ReportBox.class
+Components\HistoryHoldOrder$2.class
 Payment\PaymentOption$20.class
 View\MainPage\MainPage$12.class
 Components\LabelTitle.class
@@ -67,6 +72,7 @@ Receipt\CashierReport$1.class
 Model\Brand\BrandModel.class
 Print\ReprintByInvoicenumber$4.class
 DeleteAndCancel\CancelDialog$4$1.class
+Return\ReturnDialog$5.class
 LoginAndLogoutForm\LogoutDialog$3.class
 View\MainPage\MainPage$6.class
 Model\Reprint\ReprintModel.class
@@ -101,7 +107,6 @@ Model\PackageProduct\CategoryModel.class
 View\MainPage\MainPage$13.class
 Components\TextFieldCenter$2.class
 Components\BackgroundImage.class
-Print\ReprintJdailog$3$1.class
 Return\ApprovalCode$3.class
 Payment\PaymentOption$3.class
 Receipt\CashierReport.class
@@ -144,7 +149,6 @@ Products\ProductPanel$1.class
 Payment\PaymentOption$24.class
 OpenAndCloseShift\CloseShift$3.class
 View\MainPage\MainPage$10.class
-Return\ReturnDialog$3$1.class
 LoginAndLogoutForm\LoginFormJdailog$6.class
 View\MainPage\MainPage$5.class
 Event\ButtonEvent.class
@@ -166,6 +170,7 @@ Components\LabelFontGreen.class
 Model\Reprint\SaleDetailModel.class
 Model\CustomerType\CustomerTypeModel.class
 Model\ProductModel\ProductDataModel.class
+Components\HistoryHoldOrder.class
 Payment\PaymentOption$13.class
 Payment\PaymentOption$8.class
 Components\LabelTitle$2.class
@@ -176,6 +181,7 @@ LoginAndLogoutForm\LoginFormJdailog$1.class
 OpenAndCloseShift\OpenShiftJdailog$1.class
 Payment\PaymentOption$10.class
 Model\Package\ReasonModel.class
+Model\ReturnModel\ReturnProductModel.class
 DeleteAndCancel\CancelDialog$1.class
 LoginAndLogoutForm\LoginFormJdailog$4.class
 Model\OpenShift\OpenShiftDataModel.class
@@ -192,12 +198,15 @@ Controller\ActionProduct\ActionProduct.class
 Components\BoxItem$1.class
 View\MainPage\MainPage$3.class
 Components\TextField.class
+Model\Login\LoginModel.class
+Return\ReturnDialog$5$1.class
 View\MainPage\MainPage$1.class
 LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class
 Payment\PaymentOption$11.class
 Button\ButtonBuy.class
 Components\BoxItem.class
+Components\HoldItem$1.class
 Components\BoxItem$2.class
 Controller\ActionProduct\ActionProduct$1.class
 Model\PackageProduct\ProductModel.class
@@ -215,3 +224,4 @@ Model\Sale\SaleModel.class
 Payment\PaymentOption$9.class
 Button\ButtonAddProduct$1.class
 OpenAndCloseShift\CloseShift$1.class
+Components\HoldItem.class

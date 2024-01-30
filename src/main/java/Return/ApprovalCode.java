@@ -1,41 +1,47 @@
 package Return;
 
 import Color.WindowColor;
+import Components.JavaAlertMessage;
+import Constant.JavaConnection;
+import Constant.JavaConstant;
+import Constant.JavaRoute;
 import Event.ButtonEvent;
+import LoginAndLogoutForm.LoginFormJdailog;
+import Model.Login.LoginModel;
+import Print.ReprintJdailog;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import okhttp3.Response;
+import org.json.JSONObject;
 
-/**
- *
- * @author FRONT-END.06
- */
 public class ApprovalCode extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ApprovalCode
-     */
-    public ApprovalCode(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        panelApproval.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        event();
-        txtCode.requestFocus();
-    }
-    
-    //Action call function placeholder
-    void event(){
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
+     private LoginFormJdailog jdFormLogin;
+     private String typeForm;
 
-            }
-        };
-        txtCode.initEvent(btnevent);
-    }
+     public ApprovalCode(java.awt.Frame parent, boolean modal) {
+          super(parent, modal);
+          initComponents();
+          panelApproval.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          event();
+//          txtCode.requestFocus();
+     }
 
+     //Action call function placeholder
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
 
-    @SuppressWarnings("unchecked")
+               }
+          };
+          txtCode.initEvent(btnevent);
+     }
+
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -57,6 +63,8 @@ public class ApprovalCode extends javax.swing.JDialog {
         labelPopUpTitle1.setLabelTitle("Approval Code");
 
         txtCode.setLabelTextField("Code");
+
+        txtPassword.setValuePassword("password");
 
         buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,55 +140,118 @@ public class ApprovalCode extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLoginMouseClicked
-        ReturnDialog returnD = new ReturnDialog(new JFrame(),true);
-        returnD.setVisible(true);
+
+         String userCode = txtCode.getValueTextField();
+         String password = txtPassword.getValuePassword();
+
+//         if (userCode == null || password == null) {
+//              JOptionPane.showMessageDialog(this, "Please fill box code and password!");
+//              return;
+//         }
+         JSONObject json = new JSONObject();
+         json.put("userCode", "0003");
+         json.put("password", "TT@126$kh#");
+
+         Response response = JavaConnection.login(JavaRoute.login, json);
+
+         try {
+              String data = response.body().string();
+              if (response.isSuccessful()) {
+                   ObjectMapper objMap = new ObjectMapper();
+                   LoginModel model = objMap.readValue(data, LoginModel.class);
+
+                   if (model.getRoleName().equals(JavaConstant.supervisor)
+                        || model.getRoleName().equals(JavaConstant.admin)) {
+
+                        if (typeForm.equals("return")) {
+                             ReturnDialog returnD = new ReturnDialog(new JFrame(), true);
+                             returnD.setJdFormLogin(jdFormLogin);
+                             returnD.setVisible(true);
+                             JavaConstant.returnerId = model.getID();
+                        } else if (typeForm.equals("reprint")) {
+                             ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
+                             rep.setTitle("Reprint Invoice");
+                             rep.setTextButtonLeft("Reprint by Last");
+                             rep.setTextButtonRight("Reprint by Invoice №");
+                             rep.setTypeForm("reprint");
+                             rep.setVisible(true);
+                        }
+                        this.dispose();
+                   } else {
+                        JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                        j.setMessage("You have no permission use this function!");
+                        j.setVisible(true);
+                   }
+              }
+         } catch (Exception e) {
+              System.err.println("err  = " + e);
+         }
+
     }//GEN-LAST:event_buttonLoginMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ApprovalCode dialog = new ApprovalCode(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
                     }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(ApprovalCode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          }
+          //</editor-fold>
+
+          /* Create and display the dialog */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    ApprovalCode dialog = new ApprovalCode(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
+
+     public LoginFormJdailog getJdFormLogin() {
+          return jdFormLogin;
+     }
+
+     public void setJdFormLogin(LoginFormJdailog jdFormLogin) {
+          this.jdFormLogin = jdFormLogin;
+     }
+
+     public String getTypeForm() {
+          return typeForm;
+     }
+
+     public void setTypeForm(String typeForm) {
+          this.typeForm = typeForm;
+     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel;

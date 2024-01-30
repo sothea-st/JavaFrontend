@@ -12,7 +12,9 @@ import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
 import Model.CustomerType.SourceModel;
+import Model.ReturnModel.ReturnProductModel;
 import Model.Sale.ProductSaleModel;
+import Return.ReturnDialog;
 import java.awt.Component;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -28,222 +30,222 @@ import org.json.JSONObject;
 
 public class PaymentOption extends javax.swing.JDialog {
 
-     private HashMap<String, String> map = new HashMap<>();
-     private String totalUsd;
-     DecimalFormat dm = new DecimalFormat("#,##0");
-     DecimalFormat df = new DecimalFormat("$ #,##0.00");
-     private String sign;
-     private Component[] listCom;
-     private SubtotalPanel subtotalPanel;
-     private String cusTypeId;
-     private String sourceId;
-     private String paymentType = JavaConstant.typeCash;
-     private JPanel detailItem;
-     private JPanel boxOne;
-     private Button btnPayment;
+    private HashMap<String, String> map = new HashMap<>();
+    private String totalUsd;
+    DecimalFormat dm = new DecimalFormat("#,##0");
+    DecimalFormat df = new DecimalFormat("$ #,##0.00");
+    private String sign;
+    private Component[] listCom;
+    private SubtotalPanel subtotalPanel;
+    private String cusTypeId;
+    private String sourceId;
+    private String paymentType = JavaConstant.typeCash;
+    private JPanel detailItem;
+    private JPanel boxOne;
+    private Button btnPayment;
 
-     public PaymentOption(java.awt.Frame parent, boolean modal) {
-          super(parent, modal);
-          initComponents();
-          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-          setResizable(false);
-          addComboCustomerType();
-          addComboSource();
-          event();
+    public PaymentOption(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        addComboCustomerType();
+        addComboSource();
+        event();
 
-          // action get select customer type
-          ButtonEvent event = new ButtonEvent() {
-               @Override
-               public void onSelect(String key) {
-                    cusTypeId = key;
-               }
-          };
-          cmbCustomerType.initEvent(event);
+        // action get select customer type
+        ButtonEvent event = new ButtonEvent() {
+            @Override
+            public void onSelect(String key) {
+                cusTypeId = key;
+            }
+        };
+        cmbCustomerType.initEvent(event);
 
-          // action get select source
-          ButtonEvent events = new ButtonEvent() {
-               @Override
-               public void onSelect(String key) {
-                    sourceId = key;
-               }
-          };
-          cmbSource.initEvent(events);
+        // action get select source
+        ButtonEvent events = new ButtonEvent() {
+            @Override
+            public void onSelect(String key) {
+                sourceId = key;
+            }
+        };
+        cmbSource.initEvent(events);
 
-          genderGroupButton();
-          nationalityGroupButton();
-          setColor();
+        genderGroupButton();
+        nationalityGroupButton();
+        setColor();
 
-          paymentType = "cash";
-          txtCustomerId.requestFocus();
-          radioButtonKhmer.setSelected(true);
-          radioButtonMale.setSelected(true);
-     }
+        paymentType = "cash";
+        txtCustomerId.requestFocus();
+        radioButtonKhmer.setSelected(true);
+        radioButtonMale.setSelected(true);
+    }
 
-     //=================================================
-     private void setColor() {
+    //=================================================
+    private void setColor() {
 
-          panelPayment.setBackground(WindowColor.mediumGreen);
-          panelTotal.setBackground(WindowColor.mediumGreen);
-          lbCashPayment.setFontColor(WindowColor.white);
-          lbCash.setFontColor(WindowColor.white);
-          lbCreditCard.setFontColor(WindowColor.white);
-          labelFontBlack2.setFontColor(WindowColor.white);
-          labelFontBlack5.setFontColor(WindowColor.white);
-          labelFontBlack9.setFontColor(WindowColor.white);
-          lbCreditCard.setBackground(WindowColor.blue);
-          lbCash.setBackground(WindowColor.green);
-     }
+        panelPayment.setBackground(WindowColor.mediumGreen);
+        panelTotal.setBackground(WindowColor.mediumGreen);
+        lbCashPayment.setFontColor(WindowColor.white);
+        lbCash.setFontColor(WindowColor.white);
+        lbCreditCard.setFontColor(WindowColor.white);
+        labelFontBlack2.setFontColor(WindowColor.white);
+        labelFontBlack5.setFontColor(WindowColor.white);
+        labelFontBlack9.setFontColor(WindowColor.white);
+        lbCreditCard.setBackground(WindowColor.blue);
+        lbCash.setBackground(WindowColor.green);
+    }
 
-     //================ Gender Option ===================
-     private void genderGroupButton() {
+    //================ Gender Option ===================
+    private void genderGroupButton() {
 
-          ButtonGroup group = new ButtonGroup();
-          group.add(radioButtonMale);
-          group.add(radioButtonFemale);
-     }
+        ButtonGroup group = new ButtonGroup();
+        group.add(radioButtonMale);
+        group.add(radioButtonFemale);
+    }
 
-     //================ Nationality Option ===================
-     private void nationalityGroupButton() {
-          ButtonGroup group = new ButtonGroup();
-          group.add(radioButtonKhmer);
-          group.add(radioButtonAsian);
-          group.add(radioButtonChinese);
-          group.add(radioButtonWhite);
-          group.add(radioButtonBlack);
-     }
+    //================ Nationality Option ===================
+    private void nationalityGroupButton() {
+        ButtonGroup group = new ButtonGroup();
+        group.add(radioButtonKhmer);
+        group.add(radioButtonAsian);
+        group.add(radioButtonChinese);
+        group.add(radioButtonWhite);
+        group.add(radioButtonBlack);
+    }
 
-     //Action call function placeholder
-     private void event() {
-          ButtonEvent btnevent = new ButtonEvent() {
-               @Override
-               public void onFocusGain() {
+    //Action call function placeholder
+    private void event() {
+        ButtonEvent btnevent = new ButtonEvent() {
+            @Override
+            public void onFocusGain() {
 
-               }
-          };
-          txtCustomerId.initEvent(btnevent);
-          txtEarning.initEvent(btnevent);
-          txtCustomerName.initEvent(btnevent);
-          txtCustomerPhone.initEvent(btnevent);
-          txtCustomerEmail.initEvent(btnevent);
-     }
+            }
+        };
+        txtCustomerId.initEvent(btnevent);
+        txtEarning.initEvent(btnevent);
+        txtCustomerName.initEvent(btnevent);
+        txtCustomerPhone.initEvent(btnevent);
+        txtCustomerEmail.initEvent(btnevent);
+    }
 
-     //Set Combo box Customer Type
-     private void addComboCustomerType() {
-          try {
-               ArrayList<CustomerTypeModel> typeCustomer = new ArrayList<>();
-               Response response = JavaConnection.get(JavaRoute.customerType);
+    //Set Combo box Customer Type
+    private void addComboCustomerType() {
+        try {
+            ArrayList<CustomerTypeModel> typeCustomer = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.customerType);
 
-               if (response.isSuccessful()) {
-                    String responseData = response.body().string();
-                    JSONObject jsonObject = new JSONObject(responseData);
-                    JSONArray data = jsonObject.getJSONArray("data");
-                    for (int i = 0; i < data.length(); i++) {
-                         JSONObject obj = data.getJSONObject(i);
-                         CustomerTypeModel customer = new CustomerTypeModel(
-                              obj.getInt("id"),
-                              obj.getString("name")
-                         );
-                         typeCustomer.add(customer);
-                         int idType = typeCustomer.get(i).getCustomerTypeId();
-                         String type = typeCustomer.get(i).getCustomerTypeName();
-                         map.put(type, "" + idType);
-                         if (i == 0) {
-                              cusTypeId = "" + idType;
-                         }
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    CustomerTypeModel customer = new CustomerTypeModel(
+                            obj.getInt("id"),
+                            obj.getString("name")
+                    );
+                    typeCustomer.add(customer);
+                    int idType = typeCustomer.get(i).getCustomerTypeId();
+                    String type = typeCustomer.get(i).getCustomerTypeName();
+                    map.put(type, "" + idType);
+                    if (i == 0) {
+                        cusTypeId = "" + idType;
                     }
-                    cmbCustomerType.setMap(map);
-               } else {
-                    System.err.println("fail loading data");
-               }
-          } catch (Exception e) {
-               System.err.println("error = " + e);
-          }
-     }
+                }
+                cmbCustomerType.setMap(map);
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
+    }
 
-     //Set Combo box Source
-     private void addComboSource() {
-          HashMap<String, String> source = new HashMap<>();
-          try {
-               ArrayList<SourceModel> modelSource = new ArrayList<>();
-               Response response = JavaConnection.get(JavaRoute.source);
-               if (response.isSuccessful()) {
-                    String responseData = response.body().string();
-                    JSONObject jsonObject = new JSONObject(responseData);
-                    JSONArray data = jsonObject.getJSONArray("data");
-                    for (int i = 0; i < data.length(); i++) {
-                         JSONObject obj = data.getJSONObject(i);
-                         SourceModel sourceCombo = new SourceModel(
-                              obj.getInt("id"),
-                              obj.getString("name")
-                         );
-                         modelSource.add(sourceCombo);
-                         int idSource = modelSource.get(i).getSourceId();
-                         String sourceName = modelSource.get(i).getSourceName();
-                         source.put(sourceName, "" + idSource);
-                         if (i == 0) {
-                              sourceId = "" + idSource;
-                         }
+    //Set Combo box Source
+    private void addComboSource() {
+        HashMap<String, String> source = new HashMap<>();
+        try {
+            ArrayList<SourceModel> modelSource = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.source);
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                JSONArray data = jsonObject.getJSONArray("data");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    SourceModel sourceCombo = new SourceModel(
+                            obj.getInt("id"),
+                            obj.getString("name")
+                    );
+                    modelSource.add(sourceCombo);
+                    int idSource = modelSource.get(i).getSourceId();
+                    String sourceName = modelSource.get(i).getSourceName();
+                    source.put(sourceName, "" + idSource);
+                    if (i == 0) {
+                        sourceId = "" + idSource;
                     }
-                    cmbSource.setMap(source);
+                }
+                cmbSource.setMap(source);
 
-               } else {
-                    System.err.println("fail loading data");
-               }
-          } catch (Exception e) {
-               System.err.println("error = " + e);
-          }
-     }
+            } else {
+                System.err.println("fail loading data");
+            }
+        } catch (Exception e) {
+            System.err.println("error = " + e);
+        }
+    }
 
-     private void inputAmount(String value) {
-          String receviUsd = txtReceiveUsd.getText();
-          String receviKhr = txtReceiveKhr.getText();
+    private void inputAmount(String value) {
+        String receviUsd = txtReceiveUsd.getText();
+        String receviKhr = txtReceiveKhr.getText();
 
-          if (sign == "usd") {
-               receviUsd += value;
-               txtReceiveUsd.setText(receviUsd);
+        if (sign == "usd") {
+            receviUsd += value;
+            txtReceiveUsd.setText(receviUsd);
 
-               String strTotalUsd = getTotalUsd().replace("$", "");
-               strTotalUsd = strTotalUsd.replace(",", "");
-               double doubleTotalUsd = Double.valueOf(strTotalUsd);
+            String strTotalUsd = getTotalUsd().replace("$", "");
+            strTotalUsd = strTotalUsd.replace(",", "");
+            double doubleTotalUsd = Double.valueOf(strTotalUsd);
 
-               if (!receviUsd.isEmpty()) {
-                    String stringReceiveUsd = receviUsd.replace(",", "");
-                    double doubleReceviceUsd = Double.valueOf(stringReceiveUsd);
-                    double result = doubleReceviceUsd - doubleTotalUsd;
-                    if (result < 0) {
-                         setValueLabelUsd(result, 0);
-                    } else if (result > 0) {
-                         setValueLabelUsd(0, result);
-                    } else if (result == 0) {
-                         setValueLabelUsd(0, 0);
-                    }
-               }
-          } else if (sign == "khr") {
-               receviKhr += value;
-               txtReceiveKhr.setText(receviKhr);
-               String strTotalKhr = lbTotalKhr.getLabelName();
-               strTotalKhr = strTotalKhr.replace(",", "");
-               double doubleTotalKhr = Double.valueOf(strTotalKhr);
+            if (!receviUsd.isEmpty()) {
+                String stringReceiveUsd = receviUsd.replace(",", "");
+                double doubleReceviceUsd = Double.valueOf(stringReceiveUsd);
+                double result = doubleReceviceUsd - doubleTotalUsd;
+                if (result < 0) {
+                    setValueLabelUsd(result, 0);
+                } else if (result > 0) {
+                    setValueLabelUsd(0, result);
+                } else if (result == 0) {
+                    setValueLabelUsd(0, 0);
+                }
+            }
+        } else if (sign == "khr") {
+            receviKhr += value;
+            txtReceiveKhr.setText(receviKhr);
+            String strTotalKhr = lbTotalKhr.getLabelName();
+            strTotalKhr = strTotalKhr.replace(",", "");
+            double doubleTotalKhr = Double.valueOf(strTotalKhr);
 
-               if (!receviKhr.isEmpty()) {
-                    String stringReceiveKhr = receviKhr.replace(",", "");
-                    double doubleReceviceKhr = Double.valueOf(stringReceiveKhr);
+            if (!receviKhr.isEmpty()) {
+                String stringReceiveKhr = receviKhr.replace(",", "");
+                double doubleReceviceKhr = Double.valueOf(stringReceiveKhr);
 
-                    double result = doubleReceviceKhr - doubleTotalKhr;
-                    if (result < 0) {
-                         setValueLabelKhr(result, 0);
-                    } else if (result > 0) {
-                         setValueLabelKhr(0, result);
+                double result = doubleReceviceKhr - doubleTotalKhr;
+                if (result < 0) {
+                    setValueLabelKhr(result, 0);
+                } else if (result > 0) {
+                    setValueLabelKhr(0, result);
 
-                    } else if (result == 0) {
-                         setValueLabelKhr(0, 0);
-                    }
-               }
-          }
+                } else if (result == 0) {
+                    setValueLabelKhr(0, 0);
+                }
+            }
+        }
 
-     }
+    }
 
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -932,88 +934,88 @@ public class PaymentOption extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void labelFontBlack2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack2MouseClicked
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_labelFontBlack2MouseClicked
 
     private void lbOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbOneMouseClicked
-         String number = lbOne.getLabelName();
-         inputAmount(number);
+        String number = lbOne.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbOneMouseClicked
 
     private void lbTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbTwoMouseClicked
-         String number = lbTwo.getLabelName();
-         inputAmount(number);
+        String number = lbTwo.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbTwoMouseClicked
 
     private void lbThreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbThreeMouseClicked
-         String number = lbThree.getLabelName();
-         inputAmount(number);
+        String number = lbThree.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbThreeMouseClicked
 
     private void lbFourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFourMouseClicked
-         String number = lbFour.getLabelName();
-         inputAmount(number);
+        String number = lbFour.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbFourMouseClicked
 
     private void lbFiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFiveMouseClicked
-         String number = lbFive.getLabelName();
-         inputAmount(number);
+        String number = lbFive.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbFiveMouseClicked
 
     private void lbSixMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbSixMouseClicked
-         String number = lbSix.getLabelName();
-         inputAmount(number);
+        String number = lbSix.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbSixMouseClicked
 
     private void lbDotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbDotMouseClicked
-         String number = lbDot.getLabelName();
-         inputAmount(number);
+        String number = lbDot.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbDotMouseClicked
 
     private void lbSevenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbSevenMouseClicked
-         String number = lbSeven.getLabelName();
-         inputAmount(number);
+        String number = lbSeven.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbSevenMouseClicked
 
     private void lbEightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEightMouseClicked
-         String number = lbEight.getLabelName();
-         inputAmount(number);
+        String number = lbEight.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbEightMouseClicked
 
     private void lbNineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNineMouseClicked
-         String number = lbNine.getLabelName();
-         inputAmount(number);
+        String number = lbNine.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbNineMouseClicked
 
     private void lbZeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbZeroMouseClicked
-         String number = lbZero.getLabelName();
-         inputAmount(number);
+        String number = lbZero.getLabelName();
+        inputAmount(number);
     }//GEN-LAST:event_lbZeroMouseClicked
 
     private void lbDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbDeleteMouseClicked
-         if (!txtReceiveUsd.getText().isEmpty()) {
-              String valueReceive = txtReceiveUsd.getText();
-              valueReceive = valueReceive.substring(0, valueReceive.length() - 1);
-              txtReceiveUsd.setText("");
-              if (valueReceive.isEmpty()) {
-                   setValueLabelUsd(0, 0);
-              }
-              inputAmount(valueReceive);
-         }
+        if (!txtReceiveUsd.getText().isEmpty()) {
+            String valueReceive = txtReceiveUsd.getText();
+            valueReceive = valueReceive.substring(0, valueReceive.length() - 1);
+            txtReceiveUsd.setText("");
+            if (valueReceive.isEmpty()) {
+                setValueLabelUsd(0, 0);
+            }
+            inputAmount(valueReceive);
+        }
 
-         if (!txtReceiveKhr.getText().isEmpty()) {
-              String valueReceive = txtReceiveKhr.getText();
-              valueReceive = valueReceive.substring(0, valueReceive.length() - 1);
-              txtReceiveKhr.setText("");
-              if (valueReceive.isEmpty()) {
-                   setValueLabelKhr(0, 0);
-              }
-              inputAmount(valueReceive);
-         }
+        if (!txtReceiveKhr.getText().isEmpty()) {
+            String valueReceive = txtReceiveKhr.getText();
+            valueReceive = valueReceive.substring(0, valueReceive.length() - 1);
+            txtReceiveKhr.setText("");
+            if (valueReceive.isEmpty()) {
+                setValueLabelKhr(0, 0);
+            }
+            inputAmount(valueReceive);
+        }
     }//GEN-LAST:event_lbDeleteMouseClicked
 
     private void txtReceiveUsdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtReceiveUsdMouseClicked
-         sign = "usd";
+        sign = "usd";
     }//GEN-LAST:event_txtReceiveUsdMouseClicked
 
     private void txtReceiveKhrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtReceiveKhrMouseEntered
@@ -1021,233 +1023,309 @@ public class PaymentOption extends javax.swing.JDialog {
     }//GEN-LAST:event_txtReceiveKhrMouseEntered
 
     private void txtReceiveKhrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtReceiveKhrMouseClicked
-         sign = "khr";
+        sign = "khr";
     }//GEN-LAST:event_txtReceiveKhrMouseClicked
 
     private void txtReceiveUsdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReceiveUsdKeyReleased
-         if (txtReceiveUsd.getText().length() > 0) {
-              double totalUsdValue = JavaConstant.getReplace(totalUsd);
-              double rUsdValue = JavaConstant.getReplace(txtReceiveUsd.getText());
-              double resultValueUsd = rUsdValue - totalUsdValue;
-              if (resultValueUsd == 0) {
-                   setValueLabelUsd(resultValueUsd, resultValueUsd);
-              } else if (resultValueUsd > 0) {
-                   setValueLabelUsd(0, resultValueUsd);
-              } else if (resultValueUsd < 0) {
-                   setValueLabelUsd(resultValueUsd, 0);
-              }
-         } else {
-              setValueLabelUsd(0, 0);
-         }
+        if (txtReceiveUsd.getText().length() > 0) {
+            double totalUsdValue = JavaConstant.getReplace(totalUsd);
+            double rUsdValue = JavaConstant.getReplace(txtReceiveUsd.getText());
+            double resultValueUsd = rUsdValue - totalUsdValue;
+            if (resultValueUsd == 0) {
+                setValueLabelUsd(resultValueUsd, resultValueUsd);
+            } else if (resultValueUsd > 0) {
+                setValueLabelUsd(0, resultValueUsd);
+            } else if (resultValueUsd < 0) {
+                setValueLabelUsd(resultValueUsd, 0);
+            }
+        } else {
+            setValueLabelUsd(0, 0);
+        }
     }//GEN-LAST:event_txtReceiveUsdKeyReleased
 
     private void txtReceiveKhrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReceiveKhrKeyReleased
-         if (txtReceiveKhr.getText().length() > 0) {
-              double totalKhrValue = JavaConstant.getReplace(lbTotalKhr.getLabelName());
-              double rKhrValue = JavaConstant.getReplace(txtReceiveKhr.getText());
-              double resultValueKhr = rKhrValue - totalKhrValue;
-              if (resultValueKhr == 0) {
-                   setValueLabelKhr(resultValueKhr, resultValueKhr);
-              } else if (resultValueKhr > 0) {
-                   setValueLabelKhr(0, resultValueKhr);
-              } else if (resultValueKhr < 0) {
-                   setValueLabelKhr(resultValueKhr, 0);
-              }
-         } else {
-              setValueLabelKhr(0, 0);
-         }
+        if (txtReceiveKhr.getText().length() > 0) {
+            double totalKhrValue = JavaConstant.getReplace(lbTotalKhr.getLabelName());
+            double rKhrValue = JavaConstant.getReplace(txtReceiveKhr.getText());
+            double resultValueKhr = rKhrValue - totalKhrValue;
+            if (resultValueKhr == 0) {
+                setValueLabelKhr(resultValueKhr, resultValueKhr);
+            } else if (resultValueKhr > 0) {
+                setValueLabelKhr(0, resultValueKhr);
+            } else if (resultValueKhr < 0) {
+                setValueLabelKhr(resultValueKhr, 0);
+            }
+        } else {
+            setValueLabelKhr(0, 0);
+        }
     }//GEN-LAST:event_txtReceiveKhrKeyReleased
 
     private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
-         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-         if (txtReceiveKhr.getText().isEmpty() && txtReceiveUsd.getText().isEmpty()) {
-              j.setMessage("Box Receive must be have one value!");
-              j.setVisible(true);
-              return;
-         }
 
-         double discount = JavaConstant.getReplace(subtotalPanel.getLableDiscountUsd());
-         // double deliveryFee = JavaConstant.getReplace(subtotalPanel.getLableDeliveryUsd());
-         double subTotal = JavaConstant.getReplace(subtotalPanel.getLabelSubtotalUsd());
-         double total = JavaConstant.getReplace(subtotalPanel.getLableTotalUsd());
-         double remainningUsd = JavaConstant.getReplace(lbRemainingUsd.getLabelName());
-         double remainningKhr = JavaConstant.getReplace(lbRemainingKhr.getLabelName());
-         double changeUsd = JavaConstant.getReplace(lbChangeUsd.getLabelName());
-         double changeKhr = JavaConstant.getReplace(lbChangeKhr.getLabelName());
+        JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+        if (txtReceiveKhr.getText().isEmpty() && txtReceiveUsd.getText().isEmpty()) {
+            j.setMessage("Box Receive must be have one value!");
+            j.setVisible(true);
+            return;
+        }
 
-         JSONObject jsonData = new JSONObject();
-         jsonData.put("userId", JavaConstant.cashierId);
-         jsonData.put("userCode", JavaConstant.userCode);
-         jsonData.put("saleDate", JavaConstant.currentDate);
-         jsonData.put("discount", discount);
-         jsonData.put("subTotal", subTotal);
-         jsonData.put("deliveryFee", "0");
-         jsonData.put("total", total);
+        if (lbRemainingUsd.getLabelName().contains("-")) {
+            j.setMessage("remainningUsd : " + lbRemainingUsd.getLabelName());
+            j.setVisible(true);
+            return;
+        }
 
-         //get dataPay
-         HashMap<String, Object> dataPay = new HashMap<>();
-         dataPay.put("sourceId", sourceId);
-         dataPay.put("customerTypeId", cusTypeId);
-         dataPay.put("paymentType", paymentType);
-         dataPay.put("receiveKhr", txtReceiveKhr.getText());
-         dataPay.put("receiveUsd", txtReceiveUsd.getText());
-         dataPay.put("remainingUsd", remainningUsd);
-         dataPay.put("remainingKhr", remainningKhr);
-         dataPay.put("changeUsd", changeUsd);
-         dataPay.put("changeKhr", changeKhr);
-         jsonData.put("dataPay", dataPay);
+        if (lbRemainingKhr.getLabelName().contains("-")) {
+            j.setMessage("remainningKhr : " + lbRemainingKhr.getLabelName());
+            j.setVisible(true);
+            return;
+        }
 
-         //get customer 
-         HashMap<String, Object> customer = new HashMap<>();
-         customer.put("cusName", txtCustomerName.getValueTextFieldCenter());
-         customer.put("contact", txtCustomerPhone.getValueTextFieldCenter());
-         customer.put("email", txtCustomerEmail.getValueTextFieldCenter());
-         customer.put("earning", txtEarning.getValueTextFieldCenter());
-         if (radioButtonKhmer.isSelected()) {
-              customer.put("nationality", radioButtonKhmer.getText());
-         } else if (radioButtonAsian.isSelected()) {
-              customer.put("nationality", radioButtonAsian.getText());
-         } else if (radioButtonChinese.isSelected()) {
-              customer.put("nationality", radioButtonChinese.getText());
-         } else if (radioButtonWhite.isSelected()) {
-              customer.put("nationality", radioButtonWhite.getText());
-         } else if (radioButtonBlack.isSelected()) {
-              customer.put("nationality", radioButtonBlack.getText());
-         }
-         if (radioButtonMale.isSelected()) {
-              customer.put("gender", radioButtonMale.getText());
-         } else if (radioButtonFemale.isSelected()) {
-              customer.put("gender", radioButtonFemale.getText());
-         }
+        // data is return 
+        if (JavaConstant.isReturn != null) {
+            returnProduct();
+            return;
+        }
 
-         if (txtCustomerName.getValueTextFieldCenter() != null) {
-              jsonData.put("customer", customer);
-         }
+        double discount = JavaConstant.getReplace(subtotalPanel.getLableDiscountUsd());
+        // double deliveryFee = JavaConstant.getReplace(subtotalPanel.getLableDeliveryUsd());
+        double subTotal = JavaConstant.getReplace(subtotalPanel.getLabelSubtotalUsd());
+        double total = JavaConstant.getReplace(subtotalPanel.getLableTotalUsd());
+        double remainningUsd = JavaConstant.getReplace(lbRemainingUsd.getLabelName());
+        double remainningKhr = JavaConstant.getReplace(lbRemainingKhr.getLabelName());
+        double changeUsd = JavaConstant.getReplace(lbChangeUsd.getLabelName());
+        double changeKhr = JavaConstant.getReplace(lbChangeKhr.getLabelName());
 
-         //get dataSale 
-         ArrayList<ProductSaleModel> dataSale = new ArrayList<>();
-         for (int i = 0; i < listCom.length; i++) {
-              var obj = ((BoxItem) listCom[i]);
-              double price = JavaConstant.getReplace(obj.getLabelPrice());
-              double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
+        JSONObject jsonData = new JSONObject();
+        jsonData.put("userId", JavaConstant.cashierId);
+
+        jsonData.put("userCode", JavaConstant.userCode);
+        jsonData.put("saleDate", JavaConstant.currentDate);
+        jsonData.put("discount", discount);
+        jsonData.put("subTotal", subTotal);
+        jsonData.put("deliveryFee", "0");
+        jsonData.put("total", total);
+
+        //get dataPay
+        HashMap<String, Object> dataPay = new HashMap<>();
+        dataPay.put("sourceId", sourceId);
+        dataPay.put("customerTypeId", cusTypeId);
+        dataPay.put("paymentType", paymentType);
+        dataPay.put("receiveKhr", txtReceiveKhr.getText());
+        dataPay.put("receiveUsd", txtReceiveUsd.getText());
+        dataPay.put("remainingUsd", remainningUsd);
+        dataPay.put("remainingKhr", remainningKhr);
+        dataPay.put("changeUsd", changeUsd);
+        dataPay.put("changeKhr", changeKhr);
+        jsonData.put("dataPay", dataPay);
+
+        //get customer 
+        HashMap<String, Object> customer = new HashMap<>();
+        customer.put("cusName", txtCustomerName.getValueTextFieldCenter());
+        customer.put("contact", txtCustomerPhone.getValueTextFieldCenter());
+        customer.put("email", txtCustomerEmail.getValueTextFieldCenter());
+        customer.put("earning", txtEarning.getValueTextFieldCenter());
+        if (radioButtonKhmer.isSelected()) {
+            customer.put("nationality", radioButtonKhmer.getText());
+        } else if (radioButtonAsian.isSelected()) {
+            customer.put("nationality", radioButtonAsian.getText());
+        } else if (radioButtonChinese.isSelected()) {
+            customer.put("nationality", radioButtonChinese.getText());
+        } else if (radioButtonWhite.isSelected()) {
+            customer.put("nationality", radioButtonWhite.getText());
+        } else if (radioButtonBlack.isSelected()) {
+            customer.put("nationality", radioButtonBlack.getText());
+        }
+        if (radioButtonMale.isSelected()) {
+            customer.put("gender", radioButtonMale.getText());
+        } else if (radioButtonFemale.isSelected()) {
+            customer.put("gender", radioButtonFemale.getText());
+        }
+
+        if (txtCustomerName.getValueTextFieldCenter() != null) {
+            jsonData.put("customer", customer);
+        }
+
+        //get dataSale 
+        ArrayList<ProductSaleModel> dataSale = new ArrayList<>();
+        for (int i = 0; i < listCom.length; i++) {
+            var obj = ((BoxItem) listCom[i]);
+            double price = JavaConstant.getReplace(obj.getLabelPrice());
+            double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
 //              double discountAmount = JavaConstant.getReplace(obj.getDiscountAmount());
-               int discountAmount = obj.getDiscountDigit();
+            int discountDigit = obj.getDiscountDigit();
 
-              ProductSaleModel pro = new ProductSaleModel(
-                   obj.getProductId(),
-                   obj.getQty(),
-                   price,
-                   amount,
-                   discountAmount
-              );
-              dataSale.add(pro);
-         }
-         jsonData.put("dataSale", dataSale);
+            ProductSaleModel pro = new ProductSaleModel(
+                    obj.getProductId(),
+                    obj.getQty(),
+                    price,
+                    amount,
+                    discountDigit
+            );
+            dataSale.add(pro);
+        }
+        jsonData.put("dataSale", dataSale);
 
-         Response response = JavaConnection.post(JavaRoute.sale, jsonData);
+        Response response = JavaConnection.post(JavaRoute.sale, jsonData);
 
-         if (response.isSuccessful()) {
-              dispose();
-              detailItem.removeAll();
-              detailItem.revalidate();
-              detailItem.repaint();
-              subtotalPanel.setLabelSubTitleToZero();
-              btnPayment.setBackground(WindowColor.lightGray);
-         }
+        if (response.isSuccessful()) {
+            dispose();
+            detailItem.removeAll();
+            detailItem.revalidate();
+            detailItem.repaint();
+            subtotalPanel.setLabelSubTitleToZero();
+            btnPayment.setBackground(WindowColor.lightGray);
+        }
 
 
     }//GEN-LAST:event_labelFontBlack9MouseClicked
 
+    void returnProduct() {
+        double totalReturn = 0;
+        if (!txtReceiveUsd.getText().isEmpty()) {
+            totalReturn = Double.valueOf(txtReceiveUsd.getText());
+        }
+
+        if (!txtReceiveKhr.getText().isEmpty()) {
+            double returnAmountKhr = Double.valueOf(txtReceiveKhr.getText());
+            totalReturn = returnAmountKhr / JavaConstant.exchangeRate;
+        }
+        System.err.println("JavaConstant.returnerId = " + JavaConstant.returnerId);
+        JSONObject jsonReturnData = new JSONObject();
+        jsonReturnData.put("paymentNo", JavaConstant.invoiceNo);
+        jsonReturnData.put("reasonId", Integer.valueOf(JavaConstant.reasonId));
+        jsonReturnData.put("createBy", JavaConstant.returnerId);
+        jsonReturnData.put("returnAmount", totalReturn);
+
+        //get dataSale 
+        ArrayList<ReturnProductModel> dataDetails = new ArrayList<>();
+        for (int i = 0; i < listCom.length; i++) {
+            var obj = ((BoxItem) listCom[i]);
+            double price = JavaConstant.getReplace(obj.getLabelPrice());
+            double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
+            int discountDigit = obj.getDiscountDigit();
+
+            ReturnProductModel pro = new ReturnProductModel(
+                    obj.getProductId(),
+                    obj.getQty(),
+                    price,
+                    amount,
+                    discountDigit
+            );
+            dataDetails.add(pro);
+        }
+        jsonReturnData.put("dataDetails", dataDetails);
+
+
+        Response responseReturn = JavaConnection.post(JavaRoute.returnProduct, jsonReturnData);
+
+            if (responseReturn.isSuccessful()) {
+                dispose();
+                detailItem.removeAll();
+                detailItem.revalidate();
+                detailItem.repaint();
+                subtotalPanel.setLabelSubTitleToZero();
+                btnPayment.setBackground(WindowColor.lightGray);
+                // assign JavaConstant.isReturn , reasonId , inovoiceNo to null
+                ReturnDialog r = new ReturnDialog(new JFrame(), true);
+                r.setResetReturn();
+            } else {
+                System.err.println("err = 4444");
+            }
+       
+    }
+
+
      private void lbCashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCashMouseClicked
-          paymentType = "cash";
-          lbCreditCard.setBackground(WindowColor.blue);
-          lbCash.setBackground(WindowColor.green);
+         paymentType = "cash";
+         lbCreditCard.setBackground(WindowColor.blue);
+         lbCash.setBackground(WindowColor.green);
      }//GEN-LAST:event_lbCashMouseClicked
 
      private void lbCreditCardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCreditCardMouseClicked
-          paymentType = JavaConstant.typeCredit;
-          lbCreditCard.setBackground(WindowColor.green);
-          lbCash.setBackground(WindowColor.blue);
+         paymentType = JavaConstant.typeCredit;
+         lbCreditCard.setBackground(WindowColor.green);
+         lbCash.setBackground(WindowColor.blue);
      }//GEN-LAST:event_lbCreditCardMouseClicked
 
-     private void setValueLabelUsd(double remaining, double change) {
-          lbRemainingUsd.setLabelName(df.format(remaining));
-          lbChangeUsd.setLabelName(df.format(change));
-     }
+    private void setValueLabelUsd(double remaining, double change) {
+        lbRemainingUsd.setLabelName(df.format(remaining));
+        lbChangeUsd.setLabelName(df.format(change));
+    }
 
-     private void setValueLabelKhr(double remaining, double change) {
-          lbRemainingKhr.setLabelName(dm.format(remaining));
-          lbChangeKhr.setLabelName(dm.format(change));
-     }
+    private void setValueLabelKhr(double remaining, double change) {
+        lbRemainingKhr.setLabelName(dm.format(remaining));
+        lbChangeKhr.setLabelName(dm.format(change));
+    }
 
-     public static void main(String args[]) {
+    public static void main(String args[]) {
 
-          java.awt.EventQueue.invokeLater(new Runnable() {
-               public void run() {
-                    PaymentOption dialog = new PaymentOption(new javax.swing.JFrame(), true);
-                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                         @Override
-                         public void windowClosing(java.awt.event.WindowEvent e) {
-                              System.exit(0);
-                         }
-                    });
-                    dialog.setVisible(true);
-               }
-          });
-     }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                PaymentOption dialog = new PaymentOption(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
-     public String getTotalUsd() {
-          return totalUsd;
-     }
+    public String getTotalUsd() {
+        return totalUsd;
+    }
 
-     public void setTotalUsd(String totalUsd) {
-          this.totalUsd = totalUsd;
-          lbTotalUsd.setLabelName(totalUsd);
-          String moneyUsd = totalUsd.replace("$", "");
-          moneyUsd = moneyUsd.replace(",", "");
-          double totalKhr = Double.valueOf(moneyUsd);
-          lbTotalKhr.setLabelName(dm.format(totalKhr * 4200));
-     }
+    public void setTotalUsd(String totalUsd) {
+        this.totalUsd = totalUsd;
+        lbTotalUsd.setLabelName(totalUsd);
+        String moneyUsd = totalUsd.replace("$", "");
+        moneyUsd = moneyUsd.replace(",", "");
+        double totalKhr = Double.valueOf(moneyUsd);
+        lbTotalKhr.setLabelName(dm.format(totalKhr * 4200));
+    }
 
-     public Component[] getListCom() {
-          return listCom;
-     }
+    public Component[] getListCom() {
+        return listCom;
+    }
 
-     public void setListCom(Component[] listCom) {
-          this.listCom = listCom;
-     }
+    public void setListCom(Component[] listCom) {
+        this.listCom = listCom;
+    }
 
-     public SubtotalPanel getSubtotalPanel() {
-          return subtotalPanel;
-     }
+    public SubtotalPanel getSubtotalPanel() {
+        return subtotalPanel;
+    }
 
-     public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
-          this.subtotalPanel = subtotalPanel;
-     }
+    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+        this.subtotalPanel = subtotalPanel;
+    }
 
-     public JPanel getDetailItem() {
-          return detailItem;
-     }
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
 
-     public void setDetailItem(JPanel detailItem) {
-          this.detailItem = detailItem;
-     }
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
 
-     public JPanel getBoxOne() {
-          return boxOne;
-     }
+    public JPanel getBoxOne() {
+        return boxOne;
+    }
 
-     public void setBoxOne(JPanel boxOne) {
-          this.boxOne = boxOne;
-     }
+    public void setBoxOne(JPanel boxOne) {
+        this.boxOne = boxOne;
+    }
 
-     public Button getBtnPayment() {
-          return btnPayment;
-     }
+    public Button getBtnPayment() {
+        return btnPayment;
+    }
 
-     public void setBtnPayment(Button btnPayment) {
-          this.btnPayment = btnPayment;
-     }
+    public void setBtnPayment(Button btnPayment) {
+        this.btnPayment = btnPayment;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2,27 +2,30 @@ package LoginAndLogoutForm;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConstant;
 import Fonts.WindowFonts;
+import View.MainPage.MainPage;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class LogoutDialog extends javax.swing.JDialog {
 
-    public LogoutDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
+     public LogoutDialog(java.awt.Frame parent, boolean modal) {
+          super(parent, modal);
+          initComponents();
 
-        txtLabel.setFont(WindowFonts.timeNewRomanBold14);
-        panelLogout.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-    }
+          txtLabel.setFont(WindowFonts.timeNewRomanBold14);
+          panelLogout.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+     }
 
-    @SuppressWarnings("unchecked")
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -161,154 +164,162 @@ public class LogoutDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonYesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonYesMouseClicked
-        lbPOSId.setText("POS ID :");
-        boxUserName.setText("");
-//        category.setBackground(WindowColor.darkGreen);
-        category.removeAll();
-        category.revalidate();
-        category.repaint();
-        subtotalPanel.setLabelSubTitleToZero();
-        detailItem.removeAll();
-        detailItem.revalidate();
-        detailItem.repaint();
-        panelProduct.removeAll();
-        panelProduct.revalidate();
-        panelProduct.repaint();
-        btnLogin.setButtonName("Login");
-        panelPagination.setVisible(false);
+         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+         if (JavaConstant.checkCloseShift != null && JavaConstant.checkCloseShift == 1) {
+              j.setMessage("You have to close shift first to log out!");
+              j.setVisible(true);
+              return;
+         } 
 
-        //Session
-        JavaConstant.token = null;
-        JavaConstant.fullName = null;
-        JavaConstant.userCode = null;
-        JavaConstant.posId = null;
-        JavaConstant.cashierId = null;
-        dispose();
+        System.err.println("JavaConstant.checkCloseShift = " + JavaConstant.checkCloseShift);
+
+         lbPOSId.setText("POS ID :");
+         boxUserName.setText("");
+         category.removeAll();
+         category.revalidate();
+         category.repaint();
+         subtotalPanel.setLabelSubTitleToZero();
+         detailItem.removeAll();
+         detailItem.revalidate();
+         detailItem.repaint();
+         panelProduct.removeAll();
+         panelProduct.revalidate();
+         panelProduct.repaint();
+         btnLogin.setButtonName("Login");
+         panelPagination.setVisible(false);
+
+         //Session
+         JavaConstant.token = null;
+         JavaConstant.fullName = null;
+         JavaConstant.userCode = null;
+         JavaConstant.posId = null;
+         JavaConstant.cashierId = null;
+         dispose();
     }//GEN-LAST:event_buttonYesMouseClicked
 
     private void buttonNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonNoMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonNoMouseClicked
 
-    public static void main(String args[]) {
+     public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
-    private JLabel lbPOSId;
-    private Button btnLogin;
-    private JLabel boxUserName;
-    private JPanel category;
-    private JPanel panelProduct;
-    private JScrollPane jScrollPaneCategory;
-    private JPanel detailItem;
-    private JPanel boxOne;
-    private SubtotalPanel subtotalPanel;
-    private Button btnPayment;
-    private JPanel panelPagination;
+     private JLabel lbPOSId;
+     private Button btnLogin;
+     private JLabel boxUserName;
+     private JPanel category;
+     private JPanel panelProduct;
+     private JScrollPane jScrollPaneCategory;
+     private JPanel detailItem;
+     private JPanel boxOne;
+     private SubtotalPanel subtotalPanel;
+     private Button btnPayment;
+     private JPanel panelPagination;
 
-    public SubtotalPanel getSubtotalPanel() {
-        return subtotalPanel;
-    }
+     public SubtotalPanel getSubtotalPanel() {
+          return subtotalPanel;
+     }
 
-    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
-        this.subtotalPanel = subtotalPanel;
-    }
+     public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+          this.subtotalPanel = subtotalPanel;
+     }
 
-    public JLabel getLbPOSId() {
-        return lbPOSId;
-    }
+     public JLabel getLbPOSId() {
+          return lbPOSId;
+     }
 
-    public void setLbPOSId(JLabel lbPOSId) {
-        this.lbPOSId = lbPOSId;
-    }
+     public void setLbPOSId(JLabel lbPOSId) {
+          this.lbPOSId = lbPOSId;
+     }
 
-    public Button getBtnLogin() {
-        return btnLogin;
-    }
+     public Button getBtnLogin() {
+          return btnLogin;
+     }
 
-    public void setBtnLogin(Button btnLogin) {
-        this.btnLogin = btnLogin;
-    }
+     public void setBtnLogin(Button btnLogin) {
+          this.btnLogin = btnLogin;
+     }
 
-    public JLabel getBoxUserName() {
-        return boxUserName;
-    }
+     public JLabel getBoxUserName() {
+          return boxUserName;
+     }
 
-    public void setBoxUserName(JLabel boxUserName) {
-        this.boxUserName = boxUserName;
-    }
+     public void setBoxUserName(JLabel boxUserName) {
+          this.boxUserName = boxUserName;
+     }
 
-    public JPanel getCategory() {
-        return category;
-    }
+     public JPanel getCategory() {
+          return category;
+     }
 
-    public void setCategory(JPanel category) {
-        this.category = category;
-    }
+     public void setCategory(JPanel category) {
+          this.category = category;
+     }
 
-    public JPanel getPanelProduct() {
-        return panelProduct;
-    }
+     public JPanel getPanelProduct() {
+          return panelProduct;
+     }
 
-    public void setPanelProduct(JPanel panelProduct) {
-        this.panelProduct = panelProduct;
-    }
+     public void setPanelProduct(JPanel panelProduct) {
+          this.panelProduct = panelProduct;
+     }
 
-    public JScrollPane getjScrollPaneCategory() {
-        return jScrollPaneCategory;
-    }
+     public JScrollPane getjScrollPaneCategory() {
+          return jScrollPaneCategory;
+     }
 
-    public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
-        this.jScrollPaneCategory = jScrollPaneCategory;
-    }
+     public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
+          this.jScrollPaneCategory = jScrollPaneCategory;
+     }
 
-    public JPanel getDetailItem() {
-        return detailItem;
-    }
+     public JPanel getDetailItem() {
+          return detailItem;
+     }
 
-    public void setDetailItem(JPanel detailItem) {
-        this.detailItem = detailItem;
-    }
+     public void setDetailItem(JPanel detailItem) {
+          this.detailItem = detailItem;
+     }
 
-    public JPanel getBoxOne() {
-        return boxOne;
-    }
+     public JPanel getBoxOne() {
+          return boxOne;
+     }
 
-    public void setBoxOne(JPanel boxOne) {
-        this.boxOne = boxOne;
-    }
+     public void setBoxOne(JPanel boxOne) {
+          this.boxOne = boxOne;
+     }
 
-    public Button getBtnPayment() {
-        return btnPayment;
-    }
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
 
-    public void setBtnPayment(Button btnPayment) {
-        this.btnPayment = btnPayment;
-    }
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
 
-    public JPanel getPanelPagination() {
-        return panelPagination;
-    }
+     public JPanel getPanelPagination() {
+          return panelPagination;
+     }
 
-    public void setPanelPagination(JPanel panelPagination) {
-        this.panelPagination = panelPagination;
-    }
+     public void setPanelPagination(JPanel panelPagination) {
+          this.panelPagination = panelPagination;
+     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

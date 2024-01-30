@@ -1,17 +1,27 @@
 package Print;
 
 import Color.WindowColor;
+import Components.HistoryHoldOrder;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Model.Reprint.DataSuccessModel;
 import Receipt.Receipt;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.awt.Component;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 
 public class ReprintJdailog extends javax.swing.JDialog {
+
+     private String title;
+     private String textButtonLeft;
+     private String textButtonRight;
+     private String typeForm;
+     private JPanel detailItem;
+
      public ReprintJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
           initComponents();
@@ -21,104 +31,126 @@ public class ReprintJdailog extends javax.swing.JDialog {
      }
 
      @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+     private void initComponents() {
 
-        panelReprint = new javax.swing.JPanel();
-        btnPrintByLast = new Button.Button();
-        btnPrintByInvoice = new Button.Button();
-        labelPopUpTitle1 = new Components.LabelPopUpTitle();
+          panelReprint = new javax.swing.JPanel();
+          btnPrintByLast = new Button.Button();
+          btnPrintByInvoice = new Button.Button();
+          lbTitle = new Components.LabelPopUpTitle();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+          setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        panelReprint.setForeground(new java.awt.Color(0, 0, 0));
+          panelReprint.setForeground(new java.awt.Color(0, 0, 0));
+          panelReprint.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    panelReprintMouseClicked(evt);
+               }
+          });
 
-        btnPrintByLast.setButtonName("Reprint by Last");
-        btnPrintByLast.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPrintByLastMouseClicked(evt);
-            }
-        });
+          btnPrintByLast.setButtonName("Reprint by Last");
+          btnPrintByLast.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    btnPrintByLastMouseClicked(evt);
+               }
+          });
 
-        btnPrintByInvoice.setBackground(new java.awt.Color(47, 155, 70));
-        btnPrintByInvoice.setButtonName("Reprint by Invoice №");
-        btnPrintByInvoice.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPrintByInvoiceMouseClicked(evt);
-            }
-        });
+          btnPrintByInvoice.setBackground(new java.awt.Color(47, 155, 70));
+          btnPrintByInvoice.setButtonName("Reprint by Invoice №");
+          btnPrintByInvoice.addMouseListener(new java.awt.event.MouseAdapter() {
+               public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    btnPrintByInvoiceMouseClicked(evt);
+               }
+          });
 
-        labelPopUpTitle1.setLabelTitle("Reprint Invoice");
+          lbTitle.setLabelTitle("Reprint Invoice");
 
-        javax.swing.GroupLayout panelReprintLayout = new javax.swing.GroupLayout(panelReprint);
-        panelReprint.setLayout(panelReprintLayout);
-        panelReprintLayout.setHorizontalGroup(
-            panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReprintLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(btnPrintByLast, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrintByInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelReprintLayout.setVerticalGroup(
-            panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelReprintLayout.createSequentialGroup()
-                .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelReprintLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnPrintByLast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPrintByInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
-        );
+          javax.swing.GroupLayout panelReprintLayout = new javax.swing.GroupLayout(panelReprint);
+          panelReprint.setLayout(panelReprintLayout);
+          panelReprintLayout.setHorizontalGroup(
+               panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReprintLayout.createSequentialGroup()
+                    .addGap(9, 9, 9)
+                    .addComponent(btnPrintByLast, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnPrintByInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(13, Short.MAX_VALUE))
+               .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          );
+          panelReprintLayout.setVerticalGroup(
+               panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(panelReprintLayout.createSequentialGroup()
+                    .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(28, 28, 28)
+                    .addGroup(panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                         .addGroup(panelReprintLayout.createSequentialGroup()
+                              .addGap(0, 0, Short.MAX_VALUE)
+                              .addComponent(btnPrintByLast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                         .addComponent(btnPrintByInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(26, 26, 26))
+          );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+          getContentPane().setLayout(layout);
+          layout.setHorizontalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(layout.createSequentialGroup()
+                    .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+          );
+          layout.setVerticalGroup(
+               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(layout.createSequentialGroup()
+                    .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+          );
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+          pack();
+          setLocationRelativeTo(null);
+     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
-         Receipt rec = new Receipt(new JFrame(), true);
-         Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-         try {
-              String myObject = response.body().string();
-              ObjectMapper objMap = new ObjectMapper();
-              DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
-              rec.setDataSuccess(d);
-          
-              rec.setVisible(true);
-         } catch (Exception e) {
-              System.err.println("err while loding = " + e);
+
+         if (typeForm.equals("reprint")) {
+              Receipt rec = new Receipt(new JFrame(), true);
+              Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
+
+              try {
+                   String myObject = response.body().string();
+                   ObjectMapper objMap = new ObjectMapper();
+                   DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
+                   rec.setDataSuccess(d);
+                   rec.setVisible(true);
+              } catch (Exception e) {
+                   System.err.println("err while loding = " + e);
+              }
+         } else if (typeForm.equals("hold")) {
+              HistoryHoldOrder h = new HistoryHoldOrder(new JFrame(), true);
+              h.setVisible(true);
          }
-
-
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
     private void btnPrintByInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseClicked
-         ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
-         rep.setVisible(true);
+
+         if (typeForm.equals("reprint")) {
+              ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
+              rep.setVisible(true);
+         } else if ( typeForm.equals("hold") ) {
+               JavaConstant.listHoldData.add( detailItem.getComponents());
+               detailItem.removeAll();
+               detailItem.revalidate();
+               detailItem.repaint();
+               dispose();
+         }
+
     }//GEN-LAST:event_btnPrintByInvoiceMouseClicked
 
-   
+     private void panelReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelReprintMouseClicked
+          // TODO add your handling code here:
+     }//GEN-LAST:event_panelReprintMouseClicked
+
      public static void main(String args[]) {
-    
+
           /* Create and display the dialog */
           java.awt.EventQueue.invokeLater(new Runnable() {
                public void run() {
@@ -134,10 +166,56 @@ public class ReprintJdailog extends javax.swing.JDialog {
           });
      }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Button.Button btnPrintByInvoice;
-    private Button.Button btnPrintByLast;
-    private Components.LabelPopUpTitle labelPopUpTitle1;
-    private javax.swing.JPanel panelReprint;
-    // End of variables declaration//GEN-END:variables
+     public JPanel getDetailItem() {
+          return detailItem;
+     }
+
+     public void setDetailItem(JPanel detailItem) {
+          this.detailItem = detailItem;
+     }
+     
+     
+
+     public String getTypeForm() {
+          return typeForm;
+     }
+
+     public void setTypeForm(String typeForm) {
+          this.typeForm = typeForm;
+     }
+
+     public String getTitle() {
+          return title;
+     }
+
+     public void setTitle(String title) {
+          this.title = title;
+          lbTitle.setLabelTitle(title);
+     }
+
+     public String getTextButtonLeft() {
+          return textButtonLeft;
+     }
+
+     public void setTextButtonLeft(String textButtonLeft) {
+          this.textButtonLeft = textButtonLeft;
+          btnPrintByLast.setButtonName(textButtonLeft);
+     }
+
+     public String getTextButtonRight() {
+          return textButtonRight;
+     }
+
+     public void setTextButtonRight(String textButtonRight) {
+          this.textButtonRight = textButtonRight;
+          btnPrintByInvoice.setButtonName(textButtonRight);
+     }
+
+
+     // Variables declaration - do not modify//GEN-BEGIN:variables
+     private Button.Button btnPrintByInvoice;
+     private Button.Button btnPrintByLast;
+     private Components.LabelPopUpTitle lbTitle;
+     private javax.swing.JPanel panelReprint;
+     // End of variables declaration//GEN-END:variables
 }

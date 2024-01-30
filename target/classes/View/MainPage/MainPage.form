@@ -281,7 +281,7 @@
                                           <Component id="button8" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="button10" pref="202" max="32767" attributes="0"/>
+                                  <Component id="buttonCustomer" pref="202" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -311,7 +311,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="buttonCashier" min="-2" max="-2" attributes="0"/>
-                          <Component id="button10" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCustomer" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -410,13 +410,16 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCashierMouseClicked"/>
               </Events>
             </Component>
-            <Component class="Button.Button" name="button10">
+            <Component class="Button.Button" name="buttonCustomer">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="46" green="9b" red="2f" type="rgb"/>
                 </Property>
                 <Property name="buttonName" type="java.lang.String" value="Customer "/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCustomerMouseClicked"/>
+              </Events>
             </Component>
             <Component class="ButtonPackage.ButtonCancel" name="buttonCancel1">
               <Events>

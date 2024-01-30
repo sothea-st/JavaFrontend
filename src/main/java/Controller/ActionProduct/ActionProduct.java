@@ -53,11 +53,13 @@ public class ActionProduct {
      public ActionProduct() {
      }
 
-     public void product(int catId,int limit) {
+     public void product(int catId, int limit) {
           try {
-               Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId="+catId+"&limit="+limit+"");
+               Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + catId + "&limit=" + limit + "");
+
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
+                    System.err.println("ddddddddd = " + responseData);
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
                     ProductDataModel[] listData = data.getData();
@@ -87,7 +89,8 @@ public class ActionProduct {
                     obj.getProNameKh(),
                     obj.getProNameEn(),
                     obj.getProductStatus(),
-                    obj.getDiscount()
+                    obj.getDiscount(),
+                    obj.getQty()
                );
                listProduct.add(product);
           }
@@ -123,23 +126,31 @@ public class ActionProduct {
                var listData = listProduct.get(i);
                double price = listData.getPrice();
                double discount = (listData.getDiscount() * price) / 100;
-
+               ProductBox product = new ProductBox();
                // event button buy
                ButtonEvent event = new ButtonEvent() {
                     @Override
                     public void onMouseClick() {
-                        
-                         if( !listData.getProductStatus().isEmpty() ) {
+                         int qty = Integer.valueOf(product.getQty());
+                         if( qty == 0 ) {
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(),true);
+                              j.setMessage("No Qty");
+                              j.setVisible(true);
+                              return;
+                         }
+                         qty--; 
+                         product.setQty(""+qty);
+                         if (!listData.getProductStatus().isEmpty()) {
                               eventBtnBuy(listData);
                          } else {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame() , true);
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                               j.setMessage("Product not avalible for sale!");
                               j.setVisible(true);
                          }
                     }
                };
 
-               ProductBox product = new ProductBox();
+               product.setQty("" + listData.getQty());
                product.initEvent(event);
                product.setProductStatus(listData.getProductStatus());
                product.setDiscountPercentag(listData.getDiscount(), price);
@@ -209,7 +220,7 @@ public class ActionProduct {
           double discount = (listData.getDiscount() * price) / 100;
 
           try {
-               
+
                BoxItem box = new BoxItem();
                Component[] listCom = detailItem.getComponents();
                if (listCom.length != 0) {
@@ -288,9 +299,6 @@ public class ActionProduct {
           this.count = count;
      }
 
-     
-     
-     
      public Button getBtnLogin() {
           return btnLogin;
      }

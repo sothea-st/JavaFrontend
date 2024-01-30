@@ -27,7 +27,6 @@ public class TextFieldCenter extends javax.swing.JPanel {
           txtTextCenter.addFocusListener(new FocusListener() {
                @Override
                public void focusGained(FocusEvent e) {
-               
                     if (txtTextCenter.getText().trim().equals(labelTextCenter)) {
                          txtTextCenter.setText("");
                     }
@@ -36,7 +35,6 @@ public class TextFieldCenter extends javax.swing.JPanel {
 
                @Override
                public void focusLost(FocusEvent e) {
-                                     
                     if (txtTextCenter.getText().trim().equals("")) {
                          txtTextCenter.setText(labelTextCenter);
                          txtTextCenter.setForeground(Color.LIGHT_GRAY);
@@ -167,7 +165,8 @@ public class TextFieldCenter extends javax.swing.JPanel {
 
      public void setValueTextFieldCenter(String valueTextFieldCenter) {
           this.valueTextFieldCenter = valueTextFieldCenter;
-          txtTextCenter.setText(labelTextCenter);
+          txtTextCenter.setText(valueTextFieldCenter);
+          txtTextCenter.setForeground(Color.BLACK);
      }
 
     private void txtTextCenterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTextCenterFocusGained

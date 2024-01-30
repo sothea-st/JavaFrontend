@@ -5,7 +5,15 @@
 package Components;
 
 import Color.WindowColor;
+import Constant.JavaConstant;
+import Event.ButtonEvent;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -25,16 +33,28 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
           setResizable(false);
           buttonCancel.setButtonName("Close");
 
-          for (int i = 0; i < 3; i++) {
+          for (int i = 0; i < JavaConstant.listHoldData.size(); i++) {
+               String name = JavaConstant.listHoldData.get(i).getCustomerName();
+               int qty = JavaConstant.listHoldData.get(i).getQty();
                HoldItem h = new HoldItem();
-               h.setName("hello " + i);
-               h.setQty("" + i);
+               
+               ButtonEvent events = new ButtonEvent() {
+                    @Override
+                    public void onSelect(String key) {
+                         System.err.println("ffff hhhhhhh + " + key);
+                    }     
+               };
+               
+               h.initEvent(events);
+               h.setName(name);
+               h.setQty("" + qty);
                panelHold.add(h);
                panelHold.revalidate();
                panelHold.repaint();
-               panelHold.setBackground(Color.red);
-               System.err.println("3333333333");
+               panelHold.add(Box.createRigidArea(new Dimension(2, 2)));
           }
+          panelHold.setLayout(new BoxLayout(panelHold, BoxLayout.Y_AXIS));
+          panelHold.setBorder(new EmptyBorder(2, 2, 2, 2));
 
      }
 
@@ -53,8 +73,11 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
           lbTitle = new Components.LabelPopUpTitle();
           body = new javax.swing.JPanel();
           buttonCancel = new ButtonPackage.ButtonCancel();
-          jScrollPane1 = new javax.swing.JScrollPane();
           panelHold = new javax.swing.JPanel();
+          jPanel1 = new javax.swing.JPanel();
+          jLabel1 = new javax.swing.JLabel();
+          jLabel2 = new javax.swing.JLabel();
+          jLabel3 = new javax.swing.JLabel();
 
           setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,25 +89,65 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
                }
           });
 
-          jScrollPane1.setBorder(null);
-          jScrollPane1.setViewportView(panelHold);
+          javax.swing.GroupLayout panelHoldLayout = new javax.swing.GroupLayout(panelHold);
+          panelHold.setLayout(panelHoldLayout);
+          panelHoldLayout.setHorizontalGroup(
+               panelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGap(0, 0, Short.MAX_VALUE)
+          );
+          panelHoldLayout.setVerticalGroup(
+               panelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGap(0, 138, Short.MAX_VALUE)
+          );
+
+          jLabel1.setText("Customer Name");
+
+          jLabel2.setText("QTY");
+
+          jLabel3.setText("Action");
+
+          javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+          jPanel1.setLayout(jPanel1Layout);
+          jPanel1Layout.setHorizontalGroup(
+               jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel1)
+                    .addGap(142, 142, 142)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addGap(56, 56, 56))
+          );
+          jPanel1Layout.setVerticalGroup(
+               jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                         .addComponent(jLabel1)
+                         .addComponent(jLabel2)
+                         .addComponent(jLabel3))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          );
 
           javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
           body.setLayout(bodyLayout);
           bodyLayout.setHorizontalGroup(
                bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(bodyLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
+                    .addContainerGap(516, Short.MAX_VALUE)
                     .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
-               .addComponent(jScrollPane1)
+               .addComponent(panelHold, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           );
           bodyLayout.setVerticalGroup(
                bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1)
-                    .addGap(10, 10, 10)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(panelHold, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
                     .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
           );
@@ -93,7 +156,7 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
           getContentPane().setLayout(layout);
           layout.setHorizontalGroup(
                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           );
           layout.setVerticalGroup(
@@ -159,7 +222,10 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private javax.swing.JPanel body;
      private ButtonPackage.ButtonCancel buttonCancel;
-     private javax.swing.JScrollPane jScrollPane1;
+     private javax.swing.JLabel jLabel1;
+     private javax.swing.JLabel jLabel2;
+     private javax.swing.JLabel jLabel3;
+     private javax.swing.JPanel jPanel1;
      private Components.LabelPopUpTitle lbTitle;
      private javax.swing.JPanel panelHold;
      // End of variables declaration//GEN-END:variables

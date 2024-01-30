@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
@@ -69,6 +70,7 @@ public class PaymentOption extends javax.swing.JDialog {
             }
         };
         cmbSource.initEvent(events);
+
         genderGroupButton();
         nationalityGroupButton();
         setColor();
@@ -77,29 +79,28 @@ public class PaymentOption extends javax.swing.JDialog {
         txtCustomerId.requestFocus();
         radioButtonKhmer.setSelected(true);
         radioButtonMale.setSelected(true);
-//        getCustomerId();
+        getCusomerId();
     }
 
-//    
-//    void getCustomerId(){
-//         Response response = JavaConnection.get(JavaRoute.getCustomerId);
-//         System.err.println("respone data = " + response);
-//         try {
-//              if( response.isSuccessful() ) {
-//                   String responseData = response.body().string();
-//                   JSONObject obj = new JSONObject(responseData);
-//                   String customerId = obj.getString("data");
-//                   txtCustomerId.setValueTextFieldCenter(customerId);
-//              }
-//         } catch (Exception e) {
-//              System.err.println("err response data = " + e);
-//         }
-//    }
     
+    private void getCusomerId(){
+         Response response = JavaConnection.get(JavaRoute.getCustomerId);
+         System.err.println("data response = " + response);
+              
+         try {
+              if( response.isSuccessful() ) {
+                   String data = response.body().string();
+                     System.err.println("data   = " + data);
+                   JSONObject obj = new JSONObject(data);
+                   String customerID = obj.getString("data");
+                   txtCustomerId.setValueTextFieldCenter(customerID);
+              }
+         } catch (Exception e) {
+         }
+    }
     
     //=================================================
     private void setColor() {
-
         panelPayment.setBackground(WindowColor.mediumGreen);
         panelTotal.setBackground(WindowColor.mediumGreen);
         lbCashPayment.setFontColor(WindowColor.white);
@@ -114,7 +115,6 @@ public class PaymentOption extends javax.swing.JDialog {
 
     //================ Gender Option ===================
     private void genderGroupButton() {
-
         ButtonGroup group = new ButtonGroup();
         group.add(radioButtonMale);
         group.add(radioButtonFemale);

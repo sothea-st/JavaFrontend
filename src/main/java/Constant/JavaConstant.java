@@ -1,5 +1,6 @@
 package Constant;
 
+import Model.HoldOrder.HoldOrderModel;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +47,6 @@ public class JavaConstant {
           return doubleValue;
      }
      
-     public static  ArrayList<Component[]> listHoldData = new ArrayList<>();
+     public static  ArrayList<HoldOrderModel> listHoldData = new ArrayList<>();
 
 }

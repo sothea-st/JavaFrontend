@@ -39,7 +39,6 @@ Products\ProductBox.class
 OpenAndCloseShift\OpenShiftJdailog.class
 Controller\ActionScanBarcodeAddProduct\ActionScanBarcodeAddProduct.class
 Payment\PaymentOption$6.class
-Components\HistoryHoldOrder$2$1.class
 Payment\PaymentOption$14.class
 LoginAndLogoutForm\LoginFormJdailog.class
 Payment\PaymentOption$23.class
@@ -76,6 +75,7 @@ LoginAndLogoutForm\LogoutDialog$2.class
 Components\PasswordField$2.class
 Print\ReprintByInvoicenumber$1.class
 Print\ReprintByInvoicenumber$4$1.class
+Components\HistoryHoldOrder$3$1.class
 Products\ProductPanel.class
 Return\ApprovalCode$4$1.class
 Components\TextField$2.class
@@ -97,6 +97,7 @@ Payment\PaymentOption$17.class
 LoginAndLogoutForm\LogoutDialog$1.class
 Model\Sale\CustomerModel.class
 Model\PackageProduct\CategoryModel.class
+Components\HistoryHoldOrder$3.class
 Components\TextFieldCenter$2.class
 Components\BackgroundImage.class
 Return\ApprovalCode$3.class
@@ -140,6 +141,7 @@ Products\ProductPanel$1.class
 Payment\PaymentOption$24.class
 OpenAndCloseShift\CloseShift$3.class
 LoginAndLogoutForm\LoginFormJdailog$6.class
+Model\HoldOrder\HoldOrderModel.class
 Event\ButtonEvent.class
 Receipt\CashierReport$2.class
 LoginAndLogoutForm\LogoutDialog.class
@@ -153,6 +155,7 @@ Products\ProductBox$1.class
 ButtonPackage\ButtonSave.class
 Receipt\Receipt$2.class
 Model\CustomerType\SourceModel.class
+Components\DialonInputName$2$1.class
 Payment\PaymentOption$24$1.class
 Components\LabelFontGreen.class
 Model\Reprint\SaleDetailModel.class
@@ -162,6 +165,7 @@ Components\HistoryHoldOrder.class
 Payment\PaymentOption$13.class
 Payment\PaymentOption$8.class
 Components\LabelTitle$2.class
+Components\DialonInputName.class
 Components\JavaAlertMessage$2.class
 OpenAndCloseShift\OpenShiftJdailog$4.class
 Components\ComboBox$2.class
@@ -196,6 +200,7 @@ Button\ButtonBuy.class
 Components\BoxItem.class
 Components\HoldItem$1.class
 Components\BoxItem$2.class
+Components\DialonInputName$2.class
 Controller\ActionProduct\ActionProduct$1.class
 Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
@@ -212,5 +217,7 @@ Model\Sale\SaleModel.class
 Payment\PaymentOption$9.class
 Button\ButtonAddProduct$1.class
 Print\ReprintJdailog$4.class
+Components\DialonInputName$1.class
+Components\HoldItem$2.class
 OpenAndCloseShift\CloseShift$1.class
 Components\HoldItem.class

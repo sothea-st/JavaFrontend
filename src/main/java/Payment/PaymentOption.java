@@ -69,7 +69,6 @@ public class PaymentOption extends javax.swing.JDialog {
             }
         };
         cmbSource.initEvent(events);
-
         genderGroupButton();
         nationalityGroupButton();
         setColor();
@@ -78,24 +77,24 @@ public class PaymentOption extends javax.swing.JDialog {
         txtCustomerId.requestFocus();
         radioButtonKhmer.setSelected(true);
         radioButtonMale.setSelected(true);
-        getCustomerId();
+//        getCustomerId();
     }
 
-    
-    void getCustomerId(){
-         Response response = JavaConnection.get(JavaRoute.getCustomerId);
-         System.err.println("respone data = " + response);
-         try {
-              if( response.isSuccessful() ) {
-                   String responseData = response.body().string();
-                   JSONObject obj = new JSONObject(responseData);
-                   String customerId = obj.getString("data");
-                   txtCustomerId.setValueTextFieldCenter(customerId);
-              }
-         } catch (Exception e) {
-              System.err.println("err response data = " + e);
-         }
-    }
+//    
+//    void getCustomerId(){
+//         Response response = JavaConnection.get(JavaRoute.getCustomerId);
+//         System.err.println("respone data = " + response);
+//         try {
+//              if( response.isSuccessful() ) {
+//                   String responseData = response.body().string();
+//                   JSONObject obj = new JSONObject(responseData);
+//                   String customerId = obj.getString("data");
+//                   txtCustomerId.setValueTextFieldCenter(customerId);
+//              }
+//         } catch (Exception e) {
+//              System.err.println("err response data = " + e);
+//         }
+//    }
     
     
     //=================================================

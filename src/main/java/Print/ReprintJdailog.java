@@ -1,7 +1,10 @@
 package Print;
 
 import Color.WindowColor;
+import Components.BoxItem;
+import Components.DialonInputName;
 import Components.HistoryHoldOrder;
+import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
@@ -21,6 +24,7 @@ public class ReprintJdailog extends javax.swing.JDialog {
      private String textButtonRight;
      private String typeForm;
      private JPanel detailItem;
+     private SubtotalPanel subtotalPanel;
 
      public ReprintJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -126,7 +130,10 @@ public class ReprintJdailog extends javax.swing.JDialog {
               }
          } else if (typeForm.equals("hold")) {
               HistoryHoldOrder h = new HistoryHoldOrder(new JFrame(), true);
+              h.setDetailItem(detailItem);
+              h.setSubtotalPanel(subtotalPanel);
               h.setVisible(true);
+              dispose();
          }
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
@@ -136,12 +143,12 @@ public class ReprintJdailog extends javax.swing.JDialog {
               this.dispose();
               ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
               rep.setVisible(true);
-         } else if ( typeForm.equals("hold") ) {
-               JavaConstant.listHoldData.add( detailItem.getComponents());
-               detailItem.removeAll();
-               detailItem.revalidate();
-               detailItem.repaint();
-               dispose();
+         } else if (typeForm.equals("hold")) {
+              DialonInputName d = new DialonInputName(new JFrame(), true);
+              d.setDetailItem(detailItem);
+              d.setSubtotalPanel(subtotalPanel);
+              d.setVisible(true);
+              dispose();
          }
 
     }//GEN-LAST:event_btnPrintByInvoiceMouseClicked
@@ -174,8 +181,14 @@ public class ReprintJdailog extends javax.swing.JDialog {
      public void setDetailItem(JPanel detailItem) {
           this.detailItem = detailItem;
      }
-     
-     
+
+     public SubtotalPanel getSubtotalPanel() {
+          return subtotalPanel;
+     }
+
+     public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+          this.subtotalPanel = subtotalPanel;
+     }
 
      public String getTypeForm() {
           return typeForm;

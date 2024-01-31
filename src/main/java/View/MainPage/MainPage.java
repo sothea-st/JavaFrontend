@@ -127,22 +127,21 @@ public class MainPage extends javax.swing.JFrame {
      private void eventInputOrScanBarcode() {
           // this event was called when user type on textField 
 
-//        if (JavaConstant.numberOpenShift == 1) { // user already openShift
-          ButtonEvent event = new ButtonEvent() {
+          ButtonEvent eventData = new ButtonEvent() {
                @Override
                public void onKeyType() {
                     String barcode = textField.getValueTextField();
                     ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
-                    textField.setLabelTextField("");
+//                    textField.setLabelTextField("");
                }
           };
-          textField.initEvent(event);
-//        }
+          textField.initEvent(eventData);
+
      }
 
      private void eventSearchProduct() {
           // this event was called when user type on searchTextField 
-//        if (JavaConstant.numberOpenShift == 1) { // user already openShift 
+
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onKeyType() {
@@ -151,7 +150,7 @@ public class MainPage extends javax.swing.JFrame {
                }
           };
           searchBox.initEvent(event);
-//        }
+
      }
 
      private void setBackground() {
@@ -762,7 +761,9 @@ public class MainPage extends javax.swing.JFrame {
                rep.setTextButtonRight("Add hold order");
                rep.setTypeForm("hold");
                rep.setDetailItem(detailItem);
+               rep.setSubtotalPanel(totalPanel);
                rep.setVisible(true);
+               
           }
 
      }//GEN-LAST:event_button3MouseClicked

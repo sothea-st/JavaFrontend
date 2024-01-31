@@ -14,14 +14,26 @@ public class ProductModel {
      private String productNameEn;
      private String productStatus;
      private int discount;
+     private int qty;
 
      public ProductModel() {
      }
 
-     public ProductModel(int id, int catId, String flag, String weight,
-          double cost, String proImageName, double price,
-          String barcode, String productNameKh, String productNameEn,
-          String productStatus, int discount) {
+     public ProductModel(
+          int id,
+          int catId,
+          String flag,
+          String weight,
+          double cost,
+          String proImageName,
+          double price,
+          String barcode,
+          String productNameKh,
+          String productNameEn,
+          String productStatus,
+          int discount,
+          int qty
+     ) {
           this.id = id;
           this.catId = catId;
           this.flag = flag;
@@ -34,6 +46,15 @@ public class ProductModel {
           this.productNameEn = productNameEn;
           this.productStatus = productStatus;
           this.discount = discount;
+          this.qty = qty;
+     }
+
+     public int getQty() {
+          return qty;
+     }
+
+     public void setQty(int qty) {
+          this.qty = qty;
      }
 
      public int getId() {

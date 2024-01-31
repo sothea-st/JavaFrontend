@@ -1,127 +1,184 @@
- 
 package Model.ProductModel;
- 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProductDataModel {
-    private int id;
-    private int catID;
-    private int brandID;
-    private String flag;
-    private String weight;
-    private String proImageName;
-    private String note;
-    private Object codeExpired;
-    private Object codeOutStock;
-    private String barcode;
-    private String proNameKh;
-    private String proNameEn;
-    private double cost;
-    private double price;
-    private String productStatus;
-    private int discount;
-    private boolean status;
-    private String createDate;
-    private int createBy;
-    private boolean deleted;
 
-    @JsonProperty("id")
-    public int getID() { return id; }
-    @JsonProperty("id")
-    public void setID(int value) { this.id = value; }
+     private int brandID;
+     private String proNameKh;
+     private String proImageName;
+     private String productStatus;
+     private String proNameEn;
+     private int id;
+     private String flag;
+     private int discount;
+     private double cost;
+     private double price;
+     private String weight;
+     private String barcode;
+     private int catID;
+     private String codeExpired;
+     private String codeOutStock;
+     private int qty;
 
-    @JsonProperty("catId")
-    public int getCatID() { return catID; }
-    @JsonProperty("catId")
-    public void setCatID(int value) { this.catID = value; }
+     @JsonProperty("brandId")
+     public int getBrandID() {
+          return brandID;
+     }
 
-    @JsonProperty("brandId")
-    public int getBrandID() { return brandID; }
-    @JsonProperty("brandId")
-    public void setBrandID(int value) { this.brandID = value; }
+     @JsonProperty("brandId")
+     public void setBrandID(int value) {
+          this.brandID = value;
+     }
 
-    @JsonProperty("flag")
-    public String getFlag() { return flag; }
-    @JsonProperty("flag")
-    public void setFlag(String value) { this.flag = value; }
+     @JsonProperty("proNameKh")
+     public String getProNameKh() {
+          return proNameKh;
+     }
 
-    @JsonProperty("weight")
-    public String getWeight() { return weight; }
-    @JsonProperty("weight")
-    public void setWeight(String value) { this.weight = value; }
+     @JsonProperty("proNameKh")
+     public void setProNameKh(String value) {
+          this.proNameKh = value;
+     }
 
-    @JsonProperty("proImageName")
-    public String getProImageName() { return proImageName; }
-    @JsonProperty("proImageName")
-    public void setProImageName(String value) { this.proImageName = value; }
+     @JsonProperty("proImageName")
+     public String getProImageName() {
+          return proImageName;
+     }
 
-    @JsonProperty("note")
-    public String getNote() { return note; }
-    @JsonProperty("note")
-    public void setNote(String value) { this.note = value; }
+     @JsonProperty("proImageName")
+     public void setProImageName(String value) {
+          this.proImageName = value;
+     }
 
-    @JsonProperty("codeExpired")
-    public Object getCodeExpired() { return codeExpired; }
-    @JsonProperty("codeExpired")
-    public void setCodeExpired(Object value) { this.codeExpired = value; }
+     @JsonProperty("productStatus")
+     public String getProductStatus() {
+          return productStatus;
+     }
 
-    @JsonProperty("codeOutStock")
-    public Object getCodeOutStock() { return codeOutStock; }
-    @JsonProperty("codeOutStock")
-    public void setCodeOutStock(Object value) { this.codeOutStock = value; }
+     @JsonProperty("productStatus")
+     public void setProductStatus(String value) {
+          this.productStatus = value;
+     }
 
-    @JsonProperty("barcode")
-    public String getBarcode() { return barcode; }
-    @JsonProperty("barcode")
-    public void setBarcode(String value) { this.barcode = value; }
+     @JsonProperty("proNameEn")
+     public String getProNameEn() {
+          return proNameEn;
+     }
 
-    @JsonProperty("proNameKh")
-    public String getProNameKh() { return proNameKh; }
-    @JsonProperty("proNameKh")
-    public void setProNameKh(String value) { this.proNameKh = value; }
+     @JsonProperty("proNameEn")
+     public void setProNameEn(String proNameEn) {
+          this.proNameEn = proNameEn;
+     }
 
-    @JsonProperty("proNameEn")
-    public String getProNameEn() { return proNameEn; }
-    @JsonProperty("proNameEn")
-    public void setProNameEn(String value) { this.proNameEn = value; }
+     @JsonProperty("id")
+     public int getID() {
+          return id;
+     }
 
-    @JsonProperty("cost")
-    public double getCost() { return cost; }
-    @JsonProperty("cost")
-    public void setCost(double value) { this.cost = value; }
+     @JsonProperty("id")
+     public void setID(int value) {
+          this.id = value;
+     }
 
-    @JsonProperty("price")
-    public double getPrice() { return price; }
-    @JsonProperty("price")
-    public void setPrice(double value) { this.price = value; }
+     @JsonProperty("flag")
+     public String getFlag() {
+          return flag;
+     }
 
-    @JsonProperty("productStatus")
-    public String getProductStatus() { return productStatus; }
-    @JsonProperty("productStatus")
-    public void setProductStatus(String value) { this.productStatus = value; }
+     @JsonProperty("flag")
+     public void setFlag(String value) {
+          this.flag = value;
+     }
 
-    @JsonProperty("discount")
-    public int getDiscount() { return discount; }
-    @JsonProperty("discount")
-    public void setDiscount(int value) { this.discount = value; }
+     @JsonProperty("discount")
+     public int getDiscount() {
+          return discount;
+     }
 
-    @JsonProperty("status")
-    public boolean getStatus() { return status; }
-    @JsonProperty("status")
-    public void setStatus(boolean value) { this.status = value; }
+     @JsonProperty("discount")
+     public void setDiscount(int value) {
+          this.discount = value;
+     }
 
-    @JsonProperty("createDate")
-    public String getCreateDate() { return createDate; }
-    @JsonProperty("createDate")
-    public void setCreateDate(String value) { this.createDate = value; }
+     @JsonProperty("cost")
+     public double getCost() {
+          return cost;
+     }
 
-    @JsonProperty("createBy")
-    public int getCreateBy() { return createBy; }
-    @JsonProperty("createBy")
-    public void setCreateBy(int value) { this.createBy = value; }
+     @JsonProperty("cost")
+     public void setCost(double value) {
+          this.cost = value;
+     }
 
-    @JsonProperty("deleted")
-    public boolean getDeleted() { return deleted; }
-    @JsonProperty("deleted")
-    public void setDeleted(boolean value) { this.deleted = value; }
+     @JsonProperty("price")
+     public double getPrice() {
+          return price;
+     }
+
+     @JsonProperty("price")
+     public void setPrice(double value) {
+          this.price = value;
+     }
+
+     @JsonProperty("weight")
+     public String getWeight() {
+          return weight;
+     }
+
+     @JsonProperty("weight")
+     public void setWeight(String value) {
+          this.weight = value;
+     }
+
+     @JsonProperty("barcode")
+     public String getBarcode() {
+          return barcode;
+     }
+
+     @JsonProperty("barcode")
+     public void setBarcode(String value) {
+          this.barcode = value;
+     }
+
+     @JsonProperty("catID")
+     public int getCatID() {
+          return catID;
+     }
+
+     @JsonProperty("catID")
+     public void setCatID(int value) {
+          this.catID = value;
+     }
+
+     @JsonProperty("codeExpired")
+     public String getCodeExpired() {
+          return codeExpired;
+     }
+
+     @JsonProperty("codeExpired")
+     public void setCodeExpired(String value) {
+          this.codeExpired = value;
+     }
+
+     @JsonProperty("codeOutStock")
+     public String getCodeOutStock() {
+          return codeOutStock;
+     }
+
+     @JsonProperty("codeOutStock")
+     public void setCodeOutStock(String value) {
+          this.codeOutStock = value;
+     }
+
+     @JsonProperty("qty")
+     public int getQty() {
+          return qty;
+     }
+
+     @JsonProperty("qty")
+     public void setQty(int value) {
+          this.qty = value;
+     }
+
 }

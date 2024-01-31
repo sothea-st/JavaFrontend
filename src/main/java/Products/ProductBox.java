@@ -20,7 +20,19 @@ import javax.swing.Icon;
  * @author FRONT-END.06
  */
 public class ProductBox extends javax.swing.JPanel {
+     
+     private String qty;
 
+     public String getQty() {
+          return qty;
+     }
+
+     public void setQty(String qty) {
+          this.qty = qty;
+          lbQty.setText(qty);
+     }
+     
+     
     public Icon getFlagImage() {
         return flagImage;
     }
@@ -119,7 +131,7 @@ public class ProductBox extends javax.swing.JPanel {
         lbPrice.setForeground(WindowColor.darkGreen);
         txtBarcode.setFont(WindowFonts.timeNewRomanBold9);
         txtBarcode.setForeground(WindowColor.gray);
- 
+        lbQty.setVisible(true);
     }
 
     //=================================================
@@ -232,6 +244,7 @@ public class ProductBox extends javax.swing.JPanel {
           btnBuy = new Button.ButtonBuy();
           jLabel1 = new javax.swing.JLabel();
           discount = new Button.ButtonDiscount();
+          lbQty = new javax.swing.JLabel();
 
           productImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -244,6 +257,8 @@ public class ProductBox extends javax.swing.JPanel {
           flagImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
           lbPrice.setText("Price");
+
+          lbQty.setText("lbQty");
 
           javax.swing.GroupLayout productBoxLayout = new javax.swing.GroupLayout(productBox);
           productBox.setLayout(productBoxLayout);
@@ -264,8 +279,14 @@ public class ProductBox extends javax.swing.JPanel {
                               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                               .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                          .addComponent(lbWeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(41, 41, 41)
-                    .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                         .addGroup(productBoxLayout.createSequentialGroup()
+                              .addGap(41, 41, 41)
+                              .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
+                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addComponent(lbQty)
+                              .addContainerGap())))
                .addGroup(productBoxLayout.createSequentialGroup()
                     .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                          .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +309,8 @@ public class ProductBox extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                          .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                         .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                         .addComponent(lbQty))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                          .addComponent(lbPrice)
@@ -327,6 +349,7 @@ public class ProductBox extends javax.swing.JPanel {
      private javax.swing.JLabel jLabel1;
      private javax.swing.JLabel lbName;
      private javax.swing.JLabel lbPrice;
+     private javax.swing.JLabel lbQty;
      private javax.swing.JLabel lbWeight;
      private javax.swing.JPanel productBox;
      private javax.swing.JLabel productImg;

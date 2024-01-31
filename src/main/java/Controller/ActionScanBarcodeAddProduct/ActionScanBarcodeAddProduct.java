@@ -69,7 +69,8 @@ public class ActionScanBarcodeAddProduct extends ActionProduct {
                                    obj.getProNameKh(),
                                    obj.getProNameEn(),
                                    obj.getProductStatus(),
-                                   obj.getDiscount()
+                                   obj.getDiscount(),
+                                   obj.getQty()
                               );
                          }
 

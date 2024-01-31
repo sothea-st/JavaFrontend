@@ -260,8 +260,9 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
              if (response.isSuccessful()) {
                   dispose();
                   btnOpenShift.setButtonName(JavaConstant.closeShift);
-                  jdLoginForm.setCheckOpenShift(true);
-                  JavaConstant.checkCloseShift = 1l;
+                //   jdLoginForm.setCheckOpenShift(true);
+                JavaConstant.checkOpenShift=true;
+                JavaConstant.checkCloseShift = 1l;
                   
              } else {
                   System.out.println("Failll");

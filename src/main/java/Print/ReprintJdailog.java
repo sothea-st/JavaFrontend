@@ -1,5 +1,7 @@
 package Print;
 
+import Button.Button;
+import Button.Button;
 import Color.WindowColor;
 import Components.BoxItem;
 import Components.DialonInputName;
@@ -25,6 +27,7 @@ public class ReprintJdailog extends javax.swing.JDialog {
      private String typeForm;
      private JPanel detailItem;
      private SubtotalPanel subtotalPanel;
+     private Button btnPayment;
 
      public ReprintJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -39,8 +42,8 @@ public class ReprintJdailog extends javax.swing.JDialog {
      private void initComponents() {
 
           panelReprint = new javax.swing.JPanel();
-          btnPrintByLast = new Button.Button();
-          btnPrintByInvoice = new Button.Button();
+          btnPrintByLast = new  Button();
+          btnPrintByInvoice = new  Button();
           lbTitle = new Components.LabelPopUpTitle();
 
           setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -64,6 +67,9 @@ public class ReprintJdailog extends javax.swing.JDialog {
           btnPrintByInvoice.addMouseListener(new java.awt.event.MouseAdapter() {
                public void mouseClicked(java.awt.event.MouseEvent evt) {
                     btnPrintByInvoiceMouseClicked(evt);
+               }
+               public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    btnPrintByInvoiceMouseEntered(evt);
                }
           });
 
@@ -133,6 +139,7 @@ public class ReprintJdailog extends javax.swing.JDialog {
               HistoryHoldOrder h = new HistoryHoldOrder(new JFrame(), true);
               h.setDetailItem(detailItem);
               h.setSubtotalPanel(subtotalPanel);
+              h.setBtnPayment(btnPayment);
               h.setVisible(true);
               dispose();
          }
@@ -148,6 +155,7 @@ public class ReprintJdailog extends javax.swing.JDialog {
               DialonInputName d = new DialonInputName(new JFrame(), true);
               d.setDetailItem(detailItem);
               d.setSubtotalPanel(subtotalPanel);
+              d.setBtnPayment(btnPayment);
               d.setVisible(true);
               dispose();
          }
@@ -157,6 +165,10 @@ public class ReprintJdailog extends javax.swing.JDialog {
      private void panelReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelReprintMouseClicked
           // TODO add your handling code here:
      }//GEN-LAST:event_panelReprintMouseClicked
+
+     private void btnPrintByInvoiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseEntered
+          // TODO add your handling code here:
+     }//GEN-LAST:event_btnPrintByInvoiceMouseEntered
 
      public static void main(String args[]) {
 
@@ -226,10 +238,19 @@ public class ReprintJdailog extends javax.swing.JDialog {
           btnPrintByInvoice.setButtonName(textButtonRight);
      }
 
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
+
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
+
+     
 
      // Variables declaration - do not modify//GEN-BEGIN:variables
-     private Button.Button btnPrintByInvoice;
-     private Button.Button btnPrintByLast;
+     private Button btnPrintByInvoice;
+     private Button btnPrintByLast;
      private Components.LabelPopUpTitle lbTitle;
      private javax.swing.JPanel panelReprint;
      // End of variables declaration//GEN-END:variables

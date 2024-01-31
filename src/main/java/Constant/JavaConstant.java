@@ -48,6 +48,7 @@ public class JavaConstant {
      }
      
      public static  ArrayList<HoldOrderModel> listHoldData = new ArrayList<>();
-     public static Integer indexArrayListHold;
+     public static int indexArrayListHold=0;
+     public static boolean checkOpenShift=false;
 
 }

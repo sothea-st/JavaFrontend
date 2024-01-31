@@ -43,7 +43,6 @@ public class HoldItem extends javax.swing.JPanel {
           btnDelete.addMouseListener(new MouseListener() {
                @Override
                public void mouseClicked(MouseEvent e) {
-                    System.err.println("ddddddddddddddddddddddddddddddddddddddddd = " + name);
                     event.onRemove(name);
                }
 

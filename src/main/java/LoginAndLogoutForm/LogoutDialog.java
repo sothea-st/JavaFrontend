@@ -198,6 +198,7 @@ public class LogoutDialog extends javax.swing.JDialog {
          JavaConstant.userCode = null;
          JavaConstant.posId = null;
          JavaConstant.cashierId = null;
+         JavaConstant.checkOpenShift=false;
          dispose();
     }//GEN-LAST:event_buttonYesMouseClicked
 

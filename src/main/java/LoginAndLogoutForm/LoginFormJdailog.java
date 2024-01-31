@@ -80,7 +80,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private JPanel panelPagination;
      ActionProduct pro = new ActionProduct();
      private ComboBox cmboxBrand;
-     private boolean checkOpenShift = false;
+//  checkOpenShift = false;
      private Button btnOpenShift;
      private int limit;
      private int catId;
@@ -255,7 +255,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                         ObjectMapper objectMapper = new ObjectMapper();
                         OpenShiftDataModel data = objectMapper.readValue(result, OpenShiftDataModel.class);
                         if (data.getData().getNumberOpenShift() == 1) { // == 1 user still open shift
-                             checkOpenShift = true;
+                             JavaConstant.checkOpenShift = true;
                              btnOpenShift.setButtonName(JavaConstant.closeShift);
                              JavaConstant.checkCloseShift = data.getData().getNumberOpenShift();
                              JavaConstant.numberOpenShift = Integer.valueOf("" + data.getData().getNumberOpenShift());
@@ -334,7 +334,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-                                   if (checkOpenShift) {
+                                   if (JavaConstant.checkOpenShift) {
                                         setCatId(catId);
                                         getPanelPagination().setVisible(true);
                                         // click on category actice background color
@@ -410,13 +410,13 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           this.btnOpenShift = btnOpenShift;
      }
 
-     public boolean isCheckOpenShift() {
-          return checkOpenShift;
-     }
-
-     public void setCheckOpenShift(boolean checkOpenShift) {
-          this.checkOpenShift = checkOpenShift;
-     }
+//     public boolean isCheckOpenShift() {
+//          return checkOpenShift;
+//     }
+//
+//     public void setCheckOpenShift(boolean checkOpenShift) {
+//          this.checkOpenShift = checkOpenShift;
+//     }
 
      public JLabel getBoxUserName() {
           return boxUserName;

@@ -4,12 +4,12 @@
  */
 package Components;
 
+import Button.Button;
 import Color.WindowColor;
 import Constant.JavaConstant;
 import Controller.ActionProduct.ActionProduct;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
- 
 public class HistoryHoldOrder extends javax.swing.JDialog {
 
      private JPanel detailItem;
      private SubtotalPanel subtotalPanel;
+     private Button btnPayment;
 
      public HistoryHoldOrder(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -43,7 +43,7 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
                int index = i;
                ButtonEvent events = new ButtonEvent() {
                     @Override
-                    public void onSelect(String key) {
+                    public void onSelect(String key) { // action process
                          detailItem.removeAll();
                          for (int j = 0; j < listCom.length; j++) {
                               var box = ((BoxItem) listCom[j]);
@@ -55,6 +55,8 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
                          detailItem.setBackground(WindowColor.white);
                          actionProduct.total(0, listCom, 0, subtotalPanel);
                          JavaConstant.indexArrayListHold = index;
+                       
+                         btnPayment.setBackground(WindowColor.primary);
                          dispose();
                     }
 
@@ -82,10 +84,7 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
           panelHold.revalidate();
           panelHold.repaint();
      }
-     
-     
-     
-  
+
      @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
@@ -245,6 +244,16 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
      public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
           this.subtotalPanel = subtotalPanel;
      }
+
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
+
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
+     
+     
 
 
      // Variables declaration - do not modify//GEN-BEGIN:variables

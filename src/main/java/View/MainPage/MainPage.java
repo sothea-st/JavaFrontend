@@ -762,6 +762,7 @@ public class MainPage extends javax.swing.JFrame {
                rep.setTypeForm("hold");
                rep.setDetailItem(detailItem);
                rep.setSubtotalPanel(totalPanel);
+               rep.setBtnPayment(btnPayment);
                rep.setVisible(true);
                
           }

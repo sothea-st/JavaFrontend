@@ -1192,9 +1192,12 @@ public class PaymentOption extends javax.swing.JDialog {
               btnPayment.setBackground(WindowColor.lightGray);
 
               // remove hole order
-              int index = JavaConstant.indexArrayListHold;
-              JavaConstant.listHoldData.remove(index);
-              JavaConstant.indexArrayListHold=0;
+              if (!JavaConstant.listHoldData.isEmpty()) {
+                   int index = JavaConstant.indexArrayListHold;
+                   JavaConstant.listHoldData.remove(index);
+                   JavaConstant.indexArrayListHold = 0;
+              }
+
          }
 
 

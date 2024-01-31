@@ -215,7 +215,7 @@ public class CloseShift extends javax.swing.JDialog {
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
 
         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-         System.err.println("jjjjjjjjjjjjjjjjj = " + JavaConstant.listHoldData);
+        
          if( !JavaConstant.listHoldData.isEmpty() ) {
              j.setMessage("There are any trancsactions not complete yet in Hold function!");
              j.setVisible(true);
@@ -246,6 +246,8 @@ public class CloseShift extends javax.swing.JDialog {
                    dispose();
                    btnOpenShift.setButtonName("Open Shift");
                    JavaConstant.checkCloseShift = 0l;
+                   JavaConstant.checkOpenShift=false;
+                     System.err.println("111111111111111111111 = " + JavaConstant.checkOpenShift);
               } else {
                    System.out.println("Failll");
               }

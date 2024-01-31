@@ -334,6 +334,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
+                                  
                                    if (JavaConstant.checkOpenShift) {
                                         setCatId(catId);
                                         getPanelPagination().setVisible(true);

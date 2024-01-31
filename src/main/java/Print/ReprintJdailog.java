@@ -118,7 +118,8 @@ public class ReprintJdailog extends javax.swing.JDialog {
          if (typeForm.equals("reprint")) {
               Receipt rec = new Receipt(new JFrame(), true);
               Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-
+              this.dispose();
+              
               try {
                    String myObject = response.body().string();
                    ObjectMapper objMap = new ObjectMapper();

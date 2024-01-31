@@ -1,5 +1,6 @@
 package Components;
 
+import Button.Button;
 import Color.WindowColor;
 import Constant.JavaConstant;
 import Model.HoldOrder.HoldOrderModel;
@@ -11,6 +12,7 @@ public class DialonInputName extends javax.swing.JDialog {
 
      private JPanel detailItem;
      private SubtotalPanel subtotalPanel;
+     private Button btnPayment;
 
      public DialonInputName(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -92,11 +94,11 @@ public class DialonInputName extends javax.swing.JDialog {
 
      private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
           String name = txtCustomerName.getValueTextFieldCenter();
-          
-          if( !JavaConstant.listHoldData.isEmpty() ) {
-               for( int i = 0 ; i < JavaConstant.listHoldData.size() ; i++ ) {
+
+          if (!JavaConstant.listHoldData.isEmpty()) {
+               for (int i = 0; i < JavaConstant.listHoldData.size(); i++) {
                     String customerName = JavaConstant.listHoldData.get(i).getCustomerName();
-                    if( name.equals(customerName) ) {
+                    if (name.equals(customerName)) {
                          JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                          j.setMessage("Process hold can not have same customer name!");
                          j.setVisible(true);
@@ -104,7 +106,8 @@ public class DialonInputName extends javax.swing.JDialog {
                     }
                }
           }
-     
+
+          btnPayment.setBackground(WindowColor.lightGray);
 
           Component[] listHold = detailItem.getComponents();
           int qty = 0;
@@ -153,6 +156,15 @@ public class DialonInputName extends javax.swing.JDialog {
           this.subtotalPanel = subtotalPanel;
      }
 
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
+
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
+
+     
 
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private javax.swing.JPanel body;

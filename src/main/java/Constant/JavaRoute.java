@@ -22,5 +22,8 @@ public class JavaRoute {
      public static String cashierReport = "/cashierReport?userCode=";
      public static String returnProduct = "/returnProduct";
      public static String getCustomerId = "/customer/getCustomerId";
+     public static String customer = "/customer";
+     public static String generateBarcode = "/generateBarcode/barcodes/";
+     public static String getDefaultPrice = "/defaultPrice";
 
 }

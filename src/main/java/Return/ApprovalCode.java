@@ -27,7 +27,7 @@ public class ApprovalCode extends javax.swing.JDialog {
           setDefaultCloseOperation(DISPOSE_ON_CLOSE);
           setResizable(false);
           event();
-//          txtCode.requestFocus();
+          txtCode.requestFocus();
      }
 
      //Action call function placeholder
@@ -166,7 +166,7 @@ public class ApprovalCode extends javax.swing.JDialog {
 
                    if (model.getRoleName().equals(JavaConstant.supervisor)
                         || model.getRoleName().equals(JavaConstant.admin)) {
-
+                        this.dispose();
                         if (typeForm.equals("return")) {
                              ReturnDialog returnD = new ReturnDialog(new JFrame(), true);
                              returnD.setJdFormLogin(jdFormLogin);
@@ -180,7 +180,6 @@ public class ApprovalCode extends javax.swing.JDialog {
                              rep.setTypeForm("reprint");
                              rep.setVisible(true);
                         }
-                        this.dispose();
                    } else {
                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                         j.setMessage("You have no permission use this function!");

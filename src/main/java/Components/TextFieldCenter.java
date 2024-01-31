@@ -144,7 +144,7 @@ public class TextFieldCenter extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtTextCenter, javax.swing.GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(txtTextCenter)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

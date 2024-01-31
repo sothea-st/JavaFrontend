@@ -23,6 +23,7 @@ public class TextField extends javax.swing.JPanel {
      
      private String labelTextField;
      private String valueTextField;
+     private String defaultField;
      
      public TextField() {
           initComponents();
@@ -159,9 +160,9 @@ public class TextField extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtText, javax.swing.GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(txtText)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -194,6 +195,17 @@ public class TextField extends javax.swing.JPanel {
           this.valueTextField = valueTextField;
      }
 
+    public String getDefaultField() {
+        return defaultField;
+    }
+
+    public void setDefaultField(String defaultField) {
+        this.defaultField = defaultField;
+        txtText.setText(defaultField);
+        txtText.setForeground(WindowColor.black);
+    }
+
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField txtText;
     // End of variables declaration//GEN-END:variables

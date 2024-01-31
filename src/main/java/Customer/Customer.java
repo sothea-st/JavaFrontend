@@ -2,6 +2,7 @@ package Customer;
 
 import Color.WindowColor;
 import Constant.JavaConnection;
+import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.CustomerType.CustomerTypeModel;
@@ -40,7 +41,7 @@ public class Customer extends javax.swing.JDialog {
                 cusTypeId = key;
             }
         };
-        custType.initEvent(event);
+        comboCustType.initEvent(event);
         
         khmer.setSelected(true);
         male.setSelected(true);
@@ -78,16 +79,13 @@ public class Customer extends javax.swing.JDialog {
         txtCustomerName.initEvent(btnevent);
         txtPhone.initEvent(btnevent);
         txtEarning.initEvent(btnevent);
+        txtEmail.initEvent(btnevent);
     }
     
     private void addComboCustomerType() {
         try {
             ArrayList<CustomerTypeModel> typeCustomer = new ArrayList<>();
             Response response = JavaConnection.get(JavaRoute.customerType);
-
-            System.out.println("Hellooo :" + response);
-            
-            
             if (response.isSuccessful()) {
                 String responseData = response.body().string();
                 JSONObject jsonObject = new JSONObject(responseData);
@@ -102,11 +100,8 @@ public class Customer extends javax.swing.JDialog {
                     int idType = typeCustomer.get(i).getCustomerTypeId();
                     String type = typeCustomer.get(i).getCustomerTypeName();
                     map.put(type, "" + idType);
-                    if (i == 0) {
-                        cusTypeId = "" + idType;
-                    }
                 }
-                custType.setMap(map);
+                comboCustType.setMap(map);
             } else {
                 System.err.println("fail loading data");
             }
@@ -126,7 +121,7 @@ public class Customer extends javax.swing.JDialog {
         lbPhone = new Components.Label();
         lbGender = new Components.Label();
         lbNationality = new Components.Label();
-        custType = new Components.ComboBox();
+        comboCustType = new Components.ComboBox();
         txtCustomerName = new Components.TextField();
         txtPhone = new Components.TextField();
         male = new javax.swing.JRadioButton();
@@ -142,6 +137,8 @@ public class Customer extends javax.swing.JDialog {
         txtEarning = new Components.TextField();
         lbCoupon = new Components.Label();
         comboCoupon = new Components.ComboBox();
+        lbEmail = new Components.Label();
+        txtEmail = new Components.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -214,6 +211,10 @@ public class Customer extends javax.swing.JDialog {
 
         lbCoupon.setLabelName("Coupon ($)");
 
+        lbEmail.setLabelName("Email");
+
+        txtEmail.setLabelTextField("example@gmail.com");
+
         javax.swing.GroupLayout customerLayout = new javax.swing.GroupLayout(customer);
         customer.setLayout(customerLayout);
         customerLayout.setHorizontalGroup(
@@ -223,11 +224,23 @@ public class Customer extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerLayout.createSequentialGroup()
+                        .addComponent(lbEarning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(customerLayout.createSequentialGroup()
+                        .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(customerLayout.createSequentialGroup()
                         .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(customerLayout.createSequentialGroup()
+                                .addComponent(lbCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(customerLayout.createSequentialGroup()
                                 .addComponent(lbCustomerType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(custType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboCustType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lbCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(customerLayout.createSequentialGroup()
                                 .addComponent(lbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,17 +270,9 @@ public class Customer extends javax.swing.JDialog {
                                     .addGap(18, 18, 18)
                                     .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtCustomerName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(customerLayout.createSequentialGroup()
-                                .addComponent(lbEarning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(11, Short.MAX_VALUE))
-                    .addGroup(customerLayout.createSequentialGroup()
-                        .addComponent(lbCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         customerLayout.setVerticalGroup(
             customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +280,7 @@ public class Customer extends javax.swing.JDialog {
                 .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(custType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboCustType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbCustomerType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,13 +294,17 @@ public class Customer extends javax.swing.JDialog {
                     .addComponent(lbPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbEarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtEarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboCoupon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbCoupon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(customerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(male, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +347,48 @@ public class Customer extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-//         String txtCustomerName = txtCustomerName.();
+         String customerName = txtCustomerName.getValueTextField();
+         String phoneNumber = txtPhone.getValueTextField();
+         String earning = txtEarning.getValueTextField();
+         String email = txtEmail.getValueTextField();
+         
+         JSONObject jsonData = new JSONObject();
+         jsonData.put("cusName", customerName);
+         jsonData.put("contact", phoneNumber);
+         jsonData.put("earning", earning);
+         jsonData.put("email", email);
+         jsonData.put("customerTypeId", cusTypeId);
+         jsonData.put("coupon", "");
+         jsonData.put("createBy", JavaConstant.cashierId);
+         
+         //Action choosing option Gender
+         if(male.isSelected()){
+             jsonData.put("gender", male.getText());
+         }else if(female.isSelected()){
+             jsonData.put("gender", female.getText());
+         }
+         
+         //Action choosing option Nationality
+         if(khmer.isSelected()){
+             jsonData.put("nationality", khmer.getText());
+         }else if(asian.isSelected()){
+             jsonData.put("nationality", asian.getText());
+         }else if(chinese.isSelected()){
+             jsonData.put("nationality", chinese.getText());
+         }else if(white.isSelected()){
+             jsonData.put("nationality", white.getText());
+         }else if(black.isSelected()){
+             jsonData.put("nationality", black.getText());
+         }
+         
+        Response response = JavaConnection.post(JavaRoute.customer, jsonData);
+        
+        if (response.isSuccessful()) {
+            dispose();
+        }
+        else{
+            System.out.println("Failed !");
+        }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
@@ -391,7 +441,7 @@ public class Customer extends javax.swing.JDialog {
     private ButtonPackage.ButtonSave buttonSave;
     private javax.swing.JRadioButton chinese;
     private Components.ComboBox comboCoupon;
-    private Components.ComboBox custType;
+    private Components.ComboBox comboCustType;
     private javax.swing.JPanel customer;
     private javax.swing.JRadioButton female;
     private javax.swing.JRadioButton khmer;
@@ -400,12 +450,14 @@ public class Customer extends javax.swing.JDialog {
     private Components.Label lbCustomerName;
     private Components.Label lbCustomerType;
     private Components.Label lbEarning;
+    private Components.Label lbEmail;
     private Components.Label lbGender;
     private Components.Label lbNationality;
     private Components.Label lbPhone;
     private javax.swing.JRadioButton male;
     private Components.TextField txtCustomerName;
     private Components.TextField txtEarning;
+    private Components.TextField txtEmail;
     private Components.TextField txtPhone;
     private javax.swing.JRadioButton white;
     // End of variables declaration//GEN-END:variables

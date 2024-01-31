@@ -59,7 +59,7 @@ public class ActionProduct {
 
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
-                    System.err.println("ddddddddd = " + responseData);
+
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
                     ProductDataModel[] listData = data.getData();
@@ -93,6 +93,7 @@ public class ActionProduct {
                     obj.getQty()
                );
                listProduct.add(product);
+
           }
           appendProduct(listProduct);
      }
@@ -132,14 +133,14 @@ public class ActionProduct {
                     @Override
                     public void onMouseClick() {
                          int qty = Integer.valueOf(product.getQty());
-                         if( qty == 0 ) {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(),true);
+                         if (qty == 0) {
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                               j.setMessage("No Qty");
                               j.setVisible(true);
                               return;
                          }
-                         qty--; 
-                         product.setQty(""+qty);
+                         qty--;
+                         product.setQty("" + qty);
                          if (!listData.getProductStatus().isEmpty()) {
                               eventBtnBuy(listData);
                          } else {
@@ -190,7 +191,8 @@ public class ActionProduct {
           }
      }
 
-     void total(double price, Component[] listCom, double discountProduct) {
+     // method total is same but they do action different
+     public void total(double price, Component[] listCom, double discountProduct,SubtotalPanel subtotalPanel) {
           double sumAmountUsd = price;
           double sumDiscount = discountProduct;
           if (listCom.length != 0) {
@@ -214,6 +216,34 @@ public class ActionProduct {
           subtotalPanel.setLableTotalUsd(dm.format(total));
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
      }
+
+     
+ 
+     // method total is same but they do action different
+//     public void total(Component[] listCom, SubtotalPanel subtotalPanel) {
+//          double sumAmountUsd = 0;
+//          double sumDiscount = 0;
+//          if (listCom.length != 0) {
+//               for (int i = 0; i < listCom.length; i++) {
+//                    var data = ((BoxItem) listCom[i]);
+//                    // sub total usd
+//                    sumAmountUsd += JavaConstant.getReplace(data.getLabelAmountUsd());
+//
+//                    // discont usd
+//                    int qty = data.getQty();
+//                    double discount = JavaConstant.getReplace(data.getDiscountAmount()) * qty;
+//                    sumDiscount += Double.valueOf(discount);
+//               }
+//          }
+//          subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
+//          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * JavaConstant.exchangeRate));
+//          subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
+//          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
+//          // total
+//          double total = sumAmountUsd - sumDiscount;
+//          subtotalPanel.setLableTotalUsd(dm.format(total));
+//          subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
+//     }
 
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
@@ -241,7 +271,7 @@ public class ActionProduct {
                               box.setSubtotalPanel(subtotalPanel);
                               box.setListCom(listCom);
                               box.setDetailItem(detailItem);
-                              total(0, listCom, 0);
+                              total(0, listCom, 0,subtotalPanel);
                               return;
                          }
                     }
@@ -276,7 +306,7 @@ public class ActionProduct {
                detailItem.setBorder(new BevelBorder(BevelBorder.RAISED));
                detailItem.setLayout(new BoxLayout(detailItem, BoxLayout.PAGE_AXIS));
                detailItem.setBackground(WindowColor.white);
-               total(price, listCom, discount);
+               total(price, listCom, discount,subtotalPanel);
 
                // add list has one box to BoxItem (note: must be add)
                Component[] listCom1 = detailItem.getComponents();

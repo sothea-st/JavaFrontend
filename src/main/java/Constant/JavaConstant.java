@@ -48,5 +48,6 @@ public class JavaConstant {
      }
      
      public static  ArrayList<HoldOrderModel> listHoldData = new ArrayList<>();
+     public static Integer indexArrayListHold;
 
 }

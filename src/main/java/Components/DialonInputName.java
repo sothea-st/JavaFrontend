@@ -4,6 +4,7 @@ import Color.WindowColor;
 import Constant.JavaConstant;
 import Model.HoldOrder.HoldOrderModel;
 import java.awt.Component;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class DialonInputName extends javax.swing.JDialog {
@@ -58,7 +59,7 @@ public class DialonInputName extends javax.swing.JDialog {
                     .addGap(0, 0, Short.MAX_VALUE))
                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelFontBlack9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFontBlack9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
           );
           bodyLayout.setVerticalGroup(
@@ -91,17 +92,28 @@ public class DialonInputName extends javax.swing.JDialog {
 
      private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
           String name = txtCustomerName.getValueTextFieldCenter();
+          
+          if( !JavaConstant.listHoldData.isEmpty() ) {
+               for( int i = 0 ; i < JavaConstant.listHoldData.size() ; i++ ) {
+                    String customerName = JavaConstant.listHoldData.get(i).getCustomerName();
+                    if( name.equals(customerName) ) {
+                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                         j.setMessage("Process hold can not have same customer name!");
+                         j.setVisible(true);
+                         return;
+                    }
+               }
+          }
+     
+
           Component[] listHold = detailItem.getComponents();
           int qty = 0;
           for (int i = 0; i < listHold.length; i++) {
                var box = ((BoxItem) listHold[i]);
-               qty += Integer.valueOf(box.getQty());
+               qty += box.getQty();
           }
-          HoldOrderModel hh = new HoldOrderModel(name, qty,listHold);
+          HoldOrderModel hh = new HoldOrderModel(name, qty, listHold);
           JavaConstant.listHoldData.add(hh);
-          
-          
-          
           detailItem.removeAll();
           detailItem.revalidate();
           detailItem.repaint();

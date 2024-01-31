@@ -19,10 +19,21 @@ public class ProductModel {
      public ProductModel() {
      }
 
-     public ProductModel(int id, int catId, String flag, String weight,
-          double cost, String proImageName, double price,
-          String barcode, String productNameKh, String productNameEn,
-          String productStatus, int discount, int qty) {
+     public ProductModel(
+          int id,
+          int catId,
+          String flag,
+          String weight,
+          double cost,
+          String proImageName,
+          double price,
+          String barcode,
+          String productNameKh,
+          String productNameEn,
+          String productStatus,
+          int discount,
+          int qty
+     ) {
           this.id = id;
           this.catId = catId;
           this.flag = flag;

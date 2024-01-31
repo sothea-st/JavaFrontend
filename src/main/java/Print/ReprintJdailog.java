@@ -130,7 +130,10 @@ public class ReprintJdailog extends javax.swing.JDialog {
               }
          } else if (typeForm.equals("hold")) {
               HistoryHoldOrder h = new HistoryHoldOrder(new JFrame(), true);
+              h.setDetailItem(detailItem);
+              h.setSubtotalPanel(subtotalPanel);
               h.setVisible(true);
+              dispose();
          }
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 

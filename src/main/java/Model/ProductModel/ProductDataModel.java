@@ -67,8 +67,8 @@ public class ProductDataModel {
      }
 
      @JsonProperty("proNameEn")
-     public void setProNameEn(String value) {
-          this.proNameEn = value;
+     public void setProNameEn(String proNameEn) {
+          this.proNameEn = proNameEn;
      }
 
      @JsonProperty("id")

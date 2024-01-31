@@ -9,7 +9,7 @@ public class HoldOrderModel {
      private String customerName;
      private int qty;
      private Component[] listCom;
-
+ 
      public HoldOrderModel() {
      }
 

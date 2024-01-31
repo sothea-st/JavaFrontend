@@ -13,6 +13,7 @@ Return\ApprovalCode$4.class
 Return\ReturnDialog$4.class
 Components\LabelTitle$1.class
 Receipt\Receipt$4.class
+Components\HoldItem$4.class
 Components\JavaAlertMessage.class
 DeleteAndCancel\DeleteDialog.class
 DeleteAndCancel\CancelDialog$2.class
@@ -75,13 +76,13 @@ LoginAndLogoutForm\LogoutDialog$2.class
 Components\PasswordField$2.class
 Print\ReprintByInvoicenumber$1.class
 Print\ReprintByInvoicenumber$4$1.class
-Components\HistoryHoldOrder$3$1.class
 Products\ProductPanel.class
 Return\ApprovalCode$4$1.class
 Components\TextField$2.class
 Payment\PaymentOption$21.class
 Components\SearchField$3.class
 Components\TextFieldCenter$1.class
+Components\HistoryHoldOrder$4.class
 Components\RadioButton.class
 OpenAndCloseShift\CloseShift.class
 Model\OpenShiftModel\OpenShiftModel.class
@@ -160,12 +161,14 @@ Payment\PaymentOption$24$1.class
 Components\LabelFontGreen.class
 Model\Reprint\SaleDetailModel.class
 Model\CustomerType\CustomerTypeModel.class
+Components\HoldItem$3.class
 Model\ProductModel\ProductDataModel.class
 Components\HistoryHoldOrder.class
 Payment\PaymentOption$13.class
 Payment\PaymentOption$8.class
 Components\LabelTitle$2.class
 Components\DialonInputName.class
+Components\HistoryHoldOrder$4$1.class
 Components\JavaAlertMessage$2.class
 OpenAndCloseShift\OpenShiftJdailog$4.class
 Components\ComboBox$2.class

@@ -30,7 +30,10 @@ public interface ButtonEvent {
 
      default public void btnMinus() {
      }
-     
+
      default public void onSelect(String key) {
+     }
+
+     default public void onRemove(String key) {
      }
 }

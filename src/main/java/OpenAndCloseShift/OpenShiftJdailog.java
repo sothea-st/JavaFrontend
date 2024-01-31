@@ -5,8 +5,10 @@ import Color.WindowColor;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
+import DefaultPrice.DataModelDefaultPrice;
 import Event.ButtonEvent;
 import LoginAndLogoutForm.LoginFormJdailog;
+import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -19,9 +21,9 @@ import org.json.JSONObject;
  */
 public class OpenShiftJdailog extends javax.swing.JDialog {
 
- 
      private Button btnOpenShift;
      private LoginFormJdailog jdLoginForm;
+     private DataModelDefaultPrice dataSuccess;
 
      public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
           super(parent, modal);
@@ -224,9 +226,23 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
-         
-        double reserveUsd = JavaConstant.getReplace(txtTotalUsd.getValueTextField());
-        double reserveKhr = JavaConstant.getReplace(txtTotalKhr.getValueTextField());     
+
+        double reserveUsd;
+        double reserveKhr;
+        
+        if(txtTotalUsd.getValueTextField()!= null){
+            reserveUsd = JavaConstant.getReplace(txtTotalUsd.getValueTextField());
+        }
+        else{
+            reserveUsd = dataSuccess.getData()[0].getDefaultPriceUsd();
+        }
+        
+        if(txtTotalKhr.getValueTextField()!= null){
+            reserveKhr = JavaConstant.getReplace(txtTotalKhr.getValueTextField());  
+        }
+        else{
+            reserveKhr = dataSuccess.getData()[0].getDefaultPriceKhr();
+        }
         String posId = txtPosId.getUneditText();
         String userCode = txtUserId.getUneditText();
         String openTime = txtDateTime.getUneditText();
@@ -238,7 +254,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         json.put("userCode", userCode);
         json.put("openTime", openTime);
         json.put("createBy", JavaConstant.cashierId);
-
+        
         try {
              Response response = JavaConnection.post(JavaRoute.openShift, json);
              if (response.isSuccessful()) {
@@ -256,6 +272,27 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
+     public DataModelDefaultPrice getDataSuccess() {
+        return dataSuccess;
+    }
+    
+    public void setDataSuccess(DataModelDefaultPrice dataSuccess) {
+        this.dataSuccess = dataSuccess;
+        txtTotalUsd.setForeground(Color.red);
+         assignValue(dataSuccess);
+    }
+
+    
+    private void assignValue(DataModelDefaultPrice dataSuccess) {
+         try {
+                txtTotalUsd.setDefaultField("" + dataSuccess.getData()[0].getDefaultPriceUsd());
+                txtTotalKhr.setDefaultField(""+dataSuccess.getData()[0].getDefaultPriceKhr());
+          } catch (Exception e) {
+               System.err.println("getting error at " + e);
+          }
+    }
+    
+    
     /**
      * @param args the command line
      * arguments

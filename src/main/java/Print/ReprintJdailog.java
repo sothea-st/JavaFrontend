@@ -131,8 +131,9 @@ public class ReprintJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
     private void btnPrintByInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseClicked
-
+        
          if (typeForm.equals("reprint")) {
+              this.dispose();
               ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
               rep.setVisible(true);
          } else if ( typeForm.equals("hold") ) {

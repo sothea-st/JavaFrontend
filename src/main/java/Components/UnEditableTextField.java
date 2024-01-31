@@ -122,7 +122,7 @@ public class UnEditableTextField extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(textField)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -23,7 +23,6 @@ public class TextField extends javax.swing.JPanel {
      
      private String labelTextField;
      private String valueTextField;
-     private String defaultField;
      
      public TextField() {
           initComponents();
@@ -193,17 +192,9 @@ public class TextField extends javax.swing.JPanel {
      
      public void setValueTextField(String valueTextField) {
           this.valueTextField = valueTextField;
+          txtText.setText(valueTextField);
+          txtText.setForeground(Color.BLACK);
      }
-
-    public String getDefaultField() {
-        return defaultField;
-    }
-
-    public void setDefaultField(String defaultField) {
-        this.defaultField = defaultField;
-        txtText.setText(defaultField);
-        txtText.setForeground(WindowColor.black);
-    }
 
      
     // Variables declaration - do not modify//GEN-BEGIN:variables

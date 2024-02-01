@@ -223,47 +223,33 @@ public class ActionProduct {
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
           String khValue = kh.format(total * JavaConstant.exchangeRate);
           khValue = khValue.replaceAll(",", "");
-          khValue = "701";
+          khValue = "9999967";
           int l = khValue.length();
           int begin = l - 2;
           String last2Number = khValue.substring(begin, l);
           if (!last2Number.equals("00")) {
                String[] listStr = khValue.split("");
                int lengthChar = listStr.length;
-           
+               String value = "";
                switch (lengthChar) {
                     case 3:
-                         String value = JavaRoundUpKhr.roundUp3length(listStr);
-                         System.out.println("value data == " + value);
+                         value = JavaRoundUpKhr.roundUp3length(listStr);
                          break;
                     case 4:
-                         roundUpKhr4(listStr, lengthChar);
+                         value = JavaRoundUpKhr.roundUpKhr4length(listStr);
                          break;
-                    default:
-                         throw new AssertionError();
+                    case 5:
+                         value = JavaRoundUpKhr.roundUpKhr5length(listStr);
+                         break;
+                    case 6:
+                         value = JavaRoundUpKhr.roundUpKhr6length(listStr);
+                         break;
+                    case 7:
+                         value = JavaRoundUpKhr.roundUpKhr7length(listStr);
+                         break;
                }
+               System.err.println("data value = " + value);
           }
-     }
-
- 
-     void roundUpKhr4(String[] listStr, int lengthChar) {
-          int num = Integer.parseInt(listStr[lengthChar - 3]) + 1;
-          String numStr = "" + num;
-          if (num < 10) {
-               listStr[lengthChar - 3] = "" + numStr;
-          } else {
-               int num0 = Integer.parseInt(listStr[0]) + 1;
-               listStr[lengthChar - 4] = "" + num0;
-               listStr[lengthChar - 3] = "0";
-          }
-          listStr[lengthChar - 2] = "0";
-          listStr[lengthChar - 1] = "0";
-
-          String valueData = "";
-          for (int j = 0; j < listStr.length; j++) {
-               valueData += listStr[j];
-          }
-          System.err.println("valuedata 4 = " + valueData);
      }
 
      // 150 ===> 200

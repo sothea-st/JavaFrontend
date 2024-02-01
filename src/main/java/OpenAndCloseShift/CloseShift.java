@@ -2,12 +2,17 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.BackgroundImage;
 import Components.JavaAlertMessage;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
+import Fonts.WindowFonts;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 import org.json.JSONObject;
@@ -16,6 +21,8 @@ import org.json.JSONObject;
 public class CloseShift extends javax.swing.JDialog {
 
      private Button btnOpenShift;
+     private JPanel panelProduct;
+     private JPanel panelPagination;
 
      public CloseShift(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
           super(parent, modal);
@@ -222,7 +229,6 @@ public class CloseShift extends javax.swing.JDialog {
              return;
          }
         
-
          double express = JavaConstant.getReplace(redexpress.getValueTextField());
          double khqrMnk = JavaConstant.getReplace(qrMnk.getValueTextField());
          double khqrAba = JavaConstant.getReplace(qrAba.getValueTextField());
@@ -243,19 +249,45 @@ public class CloseShift extends javax.swing.JDialog {
          try {
               Response response = JavaConnection.post(JavaRoute.closeShift, json);
               if (response.isSuccessful()) {
-                   dispose();
-                   btnOpenShift.setButtonName("Open Shift");
-                   JavaConstant.checkCloseShift = 0l;
-                   JavaConstant.checkOpenShift=false;
-                     System.err.println("111111111111111111111 = " + JavaConstant.checkOpenShift);
+                    dispose();
+                    btnOpenShift.setButtonName("Open Shift");
+                    JavaConstant.checkCloseShift = 0l;
+                    JavaConstant.checkOpenShift=false;
+                   
+                    panelProduct.removeAll();
+                    panelProduct.revalidate();
+                    panelProduct.repaint();
+                    getPanelPagination().setVisible(false);
+                    
               } else {
-                   System.out.println("Failll");
+                    UIManager UI=new UIManager();
+                    UI.put("OptionPane.background", WindowColor.mediumGreen);
+                    UI.put("Panel.background", WindowColor.mediumGreen);
+                    UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                    JOptionPane.showMessageDialog(null, "Save Failed!");
+                    return;
               }
 
          } catch (Exception e) {
 
          }
     }//GEN-LAST:event_buttonSaveMouseClicked
+
+    public JPanel getPanelProduct() {
+        return panelProduct;
+    }
+
+    public void setPanelProduct(JPanel panelProduct) {
+        this.panelProduct = panelProduct;
+    }
+
+    public JPanel getPanelPagination() {
+        return panelPagination;
+    }
+
+    public void setPanelPagination(JPanel panelPagination) {
+        this.panelPagination = panelPagination;
+    }
 
      /**
       * @param args the command line

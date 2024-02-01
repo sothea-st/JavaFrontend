@@ -152,6 +152,8 @@ public class SearchField extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         textSearch = new javax.swing.JTextField();
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\POSCASHIER\\tt_pos_window\\src\\main\\resources\\image\\Search Icon.png")); // NOI18N
+
         textSearch.setBorder(null);
         textSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

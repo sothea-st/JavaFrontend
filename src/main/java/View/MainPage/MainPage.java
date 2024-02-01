@@ -271,8 +271,10 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLogo.setIcon(new javax.swing.ImageIcon("D:\\POSCASHIER\\tt_pos_window\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
 
         imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgUser.setIcon(new javax.swing.ImageIcon("D:\\POSCASHIER\\tt_pos_window\\src\\main\\resources\\image\\UserIcon.png")); // NOI18N
 
         javax.swing.GroupLayout dayLayout = new javax.swing.GroupLayout(day);
         day.setLayout(dayLayout);
@@ -648,6 +650,8 @@ public class MainPage extends javax.swing.JFrame {
                    
               } else if (buttonName.equals("close shift")) {
                    CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
+                   close.setPanelProduct(panelProduct);
+                   close.setPanelPagination(panelPagination);
                    close.setVisible(true);
               }
          } else {

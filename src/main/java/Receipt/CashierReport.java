@@ -791,7 +791,7 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-            report.setTotalpice("$" + " " + list.getTotal());
+            report.setTotalpice(dm.format(list.getTotal()));
             panelSummarySale.add(report);
             panelSummarySale.add(Box.createRigidArea(new Dimension(2, 2)));
         }
@@ -810,7 +810,7 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-            report.setTotalpice("$" + " " + list.getTotal());
+            report.setTotalpice(dm.format(list.getTotal()));
             panelSummaryPayment.add(report);
             panelSummaryPayment.add(Box.createRigidArea(new Dimension(2, 2)));
         }
@@ -826,7 +826,7 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-            report.setTotalpice("$" + " " + list.getTotal());
+            report.setTotalpice(dm.format(list.getTotal()));
             panelSummaryDiscount.add(report);
             panelSummaryDiscount.add(Box.createRigidArea(new Dimension(2, 2)));
         }

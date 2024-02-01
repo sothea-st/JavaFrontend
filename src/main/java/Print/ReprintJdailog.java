@@ -152,12 +152,12 @@ public class ReprintJdailog extends javax.swing.JDialog {
               ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
               rep.setVisible(true);
          } else if (typeForm.equals("hold")) {
+              this.dispose();
               DialonInputName d = new DialonInputName(new JFrame(), true);
               d.setDetailItem(detailItem);
               d.setSubtotalPanel(subtotalPanel);
               d.setBtnPayment(btnPayment);
               d.setVisible(true);
-              dispose();
          }
 
     }//GEN-LAST:event_btnPrintByInvoiceMouseClicked

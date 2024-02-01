@@ -296,7 +296,7 @@ public class SubtotalPanel extends javax.swing.JPanel {
                     .addComponent(txtDeliveryKhr, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDiscountKhr, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtTotalKhr, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)

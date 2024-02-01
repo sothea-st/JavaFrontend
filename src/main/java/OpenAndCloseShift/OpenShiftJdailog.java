@@ -11,6 +11,7 @@ import LoginAndLogoutForm.LoginFormJdailog;
 import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 import org.json.JSONObject;
@@ -302,21 +303,9 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
     }// GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_buttonSaveMouseClicked
-
-        double reserveUsd;
-        double reserveKhr;
-
-        if (txtTotalUsd.getValueTextField() != null) {
-            reserveUsd = JavaConstant.getReplace(txtTotalUsd.getValueTextField());
-        } else {
-            reserveUsd = dataSuccess.getData()[0].getDefaultPriceUsd();
-        }
-
-        if (txtTotalKhr.getValueTextField() != null) {
-            reserveKhr = JavaConstant.getReplace(txtTotalKhr.getValueTextField());
-        } else {
-            reserveKhr = dataSuccess.getData()[0].getDefaultPriceKhr();
-        }
+        
+        String reserveUsd = txtTotalUsd.getValueTextField();
+        String reserveKhr = txtTotalKhr.getValueTextField();
         String posId = txtPosId.getUneditText();
         String userCode = txtUserId.getUneditText();
         String openTime = txtDateTime.getUneditText();
@@ -359,8 +348,8 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
 
     private void assignValue(DataModelDefaultPrice dataSuccess) {
         try {
-            txtTotalUsd.setDefaultField("" + dataSuccess.getData()[0].getDefaultPriceUsd());
-            txtTotalKhr.setDefaultField("" + dataSuccess.getData()[0].getDefaultPriceKhr());
+            txtTotalUsd.setValueTextField("" + dataSuccess.getData()[0].getDefaultPriceUsd());
+            txtTotalKhr.setValueTextField("" + dataSuccess.getData()[0].getDefaultPriceKhr());
         } catch (Exception e) {
             System.err.println("getting error at " + e);
         }

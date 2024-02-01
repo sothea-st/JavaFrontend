@@ -11,6 +11,8 @@ import Model.Reprint.DataSuccessModel;
 import Receipt.Receipt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 
@@ -51,10 +53,12 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
         txtInvoiceNumber = new Components.TextField();
         labelPopUpTitle1 = new Components.LabelPopUpTitle();
         lbInvoice = new Components.Label();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelReprint.setForeground(new java.awt.Color(0, 0, 0));
+        panelReprint.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnBack.setButtonName("Back");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,23 +79,29 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
 
         labelPopUpTitle1.setLabelTitle("Reprint by Invoice №");
 
-        lbInvoice.setLabelName("Invoice №");
+        lbInvoice.setLabelName("Invoice № ");
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setText("*");
 
         javax.swing.GroupLayout panelReprintLayout = new javax.swing.GroupLayout(panelReprint);
         panelReprint.setLayout(panelReprintLayout);
         panelReprintLayout.setHorizontalGroup(
             panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelReprintLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addGroup(panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReprintLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelReprintLayout.createSequentialGroup()
+                        .addComponent(lbInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelReprintLayout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReprintLayout.createSequentialGroup()
-                        .addComponent(lbInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
             .addComponent(labelPopUpTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -102,7 +112,8 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
                 .addGap(22, 22, 22)
                 .addGroup(panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtInvoiceNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelReprintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelReprintLayout.createSequentialGroup()
@@ -116,15 +127,11 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelReprint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -138,11 +145,13 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
     private void btnPreviewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviewMouseClicked
 
          String paymentNo = txtInvoiceNumber.getValueTextField();
-         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
          if (paymentNo == null) {
-              j.setMessage("Invoice № can not be empty!");
-              j.setVisible(true);
-              return;
+            UIManager UI=new UIManager();
+            UI.put("OptionPane.background", WindowColor.mediumGreen);
+            UI.put("Panel.background", WindowColor.mediumGreen);
+            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+            JOptionPane.showMessageDialog(null, "Invoice № can not be empty!");
+            return;
          }
 
          try {
@@ -157,8 +166,13 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
                    rec.setDataSuccess(d);
                    rec.setVisible(true);
               } else {
-                   j.setMessage("Wrong Invoice №!");
-                   j.setVisible(true);
+                   UIManager UI=new UIManager();
+                   UI.put("OptionPane.background", WindowColor.mediumGreen);
+                   UI.put("Panel.background", WindowColor.mediumGreen);
+                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                   JOptionPane.showMessageDialog(null, "Wrong Invoice №!");
+                   return;
+                   
               }
 
          } catch (Exception e) {
@@ -186,6 +200,7 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Button.Button btnBack;
     private Button.Button btnPreview;
+    private javax.swing.JLabel jLabel1;
     private Components.LabelPopUpTitle labelPopUpTitle1;
     private Components.Label lbInvoice;
     private javax.swing.JPanel panelReprint;

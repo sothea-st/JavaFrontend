@@ -7,6 +7,7 @@ import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoundUpKhr;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Model.PackageProduct.ProductModel;
@@ -222,62 +223,69 @@ public class ActionProduct {
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
           String khValue = kh.format(total * JavaConstant.exchangeRate);
           khValue = khValue.replaceAll(",", "");
-          khValue = "1950";
+          khValue = "701";
           int l = khValue.length();
           int begin = l - 2;
           String last2Number = khValue.substring(begin, l);
           if (!last2Number.equals("00")) {
                String[] listStr = khValue.split("");
-               // 150 ===> 200
-               // 950 ===> 1000
-
-               // 1542 ===> 1600
-               // 1965 ===> 2000
-               // 9965 ===> 10000
-               // 12543 ===> 12600
-               // 12955 ===> 13000
-               // 19953 ===> 20000
-               // 99932 ===> 100000
-               // 145265 ===> 145300
-               // 144965 ===> 145000
-               // 149965 ===> 150000
-               // 199965 ===> 200000
-               // 999965 ===> 1000000
-               // 1235465 ===> 1235500
-               // 1235965 ===> 1236000
-               // 1239965 ===> 1240000
-               // 1299965 ===> 1300000
-               // 1999965 ===> 2000000
-               // 9999965 ===> 10000000
                int lengthChar = listStr.length;
-               for (int i = 0; i < listStr.length; i++) {
-                    if (!listStr[lengthChar - 2].equals("0") || !listStr[lengthChar - 1].equals("0")) {
-                         int num = Integer.parseInt(listStr[lengthChar - 3]) + 1;
-                         System.err.println("dddddddddddd = " + num);
-                         String numStr = "";
-//                         if( num < 10 ) {
-//                              numStr = "0";
-//                         } else if ( num == 10 ) {
-//                         
-//                         }
-                         listStr[lengthChar - 3] = "" + num;
-                         listStr[lengthChar - 2] = "0";
-                         listStr[lengthChar - 1] = "0";
-                         String valueData = "";
-                         for (int j = 0; j < listStr.length; j++) {
-                              valueData += listStr[j];
-                         }
-                         System.err.println("valuedata = " + valueData);
-                    }
+           
+               switch (lengthChar) {
+                    case 3:
+                         String value = JavaRoundUpKhr.roundUp3length(listStr);
+                         System.out.println("value data == " + value);
+                         break;
+                    case 4:
+                         roundUpKhr4(listStr, lengthChar);
+                         break;
+                    default:
+                         throw new AssertionError();
                }
-
           }
      }
 
-     public static long roundUp(long num, long divisor) {
-          return (num + divisor - 1) / divisor;
+ 
+     void roundUpKhr4(String[] listStr, int lengthChar) {
+          int num = Integer.parseInt(listStr[lengthChar - 3]) + 1;
+          String numStr = "" + num;
+          if (num < 10) {
+               listStr[lengthChar - 3] = "" + numStr;
+          } else {
+               int num0 = Integer.parseInt(listStr[0]) + 1;
+               listStr[lengthChar - 4] = "" + num0;
+               listStr[lengthChar - 3] = "0";
+          }
+          listStr[lengthChar - 2] = "0";
+          listStr[lengthChar - 1] = "0";
+
+          String valueData = "";
+          for (int j = 0; j < listStr.length; j++) {
+               valueData += listStr[j];
+          }
+          System.err.println("valuedata 4 = " + valueData);
      }
 
+     // 150 ===> 200
+     // 950 ===> 1000
+     // 1542 ===> 1600
+     // 1965 ===> 2000
+     // 9965 ===> 10000
+     // 12543 ===> 12600
+     // 12955 ===> 13000
+     // 19953 ===> 20000
+     // 99932 ===> 100000
+     // 145265 ===> 145300
+     // 144965 ===> 145000
+     // 149965 ===> 150000
+     // 199965 ===> 200000
+     // 999965 ===> 1000000
+     // 1235465 ===> 1235500
+     // 1235965 ===> 1236000
+     // 1239965 ===> 1240000
+     // 1299965 ===> 1300000
+     // 1999965 ===> 2000000
+     // 9999965 ===> 10000000
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;

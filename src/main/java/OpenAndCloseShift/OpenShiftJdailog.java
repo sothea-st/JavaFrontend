@@ -305,7 +305,7 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
 
         double reserveUsd;
         double reserveKhr;
-
+        
         if (txtTotalUsd.getValueTextField() != null) {
             reserveUsd = JavaConstant.getReplace(txtTotalUsd.getValueTextField());
         } else {

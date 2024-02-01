@@ -132,7 +132,10 @@ public class MainPage extends javax.swing.JFrame {
                public void onKeyType() {
                     String barcode = textField.getValueTextField();
                     ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
-//                    textField.setLabelTextField("");
+//                    if (barcode.length() == 13) {
+//                         textField.setLabelTextField("");
+//                    }
+
                }
           };
           textField.initEvent(eventData);
@@ -141,7 +144,6 @@ public class MainPage extends javax.swing.JFrame {
 
      private void eventSearchProduct() {
           // this event was called when user type on searchTextField 
-
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onKeyType() {
@@ -150,7 +152,6 @@ public class MainPage extends javax.swing.JFrame {
                }
           };
           searchBox.initEvent(event);
-
      }
 
      private void setBackground() {
@@ -630,22 +631,22 @@ public class MainPage extends javax.swing.JFrame {
          String buttonName = btnOpenShift.getButtonName().toLowerCase();
          if (JavaConstant.token != null) {
               if (buttonName.equals("open shift")) {
-                  OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
-                    try {
+                   OpenShiftJdailog jdOpenShift = new OpenShiftJdailog(new JFrame(), true, btnOpenShift);
+                   try {
                         Response response = JavaConnection.get(JavaRoute.getDefaultPrice);
                         if (response.isSuccessful()) {
-                            String myObject = response.body().string();
-                            ObjectMapper objMap = new ObjectMapper();
-                            DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class);
-                            jdOpenShift.setDataSuccess(d);
+                             String myObject = response.body().string();
+                             ObjectMapper objMap = new ObjectMapper();
+                             DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class);
+                             jdOpenShift.setDataSuccess(d);
                         }
-                    } catch (Exception e) {
-                       System.err.println("error getting default price " + e);
-                    }
-                  
+                   } catch (Exception e) {
+                        System.err.println("error getting default price " + e);
+                   }
+
                    jdOpenShift.setJdLoginForm(jdFormLogin);
                    jdOpenShift.setVisible(true);
-                   
+
               } else if (buttonName.equals("close shift")) {
                    CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
                    close.setVisible(true);
@@ -723,33 +724,33 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCashierMouseClicked
 
      //Action Button Report Cashier
-    public void reportCashier() {
-        if (JavaConstant.token != null) {
-            if (JavaConstant.checkCloseShift != null && JavaConstant.checkCloseShift == 1) {
-                 JavaAlertMessage j = new JavaAlertMessage(this, true);
-                 j.setMessage("You have to close shift first to get report cashier!");
-                 j.setVisible(true);
-                 return;
-            }
+     public void reportCashier() {
+          if (JavaConstant.token != null) {
+               if (JavaConstant.checkCloseShift != null && JavaConstant.checkCloseShift == 1) {
+                    JavaAlertMessage j = new JavaAlertMessage(this, true);
+                    j.setMessage("You have to close shift first to get report cashier!");
+                    j.setVisible(true);
+                    return;
+               }
 
-            try {
-                 CashierReport cashier = new CashierReport(new JFrame(), true);
-                 Response response = JavaConnection.get(
-                      JavaRoute.cashierReport + JavaConstant.userCode + "&userId=" + JavaConstant.cashierId + "&posId=" + JavaConstant.posId);
-                 if (response.isSuccessful()) {
-                      String myObject = response.body().string();
-                      ObjectMapper objMap = new ObjectMapper();
-                      DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
-                      cashier.setDataSuccessReport(d);
-                      cashier.setVisible(true);
-                 }
-            } catch (Exception e) {
-                 System.err.println("error = " + e);
-            }
-        } else {
-             System.err.println("System cannot oprn Cashier Report");
-        }
-    }
+               try {
+                    CashierReport cashier = new CashierReport(new JFrame(), true);
+                    Response response = JavaConnection.get(
+                         JavaRoute.cashierReport + JavaConstant.userCode + "&userId=" + JavaConstant.cashierId + "&posId=" + JavaConstant.posId);
+                    if (response.isSuccessful()) {
+                         String myObject = response.body().string();
+                         ObjectMapper objMap = new ObjectMapper();
+                         DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
+                         cashier.setDataSuccessReport(d);
+                         cashier.setVisible(true);
+                    }
+               } catch (Exception e) {
+                    System.err.println("error = " + e);
+               }
+          } else {
+               System.err.println("System cannot oprn Cashier Report");
+          }
+     }
 
      //Action Button Holder
      private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
@@ -764,7 +765,7 @@ public class MainPage extends javax.swing.JFrame {
                rep.setSubtotalPanel(totalPanel);
                rep.setBtnPayment(btnPayment);
                rep.setVisible(true);
-               
+
           }
 
      }//GEN-LAST:event_button3MouseClicked
@@ -778,15 +779,15 @@ public class MainPage extends javax.swing.JFrame {
           System.err.println("lenght list holde = " + l);
      }//GEN-LAST:event_button8MouseClicked
 
-      //Action Button Customer
+     //Action Button Customer
     private void buttonCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCustomerMouseClicked
          if (JavaConstant.token != null) {
-            Customer cust = new Customer(new JFrame(),true);
-            cust.setVisible(true);
+              Customer cust = new Customer(new JFrame(), true);
+              cust.setVisible(true);
          } else {
               System.err.println("System cannot open customer");
          }
-       
+
     }//GEN-LAST:event_buttonCustomerMouseClicked
 
      //Function call Placeholder

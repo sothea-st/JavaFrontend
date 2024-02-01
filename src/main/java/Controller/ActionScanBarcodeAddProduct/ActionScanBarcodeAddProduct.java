@@ -1,11 +1,9 @@
 package Controller.ActionScanBarcodeAddProduct;
 
 import Button.Button;
-import Color.WindowColor;
-import Components.BoxItem;
+import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
-import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Controller.ActionProduct.ActionProduct;
 import LoginAndLogoutForm.LoginFormJdailog;
@@ -13,25 +11,16 @@ import Model.PackageProduct.ProductModel;
 import Model.ProductModel.ProductDataModel;
 import Model.ProductModel.ProductSuccessData;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.awt.Color;
-import java.awt.Component;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.BevelBorder;
 import okhttp3.Response;
 
 public class ActionScanBarcodeAddProduct extends ActionProduct {
 
-     DecimalFormat df = new DecimalFormat("#,##0.00 kg");
-     DecimalFormat dm = new DecimalFormat("$ #,##0.00");
-     DecimalFormat bar = new DecimalFormat("########00000000");
-     DecimalFormat kh = new DecimalFormat("#,##0");
+ 
 
      private Button btnLogin;
      private JLabel boxUserName;
@@ -44,9 +33,9 @@ public class ActionScanBarcodeAddProduct extends ActionProduct {
      private Button btnPayment;
      private JPanel panelPagination;
 
-     public static void scanBarcode(String barcode,LoginFormJdailog jdFormLogin) {
+     public static void scanBarcode(String barcode, LoginFormJdailog jdFormLogin) {
           if (barcode.length() == 13) {
-             
+
                Response response = JavaConnection.get(JavaRoute.searchProductByBarcodeOrName + "?code=barcode&valueSearch=" + barcode);
                try {
                     if (response.isSuccessful()) {
@@ -73,20 +62,18 @@ public class ActionScanBarcodeAddProduct extends ActionProduct {
                                    obj.getQty()
                               );
                          }
-
                          jdFormLogin.scanbarCodeAddProduct(product);
-                          
-
-                    }
+                    }  
                } catch (Exception e) {
+                    JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                    j.setMessage("The product does not exist in system!");
+                    j.setVisible(true);
                     System.err.println("error scan barcode = " + e);
                }
           }
      }
-     
-     
-     
-       public Button getBtnLogin() {
+
+     public Button getBtnLogin() {
           return btnLogin;
      }
 

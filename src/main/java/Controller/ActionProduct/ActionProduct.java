@@ -141,7 +141,7 @@ public class ActionProduct {
                          }
                          qty--;
                          product.setQty("" + qty);
-                       
+
                          if (!listData.getProductStatus().isEmpty()) {
                               if (JavaConstant.checkOpenShift) {
                                    eventBtnBuy(listData);
@@ -220,33 +220,64 @@ public class ActionProduct {
           double total = sumAmountUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
+          String khValue = kh.format(total * JavaConstant.exchangeRate);
+          khValue = khValue.replaceAll(",", "");
+          khValue = "1950";
+          int l = khValue.length();
+          int begin = l - 2;
+          String last2Number = khValue.substring(begin, l);
+          if (!last2Number.equals("00")) {
+               String[] listStr = khValue.split("");
+               // 150 ===> 200
+               // 950 ===> 1000
+
+               // 1542 ===> 1600
+               // 1965 ===> 2000
+               // 9965 ===> 10000
+               // 12543 ===> 12600
+               // 12955 ===> 13000
+               // 19953 ===> 20000
+               // 99932 ===> 100000
+               // 145265 ===> 145300
+               // 144965 ===> 145000
+               // 149965 ===> 150000
+               // 199965 ===> 200000
+               // 999965 ===> 1000000
+               // 1235465 ===> 1235500
+               // 1235965 ===> 1236000
+               // 1239965 ===> 1240000
+               // 1299965 ===> 1300000
+               // 1999965 ===> 2000000
+               // 9999965 ===> 10000000
+               int lengthChar = listStr.length;
+               for (int i = 0; i < listStr.length; i++) {
+                    if (!listStr[lengthChar - 2].equals("0") || !listStr[lengthChar - 1].equals("0")) {
+                         int num = Integer.parseInt(listStr[lengthChar - 3]) + 1;
+                         System.err.println("dddddddddddd = " + num);
+                         String numStr = "";
+//                         if( num < 10 ) {
+//                              numStr = "0";
+//                         } else if ( num == 10 ) {
+//                         
+//                         }
+                         listStr[lengthChar - 3] = "" + num;
+                         listStr[lengthChar - 2] = "0";
+                         listStr[lengthChar - 1] = "0";
+                         String valueData = "";
+                         for (int j = 0; j < listStr.length; j++) {
+                              valueData += listStr[j];
+                         }
+                         System.err.println("valuedata = " + valueData);
+                    }
+               }
+
+          }
      }
 
-     // method total is same but they do action different
-//     public void total(Component[] listCom, SubtotalPanel subtotalPanel) {
-//          double sumAmountUsd = 0;
-//          double sumDiscount = 0;
-//          if (listCom.length != 0) {
-//               for (int i = 0; i < listCom.length; i++) {
-//                    var data = ((BoxItem) listCom[i]);
-//                    // sub total usd
-//                    sumAmountUsd += JavaConstant.getReplace(data.getLabelAmountUsd());
-//
-//                    // discont usd
-//                    int qty = data.getQty();
-//                    double discount = JavaConstant.getReplace(data.getDiscountAmount()) * qty;
-//                    sumDiscount += Double.valueOf(discount);
-//               }
-//          }
-//          subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
-//          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * JavaConstant.exchangeRate));
-//          subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
-//          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
-//          // total
-//          double total = sumAmountUsd - sumDiscount;
-//          subtotalPanel.setLableTotalUsd(dm.format(total));
-//          subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
-//     }
+     public static long roundUp(long num, long divisor) {
+          return (num + divisor - 1) / divisor;
+     }
+
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;

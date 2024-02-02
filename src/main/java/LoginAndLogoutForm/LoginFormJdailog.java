@@ -232,8 +232,10 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          String password = txtPassword.getValuePassword();
 
          JSONObject json = new JSONObject();
-         json.put("userCode", "0001");
-         json.put("password", "TT@126$kh#");
+         json.put("userCode", userId);
+         json.put("password", password);
+//         json.put("userCode", "0001");
+//         json.put("password", "TT@126$kh#");
 
          try {
               Response response = JavaConnection.login(JavaRoute.login, json);
@@ -334,7 +336,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-                                  
+
                                    if (JavaConstant.checkOpenShift) {
                                         setCatId(catId);
                                         getPanelPagination().setVisible(true);
@@ -418,7 +420,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //     public void setCheckOpenShift(boolean checkOpenShift) {
 //          this.checkOpenShift = checkOpenShift;
 //     }
-
      public JLabel getBoxUserName() {
           return boxUserName;
      }

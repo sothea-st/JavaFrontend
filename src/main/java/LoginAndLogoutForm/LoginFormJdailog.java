@@ -37,16 +37,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import Button.Button;
 import Components.ComboBox;
+import Components.JavaAlertMessage;
 import Controller.ActionProduct.ActionProduct;
 import Controller.ActionRequestBrand.ActionRequestBrand;
 import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
 import Controller.ActionSearchProductController.ActionSearchProduct;
+import Fonts.WindowFonts;
 import Model.Login.LoginModel;
 import Model.OpenShift.OpenShiftDataModel;
 import Model.OpenShiftModel.OpenShiftModel;
 import Model.ProductModel.ProductDataModel;
 import Model.ProductModel.ProductSuccessData;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -232,7 +237,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          String password = txtPassword.getValuePassword();
 
          JSONObject json = new JSONObject();
-         json.put("userCode", "0001");
+         json.put("userCode", "0003");
          json.put("password", "TT@126$kh#");
 
          try {
@@ -264,12 +269,21 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
                    dispose();
                    getBtnLogin().setButtonName("Logout");
-                   getBoxUserName().setText(JavaConstant.fullName + " USER ID : " + JavaConstant.userCode);
+                   getBoxUserName().setText(JavaConstant.fullName.toUpperCase() + " " + " USER ID : " + JavaConstant.userCode);
                    lbPOSId.setText("POS ID : " + JavaConstant.posId);
                    category();
                    getjScrollPaneCategory().setVisible(true);
                    ActionRequestBrand.requestBrand(cmboxBrand);
                    eventSelect();
+              }
+              else
+              {
+                    UIManager UI=new UIManager();
+                    UI.put("OptionPane.background", WindowColor.mediumGreen);
+                    UI.put("Panel.background", WindowColor.mediumGreen);
+                    UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                    JOptionPane.showMessageDialog(null, "Wrong email or password!");
+                    return;
               }
 
          } catch (Exception e) {
@@ -353,6 +367,13 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                         panelProduct.revalidate();
                                         panelProduct.repaint();
                                         setCount(pro.getCount());
+                                   }
+                                   else
+                                   {
+                                        JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                                        j.setMessage("You have to open shift first!");
+                                        j.setVisible(true);
+                                        return;
                                    }
                               }
                          };

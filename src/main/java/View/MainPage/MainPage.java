@@ -481,7 +481,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPaginationLayout.createSequentialGroup()
                         .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cmboxBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -650,6 +650,15 @@ public class MainPage extends javax.swing.JFrame {
                    jdOpenShift.setVisible(true);
 
               } else if (buttonName.equals("close shift")) {
+    
+                   Component[] listCom1 = detailItem.getComponents();
+                   if (listCom1.length != 0){
+                        JavaAlertMessage j = new JavaAlertMessage(this, true);
+                        j.setMessage("You have to remove the produt that has been bought or do the payment first!");
+                        j.setVisible(true);
+                        return;
+                   }
+                    
                    CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
                    close.setPanelProduct(panelProduct);
                    close.setPanelPagination(panelPagination);

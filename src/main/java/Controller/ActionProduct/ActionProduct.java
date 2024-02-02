@@ -199,14 +199,17 @@ public class ActionProduct {
      public void total(double price, Component[] listCom, double discountProduct, SubtotalPanel subtotalPanel) {
           double sumAmountUsd = price;
           double sumDiscount = discountProduct;
+
           if (listCom.length != 0) {
                for (int i = 0; i < listCom.length; i++) {
                     var data = ((BoxItem) listCom[i]);
                     // sub total usd
                     sumAmountUsd += JavaConstant.getReplace(data.getLabelAmountUsd());
 
+                    System.out.println("discount = " + data.getDiscountAmount());
                     // discont usd
                     int qty = data.getQty();
+//                    double discount = JavaConstant.getReplace(data.getDiscountAmount());
                     double discount = JavaConstant.getReplace(data.getDiscountAmount()) * qty;
                     sumDiscount += Double.valueOf(discount);
                }
@@ -219,36 +222,37 @@ public class ActionProduct {
           double total = sumAmountUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
-          String khValue = kh.format(total * JavaConstant.exchangeRate);
-          khValue = khValue.replaceAll(",", "");
-//          khValue = "9999967";
-          int l = khValue.length();
-          int begin = l - 2;
-          String last2Number = khValue.substring(begin, l);
-          String value = "";
-          if (!last2Number.equals("00")) {
-               String[] listStr = khValue.split("");
-               int lengthChar = listStr.length;
 
-               switch (lengthChar) {
-                    case 3:
-                         value = JavaRoundUpKhr.roundUp3length(listStr);
-                         break;
-                    case 4:
-                         value = JavaRoundUpKhr.roundUpKhr4length(listStr);
-                         break;
-                    case 5:
-                         value = JavaRoundUpKhr.roundUpKhr5length(listStr);
-                         break;
-                    case 6:
-                         value = JavaRoundUpKhr.roundUpKhr6length(listStr);
-                         break;
-                    case 7:
-                         value = JavaRoundUpKhr.roundUpKhr7length(listStr);
-                         break;
-               }
-          }
-          System.err.println("data value = " + value);
+//          String khValue = kh.format(total * JavaConstant.exchangeRate);
+//          khValue = khValue.replaceAll(",", "");
+//          //          khValue = "9999967";
+//          int l = khValue.length();
+//          int begin = l - 2;
+//          String last2Number = khValue.substring(begin, l);
+//          String value = "";
+//          if (!last2Number.equals("00")) {
+//               String[] listStr = khValue.split("");
+//               int lengthChar = listStr.length;
+//
+//               switch (lengthChar) {
+//                    case 3:
+//                         value = JavaRoundUpKhr.roundUp3length(listStr);
+//                         break;
+//                    case 4:
+//                         value = JavaRoundUpKhr.roundUpKhr4length(listStr);
+//                         break;
+//                    case 5:
+//                         value = JavaRoundUpKhr.roundUpKhr5length(listStr);
+//                         break;
+//                    case 6:
+//                         value = JavaRoundUpKhr.roundUpKhr6length(listStr);
+//                         break;
+//                    case 7:
+//                         value = JavaRoundUpKhr.roundUpKhr7length(listStr);
+//                         break;
+//               }
+//          }
+//          System.err.println("data value = " + value);
      }
 
      public void eventBtnBuy(ProductModel listData) {
@@ -258,6 +262,7 @@ public class ActionProduct {
           try {
 
                BoxItem box = new BoxItem();
+               box.setWasPrice("" + price);
                Component[] listCom = detailItem.getComponents();
                if (listCom.length != 0) {
                     for (int i = 0; i < listCom.length; i++) {
@@ -270,11 +275,16 @@ public class ActionProduct {
                               double newAmountUsd = qty * price;
                               if (listData.getDiscount() > 0) {
                                    double discountPrice = price - (listData.getDiscount() * price) / 100;
+                                   String discountStr = dm.format(discountPrice).replace("$", "");
+                                   discountStr = discountStr.replace(",", "");
+                                   discountPrice = Double.parseDouble(discountStr);
                                    newAmountUsd = discountPrice * qty;
                               }
                               obj.setLabelAmountUsd(dm.format(newAmountUsd));
                               obj.setLabelAmountKh(kh.format(newAmountUsd * JavaConstant.exchangeRate));
                               box.setSubtotalPanel(subtotalPanel);
+                              obj.setDiscountAmount(dm.format(qty * discount));
+
                               box.setListCom(listCom);
                               box.setDetailItem(detailItem);
                               total(0, listCom, 0, subtotalPanel);
@@ -289,9 +299,14 @@ public class ActionProduct {
 
                if (listData.getDiscount() > 0) {
                     double discountPrice = price - (listData.getDiscount() * price) / 100;
+                    String discountStr = dm.format(discountPrice).replace("$", "");
+                    discountStr = discountStr.replace(",", "");
+                    price = Double.parseDouble(discountStr);
+
                     box.setLabelPrice(dm.format(discountPrice));
                     box.setLabelAmountUsd(dm.format(discountPrice));
-                    box.setLabelAmountKh(kh.format(discountPrice * JavaConstant.exchangeRate));
+                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
+
                } else {
                     box.setLabelPrice(dm.format(price));
                     box.setLabelAmountUsd(dm.format(price));
@@ -312,6 +327,7 @@ public class ActionProduct {
                detailItem.setBorder(new BevelBorder(BevelBorder.RAISED));
                detailItem.setLayout(new BoxLayout(detailItem, BoxLayout.PAGE_AXIS));
                detailItem.setBackground(WindowColor.white);
+
                total(price, listCom, discount, subtotalPanel);
 
                // add list has one box to BoxItem (note: must be add)

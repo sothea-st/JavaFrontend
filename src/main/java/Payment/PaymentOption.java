@@ -431,6 +431,7 @@ public class PaymentOption extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Khmer OS Content", 0, 12)); // NOI18N
         jLabel4.setText("៛");
 
+        txtReceiveUsd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtReceiveUsd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtReceiveUsdMouseClicked(evt);
@@ -442,6 +443,7 @@ public class PaymentOption extends javax.swing.JDialog {
             }
         });
 
+        txtReceiveKhr.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtReceiveKhr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtReceiveKhrMouseClicked(evt);

@@ -131,11 +131,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="txtPhone" max="32767" attributes="0"/>
-                      <Component id="lbPhone" pref="28" max="32767" attributes="0"/>
+                      <Component id="lbPhone" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbEmail" pref="28" max="32767" attributes="0"/>
+                      <Component id="lbEmail" max="32767" attributes="0"/>
                       <Component id="txtEmail" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>

@@ -151,16 +151,13 @@ public class MainPage extends javax.swing.JFrame {
                @Override
                public void onKeyType() {
                     valueSearch = searchBox.getValueTextSearch();
-                    if (valueSearch.length() == 13) {
-                         if (JavaConstant.checkOpenShift) {
-                              ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
-                         } else {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-                              j.setMessage(JavaConstant.openShiftFirst);
-                              j.setVisible(true);
-                         }
+                    if (JavaConstant.checkOpenShift) {
+                         ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                    } else {
+                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                         j.setMessage(JavaConstant.openShiftFirst);
+                         j.setVisible(true);
                     }
-
                }
           };
           searchBox.initEvent(event);
@@ -678,6 +675,10 @@ public class MainPage extends javax.swing.JFrame {
               }
          } else {
               System.err.println("System Cannot Open Shift");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
@@ -689,7 +690,11 @@ public class MainPage extends javax.swing.JFrame {
               approval.setTypeForm("reprint");
               approval.setVisible(true);
          } else {
-              System.err.println("System cannot open return option");
+              System.err.println("System Cannot Open Reprint");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_btnReprintMouseClicked
 
@@ -722,6 +727,10 @@ public class MainPage extends javax.swing.JFrame {
               approval.setVisible(true);
          } else {
               System.err.println("System cannot open return option");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_btnReturnMouseClicked
 
@@ -740,6 +749,10 @@ public class MainPage extends javax.swing.JFrame {
               }
          } else {
               System.err.println("System cannot open cancel option");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
@@ -774,6 +787,10 @@ public class MainPage extends javax.swing.JFrame {
                }
           } else {
                System.err.println("System cannot oprn Cashier Report");
+               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+               j.setMessage(MessageAlert.Message.OverallMessage);
+               j.setVisible(true);
+               return;
           }
      }
 
@@ -790,7 +807,11 @@ public class MainPage extends javax.swing.JFrame {
                rep.setSubtotalPanel(totalPanel);
                rep.setBtnPayment(btnPayment);
                rep.setVisible(true);
-
+          } else {
+               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+               j.setMessage(MessageAlert.Message.OverallMessage);
+               j.setVisible(true);
+               return;
           }
 
      }//GEN-LAST:event_button3MouseClicked
@@ -811,6 +832,10 @@ public class MainPage extends javax.swing.JFrame {
               cust.setVisible(true);
          } else {
               System.err.println("System cannot open customer");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
 
     }//GEN-LAST:event_buttonCustomerMouseClicked

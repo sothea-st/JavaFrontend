@@ -6,6 +6,7 @@ import Color.WindowColor;
 import Components.BoxItem;
 import Components.DialonInputName;
 import Components.HistoryHoldOrder;
+import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
@@ -152,6 +153,14 @@ public class ReprintJdailog extends javax.swing.JDialog {
               ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
               rep.setVisible(true);
          } else if (typeForm.equals("hold")) {
+              Component[] listCom1 = detailItem.getComponents();
+              if (listCom1.length == 0){
+                    JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                    j.setMessage("Cannot add hold order!");
+                    j.setVisible(true);
+                    return;
+              }
+             
               this.dispose();
               DialonInputName d = new DialonInputName(new JFrame(), true);
               d.setDetailItem(detailItem);

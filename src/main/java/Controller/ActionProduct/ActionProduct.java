@@ -29,8 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import okhttp3.Response;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class ActionProduct {
 
@@ -223,14 +221,15 @@ public class ActionProduct {
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
           String khValue = kh.format(total * JavaConstant.exchangeRate);
           khValue = khValue.replaceAll(",", "");
-          khValue = "9999967";
+//          khValue = "9999967";
           int l = khValue.length();
           int begin = l - 2;
           String last2Number = khValue.substring(begin, l);
+          String value = "";
           if (!last2Number.equals("00")) {
                String[] listStr = khValue.split("");
                int lengthChar = listStr.length;
-               String value = "";
+
                switch (lengthChar) {
                     case 3:
                          value = JavaRoundUpKhr.roundUp3length(listStr);
@@ -248,10 +247,10 @@ public class ActionProduct {
                          value = JavaRoundUpKhr.roundUpKhr7length(listStr);
                          break;
                }
-               System.err.println("data value = " + value);
           }
+          System.err.println("data value = " + value);
      }
- 
+
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;

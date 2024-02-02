@@ -80,7 +80,7 @@
         </Component>
         <Component class="Components.TextFieldCenter" name="txtCustomerName">
           <Properties>
-            <Property name="labelTextCenter" type="java.lang.String" value="No found"/>
+            <Property name="labelTextCenter" type="java.lang.String" value="Customer Name"/>
           </Properties>
         </Component>
         <Component class="Components.Label" name="label1">

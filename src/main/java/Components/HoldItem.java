@@ -66,78 +66,75 @@ public class HoldItem extends javax.swing.JPanel {
      }
 
      @SuppressWarnings("unchecked")
-     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-     private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-          holdItem = new javax.swing.JPanel();
-          lbName = new javax.swing.JLabel();
-          lbQty = new javax.swing.JLabel();
-          buttonCancel = new ButtonPackage.ButtonCancel();
-          btnDelete = new ButtonPackage.ButtonCancel();
+        holdItem = new javax.swing.JPanel();
+        lbName = new javax.swing.JLabel();
+        lbQty = new javax.swing.JLabel();
+        buttonCancel = new ButtonPackage.ButtonCancel();
+        btnDelete = new ButtonPackage.ButtonCancel();
 
-          lbName.setText("Name");
+        lbName.setText("Name");
 
-          lbQty.setText("qty");
+        lbQty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbQty.setText("qty");
 
-          buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-               public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    buttonCancelMouseClicked(evt);
-               }
-          });
+        buttonCancel.setBackground(new java.awt.Color(47, 152, 70));
+        buttonCancel.setButtonName("Process");
+        buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCancelMouseClicked(evt);
+            }
+        });
 
-          btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
-               public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    btnDeleteMouseClicked(evt);
-               }
-          });
+        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteMouseClicked(evt);
+            }
+        });
 
-          javax.swing.GroupLayout holdItemLayout = new javax.swing.GroupLayout(holdItem);
-          holdItem.setLayout(holdItemLayout);
-          holdItemLayout.setHorizontalGroup(
-               holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(holdItemLayout.createSequentialGroup()
-                    .addGap(14, 14, 14)
-                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(90, 90, 90)
-                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
-          );
-          holdItemLayout.setVerticalGroup(
-               holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(holdItemLayout.createSequentialGroup()
-                    .addGroup(holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addGroup(holdItemLayout.createSequentialGroup()
-                              .addGap(17, 17, 17)
-                              .addGroup(holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                   .addComponent(lbName)
-                                   .addComponent(lbQty)))
-                         .addGroup(holdItemLayout.createSequentialGroup()
-                              .addContainerGap()
-                              .addGroup(holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                   .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                   .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-          );
+        javax.swing.GroupLayout holdItemLayout = new javax.swing.GroupLayout(holdItem);
+        holdItem.setLayout(holdItemLayout);
+        holdItemLayout.setHorizontalGroup(
+            holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(holdItemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addGap(90, 90, 90)
+                .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        holdItemLayout.setVerticalGroup(
+            holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(holdItemLayout.createSequentialGroup()
+                .addGroup(holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, holdItemLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(holdItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbQty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
-          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-          this.setLayout(layout);
-          layout.setHorizontalGroup(
-               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(layout.createSequentialGroup()
-                    .addComponent(holdItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
-          );
-          layout.setVerticalGroup(
-               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(layout.createSequentialGroup()
-                    .addComponent(holdItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
-          );
-     }// </editor-fold>//GEN-END:initComponents
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(holdItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(holdItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
      private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
 
@@ -166,11 +163,11 @@ public class HoldItem extends javax.swing.JPanel {
      }
 
 
-     // Variables declaration - do not modify//GEN-BEGIN:variables
-     private ButtonPackage.ButtonCancel btnDelete;
-     private ButtonPackage.ButtonCancel buttonCancel;
-     private javax.swing.JPanel holdItem;
-     private javax.swing.JLabel lbName;
-     private javax.swing.JLabel lbQty;
-     // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ButtonPackage.ButtonCancel btnDelete;
+    private ButtonPackage.ButtonCancel buttonCancel;
+    private javax.swing.JPanel holdItem;
+    private javax.swing.JLabel lbName;
+    private javax.swing.JLabel lbQty;
+    // End of variables declaration//GEN-END:variables
 }

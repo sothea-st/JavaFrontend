@@ -5,10 +5,13 @@ import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
+import Fonts.WindowFonts;
 import Model.CustomerType.CustomerTypeModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -387,7 +390,12 @@ public class Customer extends javax.swing.JDialog {
             dispose();
         }
         else{
-            System.out.println("Failed !");
+            UIManager UI=new UIManager();
+            UI.put("OptionPane.background", WindowColor.mediumGreen);
+            UI.put("Panel.background", WindowColor.mediumGreen);
+            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+            JOptionPane.showMessageDialog(null, "Save Failed!");
+            return;
         }
     }//GEN-LAST:event_buttonSaveMouseClicked
 

@@ -665,20 +665,28 @@ public class MainPage extends javax.swing.JFrame {
                    close.setVisible(true);
               }
          } else {
-              System.err.println("System Cannot Open Shift");
+            System.err.println("System Cannot Open Shift");
+            JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+            j.setMessage(MessageAlert.Message.OverallMessage);
+            j.setVisible(true);
+            return;
          }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
      //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
-         if (JavaConstant.token != null) {
-              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
-              approval.setJdFormLogin(jdFormLogin);
-              approval.setTypeForm("reprint");
-              approval.setVisible(true);
-         } else {
-              System.err.println("System cannot open return option");
-         }
+        if (JavaConstant.token != null) {
+            ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+            approval.setJdFormLogin(jdFormLogin);
+            approval.setTypeForm("reprint");
+            approval.setVisible(true);
+        } else {
+            System.err.println("System Cannot Open Reprint");
+            JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+            j.setMessage(MessageAlert.Message.OverallMessage);
+            j.setVisible(true);
+            return;
+        }
     }//GEN-LAST:event_btnReprintMouseClicked
 
      //Action Button payment
@@ -710,6 +718,10 @@ public class MainPage extends javax.swing.JFrame {
               approval.setVisible(true);
          } else {
               System.err.println("System cannot open return option");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_btnReturnMouseClicked
 
@@ -728,6 +740,10 @@ public class MainPage extends javax.swing.JFrame {
               }
          } else {
               System.err.println("System cannot open cancel option");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
@@ -762,6 +778,10 @@ public class MainPage extends javax.swing.JFrame {
                }
           } else {
                System.err.println("System cannot oprn Cashier Report");
+               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+               j.setMessage(MessageAlert.Message.OverallMessage);
+               j.setVisible(true);
+               return;
           }
      }
 
@@ -778,7 +798,13 @@ public class MainPage extends javax.swing.JFrame {
                rep.setSubtotalPanel(totalPanel);
                rep.setBtnPayment(btnPayment);
                rep.setVisible(true);
-
+          }
+          else
+          {
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
           }
 
      }//GEN-LAST:event_button3MouseClicked
@@ -799,6 +825,10 @@ public class MainPage extends javax.swing.JFrame {
               cust.setVisible(true);
          } else {
               System.err.println("System cannot open customer");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
 
     }//GEN-LAST:event_buttonCustomerMouseClicked

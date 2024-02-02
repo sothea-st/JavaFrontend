@@ -3,10 +3,13 @@ package Components;
 import Button.Button;
 import Color.WindowColor;
 import Constant.JavaConstant;
+import Fonts.WindowFonts;
 import Model.HoldOrder.HoldOrderModel;
 import java.awt.Component;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 public class DialonInputName extends javax.swing.JDialog {
 
@@ -35,7 +38,7 @@ public class DialonInputName extends javax.swing.JDialog {
 
         lbTitle.setLabelTitle("Add Customer Name");
 
-        txtCustomerName.setLabelTextCenter("No found");
+        txtCustomerName.setLabelTextCenter("Customer Name");
 
         label1.setLabelName("Customer Name");
 
@@ -96,12 +99,21 @@ public class DialonInputName extends javax.swing.JDialog {
      private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
           String name = txtCustomerName.getValueTextFieldCenter();
 
+          if(name==null){
+            UIManager UI=new UIManager();
+            UI.put("OptionPane.background", WindowColor.mediumGreen);
+            UI.put("Panel.background", WindowColor.mediumGreen);
+            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+            JOptionPane.showMessageDialog(null, "Customer Name can not be empty!");
+            return;
+          }
+
           if (!JavaConstant.listHoldData.isEmpty()) {
                for (int i = 0; i < JavaConstant.listHoldData.size(); i++) {
                     String customerName = JavaConstant.listHoldData.get(i).getCustomerName();
                     if (name.equals(customerName)) {
                          JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-                         j.setMessage("Process hold can not have same customer name!");
+                         j.setMessage("Process hold order can not have the same customer name!");
                          j.setVisible(true);
                          return;
                     }

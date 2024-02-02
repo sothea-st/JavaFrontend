@@ -233,14 +233,36 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      }
 
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
-         String userId = txtUserId.getValueTextField();
-         String password = txtPassword.getValuePassword();
+//         String userId = txtUserId.getValueTextField();
+//         String password = txtPassword.getValuePassword();
 
+         String userId = "0003";
+         String password = "TT@126$kh#";
+         
          JSONObject json = new JSONObject();
-         json.put("userCode", "0003");
-         json.put("password", "TT@126$kh#");
+         json.put("userCode", userId);
+         json.put("password", password);
 
          try {
+             
+              if(userId == null){
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background", WindowColor.mediumGreen);
+                UI.put("Panel.background", WindowColor.mediumGreen);
+                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                JOptionPane.showMessageDialog(null, "User ID can not be empty!");
+                return;
+              }
+             
+              if(password == null){
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background", WindowColor.mediumGreen);
+                UI.put("Panel.background", WindowColor.mediumGreen);
+                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                JOptionPane.showMessageDialog(null, "Password can not be empty!");
+                return;
+              }
+             
               Response response = JavaConnection.login(JavaRoute.login, json);
               System.err.println("response  = " + response);
               if (response.isSuccessful()) {

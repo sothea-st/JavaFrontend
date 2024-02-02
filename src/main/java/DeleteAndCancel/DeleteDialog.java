@@ -221,9 +221,7 @@ public class DeleteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
-        
-        System.out.println("Reason ID :" + reasonId);
-        
+
         if( reasonId == null) {
             UIManager UI=new UIManager();
             UI.put("OptionPane.background", WindowColor.mediumGreen);
@@ -242,10 +240,18 @@ public class DeleteDialog extends javax.swing.JDialog {
             json.put("listCancelDetail", listCancelDetail);
 
             Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "delete", json);
-            System.err.println("response " + response);
+
             if (response.isSuccessful()) {
                 dispose();
                 deleteItem();
+            }
+            else{
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background", WindowColor.mediumGreen);
+                UI.put("Panel.background", WindowColor.mediumGreen);
+                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                JOptionPane.showMessageDialog(null, "Save Failed!");
+                return;
             }
         } catch (Exception e) {
         }

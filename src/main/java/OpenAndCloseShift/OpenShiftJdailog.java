@@ -7,11 +7,13 @@ import Constant.JavaConstant;
 import Constant.JavaRoute;
 import DefaultPrice.DataModelDefaultPrice;
 import Event.ButtonEvent;
+import Fonts.WindowFonts;
 import LoginAndLogoutForm.LoginFormJdailog;
 import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 import org.json.JSONObject;
@@ -328,7 +330,12 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
                 JavaConstant.checkCloseShift = 1l;
 
             } else {
-                System.out.println("Failll");
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background", WindowColor.mediumGreen);
+                UI.put("Panel.background", WindowColor.mediumGreen);
+                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                JOptionPane.showMessageDialog(null, "Save Failed!");
+                return;
             }
 
         } catch (Exception e) {

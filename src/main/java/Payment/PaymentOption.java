@@ -10,6 +10,7 @@ import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
+import Fonts.WindowFonts;
 import Model.CustomerType.CustomerTypeModel;
 import Model.CustomerType.SourceModel;
 import Model.ReturnModel.ReturnProductModel;
@@ -23,6 +24,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
 import org.json.JSONArray;
@@ -1198,6 +1200,14 @@ public class PaymentOption extends javax.swing.JDialog {
                    JavaConstant.indexArrayListHold = 0;
               }
 
+         }
+         else{
+            UIManager UI=new UIManager();
+            UI.put("OptionPane.background", WindowColor.mediumGreen);
+            UI.put("Panel.background", WindowColor.mediumGreen);
+            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+            JOptionPane.showMessageDialog(null, "Charge Failed!");
+            return;
          }
 
 

@@ -126,20 +126,23 @@ public class MainPage extends javax.swing.JFrame {
 
      private void eventInputOrScanBarcode() {
           // this event was called when user type on textField 
-
           ButtonEvent eventData = new ButtonEvent() {
                @Override
                public void onKeyType() {
                     String barcode = textField.getValueTextField();
-                    ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
-//                    if (barcode.length() == 13) {
-//                         textField.setLabelTextField("");
-//                    }
-
+                    if (barcode.length() == 13) {
+                         if (JavaConstant.checkOpenShift) {
+                              ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
+                              textField.setValueTextField("");
+                         } else {
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                              j.setMessage(JavaConstant.openShiftFirst);
+                              j.setVisible(true);
+                         }
+                    }
                }
           };
           textField.initEvent(eventData);
-
      }
 
      private void eventSearchProduct() {
@@ -148,7 +151,16 @@ public class MainPage extends javax.swing.JFrame {
                @Override
                public void onKeyType() {
                     valueSearch = searchBox.getValueTextSearch();
-                    ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                    if (valueSearch.length() == 13) {
+                         if (JavaConstant.checkOpenShift) {
+                              ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                         } else {
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                              j.setMessage(JavaConstant.openShiftFirst);
+                              j.setVisible(true);
+                         }
+                    }
+
                }
           };
           searchBox.initEvent(event);
@@ -272,8 +284,10 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLogo.setIcon(new javax.swing.ImageIcon("D:\\POSCASHIER\\tt_pos_window\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
 
         imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgUser.setIcon(new javax.swing.ImageIcon("D:\\POSCASHIER\\tt_pos_window\\src\\main\\resources\\image\\UserIcon.png")); // NOI18N
 
         javax.swing.GroupLayout dayLayout = new javax.swing.GroupLayout(day);
         day.setLayout(dayLayout);
@@ -479,7 +493,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPaginationLayout.createSequentialGroup()
                         .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cmboxBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -648,7 +662,18 @@ public class MainPage extends javax.swing.JFrame {
                    jdOpenShift.setVisible(true);
 
               } else if (buttonName.equals("close shift")) {
+
+                   Component[] listCom1 = detailItem.getComponents();
+                   if (listCom1.length != 0) {
+                        JavaAlertMessage j = new JavaAlertMessage(this, true);
+                        j.setMessage("You have to remove the produt that has been bought or do the payment first!");
+                        j.setVisible(true);
+                        return;
+                   }
+
                    CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
+                   close.setPanelProduct(panelProduct);
+                   close.setPanelPagination(panelPagination);
                    close.setVisible(true);
               }
          } else {

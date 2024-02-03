@@ -236,7 +236,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //         String userId = txtUserId.getValueTextField();
 //         String password = txtPassword.getValuePassword();
 
-         String userId = "0003";
+         String userId = "0005";
          String password = "TT@126$kh#";
          
          JSONObject json = new JSONObject();
@@ -264,7 +264,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
               }
              
               Response response = JavaConnection.login(JavaRoute.login, json);
-              System.err.println("response  = " + response);
+             
               if (response.isSuccessful()) {
                    String responseData = response.body().string();
                    ObjectMapper objMap = new ObjectMapper();
@@ -370,7 +370,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-                                  
+
                                    if (JavaConstant.checkOpenShift) {
                                         setCatId(catId);
                                         getPanelPagination().setVisible(true);
@@ -461,7 +461,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //     public void setCheckOpenShift(boolean checkOpenShift) {
 //          this.checkOpenShift = checkOpenShift;
 //     }
-
      public JLabel getBoxUserName() {
           return boxUserName;
      }

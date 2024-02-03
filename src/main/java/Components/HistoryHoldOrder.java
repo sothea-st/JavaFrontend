@@ -213,6 +213,8 @@ public class HistoryHoldOrder extends javax.swing.JDialog {
      }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void removeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseClicked
+        
+         
         panelHold.removeAll();
         refreshPanel();
         JavaConstant.listHoldData.clear();

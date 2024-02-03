@@ -23,7 +23,7 @@ public class JavaConstant {
 //     public static Component[] listHoldData;
      public static String roleName;
      public static String isReturn;
- 
+
      public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
      public static String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
 
@@ -46,9 +46,19 @@ public class JavaConstant {
           double doubleValue = Double.valueOf(data);
           return doubleValue;
      }
-     
-     public static  ArrayList<HoldOrderModel> listHoldData = new ArrayList<>();
-     public static int indexArrayListHold=0;
-     public static boolean checkOpenShift=false;
+
+     public static ArrayList<HoldOrderModel> listHoldData = new ArrayList<>();
+     public static int indexArrayListHold = 0;
+     public static boolean checkOpenShift = false;
+     public static String openShiftFirst = "You have to open shift first!";
+
+     public static double get4Length(String value) {
+          if (value.length() > 4) {
+               String data = value.substring(0, 4);
+               double d = Double.parseDouble(data);
+               return d;
+          }
+          return Double.parseDouble(value);
+     }
 
 }

@@ -29,8 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import okhttp3.Response;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class ActionProduct {
 
@@ -134,8 +132,9 @@ public class ActionProduct {
                     @Override
                     public void onMouseClick() {
                          int qty = Integer.valueOf(product.getQty());
+                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                          if (qty == 0) {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+
                               j.setMessage("No Qty");
                               j.setVisible(true);
                               return;
@@ -147,10 +146,11 @@ public class ActionProduct {
                               if (JavaConstant.checkOpenShift) {
                                    eventBtnBuy(listData);
                               } else {
-                                   System.out.println("Open shift to processing sale!");
+                                   j.setMessage(JavaConstant.openShiftFirst);
+                                   j.setVisible(true);
                               }
                          } else {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+
                               j.setMessage("Product not avalible for sale!");
                               j.setVisible(true);
                          }
@@ -201,6 +201,7 @@ public class ActionProduct {
      public void total(double price, Component[] listCom, double discountProduct, SubtotalPanel subtotalPanel) {
           double sumAmountUsd = price;
           double sumDiscount = discountProduct;
+
           if (listCom.length != 0) {
                for (int i = 0; i < listCom.length; i++) {
                     var data = ((BoxItem) listCom[i]);
@@ -209,90 +210,63 @@ public class ActionProduct {
 
                     // discont usd
                     int qty = data.getQty();
-                    double discount = JavaConstant.getReplace(data.getDiscountAmount()) * qty;
+
+                    double discount = JavaConstant.getReplace(data.getDiscountAmount());
                     sumDiscount += Double.valueOf(discount);
                }
           }
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
           subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * JavaConstant.exchangeRate));
+
           subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
           subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
           // total
           double total = sumAmountUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));
           subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
-          String khValue = kh.format(total * JavaConstant.exchangeRate);
-          khValue = khValue.replaceAll(",", "");
-          khValue = "701";
-          int l = khValue.length();
-          int begin = l - 2;
-          String last2Number = khValue.substring(begin, l);
-          if (!last2Number.equals("00")) {
-               String[] listStr = khValue.split("");
-               int lengthChar = listStr.length;
-           
-               switch (lengthChar) {
-                    case 3:
-                         String value = JavaRoundUpKhr.roundUp3length(listStr);
-                         System.out.println("value data == " + value);
-                         break;
-                    case 4:
-                         roundUpKhr4(listStr, lengthChar);
-                         break;
-                    default:
-                         throw new AssertionError();
-               }
-          }
+
+//          String khValue = kh.format(total * JavaConstant.exchangeRate);
+//          khValue = khValue.replaceAll(",", "");
+//          //          khValue = "9999967";
+//          int l = khValue.length();
+//          int begin = l - 2;
+//          String last2Number = khValue.substring(begin, l);
+//          String value = "";
+//          if (!last2Number.equals("00")) {
+//               String[] listStr = khValue.split("");
+//               int lengthChar = listStr.length;
+//
+//               switch (lengthChar) {
+//                    case 3:
+//                         value = JavaRoundUpKhr.roundUp3length(listStr);
+//                         break;
+//                    case 4:
+//                         value = JavaRoundUpKhr.roundUpKhr4length(listStr);
+//                         break;
+//                    case 5:
+//                         value = JavaRoundUpKhr.roundUpKhr5length(listStr);
+//                         break;
+//                    case 6:
+//                         value = JavaRoundUpKhr.roundUpKhr6length(listStr);
+//                         break;
+//                    case 7:
+//                         value = JavaRoundUpKhr.roundUpKhr7length(listStr);
+//                         break;
+//               }
+//          }
+//          System.err.println("data value = " + value);
      }
 
  
-     void roundUpKhr4(String[] listStr, int lengthChar) {
-          int num = Integer.parseInt(listStr[lengthChar - 3]) + 1;
-          String numStr = "" + num;
-          if (num < 10) {
-               listStr[lengthChar - 3] = "" + numStr;
-          } else {
-               int num0 = Integer.parseInt(listStr[0]) + 1;
-               listStr[lengthChar - 4] = "" + num0;
-               listStr[lengthChar - 3] = "0";
-          }
-          listStr[lengthChar - 2] = "0";
-          listStr[lengthChar - 1] = "0";
-
-          String valueData = "";
-          for (int j = 0; j < listStr.length; j++) {
-               valueData += listStr[j];
-          }
-          System.err.println("valuedata 4 = " + valueData);
-     }
-
-     // 150 ===> 200
-     // 950 ===> 1000
-     // 1542 ===> 1600
-     // 1965 ===> 2000
-     // 9965 ===> 10000
-     // 12543 ===> 12600
-     // 12955 ===> 13000
-     // 19953 ===> 20000
-     // 99932 ===> 100000
-     // 145265 ===> 145300
-     // 144965 ===> 145000
-     // 149965 ===> 150000
-     // 199965 ===> 200000
-     // 999965 ===> 1000000
-     // 1235465 ===> 1235500
-     // 1235965 ===> 1236000
-     // 1239965 ===> 1240000
-     // 1299965 ===> 1300000
-     // 1999965 ===> 2000000
-     // 9999965 ===> 10000000
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;
-
+          discount = JavaConstant.get4Length(""+discount); // get 2 precision
+        
           try {
 
                BoxItem box = new BoxItem();
+               box.setWasPrice("" + price);
                Component[] listCom = detailItem.getComponents();
                if (listCom.length != 0) {
                     for (int i = 0; i < listCom.length; i++) {
@@ -305,11 +279,16 @@ public class ActionProduct {
                               double newAmountUsd = qty * price;
                               if (listData.getDiscount() > 0) {
                                    double discountPrice = price - (listData.getDiscount() * price) / 100;
+                                   String discountStr = dm.format(discountPrice).replace("$", "");
+                                   discountStr = discountStr.replace(",", "");
+                                   discountPrice = Double.parseDouble(discountStr);
                                    newAmountUsd = discountPrice * qty;
                               }
                               obj.setLabelAmountUsd(dm.format(newAmountUsd));
                               obj.setLabelAmountKh(kh.format(newAmountUsd * JavaConstant.exchangeRate));
                               box.setSubtotalPanel(subtotalPanel);
+                              obj.setDiscountAmount(dm.format(qty * discount));
+
                               box.setListCom(listCom);
                               box.setDetailItem(detailItem);
                               total(0, listCom, 0, subtotalPanel);
@@ -324,16 +303,24 @@ public class ActionProduct {
 
                if (listData.getDiscount() > 0) {
                     double discountPrice = price - (listData.getDiscount() * price) / 100;
+                    String discountStr = dm.format(discountPrice).replace("$", "");
+                    discountStr = discountStr.replace(",", "");
+                    price = Double.parseDouble(discountStr);
+
                     box.setLabelPrice(dm.format(discountPrice));
                     box.setLabelAmountUsd(dm.format(discountPrice));
-                    box.setLabelAmountKh(kh.format(discountPrice * JavaConstant.exchangeRate));
+                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
+
                } else {
                     box.setLabelPrice(dm.format(price));
                     box.setLabelAmountUsd(dm.format(price));
                     box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
                }
 
+            
                box.setDiscountAmount(dm.format(discount));
+               box.setDiscountAmt(dm.format(discount));
+
                box.setQty(1);
                Response responseProductImage = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
                byte[] images = responseProductImage.body().bytes();
@@ -347,6 +334,7 @@ public class ActionProduct {
                detailItem.setBorder(new BevelBorder(BevelBorder.RAISED));
                detailItem.setLayout(new BoxLayout(detailItem, BoxLayout.PAGE_AXIS));
                detailItem.setBackground(WindowColor.white);
+
                total(price, listCom, discount, subtotalPanel);
 
                // add list has one box to BoxItem (note: must be add)

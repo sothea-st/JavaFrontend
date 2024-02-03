@@ -221,12 +221,14 @@ View\MainPage\MainPage$1.class
 LoginAndLogoutForm\LoginFormJdailog$6$1.class
 LoginAndLogoutForm\LoginFormJdailog$2.class
 Payment\PaymentOption$11.class
+Constant\JavaRoundUpKhr.class
 Button\ButtonBuy.class
 Components\BoxItem.class
 Components\HoldItem$1.class
 Components\BoxItem$2.class
 Components\DialonInputName$2.class
 Controller\ActionProduct\ActionProduct$1.class
+MessageAlert\Message.class
 Model\PackageProduct\ProductModel.class
 Button\ButtonAddProduct$2.class
 Components\JavaAlertMessage$1.class

@@ -126,20 +126,23 @@ public class MainPage extends javax.swing.JFrame {
 
      private void eventInputOrScanBarcode() {
           // this event was called when user type on textField 
-
           ButtonEvent eventData = new ButtonEvent() {
                @Override
                public void onKeyType() {
                     String barcode = textField.getValueTextField();
-                    ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
-//                    if (barcode.length() == 13) {
-//                         textField.setLabelTextField("");
-//                    }
-
+                    if (barcode.length() == 13) {
+                         if (JavaConstant.checkOpenShift) {
+                              ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
+                              textField.setValueTextField("");
+                         } else {
+                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                              j.setMessage(JavaConstant.openShiftFirst);
+                              j.setVisible(true);
+                         }
+                    }
                }
           };
           textField.initEvent(eventData);
-
      }
 
      private void eventSearchProduct() {
@@ -148,7 +151,13 @@ public class MainPage extends javax.swing.JFrame {
                @Override
                public void onKeyType() {
                     valueSearch = searchBox.getValueTextSearch();
-                    ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                    if (JavaConstant.checkOpenShift) {
+                         ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                    } else {
+                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                         j.setMessage(JavaConstant.openShiftFirst);
+                         j.setVisible(true);
+                    }
                }
           };
           searchBox.initEvent(event);
@@ -650,43 +659,43 @@ public class MainPage extends javax.swing.JFrame {
                    jdOpenShift.setVisible(true);
 
               } else if (buttonName.equals("close shift")) {
-    
+
                    Component[] listCom1 = detailItem.getComponents();
-                   if (listCom1.length != 0){
+                   if (listCom1.length != 0) {
                         JavaAlertMessage j = new JavaAlertMessage(this, true);
                         j.setMessage("You have to remove the produt that has been bought or do the payment first!");
                         j.setVisible(true);
                         return;
                    }
-                    
+
                    CloseShift close = new CloseShift(new JFrame(), true, btnOpenShift);
                    close.setPanelProduct(panelProduct);
                    close.setPanelPagination(panelPagination);
                    close.setVisible(true);
               }
          } else {
-            System.err.println("System Cannot Open Shift");
-            JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-            j.setMessage(MessageAlert.Message.OverallMessage);
-            j.setVisible(true);
-            return;
+              System.err.println("System Cannot Open Shift");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
          }
     }//GEN-LAST:event_btnOpenShiftMouseClicked
 
      //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
-        if (JavaConstant.token != null) {
-            ApprovalCode approval = new ApprovalCode(new JFrame(), true);
-            approval.setJdFormLogin(jdFormLogin);
-            approval.setTypeForm("reprint");
-            approval.setVisible(true);
-        } else {
-            System.err.println("System Cannot Open Reprint");
-            JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-            j.setMessage(MessageAlert.Message.OverallMessage);
-            j.setVisible(true);
-            return;
-        }
+         if (JavaConstant.token != null) {
+              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+              approval.setJdFormLogin(jdFormLogin);
+              approval.setTypeForm("reprint");
+              approval.setVisible(true);
+         } else {
+              System.err.println("System Cannot Open Reprint");
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage(MessageAlert.Message.OverallMessage);
+              j.setVisible(true);
+              return;
+         }
     }//GEN-LAST:event_btnReprintMouseClicked
 
      //Action Button payment
@@ -798,13 +807,11 @@ public class MainPage extends javax.swing.JFrame {
                rep.setSubtotalPanel(totalPanel);
                rep.setBtnPayment(btnPayment);
                rep.setVisible(true);
-          }
-          else
-          {
-              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-              j.setMessage(MessageAlert.Message.OverallMessage);
-              j.setVisible(true);
-              return;
+          } else {
+               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+               j.setMessage(MessageAlert.Message.OverallMessage);
+               j.setVisible(true);
+               return;
           }
 
      }//GEN-LAST:event_button3MouseClicked

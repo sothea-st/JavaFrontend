@@ -28,6 +28,7 @@ public class ApprovalCode extends javax.swing.JDialog {
           setResizable(false);
           event();
           txtCode.requestFocus();
+          txtCode.setLabelTextField("");
      }
 
      //Action call function placeholder

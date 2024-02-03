@@ -8,7 +8,7 @@ public class ReprintModel {
      private String remainingKhr;
      private String companyLogo;
      private String companyName;
-     private Object receiveKhr;
+     private double receiveKhr;
      private double changeUsd;
      private String companyAddres;
      private SaleDetailModel[] saleDetails;
@@ -18,7 +18,7 @@ public class ReprintModel {
      private double total;
      private String customerType;
      private String empName;
-     private String changeKhr;
+     private double changeKhr;
      private long receiveUsd;
      private String companyContact;
      private String vattin;
@@ -30,7 +30,7 @@ public class ReprintModel {
           String remainingKhr,
           String companyLogo,
           String companyName,
-          Object receiveKhr,
+          double receiveKhr,
           double changeUsd,
           String companyAddres,
           SaleDetailModel[] saleDetails,
@@ -40,7 +40,7 @@ public class ReprintModel {
           double total,
           String customerType,
           String empName,
-          String changeKhr,
+          double changeKhr,
           long receiveUsd,
           String companyContact,
           String vattin
@@ -95,12 +95,12 @@ public class ReprintModel {
      }
 
      @JsonProperty("receiveKhr")
-     public Object getReceiveKhr() {
+     public double getReceiveKhr() {
           return receiveKhr;
      }
 
      @JsonProperty("receiveKhr")
-     public void setReceiveKhr(Object value) {
+     public void setReceiveKhr(double value) {
           this.receiveKhr = value;
      }
 
@@ -195,12 +195,12 @@ public class ReprintModel {
      }
 
      @JsonProperty("changeKhr")
-     public String getChangeKhr() {
+     public double getChangeKhr() {
           return changeKhr;
      }
 
      @JsonProperty("changeKhr")
-     public void setChangeKhr(String value) {
+     public void setChangeKhr(double value) {
           this.changeKhr = value;
      }
 

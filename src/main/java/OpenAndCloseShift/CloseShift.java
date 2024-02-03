@@ -229,12 +229,12 @@ public class CloseShift extends javax.swing.JDialog {
              return;
          }
         
-         double express = JavaConstant.getReplace(redexpress.getValueTextField());
-         double khqrMnk = JavaConstant.getReplace(qrMnk.getValueTextField());
-         double khqrAba = JavaConstant.getReplace(qrAba.getValueTextField());
-         double creditCard = JavaConstant.getReplace(abaCreditCard.getValueTextField());
-         double cashKhr = JavaConstant.getReplace(cashKh.getValueTextField());
-         double cashUsd = JavaConstant.getReplace(cashUs.getValueTextField());
+         String express = redexpress.getValueTextField();
+         String khqrMnk = qrMnk.getValueTextField();
+         String khqrAba = qrAba.getValueTextField();
+         String creditCard = abaCreditCard.getValueTextField();
+         String cashKhr = cashKh.getValueTextField();
+         String cashUsd = cashUs.getValueTextField();
 
          JSONObject json = new JSONObject();
          json.put("express", express);

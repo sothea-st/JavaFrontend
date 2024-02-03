@@ -34,6 +34,7 @@ public class CashierReport extends javax.swing.JDialog {
 
     private DataSuccessModelReport dataSuccessReport;
     DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+    DecimalFormat kh = new DecimalFormat("#,##0 ៛");
 
     public CashierReport(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -131,7 +132,6 @@ public class CashierReport extends javax.swing.JDialog {
         print.setForeground(new java.awt.Color(255, 255, 255));
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\front-end.06\\Documents\\NetBeansProjects\\tt_pos_window-danin\\src\\main\\resources\\image\\redant.png")); // NOI18N
 
         companyname.setFont(new java.awt.Font("Khmer OS Muol", 1, 10)); // NOI18N
         companyname.setForeground(new java.awt.Color(0, 0, 0));
@@ -163,11 +163,11 @@ public class CashierReport extends javax.swing.JDialog {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(comapnyAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         openShiftSummary.setBackground(new java.awt.Color(255, 255, 255));
@@ -641,7 +641,7 @@ public class CashierReport extends javax.swing.JDialog {
                     .addGroup(printLayout.createSequentialGroup()
                         .addGroup(printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(printLayout.createSequentialGroup()
-                                .addGap(92, 92, 92)
+                                .addGap(83, 83, 83)
                                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(printLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -668,7 +668,7 @@ public class CashierReport extends javax.swing.JDialog {
                 .addComponent(companyname, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(openShiftSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -810,7 +810,16 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-            report.setTotalpice(dm.format(list.getTotal()));
+            
+            System.out.println("list.getTitle() :" + list.getTitle().equals("CASH (KHR)"));
+
+            if(list.getTitle().equals("CASH (KHR)")){
+                report.setTotalpice(kh.format(list.getTotal()));
+            }
+            else{
+                report.setTotalpice(dm.format(list.getTotal()));
+            }
+            
             panelSummaryPayment.add(report);
             panelSummaryPayment.add(Box.createRigidArea(new Dimension(2, 2)));
         }

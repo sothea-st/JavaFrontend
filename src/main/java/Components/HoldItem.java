@@ -75,8 +75,10 @@ public class HoldItem extends javax.swing.JPanel {
         buttonCancel = new ButtonPackage.ButtonCancel();
         btnDelete = new ButtonPackage.ButtonCancel();
 
+        lbName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbName.setText("Name");
 
+        lbQty.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbQty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQty.setText("qty");
 
@@ -88,6 +90,7 @@ public class HoldItem extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setButtonName("Delete");
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeleteMouseClicked(evt);

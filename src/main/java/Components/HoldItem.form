@@ -67,11 +67,17 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lbName">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbQty">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="qty"/>
           </Properties>
@@ -88,6 +94,9 @@
           </Events>
         </Component>
         <Component class="ButtonPackage.ButtonCancel" name="btnDelete">
+          <Properties>
+            <Property name="buttonName" type="java.lang.String" value="Delete"/>
+          </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDeleteMouseClicked"/>
           </Events>

@@ -160,6 +160,7 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
               Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId + "/" + paymentNo);
 
               if (response.isSuccessful()) {
+                   this.dispose();
                    String myObject = response.body().string();
                    ObjectMapper objMap = new ObjectMapper();
                    DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);

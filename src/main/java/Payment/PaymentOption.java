@@ -110,7 +110,7 @@ public class PaymentOption extends javax.swing.JDialog {
           labelFontBlack2.setFontColor(WindowColor.white);
           labelFontBlack5.setFontColor(WindowColor.white);
           labelFontBlack9.setFontColor(WindowColor.white);
-          lbCreditCard.setBackground(WindowColor.blue);
+          lbCreditCard.setBackground(WindowColor.lightBlue);
           lbCash.setBackground(WindowColor.green);
      }
 
@@ -361,7 +361,7 @@ public class PaymentOption extends javax.swing.JDialog {
 
         lbNationality.setLabelName(" Nationality");
 
-        lbCash.setBackground(new java.awt.Color(0, 204, 255));
+        lbCash.setBackground(new java.awt.Color(51, 153, 255));
         lbCash.setFontColor(java.awt.Color.white);
         lbCash.setLabelName("Cash");
         lbCash.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -370,7 +370,7 @@ public class PaymentOption extends javax.swing.JDialog {
             }
         });
 
-        lbCreditCard.setBackground(new java.awt.Color(0, 204, 255));
+        lbCreditCard.setBackground(new java.awt.Color(51, 153, 255));
         lbCreditCard.setFontColor(java.awt.Color.white);
         lbCreditCard.setLabelName("Credit Card");
         lbCreditCard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -379,7 +379,7 @@ public class PaymentOption extends javax.swing.JDialog {
             }
         });
 
-        lbCashPayment.setBackground(new java.awt.Color(0, 204, 255));
+        lbCashPayment.setBackground(new java.awt.Color(51, 153, 255));
         lbCashPayment.setFontColor(java.awt.Color.white);
         lbCashPayment.setLabelName("Cash Payment");
 
@@ -1272,14 +1272,14 @@ public class PaymentOption extends javax.swing.JDialog {
 
      private void lbCashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCashMouseClicked
           paymentType = "cash";
-          lbCreditCard.setBackground(WindowColor.blue);
+          lbCreditCard.setBackground(WindowColor.lightBlue);
           lbCash.setBackground(WindowColor.green);
      }//GEN-LAST:event_lbCashMouseClicked
 
      private void lbCreditCardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCreditCardMouseClicked
           paymentType = JavaConstant.typeCredit;
           lbCreditCard.setBackground(WindowColor.green);
-          lbCash.setBackground(WindowColor.blue);
+          lbCash.setBackground(WindowColor.lightBlue);
      }//GEN-LAST:event_lbCreditCardMouseClicked
 
      private void setValueLabelUsd(double remaining, double change) {

@@ -132,8 +132,9 @@ public class ActionProduct {
                     @Override
                     public void onMouseClick() {
                          int qty = Integer.valueOf(product.getQty());
+                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                          if (qty == 0) {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+
                               j.setMessage("No Qty");
                               j.setVisible(true);
                               return;
@@ -145,10 +146,11 @@ public class ActionProduct {
                               if (JavaConstant.checkOpenShift) {
                                    eventBtnBuy(listData);
                               } else {
-                                   System.out.println("Open shift to processing sale!");
+                                   j.setMessage(JavaConstant.openShiftFirst);
+                                   j.setVisible(true);
                               }
                          } else {
-                              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+
                               j.setMessage("Product not avalible for sale!");
                               j.setVisible(true);
                          }
@@ -206,16 +208,16 @@ public class ActionProduct {
                     // sub total usd
                     sumAmountUsd += JavaConstant.getReplace(data.getLabelAmountUsd());
 
-                    System.out.println("discount = " + data.getDiscountAmount());
                     // discont usd
                     int qty = data.getQty();
-//                    double discount = JavaConstant.getReplace(data.getDiscountAmount());
-                    double discount = JavaConstant.getReplace(data.getDiscountAmount()) * qty;
+
+                    double discount = JavaConstant.getReplace(data.getDiscountAmount());
                     sumDiscount += Double.valueOf(discount);
                }
           }
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
           subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * JavaConstant.exchangeRate));
+
           subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
           subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
           // total
@@ -255,10 +257,12 @@ public class ActionProduct {
 //          System.err.println("data value = " + value);
      }
 
+ 
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;
-
+          discount = JavaConstant.get4Length(""+discount); // get 2 precision
+        
           try {
 
                BoxItem box = new BoxItem();
@@ -313,7 +317,10 @@ public class ActionProduct {
                     box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
                }
 
+            
                box.setDiscountAmount(dm.format(discount));
+               box.setDiscountAmt(dm.format(discount));
+
                box.setQty(1);
                Response responseProductImage = JavaConnection.get(JavaRoute.readImage + listData.getProImageName());
                byte[] images = responseProductImage.body().bytes();

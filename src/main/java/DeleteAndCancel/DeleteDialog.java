@@ -27,107 +27,107 @@ import org.json.JSONObject;
 
 public class DeleteDialog extends javax.swing.JDialog {
 
-    // declar variable
-    private JPanel detailItem;
-    private Component[] listCom;
-    private int productId;
-    private SubtotalPanel subtotalPanel;
-    DecimalFormat dm = new DecimalFormat("$#,##0.00");
-    DecimalFormat kh = new DecimalFormat("#,##0");
-    private String reasonId;
+     // declar variable
+     private JPanel detailItem;
+     private Component[] listCom;
+     private int productId;
+     private SubtotalPanel subtotalPanel;
+     DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+     DecimalFormat kh = new DecimalFormat("#,##0");
+     private String reasonId;
 
-    public DeleteDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        panelDelete.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        addComboReason();
+     public DeleteDialog(java.awt.Frame parent, boolean modal) {
+          super(parent, modal);
+          initComponents();
+          panelDelete.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          addComboReason();
 
-        // action get select reason type
-        ButtonEvent event = new ButtonEvent() {
-            @Override
-            public void onSelect(String key) {
-                reasonId = key;
-                System.err.println("key = " + key);
-            }
-        };
-        comboBoxReason.initEvent(event);
-    }
+          // action get select reason type
+          ButtonEvent event = new ButtonEvent() {
+               @Override
+               public void onSelect(String key) {
+                    reasonId = key;
+                    System.err.println("key = " + key);
+               }
+          };
+          comboBoxReason.initEvent(event);
+     }
 
-    private void addComboReason() {
-        HashMap<String, String> map = new HashMap<>();
-        try {
-            ArrayList<ReasonModel> reason = new ArrayList<>();
-            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+     private void addComboReason() {
+          HashMap<String, String> map = new HashMap<>();
+          try {
+               ArrayList<ReasonModel> reason = new ArrayList<>();
+               Response response = JavaConnection.get(JavaRoute.reason + "cancel");
 
-            if (response.isSuccessful()) {
-                String responseData = response.body().string();
-                JSONObject jsonObject = new JSONObject(responseData);
-                JSONArray data = jsonObject.getJSONArray("data");
-                for (int i = 0; i < data.length(); i++) {
-                    JSONObject obj = data.getJSONObject(i);
-                    ReasonModel modelReason = new ReasonModel(
-                            obj.getInt("id"),
-                            obj.getString("reason")
-                    );
-                    reason.add(modelReason);
-                    int idReason = reason.get(i).getIdReason();
-                    String reasonName = reason.get(i).getReason();
-                    map.put(reasonName, "" + idReason);
-                }
-                comboBoxReason.setMap(map);
+               if (response.isSuccessful()) {
+                    String responseData = response.body().string();
+                    JSONObject jsonObject = new JSONObject(responseData);
+                    JSONArray data = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                         JSONObject obj = data.getJSONObject(i);
+                         ReasonModel modelReason = new ReasonModel(
+                              obj.getInt("id"),
+                              obj.getString("reason")
+                         );
+                         reason.add(modelReason);
+                         int idReason = reason.get(i).getIdReason();
+                         String reasonName = reason.get(i).getReason();
+                         map.put(reasonName, "" + idReason);
+                    }
+                    comboBoxReason.setMap(map);
 
-            } else {
-                System.err.println("fail loading data");
-            }
-        } catch (Exception e) {
-            System.err.println("error = " + e);
-        }
-    }
+               } else {
+                    System.err.println("fail loading data");
+               }
+          } catch (Exception e) {
+               System.err.println("error = " + e);
+          }
+     }
 
-    void deleteItem() {
-        double sumSubTotalUsd = 0;
-        double sumDiscount = 0;
-        for (int i = 0; i < listCom.length; i++) {
-            var d = (BoxItem) listCom[i];
-            if (productId == d.getProductId()) {
-                detailItem.remove(i);
-                detailItem.revalidate();
-                detailItem.repaint();
-            } else {
-                var data = (BoxItem) listCom[i];
-                String priceStr = data.getLabelPrice();
-                priceStr = priceStr.replace("$", "");
-                priceStr = priceStr.replace(",", "");
-                double price = Double.valueOf(priceStr);
-                int qty = data.getQty();
-                double amount = price * qty;
-                sumSubTotalUsd += amount;
+     void deleteItem() {
+          double sumSubTotalUsd = 0;
+          double sumDiscount = 0;
+          for (int i = 0; i < listCom.length; i++) {
+               var d = (BoxItem) listCom[i];
+               if (productId == d.getProductId()) {
+                    detailItem.remove(i);
+                    detailItem.revalidate();
+                    detailItem.repaint();
+               } else {
+                    var data = (BoxItem) listCom[i];
+                    String priceStr = data.getLabelPrice();
+                    priceStr = priceStr.replace("$", "");
+                    priceStr = priceStr.replace(",", "");
+                    double price = Double.valueOf(priceStr);
+                    int qty = data.getQty();
+                    double amount = price * qty;
+                    sumSubTotalUsd += amount;
 
-                String discount = data.getDiscountAmount();
-                discount = discount.replace("$", "");
-                discount = discount.replace(",", "");
-                double discountValue = Double.valueOf(discount) * qty;
-                sumDiscount += Double.valueOf(discountValue);
-            }
-        }
+                    String discount = data.getDiscountAmount();
+                    discount = discount.replace("$", "");
+                    discount = discount.replace(",", "");
+                    double discountValue = JavaConstant.getReplace(d.getDiscountAmount());
+                    sumDiscount += discountValue;
+               }
+          }
 
-        subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
-        subtotalPanel.setLabelSubtotalKhr(kh.format(sumSubTotalUsd * JavaConstant.exchangeRate));
+          subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
+          subtotalPanel.setLabelSubtotalKhr(kh.format(sumSubTotalUsd * JavaConstant.exchangeRate));
 
-        subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
-        subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
+          subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
+          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
 
-        // total
-        double total = sumSubTotalUsd - sumDiscount;
-        subtotalPanel.setLableTotalUsd(dm.format(total));
-        subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
+          // total
+          double total = sumSubTotalUsd - sumDiscount;
+          subtotalPanel.setLableTotalUsd(dm.format(total));
+          subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
 
-        this.dispose();
-    }
+          this.dispose();
+     }
 
-    @SuppressWarnings("unchecked")
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -217,93 +217,92 @@ public class DeleteDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
 
-        if( reasonId == null) {
-            UIManager UI=new UIManager();
-            UI.put("OptionPane.background", WindowColor.mediumGreen);
-            UI.put("Panel.background", WindowColor.mediumGreen);
-            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-            JOptionPane.showMessageDialog(null, "Please select a reason!");
-            return;
-        }
-        
-        try {
-            JSONObject json = new JSONObject();
-            json.put("createBy", JavaConstant.cashierId);
-            json.put("reasonId", 1);
-            ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
-            listCancelDetail.add(new ProductIDModel(productId));
-            json.put("listCancelDetail", listCancelDetail);
+         if (reasonId == null) {
+              UIManager UI = new UIManager();
+              UI.put("OptionPane.background", WindowColor.mediumGreen);
+              UI.put("Panel.background", WindowColor.mediumGreen);
+              UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+              JOptionPane.showMessageDialog(null, "Please select a reason!");
+              return;
+         }
 
-            Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "delete", json);
+         try {
+              JSONObject json = new JSONObject();
+              json.put("createBy", JavaConstant.cashierId);
+              json.put("reasonId", 1);
+              ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
+              listCancelDetail.add(new ProductIDModel(productId));
+              json.put("listCancelDetail", listCancelDetail);
 
-            if (response.isSuccessful()) {
-                dispose();
-                deleteItem();
-            }
-            else{
-                UIManager UI=new UIManager();
-                UI.put("OptionPane.background", WindowColor.mediumGreen);
-                UI.put("Panel.background", WindowColor.mediumGreen);
-                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                JOptionPane.showMessageDialog(null, "Save Failed!");
-                return;
-            }
-        } catch (Exception e) {
-        }
-     
+              Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "delete", json);
+
+              if (response.isSuccessful()) {
+                   dispose();
+                   deleteItem();
+              } else {
+                   UIManager UI = new UIManager();
+                   UI.put("OptionPane.background", WindowColor.mediumGreen);
+                   UI.put("Panel.background", WindowColor.mediumGreen);
+                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                   JOptionPane.showMessageDialog(null, "Save Failed!");
+                   return;
+              }
+         } catch (Exception e) {
+         }
+
     }//GEN-LAST:event_buttonSave1MouseClicked
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DeleteDialog dialog = new DeleteDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+     public static void main(String args[]) {
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    DeleteDialog dialog = new DeleteDialog(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
-    public JPanel getDetailItem() {
-        return detailItem;
-    }
+     public JPanel getDetailItem() {
+          return detailItem;
+     }
 
-    public void setDetailItem(JPanel detailItem) {
-        this.detailItem = detailItem;
-    }
+     public void setDetailItem(JPanel detailItem) {
+          this.detailItem = detailItem;
+     }
 
-    public Component[] getListCom() {
-        return listCom;
-    }
+     public Component[] getListCom() {
+          return listCom;
+     }
 
-    public void setListCom(Component[] listCom) {
-        this.listCom = listCom;
-    }
+     public void setListCom(Component[] listCom) {
+          this.listCom = listCom;
+     }
 
-    public int getProductId() {
-        return productId;
-    }
+     public int getProductId() {
+          return productId;
+     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+     public void setProductId(int productId) {
+          this.productId = productId;
+     }
 
-    public SubtotalPanel getSubtotalPanel() {
-        return subtotalPanel;
-    }
+     public SubtotalPanel getSubtotalPanel() {
+          return subtotalPanel;
+     }
 
-    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
-        this.subtotalPanel = subtotalPanel;
-    }
+     public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+          this.subtotalPanel = subtotalPanel;
+     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -27,17 +27,12 @@ import javax.swing.JPanel;
  */
 public class BoxItem extends javax.swing.JPanel {
 
-     /**
-      * @return the labelQuantity
-      */
+
      public int getLabelQuantity() {
           return labelQuantity;
      }
 
-     /**
-      * @param labelQuantity the
-      * labelQuantity to set
-      */
+
      public void setLabelQuantity(int labelQuantity) {
           this.labelQuantity = labelQuantity;
      }
@@ -204,6 +199,16 @@ public class BoxItem extends javax.swing.JPanel {
           this.wasPrice = wasPrice;
      }
 
+     public String getDiscountAmt() {
+          return discountAmt;
+     }
+
+     public void setDiscountAmt(String discountAmt) {
+          this.discountAmt = discountAmt;
+     }
+     
+     
+
      
      /**
       * Creates new form BoxItem
@@ -226,7 +231,7 @@ public class BoxItem extends javax.swing.JPanel {
      private String wasPrice;
      DecimalFormat dm = new DecimalFormat("$ #,##0.00");
      DecimalFormat kh = new DecimalFormat("#,##0");
-
+     private String discountAmt;
      public BoxItem() {
           initComponents();
 
@@ -264,6 +269,7 @@ public class BoxItem extends javax.swing.JPanel {
      }
 
      void sumTotal(String sign) {
+         
           int getQty = getQty();
           if (sign == "+") {
                // add qty 
@@ -282,14 +288,14 @@ public class BoxItem extends javax.swing.JPanel {
                double subAmountUsd = Double.valueOf(priceUsd) * getQty;
                setLabelAmountUsd(dm.format(subAmountUsd));
                setLabelAmountKh(kh.format(subAmountUsd * JavaConstant.exchangeRate));
-               
-               double price = JavaConstant.getReplace(labelPrice);
-               System.err.println("discount == " + labelPrice);
-               double discountPrice = (discountDigit * price) / 100;
-               String dd = dm.format(qty*discountPrice);
-               txtDiscount.setText("Discount : "+dd);
+                    
+               double _discoutnAmt = JavaConstant.getReplace(discountAmt) * qty;
+               txtDiscount.setText("Discount : " + dm.format(_discoutnAmt)); 
+               setDiscountAmount(dm.format(_discoutnAmt));
           }
 
+          
+          // ============ for subtotal panel
           int count = buttonAddProduct.getParent().getParent().getComponentCount();
           Component[] list = buttonAddProduct.getParent().getParent().getComponents();
 
@@ -309,8 +315,9 @@ public class BoxItem extends javax.swing.JPanel {
                String discount = data.getDiscountAmount();
                discount = discount.replace("$", "");
                discount = discount.replace(",", "");
-               double discountValue = Double.valueOf(discount) * qty;
+               double discountValue = Double.valueOf(discount);
                sumDiscount += Double.valueOf(discountValue);
+               System.err.println("fhhhhhhhhhhhhhhhh = " + data.getDiscountAmount());
           }
 
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
@@ -533,7 +540,6 @@ public class BoxItem extends javax.swing.JPanel {
 
          Component[] listDelete = btnDelete.getParent().getParent().getComponents();
          var b = (BoxItem) btnDelete.getParent();
-
          DeleteDialog delete = new DeleteDialog(new JFrame(), true);
          delete.setDetailItem(detailItem);
          delete.setListCom(listDelete);

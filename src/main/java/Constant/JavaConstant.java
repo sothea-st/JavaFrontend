@@ -52,4 +52,13 @@ public class JavaConstant {
      public static boolean checkOpenShift = false;
      public static String openShiftFirst = "You have to open shift first!";
 
+     public static double get4Length(String value) {
+          if (value.length() > 4) {
+               String data = value.substring(0, 4);
+               double d = Double.parseDouble(data);
+               return d;
+          }
+          return Double.parseDouble(value);
+     }
+
 }

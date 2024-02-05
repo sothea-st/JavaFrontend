@@ -58,7 +58,6 @@ public class ActionProduct {
 
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
-
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
                     ProductDataModel[] listData = data.getData();
@@ -301,21 +300,21 @@ public class ActionProduct {
                box.setLabelWeight(listData.getWeight());
                box.setLabelBarcode(listData.getBarcode());
 
-               if (listData.getDiscount() > 0) {
-                    double discountPrice = price - (listData.getDiscount() * price) / 100;
-                    String discountStr = dm.format(discountPrice).replace("$", "");
-                    discountStr = discountStr.replace(",", "");
-                    price = Double.parseDouble(discountStr);
-
-                    box.setLabelPrice(dm.format(discountPrice));
-                    box.setLabelAmountUsd(dm.format(discountPrice));
-                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
-
-               } else {
+//               if (listData.getDiscount() > 0) {
+//                    double discountPrice = price - (listData.getDiscount() * price) / 100;
+//                    String discountStr = dm.format(discountPrice).replace("$", "");
+//                    discountStr = discountStr.replace(",", "");
+//                    price = Double.parseDouble(discountStr);
+//
+//                    box.setLabelPrice(dm.format(discountPrice));
+//                    box.setLabelAmountUsd(dm.format(discountPrice));
+//                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
+//
+//               } else {
                     box.setLabelPrice(dm.format(price));
                     box.setLabelAmountUsd(dm.format(price));
                     box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
-               }
+//               }
 
             
                box.setDiscountAmount(dm.format(discount));

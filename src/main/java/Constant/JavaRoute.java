@@ -25,5 +25,6 @@ public class JavaRoute {
      public static String generateBarcode = "/generateBarcode/barcodes/";
      public static String getDefaultPrice = "/defaultPrice";
      public static String getCustomerId = "/customer/getCustomerId";
+     public static String bgImage = "/public/addImageForBackground/";
 
 }

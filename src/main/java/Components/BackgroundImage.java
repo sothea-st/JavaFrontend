@@ -1,6 +1,10 @@
 package Components;
 
 import Color.WindowColor;
+import Constant.JavaConnection;
+import Constant.JavaRoute;
+import javax.swing.ImageIcon;
+import okhttp3.Response;
 
 /**
  *
@@ -8,22 +12,31 @@ import Color.WindowColor;
  */
 public class BackgroundImage extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BackgroundImage
-     */
-    public BackgroundImage() {
-        initComponents();
-        setBackground(WindowColor.slightGreen);
-    }
+     public BackgroundImage() {
+          initComponents();
+          setBackground(WindowColor.slightGreen);
+          getBgImage();
+     }
 
-    @SuppressWarnings("unchecked")
+     void getBgImage() {
+          Response response = JavaConnection.getWithoutToken(JavaRoute.bgImage + "King Mart Background.png");
+          if (response.isSuccessful()) {
+               try {
+                    byte[] bg = response.body().bytes();
+                    jLabel1.setIcon(new ImageIcon(bg));
+               } catch (Exception e) {
+                    System.err.println("error = " + e);
+               }
+          }
+     }
+
+     @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
 
           jLabel1 = new javax.swing.JLabel();
 
           jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-          jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\mobile-app.02\\Desktop\\project\\fronent java\\king mart\\tt_pos_window\\src\\main\\resources\\image\\King Mart Background.png")); // NOI18N
 
           javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
           this.setLayout(layout);

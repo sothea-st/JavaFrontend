@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -63,6 +64,32 @@ public class MainPage extends javax.swing.JFrame {
           eventInputOrScanBarcode();
           nextEvent();
           previousEvent();
+          getLogo();
+          getUserIcon();
+     }
+
+     void getLogo() {
+          Response response = JavaConnection.getWithoutToken(JavaRoute.bgImage + "King Mart Small Logo.png");
+          if (response.isSuccessful()) {
+               try {
+                    byte[] bg = response.body().bytes();
+                    lbLogo.setIcon(new ImageIcon(bg));
+               } catch (Exception e) {
+                    System.err.println("error = " + e);
+               }
+          }
+     }
+     
+      void getUserIcon() {
+          Response response = JavaConnection.getWithoutToken(JavaRoute.bgImage + "UserIcon.png");
+          if (response.isSuccessful()) {
+               try {
+                    byte[] bg = response.body().bytes();
+                    imgUser.setIcon(new ImageIcon(bg));
+               } catch (Exception e) {
+                    System.err.println("error = " + e);
+               }
+          }
      }
 
      private void nextEvent() {
@@ -293,10 +320,8 @@ public class MainPage extends javax.swing.JFrame {
           );
 
           lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-          lbLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\mobile-app.02\\Desktop\\project\\fronent java\\king mart\\tt_pos_window\\src\\main\\resources\\image\\King Mart Small Logo.png")); // NOI18N
 
           imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-          imgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\mobile-app.02\\Desktop\\project\\fronent java\\king mart\\tt_pos_window\\src\\main\\resources\\image\\UserIcon.png")); // NOI18N
 
           javax.swing.GroupLayout dayLayout = new javax.swing.GroupLayout(day);
           day.setLayout(dayLayout);

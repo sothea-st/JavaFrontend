@@ -222,17 +222,11 @@
         <Component class="javax.swing.JLabel" name="lbLogo">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\mobile-app.02\Desktop\project\fronent java\king mart\tt_pos_window\src\main\resources\image\King Mart Small Logo.png"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="imgUser">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\mobile-app.02\Desktop\project\fronent java\king mart\tt_pos_window\src\main\resources\image\UserIcon.png"/>
-            </Property>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="day">

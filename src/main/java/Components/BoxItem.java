@@ -27,11 +27,9 @@ import javax.swing.JPanel;
  */
 public class BoxItem extends javax.swing.JPanel {
 
-
      public int getLabelQuantity() {
           return labelQuantity;
      }
-
 
      public void setLabelQuantity(int labelQuantity) {
           this.labelQuantity = labelQuantity;
@@ -206,10 +204,7 @@ public class BoxItem extends javax.swing.JPanel {
      public void setDiscountAmt(String discountAmt) {
           this.discountAmt = discountAmt;
      }
-     
-     
 
-     
      /**
       * Creates new form BoxItem
       */
@@ -232,6 +227,7 @@ public class BoxItem extends javax.swing.JPanel {
      DecimalFormat dm = new DecimalFormat("$ #,##0.00");
      DecimalFormat kh = new DecimalFormat("#,##0");
      private String discountAmt;
+
      public BoxItem() {
           initComponents();
 
@@ -269,7 +265,7 @@ public class BoxItem extends javax.swing.JPanel {
      }
 
      void sumTotal(String sign) {
-         
+
           int getQty = getQty();
           if (sign == "+") {
                // add qty 
@@ -288,13 +284,12 @@ public class BoxItem extends javax.swing.JPanel {
                double subAmountUsd = Double.valueOf(priceUsd) * getQty;
                setLabelAmountUsd(dm.format(subAmountUsd));
                setLabelAmountKh(kh.format(subAmountUsd * JavaConstant.exchangeRate));
-                    
+
                double _discoutnAmt = JavaConstant.getReplace(discountAmt) * qty;
-               txtDiscount.setText("Discount : " + dm.format(_discoutnAmt)); 
+               txtDiscount.setText("Discount : " + dm.format(_discoutnAmt));
                setDiscountAmount(dm.format(_discoutnAmt));
           }
 
-          
           // ============ for subtotal panel
           int count = buttonAddProduct.getParent().getParent().getComponentCount();
           Component[] list = buttonAddProduct.getParent().getParent().getComponents();
@@ -317,7 +312,7 @@ public class BoxItem extends javax.swing.JPanel {
                discount = discount.replace(",", "");
                double discountValue = Double.valueOf(discount);
                sumDiscount += Double.valueOf(discountValue);
-               System.err.println("fhhhhhhhhhhhhhhhh = " + data.getDiscountAmount());
+
           }
 
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
@@ -325,6 +320,9 @@ public class BoxItem extends javax.swing.JPanel {
 
           subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
           subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
+
+          System.err.println("sumSubTotalUsd = " + sumSubTotalUsd);
+          System.err.println("sumDiscount = " + sumDiscount);
 
           // total
           double total = sumSubTotalUsd - sumDiscount;

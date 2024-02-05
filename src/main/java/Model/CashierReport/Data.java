@@ -20,8 +20,8 @@ public class Data {
     private SummerySale[] summerySale;
     private String companyContact;
     private String openDate;
-    private long closeCash;
-    private long openCash;
+    private double closeCash;
+    private double openCash;
 
     @JsonProperty("paymentNoFirst")
     public String getPaymentNoFirst() { return paymentNoFirst; }
@@ -89,12 +89,12 @@ public class Data {
     public void setOpenDate(String value) { this.openDate = value; }
 
     @JsonProperty("closeCash")
-    public long getCloseCash() { return closeCash; }
+    public double getCloseCash() { return closeCash; }
     @JsonProperty("closeCash")
-    public void setCloseCash(long value) { this.closeCash = value; }
+    public void setCloseCash(double value) { this.closeCash = value; }
 
     @JsonProperty("openCash")
-    public long getOpenCash() { return openCash; }
+    public double getOpenCash() { return openCash; }
     @JsonProperty("openCash")
-    public void setOpenCash(long value) { this.openCash = value; }
+    public void setOpenCash(double value) { this.openCash = value; }
 }

@@ -25,6 +25,21 @@ public class JavaConnection {
           }
           return response;
      }
+     
+     public static Response getWithoutToken(String route) {
+          Response response = null;
+          try {
+               OkHttpClient client = new OkHttpClient();
+               Request request = new Request.Builder()
+                    .url(new JavaBaseUrl().getBaseUrl() + route)
+                    .build();
+               response = client.newCall(request).execute();
+
+          } catch (Exception e) {
+               System.err.println("getting error during call request " + e);
+          }
+          return response;
+     }
 
      public static Response login(String route, JSONObject json) {
           Response response = null;

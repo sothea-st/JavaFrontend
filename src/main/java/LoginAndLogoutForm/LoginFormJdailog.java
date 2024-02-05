@@ -59,80 +59,80 @@ import javax.swing.UIManager;
  */
 public class LoginFormJdailog extends javax.swing.JDialog {
 
-     public JPanel getPanelPagination() {
-          return panelPagination;
-     }
+    public JPanel getPanelPagination() {
+        return panelPagination;
+    }
 
-     public void setPanelPagination(JPanel panelPagination) {
-          this.panelPagination = panelPagination;
-     }
+    public void setPanelPagination(JPanel panelPagination) {
+        this.panelPagination = panelPagination;
+    }
 
-     DecimalFormat df = new DecimalFormat("#,##0.00 kg");
-     DecimalFormat dm = new DecimalFormat("$ #,##0.00");
-     DecimalFormat bar = new DecimalFormat("########00000000");
-     DecimalFormat kh = new DecimalFormat("#,##0");
+    DecimalFormat df = new DecimalFormat("#,##0.00 kg");
+    DecimalFormat dm = new DecimalFormat("$ #,##0.00");
+    DecimalFormat bar = new DecimalFormat("########00000000");
+    DecimalFormat kh = new DecimalFormat("#,##0");
 
-     private JLabel lbPOSId;
-     private Button btnLogin;
-     private JLabel boxUserName;
-     private JPanel category;
-     private JPanel panelProduct;
-     private JScrollPane jScrollPaneCategory;
-     private JPanel detailItem;
-     private JPanel boxOne;
-     private SubtotalPanel subtotalPanel;
-     private Button btnPayment;
-     private JPanel panelPagination;
-     ActionProduct pro = new ActionProduct();
-     private ComboBox cmboxBrand;
+    private JLabel lbPOSId;
+    private Button btnLogin;
+    private JLabel boxUserName;
+    private JPanel category;
+    private JPanel panelProduct;
+    private JScrollPane jScrollPaneCategory;
+    private JPanel detailItem;
+    private JPanel boxOne;
+    private SubtotalPanel subtotalPanel;
+    private Button btnPayment;
+    private JPanel panelPagination;
+    ActionProduct pro = new ActionProduct();
+    private ComboBox cmboxBrand;
 //  checkOpenShift = false;
-     private Button btnOpenShift;
-     private int limit;
-     private int catId;
-     private int count;
+    private Button btnOpenShift;
+    private int limit;
+    private int catId;
+    private int count;
 
-     public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
-          super(parent, modal);
-          initComponents();
-          panelLogin.setBackground(WindowColor.mediumGreen);
-          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-          setResizable(false);
-          event();
-          txtUserId.requestFocus();
-     }
+    public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        panelLogin.setBackground(WindowColor.mediumGreen);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        event();
+        txtUserId.requestFocus();
+    }
 
-     //Function call Placeholder
-     void event() {
-          ButtonEvent btnevent = new ButtonEvent() {
-               @Override
-               public void onFocusGain() {
+    //Function call Placeholder
+    void event() {
+        ButtonEvent btnevent = new ButtonEvent() {
+            @Override
+            public void onFocusGain() {
 
-               }
-          };
-          txtUserId.initEvent(btnevent);
-     }
+            }
+        };
+        txtUserId.initEvent(btnevent);
+    }
 
-     public void assignProduct(ProductDataModel[] listData) {
-          panelProduct.removeAll();
-          panelProduct.revalidate();
-          panelProduct.repaint();
-          // setter of actionProduct
-          pro.setBtnLogin(btnLogin);
-          pro.setBoxOne(boxOne);
-          pro.setBtnPayment(btnPayment);
-          pro.setCategory(category);
-          pro.setDetailItem(detailItem);
-          pro.setPanelPagination(panelPagination);
-          pro.setSubtotalPanel(subtotalPanel);
-          pro.setjScrollPaneCategory(jScrollPaneCategory);
-          pro.setBoxUserName(boxUserName);
-          pro.setPanelProduct(panelProduct);
-          if (listData != null) {
-               pro.assignProduct(listData);
-          }
-     }
+    public void assignProduct(ProductDataModel[] listData) {
+        panelProduct.removeAll();
+        panelProduct.revalidate();
+        panelProduct.repaint();
+        // setter of actionProduct
+        pro.setBtnLogin(btnLogin);
+        pro.setBoxOne(boxOne);
+        pro.setBtnPayment(btnPayment);
+        pro.setCategory(category);
+        pro.setDetailItem(detailItem);
+        pro.setPanelPagination(panelPagination);
+        pro.setSubtotalPanel(subtotalPanel);
+        pro.setjScrollPaneCategory(jScrollPaneCategory);
+        pro.setBoxUserName(boxUserName);
+        pro.setPanelProduct(panelProduct);
+        if (listData != null) {
+            pro.assignProduct(listData);
+        }
+    }
 
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -226,233 +226,239 @@ public class LoginFormJdailog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-     public void scanbarCodeAddProduct(ProductModel proModel) {
-          ActionScanBarcodeAddProduct action = new ActionScanBarcodeAddProduct();
+    public void scanbarCodeAddProduct(ProductModel proModel) {
+        ActionScanBarcodeAddProduct action = new ActionScanBarcodeAddProduct();
 
-          pro.eventBtnBuy(proModel);
-     }
+        pro.eventBtnBuy(proModel);
+    }
 
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
 //         String userId = txtUserId.getValueTextField();
 //         String password = txtPassword.getValuePassword();
 
-         String userId = "0005";
-         String password = "TT@126$kh#";
-         
-         JSONObject json = new JSONObject();
-         json.put("userCode", userId);
-         json.put("password", password);
+        String userId = "0003";
+        String password = "TT@126$kh#";
 
-         try {
-             
-              if(userId == null){
-                UIManager UI=new UIManager();
+        JSONObject json = new JSONObject();
+        json.put("userCode", userId);
+        json.put("password", password);
+
+        try {
+
+            if (userId == null) {
+                UIManager UI = new UIManager();
                 UI.put("OptionPane.background", WindowColor.mediumGreen);
                 UI.put("Panel.background", WindowColor.mediumGreen);
                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
                 JOptionPane.showMessageDialog(null, "User ID can not be empty!");
                 return;
-              }
-             
-              if(password == null){
-                UIManager UI=new UIManager();
+            }
+
+            if (password == null) {
+                UIManager UI = new UIManager();
                 UI.put("OptionPane.background", WindowColor.mediumGreen);
                 UI.put("Panel.background", WindowColor.mediumGreen);
                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
                 JOptionPane.showMessageDialog(null, "Password can not be empty!");
                 return;
-              }
-             
-              Response response = JavaConnection.login(JavaRoute.login, json);
-             
-              if (response.isSuccessful()) {
-                   String responseData = response.body().string();
-                   ObjectMapper objMap = new ObjectMapper();
-                   LoginModel model = objMap.readValue(responseData, LoginModel.class);
+            }
 
-                   JavaConstant.token = model.getToken();
-                   JavaConstant.fullName = model.getUserName();
-                   JavaConstant.userCode = model.getUserCode();
-                   JavaConstant.posId = model.getPosID();
-                   JavaConstant.cashierId = model.getID();
+            Response response = JavaConnection.login(JavaRoute.login, json);
 
-                   Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
-                   if (responseOpenShift.isSuccessful()) {
-                        String result = responseOpenShift.body().string();
-                        ObjectMapper objectMapper = new ObjectMapper();
-                        OpenShiftDataModel data = objectMapper.readValue(result, OpenShiftDataModel.class);
-                        if (data.getData().getNumberOpenShift() == 1) { // == 1 user still open shift
-                             JavaConstant.checkOpenShift = true;
-                             btnOpenShift.setButtonName(JavaConstant.closeShift);
-                             JavaConstant.checkCloseShift = data.getData().getNumberOpenShift();
-                             JavaConstant.numberOpenShift = Integer.valueOf("" + data.getData().getNumberOpenShift());
-                        }
-                   }
+            if (response.isSuccessful()) {
+                String responseData = response.body().string();
+                ObjectMapper objMap = new ObjectMapper();
+                LoginModel model = objMap.readValue(responseData, LoginModel.class);
 
-                   dispose();
-                   getBtnLogin().setButtonName("Logout");
-                   getBoxUserName().setText(JavaConstant.fullName.toUpperCase() + " " + " USER ID : " + JavaConstant.userCode);
-                   lbPOSId.setText("POS ID : " + JavaConstant.posId);
-                   category();
-                   getjScrollPaneCategory().setVisible(true);
-                   ActionRequestBrand.requestBrand(cmboxBrand);
-                   eventSelect();
-              }
-              else
-              {
-                    UIManager UI=new UIManager();
-                    UI.put("OptionPane.background", WindowColor.mediumGreen);
-                    UI.put("Panel.background", WindowColor.mediumGreen);
-                    UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                    JOptionPane.showMessageDialog(null, "Wrong email or password!");
+                if (model.getRoleID() == null) {
+                    dispose();
+                    JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                    j.setMessage(model.getRoleName());
+                    j.setVisible(true);
+
                     return;
-              }
+                }
 
-         } catch (Exception e) {
+                JavaConstant.token = model.getToken();
+                JavaConstant.fullName = model.getUserName();
+                JavaConstant.userCode = model.getUserCode();
+//                   JavaConstant.posId = model.getPosID();
+                JavaConstant.posId ="01";
+                JavaConstant.cashierId = model.getID();
 
-         }
+                Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
+                if (responseOpenShift.isSuccessful()) {
+                    String result = responseOpenShift.body().string();
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    OpenShiftDataModel data = objectMapper.readValue(result, OpenShiftDataModel.class);
+                    if (data.getData().getNumberOpenShift() == 1) { // == 1 user still open shift
+                        JavaConstant.checkOpenShift = true;
+                        btnOpenShift.setButtonName(JavaConstant.closeShift);
+                        JavaConstant.checkCloseShift = data.getData().getNumberOpenShift();
+                        JavaConstant.numberOpenShift = Integer.valueOf("" + data.getData().getNumberOpenShift());
+                    }
+                }
+
+                dispose();
+                getBtnLogin().setButtonName("Logout");
+                getBoxUserName().setText(JavaConstant.fullName.toUpperCase() + " " + " USER ID : " + JavaConstant.userCode);
+                lbPOSId.setText("POS ID : " + JavaConstant.posId);
+                category();
+                getjScrollPaneCategory().setVisible(true);
+                ActionRequestBrand.requestBrand(cmboxBrand);
+                eventSelect();
+            } else {
+                UIManager UI = new UIManager();
+                UI.put("OptionPane.background", WindowColor.mediumGreen);
+                UI.put("Panel.background", WindowColor.mediumGreen);
+                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                JOptionPane.showMessageDialog(null, "Wrong email or password!");
+                return;
+            }
+
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_buttonLogin1MouseClicked
 
     private void buttonCancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancel1MouseClicked
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
-     void eventSelect() {
-          ButtonEvent events = new ButtonEvent() {
-               @Override
-               public void onSelect(String key) {
-                    Response response = JavaConnection.get(JavaRoute.getProductByBrandId + key);
-                    try {
-                         if (response.isSuccessful()) {
-                              String responseData = response.body().string();
-                              ObjectMapper objMap = new ObjectMapper();
-                              ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
+    void eventSelect() {
+        ButtonEvent events = new ButtonEvent() {
+            @Override
+            public void onSelect(String key) {
+                Response response = JavaConnection.get(JavaRoute.getProductByBrandId + key);
+                try {
+                    if (response.isSuccessful()) {
+                        String responseData = response.body().string();
+                        ObjectMapper objMap = new ObjectMapper();
+                        ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
 
-                              ProductDataModel[] listProduct = model.getData();
-                              assignProduct(listProduct);
-                         }
-                    } catch (Exception e) {
-                         System.err.println("error get produt by brand = " + e);
+                        ProductDataModel[] listProduct = model.getData();
+                        assignProduct(listProduct);
                     }
-               }
-          };
-          cmboxBrand.initEvent(events);
-     }
+                } catch (Exception e) {
+                    System.err.println("error get produt by brand = " + e);
+                }
+            }
+        };
+        cmboxBrand.initEvent(events);
+    }
 
-     private void category() {
-          try {
-               ArrayList<CategoryModel> listCategory = new ArrayList<>();
-               Response response = JavaConnection.get(JavaRoute.category);
+    private void category() {
+        try {
+            ArrayList<CategoryModel> listCategory = new ArrayList<>();
+            Response response = JavaConnection.get(JavaRoute.category);
 
-               if (response.isSuccessful()) {
-                    String strData = response.body().string(); // convert response to string 
-                    JSONObject jsonObject = new JSONObject(strData); // conver string to jsonobject
-                    JSONArray data = jsonObject.getJSONArray("data");
+            if (response.isSuccessful()) {
+                String strData = response.body().string(); // convert response to string 
+                JSONObject jsonObject = new JSONObject(strData); // conver string to jsonobject
+                JSONArray data = jsonObject.getJSONArray("data");
 
-                    for (int i = 0; i < data.length(); i++) {
-                         var objData = data.getJSONObject(i);
-                         CategoryModel c = new CategoryModel(
-                              objData.getInt("id"),
-                              objData.getString("catNameEn"),
-                              objData.getInt("parentId"),
-                              objData.getInt("parentId")
-                         );
-                         listCategory.add(c);
-                    }
+                for (int i = 0; i < data.length(); i++) {
+                    var objData = data.getJSONObject(i);
+                    CategoryModel c = new CategoryModel(
+                            objData.getInt("id"),
+                            objData.getString("catNameEn"),
+                            objData.getInt("parentId"),
+                            objData.getInt("parentId")
+                    );
+                    listCategory.add(c);
+                }
 
-                    for (int i = 0; i < listCategory.size(); i++) {
-                         int catId = listCategory.get(i).getId();
-                         LabelTitle categoryTitle = new LabelTitle();
-                         category.add(categoryTitle);
+                for (int i = 0; i < listCategory.size(); i++) {
+                    int catId = listCategory.get(i).getId();
+                    LabelTitle categoryTitle = new LabelTitle();
+                    category.add(categoryTitle);
 
-                         String catName = listCategory.get(i).getCatNameEn();
-                         categoryTitle.setLabelTitle(catName);
-                         ButtonEvent event = new ButtonEvent() {
-                              @Override
-                              public void onMouseClick() {
+                    String catName = listCategory.get(i).getCatNameEn();
+                    categoryTitle.setLabelTitle(catName);
+                    ButtonEvent event = new ButtonEvent() {
+                        @Override
+                        public void onMouseClick() {
 
-                                   if (JavaConstant.checkOpenShift) {
-                                        setCatId(catId);
-                                        getPanelPagination().setVisible(true);
-                                        // click on category actice background color
-                                        Component[] listCom = category.getComponents();
-                                        for (int i = 0; i < listCom.length; i++) {
-                                             String title = ((LabelTitle) listCom[i]).getLabelTitle();
-                                             if (catName.equals(title)) {
-                                                  listCom[i].setBackground(WindowColor.black);
-                                             } else {
-                                                  listCom[i].setBackground(WindowColor.darkGreen);
-                                             }
-                                        }
-                                        panelProduct.removeAll();
-                                        pro.product(catId, limit);
-                                        panelProduct.revalidate();
-                                        panelProduct.repaint();
-                                        setCount(pro.getCount());
-                                   }
-                                   else
-                                   {
-                                        JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-                                        j.setMessage("You have to open shift first!");
-                                        j.setVisible(true);
-                                        return;
-                                   }
-                              }
-                         };
-                         categoryTitle.initEvent(event);
-                    }
-                    category.setLayout(new GridLayout());
-                    // setter of actionProduct
-                    assignProduct(null);
+                            if (JavaConstant.checkOpenShift) {
+                                setCatId(catId);
+                                getPanelPagination().setVisible(true);
+                                // click on category actice background color
+                                Component[] listCom = category.getComponents();
+                                for (int i = 0; i < listCom.length; i++) {
+                                    String title = ((LabelTitle) listCom[i]).getLabelTitle();
+                                    if (catName.equals(title)) {
+                                        listCom[i].setBackground(WindowColor.black);
+                                    } else {
+                                        listCom[i].setBackground(WindowColor.darkGreen);
+                                    }
+                                }
+                                panelProduct.removeAll();
+                                pro.product(catId, limit);
+                                panelProduct.revalidate();
+                                panelProduct.repaint();
+                                setCount(pro.getCount());
+                            } else {
+                                JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                                j.setMessage("You have to open shift first!");
+                                j.setVisible(true);
+                                return;
+                            }
+                        }
+                    };
+                    categoryTitle.initEvent(event);
+                }
+                category.setLayout(new GridLayout());
+                // setter of actionProduct
+                assignProduct(null);
 
-               } else {
-                    System.err.println("fail load category");
-               }
-          } catch (Exception e) {
-               System.err.println("error " + e);
-          }
+            } else {
+                System.err.println("fail load category");
+            }
+        } catch (Exception e) {
+            System.err.println("error " + e);
+        }
 
-     }
+    }
 
-     public int getCount() {
-          return count;
-     }
+    public int getCount() {
+        return count;
+    }
 
-     public void setCount(int count) {
-          this.count = count;
-     }
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-     public int getLimit() {
-          return limit;
-     }
+    public int getLimit() {
+        return limit;
+    }
 
-     public void setLimit(int limit) {
-          this.limit = limit;
-     }
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
 
-     public int getCatId() {
-          return catId;
-     }
+    public int getCatId() {
+        return catId;
+    }
 
-     public void setCatId(int catId) {
-          this.catId = catId;
-     }
+    public void setCatId(int catId) {
+        this.catId = catId;
+    }
 
-     public JLabel getLbPOSId() {
-          return lbPOSId;
-     }
+    public JLabel getLbPOSId() {
+        return lbPOSId;
+    }
 
-     public void setLbPOSId(JLabel lbPOSId) {
-          this.lbPOSId = lbPOSId;
-     }
+    public void setLbPOSId(JLabel lbPOSId) {
+        this.lbPOSId = lbPOSId;
+    }
 
-     public Button getBtnOpenShift() {
-          return btnOpenShift;
-     }
+    public Button getBtnOpenShift() {
+        return btnOpenShift;
+    }
 
-     public void setBtnOpenShift(Button btnOpenShift) {
-          this.btnOpenShift = btnOpenShift;
-     }
+    public void setBtnOpenShift(Button btnOpenShift) {
+        this.btnOpenShift = btnOpenShift;
+    }
 
 //     public boolean isCheckOpenShift() {
 //          return checkOpenShift;
@@ -461,100 +467,100 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //     public void setCheckOpenShift(boolean checkOpenShift) {
 //          this.checkOpenShift = checkOpenShift;
 //     }
-     public JLabel getBoxUserName() {
-          return boxUserName;
-     }
+    public JLabel getBoxUserName() {
+        return boxUserName;
+    }
 
-     public void setBoxUserName(JLabel boxUserName) {
-          this.boxUserName = boxUserName;
-     }
+    public void setBoxUserName(JLabel boxUserName) {
+        this.boxUserName = boxUserName;
+    }
 
-     public Button getBtnLogin() {
-          return btnLogin;
-     }
+    public Button getBtnLogin() {
+        return btnLogin;
+    }
 
-     public void setBtnLogin(Button btnLogin) {
-          this.btnLogin = btnLogin;
-     }
+    public void setBtnLogin(Button btnLogin) {
+        this.btnLogin = btnLogin;
+    }
 
-     public void setCategory(JPanel category) {
-          this.category = category;
-     }
+    public void setCategory(JPanel category) {
+        this.category = category;
+    }
 
-     public JPanel getCategory() {
-          return category;
-     }
+    public JPanel getCategory() {
+        return category;
+    }
 
-     public JScrollPane getjScrollPaneCategory() {
-          return jScrollPaneCategory;
-     }
+    public JScrollPane getjScrollPaneCategory() {
+        return jScrollPaneCategory;
+    }
 
-     public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
-          this.jScrollPaneCategory = jScrollPaneCategory;
-     }
+    public void setjScrollPaneCategory(JScrollPane jScrollPaneCategory) {
+        this.jScrollPaneCategory = jScrollPaneCategory;
+    }
 
-     public JPanel getPanelProduct() {
-          return panelProduct;
-     }
+    public JPanel getPanelProduct() {
+        return panelProduct;
+    }
 
-     public void setPanelProduct(JPanel panelProduct) {
-          this.panelProduct = panelProduct;
-     }
+    public void setPanelProduct(JPanel panelProduct) {
+        this.panelProduct = panelProduct;
+    }
 
-     public JPanel getDetailItem() {
-          return detailItem;
-     }
+    public JPanel getDetailItem() {
+        return detailItem;
+    }
 
-     public void setDetailItem(JPanel detailItem) {
-          this.detailItem = detailItem;
-     }
+    public void setDetailItem(JPanel detailItem) {
+        this.detailItem = detailItem;
+    }
 
-     public SubtotalPanel getSubtotalPanel() {
-          return subtotalPanel;
-     }
+    public SubtotalPanel getSubtotalPanel() {
+        return subtotalPanel;
+    }
 
-     public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
-          this.subtotalPanel = subtotalPanel;
-     }
+    public void setSubtotalPanel(SubtotalPanel subtotalPanel) {
+        this.subtotalPanel = subtotalPanel;
+    }
 
-     public Button getBtnPayment() {
-          return btnPayment;
-     }
+    public Button getBtnPayment() {
+        return btnPayment;
+    }
 
-     public void setBtnPayment(Button btnPayment) {
-          this.btnPayment = btnPayment;
-     }
+    public void setBtnPayment(Button btnPayment) {
+        this.btnPayment = btnPayment;
+    }
 
-     public JPanel getBoxOne() {
-          return boxOne;
-     }
+    public JPanel getBoxOne() {
+        return boxOne;
+    }
 
-     public void setBoxOne(JPanel boxOne) {
-          this.boxOne = boxOne;
-     }
+    public void setBoxOne(JPanel boxOne) {
+        this.boxOne = boxOne;
+    }
 
-     public ComboBox getCmboxBrand() {
-          return cmboxBrand;
-     }
+    public ComboBox getCmboxBrand() {
+        return cmboxBrand;
+    }
 
-     public void setCmboxBrand(ComboBox cmboxBrand) {
-          this.cmboxBrand = cmboxBrand;
-     }
+    public void setCmboxBrand(ComboBox cmboxBrand) {
+        this.cmboxBrand = cmboxBrand;
+    }
 
-     public static void main(String args[]) {
-          java.awt.EventQueue.invokeLater(new Runnable() {
-               public void run() {
-                    LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true);
-                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                         @Override
-                         public void windowClosing(java.awt.event.WindowEvent e) {
-                              System.exit(0);
-                         }
-                    });
-                    dialog.setVisible(true);
-               }
-          });
-     }
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                LoginFormJdailog dialog = new LoginFormJdailog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel1;

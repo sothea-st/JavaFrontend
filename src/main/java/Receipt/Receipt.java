@@ -135,7 +135,7 @@ public class Receipt extends javax.swing.JDialog {
         jLabel34 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         changeUsd = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
+        changeKhr = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -510,10 +510,10 @@ public class Receipt extends javax.swing.JDialog {
         changeUsd.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         changeUsd.setText("$-");
 
-        jLabel49.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(56, 56, 56));
-        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel49.setText("2000");
+        changeKhr.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        changeKhr.setForeground(new java.awt.Color(56, 56, 56));
+        changeKhr.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        changeKhr.setText("2000");
 
         jLabel1.setFont(new java.awt.Font("Khmer OS Content", 0, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(56, 56, 56));
@@ -550,13 +550,13 @@ public class Receipt extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(receiveUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(receiveUsd, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel32)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -567,7 +567,7 @@ public class Receipt extends javax.swing.JDialog {
                                         .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(changeUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(11, 11, 11)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -584,7 +584,7 @@ public class Receipt extends javax.swing.JDialog {
                             .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(changeKhr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3)
                         .addComponent(jLabel6))))
         );
@@ -621,7 +621,7 @@ public class Receipt extends javax.swing.JDialog {
                     .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                     .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(changeUsd, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(changeKhr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -841,9 +841,9 @@ public class Receipt extends javax.swing.JDialog {
                receiveUsd.setText(dm.format(data.getReceiveUsd()));
                receiveKhr.setText(kh.format(data.getReceiveKhr()));
                changeUsd.setText(dm.format(data.getChangeUsd()));
-               jLabel49.setText(kh.format(data.getChangeKhr()));
+               changeKhr.setText(kh.format(data.getChangeKhr()));
                
-               
+               System.out.println("data.getReceiveUsd:" + data.getReceiveUsd());
                
                Response generateCode= JavaConnection.get(JavaRoute.generateBarcode + data.getPaymentNo().substring(3));
                byte[] barcode = generateCode.body().bytes();
@@ -882,6 +882,7 @@ public class Receipt extends javax.swing.JDialog {
     private Button.Button btnBack;
     private Button.Button btnPrint;
     private javax.swing.JLabel cashierName;
+    private javax.swing.JLabel changeKhr;
     private javax.swing.JLabel changeUsd;
     private javax.swing.JLabel companyname;
     private javax.swing.JLabel contact;
@@ -924,7 +925,6 @@ public class Receipt extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

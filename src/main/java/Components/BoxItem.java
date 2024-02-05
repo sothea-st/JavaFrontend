@@ -320,10 +320,7 @@ public class BoxItem extends javax.swing.JPanel {
 
           subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
           subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
-
-          System.err.println("sumSubTotalUsd = " + sumSubTotalUsd);
-          System.err.println("sumDiscount = " + sumDiscount);
-
+ 
           // total
           double total = sumSubTotalUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));

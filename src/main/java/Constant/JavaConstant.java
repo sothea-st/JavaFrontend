@@ -60,5 +60,8 @@ public class JavaConstant {
           }
           return Double.parseDouble(value);
      }
+     
+     public static String byBrandId = "Select By BrandID";
+     public static String byCatID = "Select By CatID";
 
 }

@@ -90,6 +90,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private int limit;
      private int catId;
      private int count;
+     private int brandId = 0;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -283,7 +284,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    JavaConstant.fullName = model.getUserName();
                    JavaConstant.userCode = model.getUserCode();
                    JavaConstant.posId = model.getPosID();
- 
+
                    JavaConstant.cashierId = model.getID();
 
                    Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
@@ -306,7 +307,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    category();
                    getjScrollPaneCategory().setVisible(true);
                    ActionRequestBrand.requestBrand(cmboxBrand);
-                   eventSelect();
+                   eventSelectBrand();
               } else {
                    UIManager UI = new UIManager();
                    UI.put("OptionPane.background", WindowColor.mediumGreen);
@@ -325,26 +326,34 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          this.dispose();
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
-     void eventSelect() {
+     public void eventSelectBrand() {
+
           ButtonEvent events = new ButtonEvent() {
                @Override
                public void onSelect(String key) {
-                    Response response = JavaConnection.get(JavaRoute.getProductByBrandId + key);
-                    try {
-                         if (response.isSuccessful()) {
-                              String responseData = response.body().string();
-                              ObjectMapper objMap = new ObjectMapper();
-                              ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
-
-                              ProductDataModel[] listProduct = model.getData();
-                              assignProduct(listProduct);
-                         }
-                    } catch (Exception e) {
-                         System.err.println("error get produt by brand = " + e);
-                    }
+                    getProductByBrandID(key,limit);
                }
           };
           cmboxBrand.initEvent(events);
+     }
+
+     public void getProductByBrandID(String key,int limits) {
+          Response response = JavaConnection.get(JavaRoute.getProductByBrandId + "?brandId=" + key + "&limit="+limits+"");
+         
+          try {
+               if (response.isSuccessful()) {
+                    String responseData = response.body().string();
+                    ObjectMapper objMap = new ObjectMapper();
+                    ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
+
+                    ProductDataModel[] listProduct = model.getData();
+                    assignProduct(listProduct);
+                    setBrandId(Integer.parseInt(key));
+                    setCount(model.getCount());
+               }
+          } catch (Exception e) {
+               System.err.println("error get produt by brand = " + e);
+          }
      }
 
      private void category() {
@@ -378,7 +387,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
-
                                    if (JavaConstant.checkOpenShift) {
                                         setCatId(catId);
                                         getPanelPagination().setVisible(true);
@@ -401,7 +409,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                                         j.setMessage("You have to open shift first!");
                                         j.setVisible(true);
-                                        return;
+
                                    }
                               }
                          };
@@ -418,6 +426,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                System.err.println("error " + e);
           }
 
+     }
+
+     public int getBrandId() {
+          return brandId;
+     }
+
+     public void setBrandId(int brandId) {
+          this.brandId = brandId;
      }
 
      public int getCount() {

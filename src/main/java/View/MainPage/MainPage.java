@@ -40,7 +40,7 @@ public class MainPage extends javax.swing.JFrame {
      private Color activeColor = new Color(56, 56, 56);
      private JPanel detailProduct;
      private String valueSearch;
-     private int limit = 10;
+     private int limit = 3;
 
      LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
 
@@ -79,8 +79,8 @@ public class MainPage extends javax.swing.JFrame {
                }
           }
      }
-     
-      void getUserIcon() {
+
+     void getUserIcon() {
           Response response = JavaConnection.getWithoutToken(JavaRoute.bgImage + "UserIcon.png");
           if (response.isSuccessful()) {
                try {
@@ -96,40 +96,13 @@ public class MainPage extends javax.swing.JFrame {
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onMouseClick() {
-
                     int count = jdFormLogin.getCount();
+                    System.err.println("count = " + count);
                     if (limit < count) {
-                         limit += 10;
+                         limit += 3;
                     }
-
-                    try {
-                         Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
-                         if (response.isSuccessful()) {
-                              String responseData = response.body().string();
-                              ObjectMapper objMap = new ObjectMapper();
-                              ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
-                              ProductDataModel[] listData = data.getData();
-                              jdFormLogin.assignProduct(listData);
-                         } else {
-                              System.err.println("fail loading product");
-                         }
-                    } catch (Exception e) {
-                         System.err.println("error getting product " + e);
-                    }
-               }
-          };
-          next.initEvent(event);
-     }
-
-     private void previousEvent() {
-          ButtonEvent event = new ButtonEvent() {
-               @Override
-               public void onMouseClick() {
-                    if (limit != 10) {
-                         limit -= 10;
-                    }
-
-                    if (limit != 0) {
+                    if (jdFormLogin.getBrandId() == 0) {
+                         System.out.println("nect event by cat id");
                          try {
                               Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
                               if (response.isSuccessful()) {
@@ -144,6 +117,41 @@ public class MainPage extends javax.swing.JFrame {
                          } catch (Exception e) {
                               System.err.println("error getting product " + e);
                          }
+                    } else { 
+                         jdFormLogin.getProductByBrandID("" + jdFormLogin.getBrandId(), limit);
+                    }
+               }
+          };
+          next.initEvent(event);
+     }
+
+     private void previousEvent() {
+          ButtonEvent event = new ButtonEvent() {
+               @Override
+               public void onMouseClick() {
+                    if (limit != 3) {
+                         limit -= 3;
+                    }
+
+                    if (jdFormLogin.getBrandId() == 0) {
+                         if (limit != 0) {
+                              try {
+                                   Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
+                                   if (response.isSuccessful()) {
+                                        String responseData = response.body().string();
+                                        ObjectMapper objMap = new ObjectMapper();
+                                        ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
+                                        ProductDataModel[] listData = data.getData();
+                                        jdFormLogin.assignProduct(listData);
+                                   } else {
+                                        System.err.println("fail loading product");
+                                   }
+                              } catch (Exception e) {
+                                   System.err.println("error getting product " + e);
+                              }
+                         }
+                    } else {
+                         jdFormLogin.getProductByBrandID("" + jdFormLogin.getBrandId(), limit);
                     }
 
                }

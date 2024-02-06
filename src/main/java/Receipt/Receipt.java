@@ -43,7 +43,7 @@ public class Receipt extends javax.swing.JDialog {
           jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
           setDefaultCloseOperation(DISPOSE_ON_CLOSE);
           setResizable(false);
-
+          exchangeDollar.setText(""+JavaConstant.exchangeRate);
      }
 
      public void printComponenet(Component component) {
@@ -145,6 +145,7 @@ public class Receipt extends javax.swing.JDialog {
         generateBarcode = new javax.swing.JLabel();
         invoiceCode = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        exchangeDollar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -422,7 +423,7 @@ public class Receipt extends javax.swing.JDialog {
 
         jLabel36.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(56, 56, 56));
-        jLabel36.setText("1 USD = 4200");
+        jLabel36.setText("1 USD = ");
 
         jLabel37.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(56, 56, 56));
@@ -665,6 +666,10 @@ public class Receipt extends javax.swing.JDialog {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("៛");
 
+        exchangeDollar.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        exchangeDollar.setForeground(new java.awt.Color(56, 56, 56));
+        exchangeDollar.setText("jLabel9");
+
         javax.swing.GroupLayout printLayout = new javax.swing.GroupLayout(print);
         print.setLayout(printLayout);
         printLayout.setHorizontalGroup(
@@ -691,6 +696,8 @@ public class Receipt extends javax.swing.JDialog {
                         .addComponent(jLabel45)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel36)
+                        .addGap(2, 2, 2)
+                        .addComponent(exchangeDollar)
                         .addGap(3, 3, 3)
                         .addComponent(jLabel7))
                     .addGroup(printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -747,21 +754,22 @@ public class Receipt extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(jLabel45)
                     .addComponent(jLabel36)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exchangeDollar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(generateBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(invoiceCode)
-                .addGap(81, 81, 81)
+                .addGap(72, 72, 72)
                 .addGroup(printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -778,9 +786,7 @@ public class Receipt extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
 
         pack();
@@ -888,6 +894,7 @@ public class Receipt extends javax.swing.JDialog {
     private javax.swing.JLabel contact;
     private javax.swing.JPanel countProduct;
     private javax.swing.JLabel cusName;
+    private javax.swing.JLabel exchangeDollar;
     private javax.swing.JLabel generateBarcode;
     private javax.swing.JLabel invoiceCode;
     private javax.swing.JLabel invoiceNo;

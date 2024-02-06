@@ -1117,7 +1117,6 @@ public class PaymentOption extends javax.swing.JDialog {
 
          JSONObject jsonData = new JSONObject();
          jsonData.put("userId", JavaConstant.cashierId);
-
          jsonData.put("userCode", JavaConstant.userCode);
          jsonData.put("saleDate", JavaConstant.currentDate);
          jsonData.put("discount", discount);
@@ -1170,15 +1169,18 @@ public class PaymentOption extends javax.swing.JDialog {
          for (int i = 0; i < listCom.length; i++) {
               var obj = ((BoxItem) listCom[i]);
               double price = JavaConstant.getReplace(obj.getLabelPrice());
-              double amount = JavaConstant.getReplace(obj.getLabelAmountUsd());
-//              double discountAmount = JavaConstant.getReplace(obj.getDiscountAmount());
+            
               int discountDigit = obj.getDiscountDigit();
+              double unitPrice = price - ( price*discountDigit )/100;
+              double p = JavaConstant.getReplace(df.format(unitPrice));
 
+              double amount = obj.getQty() * p;
+              double a = JavaConstant.getReplace(df.format(amount));
               ProductSaleModel pro = new ProductSaleModel(
                    obj.getProductId(),
                    obj.getQty(),
-                   price,
-                   amount,
+                   p,
+                   a,
                    discountDigit
               );
               dataSale.add(pro);

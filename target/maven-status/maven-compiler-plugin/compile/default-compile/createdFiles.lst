@@ -6,6 +6,7 @@ Components\LabelFontGreen$2.class
 Components\BoxItem$3.class
 Components\SearchField.class
 Color\WindowColor.class
+Components\ParallelogramShape.class
 Print\ReprintByInvoicenumber$3.class
 DeleteAndCancel\DeleteDialog$1.class
 Return\ApprovalCode$4.class

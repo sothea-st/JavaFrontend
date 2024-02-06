@@ -123,19 +123,29 @@ public class ReprintJdailog extends javax.swing.JDialog {
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
 
          if (typeForm.equals("reprint")) {
-              Receipt rec = new Receipt(new JFrame(), true);
-              Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-              this.dispose();
+             
+            Receipt rec = new Receipt(new JFrame(), true);
+            Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
+            this.dispose();
+            if(response.isSuccessful()){
+
+                 try {
+                      String myObject = response.body().string();
+                      ObjectMapper objMap = new ObjectMapper();
+                      DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
+                      rec.setDataSuccess(d);
+                      rec.setVisible(true);
+                 } catch (Exception e) {
+                      System.err.println("err while loding = " + e);
+                 }
+            }
+            else{
+                 JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                 j.setMessage("Invoice is empty!");
+                 j.setVisible(true);
+                 return;
+            }
               
-              try {
-                   String myObject = response.body().string();
-                   ObjectMapper objMap = new ObjectMapper();
-                   DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
-                   rec.setDataSuccess(d);
-                   rec.setVisible(true);
-              } catch (Exception e) {
-                   System.err.println("err while loding = " + e);
-              }
          } else if (typeForm.equals("hold")) {
               HistoryHoldOrder h = new HistoryHoldOrder(new JFrame(), true);
               h.setDetailItem(detailItem);

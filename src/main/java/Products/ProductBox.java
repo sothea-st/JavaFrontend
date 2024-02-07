@@ -20,7 +20,7 @@ import javax.swing.Icon;
  * @author FRONT-END.06
  */
 public class ProductBox extends javax.swing.JPanel {
-     
+
      private String qty;
 
      public String getQty() {
@@ -31,73 +31,73 @@ public class ProductBox extends javax.swing.JPanel {
           this.qty = qty;
           lbQty.setText(qty);
      }
-     
-     
-    public Icon getFlagImage() {
-        return flagImage;
-    }
 
-    public void setFlagImage(Icon flagImage) {
-        this.flagImage = flagImage;
-        flagImg.setIcon(flagImage);
-    }
+     public Icon getFlagImage() {
+          return flagImage;
+     }
 
-    public String getBarcode() {
-        return barcode;
-    }
+     public void setFlagImage(Icon flagImage) {
+          this.flagImage = flagImage;
+          flagImg.setIcon(flagImage);
+     }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-        txtBarcode.setText("Barcode :" + barcode);
-    }
+     public String getBarcode() {
+          return barcode;
+     }
 
-    public String getPrice() {
-        return price;
-    }
+     public void setBarcode(String barcode) {
+          this.barcode = barcode;
+          txtBarcode.setText("Barcode :" + barcode);
+     }
 
-    public void setPrice(String price) {
-        this.price = price;
-        lbPrice.setText(price + " each");
-    }
+     public String getPrice() {
+          return price;
+     }
 
-    public String getWeight() {
-        return weight;
-    }
+     public void setPrice(String price) {
+          this.price = price;
+          lbPrice.setText(price + " each");
+     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
-        lbWeight.setText(weight);
-    }
+     public String getWeight() {
+          return weight;
+     }
 
-    public Icon getProductImage() {
-        return productImage;
-    }
+     public void setWeight(String weight) {
+          this.weight = weight;
+          lbWeight.setText(weight);
+     }
 
-    public void setProductImage(Icon productImage) {
-        this.productImage = productImage;
-        productImg.setIcon(productImage);
-    }
+     public Icon getProductImage() {
+          return productImage;
+     }
 
-    public String getProductName() {
-        return ProductName;
-    }
+     public void setProductImage(Icon productImage) {
+          this.productImage = productImage;
+          productImg.setIcon(productImage);
+     }
 
-    public void setProductName(String ProductName) {
-        this.ProductName = ProductName;
-        lbName.setText(ProductName);
-    }
+     public String getProductName() {
+          return ProductName;
+     }
 
-    public int getDiscountPercentag() {
-        return discountPercentag;
-    }
+     public void setProductName(String ProductName) {
+          this.ProductName = ProductName;
+          lbName.setText(ProductName);
+     }
 
-    public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
-        this.discountPercentag = discountPercentag;
-        if (discountPercentag > 0) {
-            discount.setDiscountPrice("Was $"+" "+ wasPrice);
-            discount.setVisible(true);
-        }
-    }
+     public int getDiscountPercentag() {
+          return discountPercentag;
+     }
+
+     public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
+          this.discountPercentag = discountPercentag;
+          if (discountPercentag > 0) {
+//            discount.setDiscountPrice("Was $"+" "+ wasPrice);
+               discount.setDiscountPrice("Was %" + " " + discountPercentag);
+               discount.setVisible(true);
+          }
+     }
 
      public String getProductStatus() {
           return productStatus;
@@ -105,132 +105,130 @@ public class ProductBox extends javax.swing.JPanel {
 
      public void setProductStatus(String productStatus) {
           this.productStatus = productStatus;
-          if( productStatus.isEmpty() ) {
+          if (productStatus.isEmpty()) {
                buttonStatus.setBgColor(Color.red);
                buttonStatus.setButtonName("Unavailable");
           } else {
                buttonStatus.setButtonName(productStatus);
           }
      }
-    
-    
 
-    /**
-     * Creates new form ProductBox
-     */
-    public ProductBox() {
-        initComponents();
-        discount.setVisible(false);
-        productBox.setBackground(WindowColor.white);
-        setBackground(WindowColor.white);
-        lbName.setFont(WindowFonts.timeNewRomanBold11);
-        lbName.setForeground(WindowColor.black);
-        lbWeight.setFont(WindowFonts.timeNewRomanBold10);
-        lbWeight.setForeground(WindowColor.gray);
-        lbPrice.setFont(WindowFonts.timeNewRomanBold12);
-        lbPrice.setForeground(WindowColor.darkGreen);
-        txtBarcode.setFont(WindowFonts.timeNewRomanBold9);
-        txtBarcode.setForeground(WindowColor.gray);
-        lbQty.setFont(WindowFonts.timeNewRomanBold12);
-        lbQty.setVisible(false);
-    }
+     /**
+      * Creates new form ProductBox
+      */
+     public ProductBox() {
+          initComponents();
+          discount.setVisible(false);
+          productBox.setBackground(WindowColor.white);
+          setBackground(WindowColor.white);
+          lbName.setFont(WindowFonts.timeNewRomanBold11);
+          lbName.setForeground(WindowColor.black);
+          lbWeight.setFont(WindowFonts.timeNewRomanBold10);
+          lbWeight.setForeground(WindowColor.gray);
+          lbPrice.setFont(WindowFonts.timeNewRomanBold12);
+          lbPrice.setForeground(WindowColor.darkGreen);
+          txtBarcode.setFont(WindowFonts.timeNewRomanBold9);
+          txtBarcode.setForeground(WindowColor.gray);
+          lbQty.setFont(WindowFonts.timeNewRomanBold12);
+          lbQty.setVisible(false);
+     }
 
-    //=================================================
-    public void initEvent(ButtonEvent event) {
-        btnBuy.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                event.onMouseClick();
-            }
+     //=================================================
+     public void initEvent(ButtonEvent event) {
+          btnBuy.addMouseListener(new MouseListener() {
+               @Override
+               public void mouseClicked(MouseEvent e) {
+                    event.onMouseClick();
+               }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
+               @Override
+               public void mousePressed(MouseEvent e) {
 
-            }
+               }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
+               @Override
+               public void mouseReleased(MouseEvent e) {
 
-            }
+               }
 
-            @Override
-            public void mouseEntered(MouseEvent e) {
+               @Override
+               public void mouseEntered(MouseEvent e) {
 
-            }
+               }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
+               @Override
+               public void mouseExited(MouseEvent e) {
 
-            }
+               }
 
-        });
-    }
+          });
+     }
 
-    //=================================================Create Shadow Box
-    private ShadowType shadowType;
-    private int shadowSize = 3;
-    private float shadowOpacity = 0.8f;
-    private Color shadowColor = Color.GRAY;
-    
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        setOpaque(false);
-        createShadow(grphcs);
-        super.paintComponent(grphcs);
-    }
+     //=================================================Create Shadow Box
+     private ShadowType shadowType;
+     private int shadowSize = 3;
+     private float shadowOpacity = 0.8f;
+     private Color shadowColor = Color.GRAY;
 
-    private void createShadow(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs;
-        int size = shadowSize * 2;
-        int x = 0;
-        int y = 0;
-        int width = getWidth() - size;
-        int height = getHeight() - size;
-        if (shadowType == ShadowType.TOP) {
-            x = shadowSize;
-            y = size;
-        } else if (shadowType == ShadowType.BOT) {
-            x = shadowSize;
-            y = 0;
-        } else if (shadowType == ShadowType.TOP_LEFT) {
-            x = size;
-            y = size;
-        } else if (shadowType == ShadowType.TOP_RIGHT) {
-            x = 0;
-            y = size;
-        } else if (shadowType == ShadowType.BOT_LEFT) {
-            x = size;
-            y = 0;
-        } else if (shadowType == ShadowType.BOT_RIGHT) {
-            x = 0;
-            y = 0;
-        } else {
-            //  Center
-            x = shadowSize;
-            y = shadowSize;
-        }
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = img.createGraphics();
-        g.setColor(getBackground());
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.fillRoundRect(0, 0, width, height, 10, 10);
+     @Override
+     protected void paintComponent(Graphics grphcs) {
+          setOpaque(false);
+          createShadow(grphcs);
+          super.paintComponent(grphcs);
+     }
 
-        //  Create Shadow
-        ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
-        g2.drawImage(render.createShadow(img), 0, 0, null);
-        g2.drawImage(img, x, y, null);
-    }
+     private void createShadow(Graphics grphcs) {
+          Graphics2D g2 = (Graphics2D) grphcs;
+          int size = shadowSize * 2;
+          int x = 0;
+          int y = 0;
+          int width = getWidth() - size;
+          int height = getHeight() - size;
+          if (shadowType == ShadowType.TOP) {
+               x = shadowSize;
+               y = size;
+          } else if (shadowType == ShadowType.BOT) {
+               x = shadowSize;
+               y = 0;
+          } else if (shadowType == ShadowType.TOP_LEFT) {
+               x = size;
+               y = size;
+          } else if (shadowType == ShadowType.TOP_RIGHT) {
+               x = 0;
+               y = size;
+          } else if (shadowType == ShadowType.BOT_LEFT) {
+               x = size;
+               y = 0;
+          } else if (shadowType == ShadowType.BOT_RIGHT) {
+               x = 0;
+               y = 0;
+          } else {
+               //  Center
+               x = shadowSize;
+               y = shadowSize;
+          }
+          BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+          Graphics2D g = img.createGraphics();
+          g.setColor(getBackground());
+          g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+          g.fillRoundRect(0, 0, width, height, 10, 10);
 
-    private String ProductName;
-    private Icon productImage;
-    private String weight;
-    private String price;
-    private String barcode;
-    private Icon flagImage;
-    private int discountPercentag;
-    private String productStatus;
+          //  Create Shadow
+          ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
+          g2.drawImage(render.createShadow(img), 0, 0, null);
+          g2.drawImage(img, x, y, null);
+     }
 
-    @SuppressWarnings("unchecked")
+     private String ProductName;
+     private Icon productImage;
+     private String weight;
+     private String price;
+     private String barcode;
+     private Icon flagImage;
+     private int discountPercentag;
+     private String productStatus;
+
+     @SuppressWarnings("unchecked")
      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
      private void initComponents() {
 

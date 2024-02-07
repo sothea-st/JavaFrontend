@@ -26,5 +26,6 @@ public class JavaRoute {
      public static String getDefaultPrice = "/defaultPrice";
      public static String getCustomerId = "/customer/getCustomerId";
      public static String bgImage = "/public/addImageForBackground/";
+ 
 
 }

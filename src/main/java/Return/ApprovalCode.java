@@ -149,13 +149,13 @@ public class ApprovalCode extends javax.swing.JDialog {
          String userCode = txtCode.getValueTextField();
          String password = txtPassword.getValuePassword();
 
-//         if (userCode == null || password == null) {
-//              JOptionPane.showMessageDialog(this, "Please fill box code and password!");
-//              return;
-//         }
+         if (userCode == null || password == null) {
+              JOptionPane.showMessageDialog(this, "Please fill box code and password!");
+              return;
+         }
          JSONObject json = new JSONObject();
-         json.put("userCode", "0003");
-         json.put("password", "TT@126$kh#");
+         json.put("userCode", userCode);
+         json.put("password", password);
 
          Response response = JavaConnection.login(JavaRoute.login, json);
 

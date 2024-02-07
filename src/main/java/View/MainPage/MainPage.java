@@ -40,7 +40,7 @@ public class MainPage extends javax.swing.JFrame {
      private Color activeColor = new Color(56, 56, 56);
      private JPanel detailProduct;
      private String valueSearch;
-     private int limit = 3;
+     private int limit = 10;
 
      LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
 
@@ -99,7 +99,7 @@ public class MainPage extends javax.swing.JFrame {
                     int count = jdFormLogin.getCount();
                     System.err.println("count = " + count);
                     if (limit < count) {
-                         limit += 3;
+                         limit += 10;
                     }
                     if (jdFormLogin.getBrandId() == 0) {
                          System.out.println("nect event by cat id");
@@ -117,7 +117,7 @@ public class MainPage extends javax.swing.JFrame {
                          } catch (Exception e) {
                               System.err.println("error getting product " + e);
                          }
-                    } else { 
+                    } else {
                          jdFormLogin.getProductByBrandID("" + jdFormLogin.getBrandId(), limit);
                     }
                }
@@ -129,8 +129,8 @@ public class MainPage extends javax.swing.JFrame {
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onMouseClick() {
-                    if (limit != 3) {
-                         limit -= 3;
+                    if (limit != 10) {
+                         limit -= 10;
                     }
 
                     if (jdFormLogin.getBrandId() == 0) {
@@ -732,10 +732,20 @@ public class MainPage extends javax.swing.JFrame {
      //Action Button Reprint
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
          if (JavaConstant.token != null) {
-              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
-              approval.setJdFormLogin(jdFormLogin);
-              approval.setTypeForm("reprint");
-              approval.setVisible(true);
+              //========================= reprint with supervisor===========
+//              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+//              approval.setJdFormLogin(jdFormLogin);
+//              approval.setTypeForm("reprint");
+//              approval.setVisible(true);
+
+              //========================= reprint without supervisor===========
+              ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
+              rep.setTitle("Reprint Invoice");
+              rep.setTextButtonLeft("Reprint by Last");
+              rep.setTextButtonRight("Reprint by Invoice №");
+              rep.setTypeForm("reprint");
+              rep.setVisible(true);
+
          } else {
               System.err.println("System Cannot Open Reprint");
               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);

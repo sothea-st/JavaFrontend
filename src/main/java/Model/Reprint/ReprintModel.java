@@ -19,7 +19,7 @@ public class ReprintModel {
      private String customerType;
      private String empName;
      private double changeKhr;
-     private long receiveUsd;
+     private double receiveUsd;
      private String companyContact;
      private String vattin;
 
@@ -41,7 +41,7 @@ public class ReprintModel {
           String customerType,
           String empName,
           double changeKhr,
-          long receiveUsd,
+          double receiveUsd,
           String companyContact,
           String vattin
           ) {
@@ -205,12 +205,12 @@ public class ReprintModel {
      }
 
      @JsonProperty("receiveUsd")
-     public long getReceiveUsd() {
+     public double getReceiveUsd() {
           return receiveUsd;
      }
 
      @JsonProperty("receiveUsd")
-     public void setReceiveUsd(long value) {
+     public void setReceiveUsd(double value) {
           this.receiveUsd = value;
      }
 

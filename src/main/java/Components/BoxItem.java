@@ -383,72 +383,71 @@ public class BoxItem extends javax.swing.JPanel {
      }
 
      @SuppressWarnings("unchecked")
-     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-     private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-          img = new javax.swing.JLabel();
-          title = new javax.swing.JLabel();
-          lbWeight = new javax.swing.JLabel();
-          lbSale = new javax.swing.JLabel();
-          lbPrice = new javax.swing.JLabel();
-          lbBarcode = new javax.swing.JLabel();
-          txtDiscount = new javax.swing.JLabel();
-          amountUsd = new javax.swing.JLabel();
-          amountkh = new javax.swing.JLabel();
-          btnDelete = new javax.swing.JLabel();
-          buttonAddProduct = new Button.ButtonAddProduct();
-          jLabel1 = new javax.swing.JLabel();
-          proId = new javax.swing.JLabel();
-          boxDiscount = new javax.swing.JLabel();
+        img = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        lbWeight = new javax.swing.JLabel();
+        lbSale = new javax.swing.JLabel();
+        lbPrice = new javax.swing.JLabel();
+        lbBarcode = new javax.swing.JLabel();
+        txtDiscount = new javax.swing.JLabel();
+        amountUsd = new javax.swing.JLabel();
+        amountkh = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JLabel();
+        buttonAddProduct = new Button.ButtonAddProduct();
+        jLabel1 = new javax.swing.JLabel();
+        proId = new javax.swing.JLabel();
+        boxDiscount = new javax.swing.JLabel();
 
-          setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-          img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-          title.setText("Pizza");
+        title.setText("Pizza");
 
-          lbWeight.setText("Weight");
+        lbWeight.setText("Weight");
 
-          lbSale.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-          lbSale.setForeground(new java.awt.Color(47, 155, 70));
-          lbSale.setText("Sale Price :");
+        lbSale.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbSale.setForeground(new java.awt.Color(47, 155, 70));
+        lbSale.setText("Sale Price :");
 
-          lbPrice.setText("Price");
+        lbPrice.setText("Price");
 
-          lbBarcode.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-          lbBarcode.setText("Barcode :");
+        lbBarcode.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbBarcode.setText("Barcode :");
 
-          txtDiscount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-          txtDiscount.setForeground(new java.awt.Color(204, 0, 0));
-          txtDiscount.setText("Discount :");
+        txtDiscount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtDiscount.setForeground(new java.awt.Color(204, 0, 0));
+        txtDiscount.setText("Discount :");
 
-          amountUsd.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-          amountUsd.setForeground(new java.awt.Color(16, 107, 67));
-          amountUsd.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-          amountUsd.setText("$ 1.40");
+        amountUsd.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        amountUsd.setForeground(new java.awt.Color(16, 107, 67));
+        amountUsd.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        amountUsd.setText("$ 1.40");
 
-          amountkh.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-          amountkh.setForeground(new java.awt.Color(16, 107, 67));
-          amountkh.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-          amountkh.setText("0");
+        amountkh.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        amountkh.setForeground(new java.awt.Color(16, 107, 67));
+        amountkh.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        amountkh.setText("0");
 
-          btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-          btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\mobile-app.02\\Desktop\\project\\fronent java\\king mart\\tt_pos_window\\src\\main\\resources\\image\\Delete.png")); // NOI18N
-          btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
-               public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    btnDeleteMouseClicked(evt);
-               }
-          });
+        btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteMouseClicked(evt);
+            }
+        });
 
           buttonAddProduct.setQuantity(1);
 
-          jLabel1.setFont(new java.awt.Font("Khmer OS Content", 0, 12)); // NOI18N
-          jLabel1.setForeground(new java.awt.Color(16, 107, 67));
-          jLabel1.setText("៛");
+        jLabel1.setFont(new java.awt.Font("Khmer OS Content", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(16, 107, 67));
+        jLabel1.setText("៛");
 
-          proId.setText("jLabel2");
+        proId.setText("jLabel2");
 
-          boxDiscount.setText("boxDiscunt");
+        boxDiscount.setText("boxDiscunt");
 
           javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
           this.setLayout(layout);
@@ -545,20 +544,20 @@ public class BoxItem extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteMouseClicked
 
 
-     // Variables declaration - do not modify//GEN-BEGIN:variables
-     private javax.swing.JLabel amountUsd;
-     private javax.swing.JLabel amountkh;
-     private javax.swing.JLabel boxDiscount;
-     private javax.swing.JLabel btnDelete;
-     private Button.ButtonAddProduct buttonAddProduct;
-     private javax.swing.JLabel img;
-     private javax.swing.JLabel jLabel1;
-     private javax.swing.JLabel lbBarcode;
-     private javax.swing.JLabel lbPrice;
-     private javax.swing.JLabel lbSale;
-     private javax.swing.JLabel lbWeight;
-     private javax.swing.JLabel proId;
-     private javax.swing.JLabel title;
-     private javax.swing.JLabel txtDiscount;
-     // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amountUsd;
+    private javax.swing.JLabel amountkh;
+    private javax.swing.JLabel boxDiscount;
+    private javax.swing.JLabel btnDelete;
+    private Button.ButtonAddProduct buttonAddProduct;
+    private javax.swing.JLabel img;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbBarcode;
+    private javax.swing.JLabel lbPrice;
+    private javax.swing.JLabel lbSale;
+    private javax.swing.JLabel lbWeight;
+    private javax.swing.JLabel proId;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel txtDiscount;
+    // End of variables declaration//GEN-END:variables
 }

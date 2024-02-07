@@ -617,7 +617,7 @@ public class CashierReport extends javax.swing.JDialog {
                     .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelSummaryPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout printLayout = new javax.swing.GroupLayout(print);
@@ -679,7 +679,7 @@ public class CashierReport extends javax.swing.JDialog {
                 .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -687,7 +687,7 @@ public class CashierReport extends javax.swing.JDialog {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -794,7 +794,6 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-            report.setLabelRiel("");
             report.setTotalpice(dm.format(list.getTotal()));
             panelSummarySale.add(report);
             panelSummarySale.add(Box.createRigidArea(new Dimension(2, 2)));
@@ -814,16 +813,7 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-
-            if(list.getTitle().equals("CASH (KHR)")){
-                report.setTotalpice(kh.format(list.getTotal()));
-                 report.setLabelRiel("៛");
-
-            }
-            else{
-                report.setTotalpice(dm.format(list.getTotal()));
-                report.setLabelRiel("");
-            }
+            report.setTotalpice(dm.format(list.getTotal()));
             
             panelSummaryPayment.add(report);
             panelSummaryPayment.add(Box.createRigidArea(new Dimension(2, 2)));
@@ -840,7 +830,6 @@ public class CashierReport extends javax.swing.JDialog {
             ReportBox report = new ReportBox();
             report.setTitle(list.getTitle());
             report.setQuantity("" + list.getQty());
-            report.setLabelRiel("");
             report.setTotalpice(dm.format(list.getTotal()));
             panelSummaryDiscount.add(report);
             panelSummaryDiscount.add(Box.createRigidArea(new Dimension(2, 2)));

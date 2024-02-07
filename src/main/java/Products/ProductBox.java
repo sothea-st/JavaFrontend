@@ -94,7 +94,8 @@ public class ProductBox extends javax.swing.JPanel {
     public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
         this.discountPercentag = discountPercentag;
         if (discountPercentag > 0) {
-            discount.setDiscountPrice("Was $"+" "+ wasPrice);
+//            discount.setDiscountPrice("Was $"+" "+ wasPrice);
+            discount.setDiscountPrice(discountPercentag+" "+"%"+" off");
             discount.setVisible(true);
         }
     }

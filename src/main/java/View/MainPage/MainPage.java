@@ -40,7 +40,7 @@ public class MainPage extends javax.swing.JFrame {
      private Color activeColor = new Color(56, 56, 56);
      private JPanel detailProduct;
      private String valueSearch;
-     private int limit = 3;
+     private int limit = 10;
 
      LoginFormJdailog jdFormLogin = new LoginFormJdailog(new JFrame(), true);
 
@@ -99,7 +99,7 @@ public class MainPage extends javax.swing.JFrame {
                     int count = jdFormLogin.getCount();
                     System.err.println("count = " + count);
                     if (limit < count) {
-                         limit += 3;
+                         limit += 10;
                     }
                     if (jdFormLogin.getBrandId() == 0) {
                          System.out.println("nect event by cat id");
@@ -129,8 +129,8 @@ public class MainPage extends javax.swing.JFrame {
           ButtonEvent event = new ButtonEvent() {
                @Override
                public void onMouseClick() {
-                    if (limit != 3) {
-                         limit -= 3;
+                    if (limit != 10) {
+                         limit -= 10;
                     }
 
                     if (jdFormLogin.getBrandId() == 0) {

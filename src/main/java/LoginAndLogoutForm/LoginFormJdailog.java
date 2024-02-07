@@ -36,6 +36,7 @@ import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import Button.Button;
+import Components.BackgroundImage;
 import Components.ComboBox;
 import Components.JavaAlertMessage;
 import Controller.ActionProduct.ActionProduct;
@@ -307,6 +308,15 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    category();
                    getjScrollPaneCategory().setVisible(true);
                    ActionRequestBrand.requestBrand(cmboxBrand);
+                   
+                   //==============Add Background===============
+                   BackgroundImage bgimg = new BackgroundImage();
+                   panelProduct.removeAll();
+                   panelProduct.add(bgimg);
+                   panelProduct.revalidate();
+                   panelProduct.repaint();
+                   //=============================================
+                    
                    eventSelectBrand();
               } else {
                    UIManager UI = new UIManager();

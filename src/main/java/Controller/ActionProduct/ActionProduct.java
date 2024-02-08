@@ -160,6 +160,9 @@ public class ActionProduct {
                product.initEvent(event);
                product.setProductStatus(listData.getProductStatus());
                product.setDiscountPercentag(listData.getDiscount(), price);
+               
+               product.setDiscountPercent(listData.getDiscount());
+               
                String productName;
                if (listData.getProductNameEn().length() > 35) {
                     productName = listData.getProductNameEn().substring(0, 34) + "...";

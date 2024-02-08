@@ -63,7 +63,7 @@
                           <Component id="lbPOSId" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="currentDate" min="-2" pref="255" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -517,7 +517,7 @@
                       <Component id="labelTitle1" min="-2" pref="107" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelTitle2" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace pref="370" max="32767" attributes="0"/>
+                      <EmptySpace pref="342" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="previous" min="-2" pref="35" max="-2" attributes="0"/>

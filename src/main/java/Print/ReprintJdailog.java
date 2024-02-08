@@ -121,8 +121,8 @@ public class ReprintJdailog extends javax.swing.JDialog {
      }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
-         
-         if ( JavaConstant.checkCloseShift == 0 &&  JavaConstant.checkCloseShift != null ) {
+         System.err.println("dddddddddddddddddd = " + JavaConstant.checkCloseShift);
+         if ( JavaConstant.checkCloseShift == 0  ) {
               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
               j.setMessage("You already close shift can not reprint!");
               j.setVisible(true);

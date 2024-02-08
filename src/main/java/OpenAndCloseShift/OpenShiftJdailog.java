@@ -2,17 +2,21 @@ package OpenAndCloseShift;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.LabelTitle;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
 import Constant.JavaRoute;
+import Controller.ActionProduct.ActionProduct;
 import DefaultPrice.DataModelDefaultPrice;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import LoginAndLogoutForm.LoginFormJdailog;
 import java.awt.Color;
+import java.awt.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import okhttp3.Response;
@@ -27,45 +31,48 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
      private Button btnOpenShift;
      private LoginFormJdailog jdLoginForm;
      private DataModelDefaultPrice dataSuccess;
+     private JPanel category;
+     private JPanel panelProduct;
+     private LoginFormJdailog jdFormLogin;
 
-    public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
-        super(parent, modal);
-        initComponents();
-        panelOpenShift.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        currenDateTime();
-        event();
-        setText();
-        this.btnOpenShift = btnOpenShift;
-        txtTotalUsd.requestFocus();
-    }
+     public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
+          super(parent, modal);
+          initComponents();
+          panelOpenShift.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          currenDateTime();
+          event();
+          setText();
+          this.btnOpenShift = btnOpenShift;
+          txtTotalUsd.requestFocus();
+     }
 
-    private void currenDateTime() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
-        LocalDateTime date = LocalDateTime.now();
-        txtDateTime.setUneditText(dtf.format(date));
-    }
+     private void currenDateTime() {
+          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
+          LocalDateTime date = LocalDateTime.now();
+          txtDateTime.setUneditText(dtf.format(date));
+     }
 
-    private void setText() {
-        txtCashierName.setUneditText(JavaConstant.fullName);
-        txtUserId.setUneditText(JavaConstant.userCode);
-        txtPosId.setUneditText(JavaConstant.posId);
-    }
+     private void setText() {
+          txtCashierName.setUneditText(JavaConstant.fullName);
+          txtUserId.setUneditText(JavaConstant.userCode);
+          txtPosId.setUneditText(JavaConstant.posId);
+     }
 
-    void event() {
-        ButtonEvent btnevent = new ButtonEvent() {
-            @Override
-            public void onFocusGain() {
+     void event() {
+          ButtonEvent btnevent = new ButtonEvent() {
+               @Override
+               public void onFocusGain() {
 
-            }
-        };
-        txtTotalUsd.initEvent(btnevent);
-        txtTotalKhr.initEvent(btnevent);
-    }
+               }
+          };
+          txtTotalUsd.initEvent(btnevent);
+          txtTotalKhr.initEvent(btnevent);
+     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated
+     @SuppressWarnings("unchecked")
+     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -300,25 +307,35 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
-    }// GEN-LAST:event_buttonCancelMouseClicked
+     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_buttonCancelMouseClicked
+          this.dispose();
+     }// GEN-LAST:event_buttonCancelMouseClicked
+     ActionProduct pro = new ActionProduct();
 
-    private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_buttonSaveMouseClicked
-        
-        String reserveUsd = txtTotalUsd.getValueTextField();
-        String reserveKhr = txtTotalKhr.getValueTextField();
-        String posId = txtPosId.getUneditText();
-        String userCode = txtUserId.getUneditText();
-        String openTime = txtDateTime.getUneditText();
+     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_buttonSaveMouseClicked
 
-        JSONObject json = new JSONObject();
-        json.put("reserveUsd", reserveUsd);
-        json.put("reserveKhr", reserveKhr);
-        json.put("posId", posId);
-        json.put("userCode", userCode);
-        json.put("openTime", openTime);
-        json.put("createBy", JavaConstant.cashierId);
+          String reserveUsd = txtTotalUsd.getValueTextField();
+          String reserveKhr = txtTotalKhr.getValueTextField();
+          String posId = txtPosId.getUneditText();
+          String userCode = txtUserId.getUneditText();
+          String openTime = txtDateTime.getUneditText();
+
+          JSONObject json = new JSONObject();
+          json.put("reserveUsd", reserveUsd);
+          json.put("reserveKhr", reserveKhr);
+          json.put("posId", posId);
+          json.put("userCode", userCode);
+          json.put("openTime", openTime);
+          json.put("createBy", JavaConstant.cashierId);
+
+//          Component[] listCom = category.getComponents();
+//          listCom[0].setBackground(WindowColor.black);
+//          for (int i = 0; i < listCom.length; i++) {
+//               String title = ((LabelTitle) listCom[i]).getLabelTitle();
+//              
+//               System.err.println("category = " + i + " " + title );
+//          }
+
         
         try {
             Response response = JavaConnection.post(JavaRoute.openShift, json);
@@ -341,86 +358,111 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
         } catch (Exception e) {
 
         }
-    }// GEN-LAST:event_buttonSaveMouseClicked
+     }// GEN-LAST:event_buttonSaveMouseClicked
 
-    public DataModelDefaultPrice getDataSuccess() {
-        return dataSuccess;
-    }
+     public DataModelDefaultPrice getDataSuccess() {
+          return dataSuccess;
+     }
 
-    public void setDataSuccess(DataModelDefaultPrice dataSuccess) {
-        this.dataSuccess = dataSuccess;
-        txtTotalUsd.setForeground(Color.red);
-        assignValue(dataSuccess);
-    }
+     public void setDataSuccess(DataModelDefaultPrice dataSuccess) {
+          this.dataSuccess = dataSuccess;
+          txtTotalUsd.setForeground(Color.red);
+          assignValue(dataSuccess);
+     }
 
-    private void assignValue(DataModelDefaultPrice dataSuccess) {
-        try {
-            txtTotalUsd.setValueTextField("" + dataSuccess.getData()[0].getDefaultPriceUsd());
-            txtTotalKhr.setValueTextField("" + dataSuccess.getData()[0].getDefaultPriceKhr());
-        } catch (Exception e) {
-            System.err.println("getting error at " + e);
-        }
-    }
-    
-    
-    /**
-     * @param args the command line
-     *             arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
+     private void assignValue(DataModelDefaultPrice dataSuccess) {
+          try {
+               txtTotalUsd.setValueTextField("" + dataSuccess.getData()[0].getDefaultPriceUsd());
+               txtTotalKhr.setValueTextField("" + dataSuccess.getData()[0].getDefaultPriceKhr());
+          } catch (Exception e) {
+               System.err.println("getting error at " + e);
+          }
+     }
+
+     public JPanel getCategory() {
+          return category;
+     }
+
+     public void setCategory(JPanel category) {
+          this.category = category;
+     }
+
+     public JPanel getPanelProduct() {
+          return panelProduct;
+     }
+
+     public void setPanelProduct(JPanel panelProduct) {
+          this.panelProduct = panelProduct;
+     }
+
+     public LoginFormJdailog getJdFormLogin() {
+          return jdFormLogin;
+     }
+
+     public void setJdFormLogin(LoginFormJdailog jdFormLogin) {
+          this.jdFormLogin = jdFormLogin;
+     }
+     
+     
+
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+          // (optional) ">
+          /*
          * If Nimbus (introduced in Java SE 6) is not available, stay with the default
          * look and feel.
          * For details see
          * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        }
-        // </editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                OpenShiftJdailog dialog = new OpenShiftJdailog(new javax.swing.JFrame(), true, null);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
                     }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(OpenShiftJdailog.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
+          }
+          // </editor-fold>
 
-    public LoginFormJdailog getJdLoginForm() {
-        return jdLoginForm;
-    }
+          /* Create and display the dialog */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    OpenShiftJdailog dialog = new OpenShiftJdailog(new javax.swing.JFrame(), true, null);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
-    public void setJdLoginForm(LoginFormJdailog jdLoginForm) {
-        this.jdLoginForm = jdLoginForm;
-    }
+     public LoginFormJdailog getJdLoginForm() {
+          return jdLoginForm;
+     }
+
+     public void setJdLoginForm(LoginFormJdailog jdLoginForm) {
+          this.jdLoginForm = jdLoginForm;
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.Label IbUserId;

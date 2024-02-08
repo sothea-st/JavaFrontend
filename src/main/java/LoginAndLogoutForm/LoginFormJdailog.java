@@ -91,6 +91,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private int catId;
      private int count;
      private int brandId = 0;
+     private String catIdIndex0;
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -379,11 +380,17 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
                     for (int i = 0; i < listCategory.size(); i++) {
                          int catId = listCategory.get(i).getId();
+                         
+                         if( i == 0  ) {
+                              setCatIdIndex0(""+catId);
+                         }
+                         
                          LabelTitle categoryTitle = new LabelTitle();
                          category.add(categoryTitle);
-
+                         
                          String catName = listCategory.get(i).getCatNameEn();
                          categoryTitle.setLabelTitle(catName);
+                     
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
@@ -427,6 +434,16 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
      }
 
+     public String getCatIdIndex0() {
+          return catIdIndex0;
+     }
+
+     public void setCatIdIndex0(String catIdIndex0) {
+          this.catIdIndex0 = catIdIndex0;
+     }
+
+     
+     
      public int getBrandId() {
           return brandId;
      }

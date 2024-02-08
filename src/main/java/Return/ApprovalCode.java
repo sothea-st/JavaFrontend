@@ -29,6 +29,7 @@ public class ApprovalCode extends javax.swing.JDialog {
           event();
           txtCode.requestFocus();
           txtCode.setLabelTextField("");
+          txtPassword.setValuePassword(null);
      }
 
      //Action call function placeholder

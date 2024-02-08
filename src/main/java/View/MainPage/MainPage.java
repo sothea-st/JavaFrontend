@@ -696,6 +696,9 @@ public class MainPage extends javax.swing.JFrame {
                              String myObject = response.body().string();
                              ObjectMapper objMap = new ObjectMapper();
                              DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class);
+                             jdOpenShift.setCategory(category);
+                             jdOpenShift.setPanelProduct(panelProduct);
+//                             jdOpenShift
                              jdOpenShift.setDataSuccess(d);
                         }
                    } catch (Exception e) {
@@ -733,18 +736,18 @@ public class MainPage extends javax.swing.JFrame {
     private void btnReprintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReprintMouseClicked
          if (JavaConstant.token != null) {
               //========================= reprint with supervisor===========
-//              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
-//              approval.setJdFormLogin(jdFormLogin);
-//              approval.setTypeForm("reprint");
-//              approval.setVisible(true);
+              ApprovalCode approval = new ApprovalCode(new JFrame(), true);
+              approval.setJdFormLogin(jdFormLogin);
+              approval.setTypeForm("reprint");
+              approval.setVisible(true);
 
               //========================= reprint without supervisor===========
-              ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
-              rep.setTitle("Reprint Invoice");
-              rep.setTextButtonLeft("Reprint by Last");
-              rep.setTextButtonRight("Reprint by Invoice №");
-              rep.setTypeForm("reprint");
-              rep.setVisible(true);
+//              ReprintJdailog rep = new ReprintJdailog(new JFrame(), true);
+//              rep.setTitle("Reprint Invoice");
+//              rep.setTextButtonLeft("Reprint by Last");
+//              rep.setTextButtonRight("Reprint by Invoice №");
+//              rep.setTypeForm("reprint");
+//              rep.setVisible(true);
 
          } else {
               System.err.println("System Cannot Open Reprint");

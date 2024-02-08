@@ -31,14 +31,14 @@ public class LabelTitle extends javax.swing.JPanel {
 
      public void setLbCatId(String lbCatId) {
           this.lbCatId = lbCatId;
-//          jLabel1.setText(lbCatId);
+ 
      }
     
     
     public void setLabelTitle(String labelTitle) {
         this.labelTitle = labelTitle;
         lbTitle.setText(labelTitle);
-//        jLabel1.setVisible(false);
+ 
     }
 
     public void initEvent(ButtonEvent event) {

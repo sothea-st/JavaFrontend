@@ -13,7 +13,6 @@ public class ReportBox extends javax.swing.JPanel {
     private String title;
     private String quantity;
     private String totalpice;
-    private String labelRiel;
     
     public ReportBox() {
         initComponents();
@@ -23,7 +22,6 @@ public class ReportBox extends javax.swing.JPanel {
         qty.setFont(WindowFonts.timeNewRoman10);
         total.setForeground(WindowColor.black);
         total.setFont(WindowFonts.timeNewRoman10);
-//        setBackground(WindowColor.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +31,6 @@ public class ReportBox extends javax.swing.JPanel {
         qty = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
-        riel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -50,10 +47,6 @@ public class ReportBox extends javax.swing.JPanel {
         name.setBackground(new java.awt.Color(255, 0, 0));
         name.setText("Name");
 
-        riel.setFont(new java.awt.Font("Khmer OS Content", 0, 10)); // NOI18N
-        riel.setForeground(new java.awt.Color(56, 56, 56));
-        riel.setText("៛");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,17 +57,14 @@ public class ReportBox extends javax.swing.JPanel {
                 .addComponent(qty, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(riel)
-                .addGap(0, 0, 0))
+                .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(qty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(riel))
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -104,22 +94,11 @@ public class ReportBox extends javax.swing.JPanel {
         this.totalpice = totalpice;
         total.setText(totalpice);
     }
-
-    public String getLabelRiel() {
-        return labelRiel;
-    }
-
-    public void setLabelRiel(String labelRiel) {
-        this.labelRiel = labelRiel;
-        riel.setText(labelRiel);
-    }
-    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel name;
     private javax.swing.JLabel qty;
-    private javax.swing.JLabel riel;
     private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }

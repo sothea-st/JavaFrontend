@@ -531,7 +531,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(labelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
                 .addGroup(panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPaginationLayout.createSequentialGroup()
                         .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -578,7 +578,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(lbPOSId, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 20, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(38, 38, 38))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
@@ -698,7 +698,8 @@ public class MainPage extends javax.swing.JFrame {
                              DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class);
                              jdOpenShift.setCategory(category);
                              jdOpenShift.setPanelProduct(panelProduct);
-//                             jdOpenShift.setJ
+                             jdOpenShift.setLimit(limit);
+                             jdOpenShift.setPanelPagination(panelPagination);
                              jdOpenShift.setDataSuccess(d);
                         }
                    } catch (Exception e) {

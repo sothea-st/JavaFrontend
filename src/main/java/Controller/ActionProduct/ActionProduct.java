@@ -52,17 +52,17 @@ public class ActionProduct {
      public ActionProduct() {
      }
 
-     public void product(int catId, int limit) {
+     public void product(int catId, int limit,JPanel panelProduct) {
           try {
                Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + catId + "&limit=" + limit + "");
-
+                System.err.println("data loading here ========= " + response);
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
                     ProductDataModel[] listData = data.getData();
                     setCount(data.getCount());
-                    assignProduct(listData);
+                    assignProduct(listData,panelProduct);
                } else {
                     System.err.println("fail loading product");
                }
@@ -71,7 +71,7 @@ public class ActionProduct {
           }
      }
 
-     public void assignProduct(ProductDataModel[] listData) {
+     public void assignProduct(ProductDataModel[] listData,JPanel panelProduct) {
           ArrayList<ProductModel> listProduct = new ArrayList<>();
           for (int i = 0; i < listData.length; i++) {
                var obj = listData[i];
@@ -93,10 +93,10 @@ public class ActionProduct {
                listProduct.add(product);
 
           }
-          appendProduct(listProduct);
+          appendProduct(listProduct,panelProduct);
      }
 
-     void appendProduct(ArrayList<ProductModel> listProduct) {
+     void appendProduct(ArrayList<ProductModel> listProduct,JPanel panelProduct) {
 
           GridBagLayout gridBagLayout = new GridBagLayout();
           gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0}; // one row has 5 column
@@ -160,6 +160,9 @@ public class ActionProduct {
                product.initEvent(event);
                product.setProductStatus(listData.getProductStatus());
                product.setDiscountPercentag(listData.getDiscount(), price);
+               
+               product.setDiscountPercent(listData.getDiscount());
+               
                String productName;
                if (listData.getProductNameEn().length() > 35) {
                     productName = listData.getProductNameEn().substring(0, 34) + "...";

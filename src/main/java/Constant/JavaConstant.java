@@ -63,5 +63,5 @@ public class JavaConstant {
      
      public static String byBrandId = "Select By BrandID";
      public static String byCatID = "Select By CatID";
-
+     
 }

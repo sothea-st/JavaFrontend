@@ -36,6 +36,7 @@ import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import Button.Button;
+import Components.BackgroundImage;
 import Components.ComboBox;
 import Components.JavaAlertMessage;
 import Controller.ActionProduct.ActionProduct;
@@ -130,7 +131,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           pro.setBoxUserName(boxUserName);
           pro.setPanelProduct(panelProduct);
           if (listData != null) {
-               pro.assignProduct(listData);
+               pro.assignProduct(listData,panelProduct);
           }
      }
 
@@ -238,8 +239,8 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //         String userId = txtUserId.getValueTextField();
 //         String password = txtPassword.getValuePassword();
 
-        String userId = "0002";
-        String password = "TT@126$kh#";
+         String userId = "0003";
+         String password = "TT@126$kh#";
 
          JSONObject json = new JSONObject();
          json.put("userCode", userId);
@@ -306,10 +307,19 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    category();
                    getjScrollPaneCategory().setVisible(true);
                    ActionRequestBrand.requestBrand(cmboxBrand);
+
+                   //==============Add Background===============
+                   BackgroundImage bgimg = new BackgroundImage();
+                   panelProduct.removeAll();
+                   panelProduct.add(bgimg);
+                   panelProduct.revalidate();
+                   panelProduct.repaint();
+                   //=============================================
+
                    eventSelectBrand();
                    txtUserId.setValueTextField(null);
                    txtPassword.setValuePassword(null);
-                
+
               } else {
                    UIManager UI = new UIManager();
                    UI.put("OptionPane.background", WindowColor.mediumGreen);
@@ -332,15 +342,15 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           ButtonEvent events = new ButtonEvent() {
                @Override
                public void onSelect(String key) {
-                    getProductByBrandID(key,limit);
+                    getProductByBrandID(key, limit);
                }
           };
           cmboxBrand.initEvent(events);
      }
 
-     public void getProductByBrandID(String key,int limits) {
-          Response response = JavaConnection.get(JavaRoute.getProductByBrandId + "?brandId=" + key + "&limit="+limits+"");
-         
+     public void getProductByBrandID(String key, int limits) {
+          Response response = JavaConnection.get(JavaRoute.getProductByBrandId + "?brandId=" + key + "&limit=" + limits + "");
+
           try {
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
@@ -380,17 +390,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
                     for (int i = 0; i < listCategory.size(); i++) {
                          int catId = listCategory.get(i).getId();
-                         
-                         if( i == 0  ) {
-                              setCatIdIndex0(""+catId);
-                         }
-                         
                          LabelTitle categoryTitle = new LabelTitle();
+                         categoryTitle.setLbCatId("" + catId);
                          category.add(categoryTitle);
-                         
                          String catName = listCategory.get(i).getCatNameEn();
                          categoryTitle.setLabelTitle(catName);
-                     
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
@@ -408,7 +412,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                              }
                                         }
                                         panelProduct.removeAll();
-                                        pro.product(catId, limit);
+                                        pro.product(catId, limit,panelProduct);
                                         panelProduct.revalidate();
                                         panelProduct.repaint();
                                         setCount(pro.getCount());
@@ -442,8 +446,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           this.catIdIndex0 = catIdIndex0;
      }
 
-     
-     
      public int getBrandId() {
           return brandId;
      }

@@ -2,6 +2,7 @@ package LoginAndLogoutForm;
 
 import Button.Button;
 import Color.WindowColor;
+import Components.BackgroundImage;
 import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConstant;
@@ -175,20 +176,26 @@ public class LogoutDialog extends javax.swing.JDialog {
               return;
          } 
 
-       
-
+      
          lbPOSId.setText("POS ID :");
          boxUserName.setText("");
          category.removeAll();
          category.revalidate();
          category.repaint();
+       
          subtotalPanel.setLabelSubTitleToZero();
          detailItem.removeAll();
          detailItem.revalidate();
          detailItem.repaint();
+         
+         //==============Add Background===============
+         BackgroundImage bgimg = new BackgroundImage();
          panelProduct.removeAll();
+         panelProduct.add(bgimg);
          panelProduct.revalidate();
          panelProduct.repaint();
+         //===========================================
+         
          btnLogin.setButtonName("Login");
          panelPagination.setVisible(false);
 

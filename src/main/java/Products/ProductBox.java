@@ -1,6 +1,7 @@
 package Products;
 
 import Color.WindowColor;
+import Components.CircleShape;
 import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
 import Event.ButtonEvent;
@@ -22,6 +23,22 @@ import javax.swing.Icon;
 public class ProductBox extends javax.swing.JPanel {
 
      private String qty;
+     private int discountPercent;
+
+    public int getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public void setDiscountPercent(int discountPercent) {
+        this.discountPercent = discountPercent;
+        if(discountPercent > 0){
+             percent.setDiscountPercent("<html>"+discountPercent+"%"+"<br>"+"Off"+"</html>");
+             percent.setVisible(true);
+        }
+        else{
+              percent.setVisible(false);
+        }
+    }
 
      public String getQty() {
           return qty;
@@ -56,7 +73,7 @@ public class ProductBox extends javax.swing.JPanel {
 
      public void setPrice(String price) {
           this.price = price;
-          lbPrice.setText(price + " each");
+          lbPrice.setText("$ "+price + " each");
      }
 
      public String getWeight() {
@@ -86,18 +103,14 @@ public class ProductBox extends javax.swing.JPanel {
           lbName.setText(ProductName);
      }
 
-     public int getDiscountPercentag() {
-          return discountPercentag;
-     }
-
-     public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
-          this.discountPercentag = discountPercentag;
-          if (discountPercentag > 0) {
+    public void setDiscountPercentag(int discountPercentag, Double wasPrice) {
+        this.discountPercentag = discountPercentag;
+        if (discountPercentag > 0) {
             discount.setDiscountPrice("Was $"+" "+ wasPrice);
-//               discount.setDiscountPrice("Was %" + " " + discountPercentag);
-               discount.setVisible(true);
-          }
-     }
+//            discount.setDiscountPrice(discountPercentag+" "+"%"+" off");
+            discount.setVisible(true);
+        }
+    }
 
      public String getProductStatus() {
           return productStatus;
@@ -131,6 +144,7 @@ public class ProductBox extends javax.swing.JPanel {
           txtBarcode.setForeground(WindowColor.gray);
           lbQty.setFont(WindowFonts.timeNewRomanBold12);
           lbQty.setVisible(false);
+
      }
 
      //=================================================
@@ -229,129 +243,83 @@ public class ProductBox extends javax.swing.JPanel {
      private String productStatus;
 
      @SuppressWarnings("unchecked")
-     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-     private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-          productBox = new javax.swing.JPanel();
-          productImg = new javax.swing.JLabel();
-          lbName = new javax.swing.JLabel();
-          lbWeight = new javax.swing.JLabel();
-          txtBarcode = new javax.swing.JLabel();
-          flagImg = new javax.swing.JLabel();
-          buttonStatus = new Button.ButtonInstock();
-          lbPrice = new javax.swing.JLabel();
-          btnBuy = new Button.ButtonBuy();
-          jLabel1 = new javax.swing.JLabel();
-          discount = new Button.ButtonDiscount();
-          lbQty = new javax.swing.JLabel();
+        productBox = new javax.swing.JPanel();
+        lbName = new javax.swing.JLabel();
+        lbWeight = new javax.swing.JLabel();
+        txtBarcode = new javax.swing.JLabel();
+        flagImg = new javax.swing.JLabel();
+        buttonStatus = new Button.ButtonInstock();
+        lbPrice = new javax.swing.JLabel();
+        btnBuy = new Button.ButtonBuy();
+        jLabel1 = new javax.swing.JLabel();
+        discount = new Button.ButtonDiscount();
+        lbQty = new javax.swing.JLabel();
+        percent = new Components.CircleShape();
+        productImg = new javax.swing.JLabel();
 
-          productImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productBox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-          lbName.setText("Name");
+        lbName.setText("Name");
+        productBox.add(lbName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, 148, 25));
 
-          lbWeight.setText("Weight");
+        lbWeight.setText("Weight");
+        productBox.add(lbWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 122, 77, 15));
 
-          txtBarcode.setText("Barcode :");
+        txtBarcode.setText("Barcode :");
+        productBox.add(txtBarcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 189, 110, 17));
 
-          flagImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        flagImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productBox.add(flagImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 122, 30, 15));
+        productBox.add(buttonStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 166, 53, -1));
 
-          lbPrice.setText("Price");
+        lbPrice.setText("Price");
+        productBox.add(lbPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, 89, -1));
+        productBox.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 189, 32, -1));
+        productBox.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 143, 4, 17));
+        productBox.add(discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 143, 67, -1));
 
-          lbQty.setText("lbQty");
+        lbQty.setText("lbQty");
+        productBox.add(lbQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 143, -1, -1));
+        productBox.add(percent, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 50));
 
-          javax.swing.GroupLayout productBoxLayout = new javax.swing.GroupLayout(productBox);
-          productBox.setLayout(productBoxLayout);
-          productBoxLayout.setHorizontalGroup(
-               productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addComponent(productImg, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addGroup(productBoxLayout.createSequentialGroup()
-                              .addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(btnBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                         .addGroup(productBoxLayout.createSequentialGroup()
-                              .addComponent(discount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                         .addComponent(lbWeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addGroup(productBoxLayout.createSequentialGroup()
-                              .addGap(41, 41, 41)
-                              .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(lbQty)
-                              .addContainerGap())))
-               .addGroup(productBoxLayout.createSequentialGroup()
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addGroup(productBoxLayout.createSequentialGroup()
-                              .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                              .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE))
-          );
-          productBoxLayout.setVerticalGroup(
-               productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productBoxLayout.createSequentialGroup()
-                    .addComponent(productImg, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(lbName, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addComponent(lbWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addComponent(flagImg, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                         .addComponent(lbQty))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                         .addComponent(lbPrice)
-                         .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(productBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                         .addComponent(btnBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                         .addComponent(txtBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap())
-          );
+        productImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productBox.add(productImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 146, 85));
 
-          javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-          this.setLayout(layout);
-          layout.setHorizontalGroup(
-               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(productBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-          );
-          layout.setVerticalGroup(
-               layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(productBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(3, 3, 3))
-          );
-     }// </editor-fold>//GEN-END:initComponents
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(productBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(productBox, javax.swing.GroupLayout.PREFERRED_SIZE, 205, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
 
-     // Variables declaration - do not modify//GEN-BEGIN:variables
-     private Button.ButtonBuy btnBuy;
-     private Button.ButtonInstock buttonStatus;
-     private Button.ButtonDiscount discount;
-     private javax.swing.JLabel flagImg;
-     private javax.swing.JLabel jLabel1;
-     private javax.swing.JLabel lbName;
-     private javax.swing.JLabel lbPrice;
-     private javax.swing.JLabel lbQty;
-     private javax.swing.JLabel lbWeight;
-     private javax.swing.JPanel productBox;
-     private javax.swing.JLabel productImg;
-     private javax.swing.JLabel txtBarcode;
-     // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Button.ButtonBuy btnBuy;
+    private Button.ButtonInstock buttonStatus;
+    private Button.ButtonDiscount discount;
+    private javax.swing.JLabel flagImg;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbName;
+    private javax.swing.JLabel lbPrice;
+    private javax.swing.JLabel lbQty;
+    private javax.swing.JLabel lbWeight;
+    private Components.CircleShape percent;
+    private javax.swing.JPanel productBox;
+    private javax.swing.JLabel productImg;
+    private javax.swing.JLabel txtBarcode;
+    // End of variables declaration//GEN-END:variables
 }

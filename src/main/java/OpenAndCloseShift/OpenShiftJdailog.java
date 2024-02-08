@@ -34,6 +34,8 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
      private JPanel category;
      private JPanel panelProduct;
      private LoginFormJdailog jdFormLogin;
+     private int limit;
+     private JPanel panelPagination;
 
      public OpenShiftJdailog(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
           super(parent, modal);
@@ -328,36 +330,37 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
           json.put("openTime", openTime);
           json.put("createBy", JavaConstant.cashierId);
 
-//          Component[] listCom = category.getComponents();
-//          listCom[0].setBackground(WindowColor.black);
-//          for (int i = 0; i < listCom.length; i++) {
-//               String title = ((LabelTitle) listCom[i]).getLabelTitle();
-//              
-//               System.err.println("category = " + i + " " + title );
-//          }
+          try {
+               Response response = JavaConnection.post(JavaRoute.openShift, json);
+               if (response.isSuccessful()) {
+                    dispose();
+                    btnOpenShift.setButtonName(JavaConstant.closeShift);
+                    // jdLoginForm.setCheckOpenShift(true);
+                    JavaConstant.checkOpenShift = true;
+                    JavaConstant.checkCloseShift = 1l;
+                    
+//                    Component[] listCom = category.getComponents();
+//                    listCom[0].setBackground(WindowColor.black);
+//                    String id = ((LabelTitle) listCom[0]).getLbCatId();
+//                    panelProduct.removeAll();
+//                    pro.product(Integer.parseInt(id), limit, panelProduct);
+//                    pro.setPanelProduct(panelProduct);
+//                    panelProduct.revalidate();
+//                    panelProduct.repaint();
+//                    panelPagination.setVisible(true);
+                    
+               } else {
+                    UIManager UI = new UIManager();
+                    UI.put("OptionPane.background", WindowColor.mediumGreen);
+                    UI.put("Panel.background", WindowColor.mediumGreen);
+                    UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                    JOptionPane.showMessageDialog(null, "Save Failed!");
+                    return;
+               }
 
-        
-//        try {
-//            Response response = JavaConnection.post(JavaRoute.openShift, json);
-//            if (response.isSuccessful()) {
-//                dispose();
-//                btnOpenShift.setButtonName(JavaConstant.closeShift);
-//                // jdLoginForm.setCheckOpenShift(true);
-//                JavaConstant.checkOpenShift = true;
-//                JavaConstant.checkCloseShift = 1l;
-//
-//            } else {
-//                UIManager UI=new UIManager();
-//                UI.put("OptionPane.background", WindowColor.mediumGreen);
-//                UI.put("Panel.background", WindowColor.mediumGreen);
-//                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-//                JOptionPane.showMessageDialog(null, "Save Failed!");
-//                return;
-//            }
-//
-//        } catch (Exception e) {
-//
-//        }
+          } catch (Exception e) {
+
+          }
      }// GEN-LAST:event_buttonSaveMouseClicked
 
      public DataModelDefaultPrice getDataSuccess() {
@@ -377,6 +380,24 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
           } catch (Exception e) {
                System.err.println("getting error at " + e);
           }
+     }
+
+     public JPanel getPanelPagination() {
+          return panelPagination;
+     }
+
+     public void setPanelPagination(JPanel panelPagination) {
+          this.panelPagination = panelPagination;
+     }
+     
+     
+
+     public int getLimit() {
+          return limit;
+     }
+
+     public void setLimit(int limit) {
+          this.limit = limit;
      }
 
      public JPanel getCategory() {
@@ -402,8 +423,6 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
      public void setJdFormLogin(LoginFormJdailog jdFormLogin) {
           this.jdFormLogin = jdFormLogin;
      }
-     
-     
 
      /**
       * @param args the command line

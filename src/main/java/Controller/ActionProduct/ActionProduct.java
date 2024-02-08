@@ -172,9 +172,11 @@ public class ActionProduct {
 
                if (listData.getDiscount() > 0) {
                     double discountPrice = price - (listData.getDiscount() * price) / 100;
-                    product.setPrice(dm.format(discountPrice));
+                    double dis4Length = JavaConstant.get4Length(""+discountPrice);
+                    product.setPrice(""+dis4Length);
                } else {
-                    product.setPrice(dm.format(price));
+                     double _price = JavaConstant.get4Length(""+price);
+                    product.setPrice(""+_price);
                }
 
                product.setBarcode(listData.getBarcode());
@@ -260,10 +262,10 @@ public class ActionProduct {
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;
+        
           discount = JavaConstant.get4Length(""+discount); // get 2 precision
         
           try {
-
                BoxItem box = new BoxItem();
                box.setWasPrice("" + price);
                Component[] listCom = detailItem.getComponents();

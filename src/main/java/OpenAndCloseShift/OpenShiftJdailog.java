@@ -337,27 +337,27 @@ public class OpenShiftJdailog extends javax.swing.JDialog {
 //          }
 
         
-        try {
-            Response response = JavaConnection.post(JavaRoute.openShift, json);
-            if (response.isSuccessful()) {
-                dispose();
-                btnOpenShift.setButtonName(JavaConstant.closeShift);
-                // jdLoginForm.setCheckOpenShift(true);
-                JavaConstant.checkOpenShift = true;
-                JavaConstant.checkCloseShift = 1l;
-
-            } else {
-                UIManager UI=new UIManager();
-                UI.put("OptionPane.background", WindowColor.mediumGreen);
-                UI.put("Panel.background", WindowColor.mediumGreen);
-                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                JOptionPane.showMessageDialog(null, "Save Failed!");
-                return;
-            }
-
-        } catch (Exception e) {
-
-        }
+//        try {
+//            Response response = JavaConnection.post(JavaRoute.openShift, json);
+//            if (response.isSuccessful()) {
+//                dispose();
+//                btnOpenShift.setButtonName(JavaConstant.closeShift);
+//                // jdLoginForm.setCheckOpenShift(true);
+//                JavaConstant.checkOpenShift = true;
+//                JavaConstant.checkCloseShift = 1l;
+//
+//            } else {
+//                UIManager UI=new UIManager();
+//                UI.put("OptionPane.background", WindowColor.mediumGreen);
+//                UI.put("Panel.background", WindowColor.mediumGreen);
+//                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+//                JOptionPane.showMessageDialog(null, "Save Failed!");
+//                return;
+//            }
+//
+//        } catch (Exception e) {
+//
+//        }
      }// GEN-LAST:event_buttonSaveMouseClicked
 
      public DataModelDefaultPrice getDataSuccess() {

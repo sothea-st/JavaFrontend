@@ -698,7 +698,7 @@ public class MainPage extends javax.swing.JFrame {
                              DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class);
                              jdOpenShift.setCategory(category);
                              jdOpenShift.setPanelProduct(panelProduct);
-//                             jdOpenShift
+//                             jdOpenShift.setJ
                              jdOpenShift.setDataSuccess(d);
                         }
                    } catch (Exception e) {

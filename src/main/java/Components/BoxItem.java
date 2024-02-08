@@ -3,7 +3,9 @@ package Components;
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
+import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoute;
 import DeleteAndCancel.DeleteDialog;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
@@ -20,6 +22,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import okhttp3.Response;
 
 /**
  *
@@ -262,6 +265,19 @@ public class BoxItem extends javax.swing.JPanel {
           buttonAddProduct.initEvent(event);
 
           boxDiscount.setVisible(false);
+          getImageBtnDelete();
+     }
+     
+     
+     
+     void getImageBtnDelete(){
+          Response response = JavaConnection.get(JavaRoute.bgImage+"Delete.png");
+          try {
+               byte[] btnImage = response.body().bytes();
+               btnDelete.setIcon(new ImageIcon(btnImage));
+          } catch (Exception e) {
+               System.err.println("err = " + e);
+          }
      }
 
      void sumTotal(String sign) {

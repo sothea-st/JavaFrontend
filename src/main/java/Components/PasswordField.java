@@ -151,5 +151,6 @@ public class PasswordField extends javax.swing.JPanel {
 
      public void setValuePassword(String valuePassword) {
           this.valuePassword = valuePassword;
+          password.setText(valuePassword);
      }
 }

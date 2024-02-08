@@ -238,7 +238,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //         String userId = txtUserId.getValueTextField();
 //         String password = txtPassword.getValuePassword();
 
-        String userId = "0003";
+        String userId = "0005";
         String password = "TT@126$kh#";
 
          JSONObject json = new JSONObject();
@@ -285,9 +285,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    JavaConstant.fullName = model.getUserName();
                    JavaConstant.userCode = model.getUserCode();
                    JavaConstant.posId = model.getPosID();
-
                    JavaConstant.cashierId = model.getID();
-
                    Response responseOpenShift = JavaConnection.get(JavaRoute.openShift + "/" + JavaConstant.userCode);
                    if (responseOpenShift.isSuccessful()) {
                         String result = responseOpenShift.body().string();
@@ -318,13 +316,15 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    //=============================================
                     
                    eventSelectBrand();
+                   txtUserId.setValueTextField(null);
+                   txtPassword.setValuePassword(null);
+                
               } else {
                    UIManager UI = new UIManager();
                    UI.put("OptionPane.background", WindowColor.mediumGreen);
                    UI.put("Panel.background", WindowColor.mediumGreen);
                    UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
                    JOptionPane.showMessageDialog(null, "Wrong email or password!");
-                   return;
               }
 
          } catch (Exception e) {
@@ -419,7 +419,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                         JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                                         j.setMessage("You have to open shift first!");
                                         j.setVisible(true);
-
                                    }
                               }
                          };

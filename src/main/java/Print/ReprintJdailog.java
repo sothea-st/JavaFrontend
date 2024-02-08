@@ -121,14 +121,21 @@ public class ReprintJdailog extends javax.swing.JDialog {
      }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
-
+         
+         if ( JavaConstant.checkCloseShift == 0 &&  JavaConstant.checkCloseShift != null ) {
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage("You already close shift can not reprint!");
+              j.setVisible(true);
+              return;
+         }
+         
          if (typeForm.equals("reprint")) {
              
             Receipt rec = new Receipt(new JFrame(), true);
             Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
+              System.err.println("ddddddddd response = " + response);
             this.dispose();
             if(response.isSuccessful()){
-
                  try {
                       String myObject = response.body().string();
                       ObjectMapper objMap = new ObjectMapper();

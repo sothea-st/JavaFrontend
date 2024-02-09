@@ -176,13 +176,13 @@ public class LogoutDialog extends javax.swing.JDialog {
               return;
          } 
 
-       
-
+      
          lbPOSId.setText("POS ID :");
          boxUserName.setText("");
          category.removeAll();
          category.revalidate();
          category.repaint();
+       
          subtotalPanel.setLabelSubTitleToZero();
          detailItem.removeAll();
          detailItem.revalidate();

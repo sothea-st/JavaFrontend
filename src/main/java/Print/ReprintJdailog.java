@@ -121,39 +121,46 @@ public class ReprintJdailog extends javax.swing.JDialog {
      }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintByLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByLastMouseClicked
-         System.err.println("dddddddddddddddddd = " + JavaConstant.checkCloseShift);
-         if ( JavaConstant.checkCloseShift == 0  ) {
+
+         if (JavaConstant.checkCloseShift == null) {
               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-              j.setMessage("You already close shift can not reprint!");
+              j.setMessage("Invoice is empty!");
               j.setVisible(true);
               return;
          }
-         
+
+         if (JavaConstant.checkCloseShift == 0) {
+              JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+              j.setMessage("Invoice is empty!");
+              j.setVisible(true);
+              return;
+         }
+
          if (typeForm.equals("reprint")) {
-             
-            Receipt rec = new Receipt(new JFrame(), true);
-            Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
-              System.err.println("ddddddddd response = " + response);
-            this.dispose();
-            if(response.isSuccessful()){
-                 try {
-                      String myObject = response.body().string();
-                      ObjectMapper objMap = new ObjectMapper();
-                      DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
-                      rec.setDataSuccess(d);
-                      rec.setVisible(true);
-                 } catch (Exception e) {
-                      System.err.println("err while loding = " + e);
-                 }
-            }
-            else{
-                 JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-                 j.setMessage("Invoice is empty!");
-                 j.setVisible(true);
-                 return;
-            }
-              
+                // for reprint function
+              Receipt rec = new Receipt(new JFrame(), true);
+              Response response = JavaConnection.get(JavaRoute.reprintByLast + JavaConstant.cashierId);
+
+              this.dispose();
+              if (response.isSuccessful()) {
+                   try {
+                        String myObject = response.body().string();
+                        ObjectMapper objMap = new ObjectMapper();
+                        DataSuccessModel d = objMap.readValue(myObject, DataSuccessModel.class);
+                        rec.setDataSuccess(d);
+                        rec.setVisible(true);
+                   } catch (Exception e) {
+                        System.err.println("err while loding = " + e);
+                   }
+              } else {
+                   JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                   j.setMessage("Invoice is empty!");
+                   j.setVisible(true);
+                   return;
+              }
+
          } else if (typeForm.equals("hold")) {
+              // for hold function
               HistoryHoldOrder h = new HistoryHoldOrder(new JFrame(), true);
               h.setDetailItem(detailItem);
               h.setSubtotalPanel(subtotalPanel);
@@ -164,20 +171,20 @@ public class ReprintJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPrintByLastMouseClicked
 
     private void btnPrintByInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintByInvoiceMouseClicked
-        
+
          if (typeForm.equals("reprint")) {
               this.dispose();
               ReprintByInvoicenumber rep = new ReprintByInvoicenumber(new JFrame(), true);
               rep.setVisible(true);
          } else if (typeForm.equals("hold")) {
               Component[] listCom1 = detailItem.getComponents();
-              if (listCom1.length == 0){
-                    JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
-                    j.setMessage("Cannot add hold order!");
-                    j.setVisible(true);
-                    return;
+              if (listCom1.length == 0) {
+                   JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                   j.setMessage("Cannot add hold order!");
+                   j.setVisible(true);
+                   return;
               }
-             
+
               this.dispose();
               DialonInputName d = new DialonInputName(new JFrame(), true);
               d.setDetailItem(detailItem);
@@ -272,7 +279,6 @@ public class ReprintJdailog extends javax.swing.JDialog {
           this.btnPayment = btnPayment;
      }
 
-     
 
      // Variables declaration - do not modify//GEN-BEGIN:variables
      private Button btnPrintByInvoice;

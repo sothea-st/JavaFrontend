@@ -31,66 +31,65 @@ import org.json.JSONObject;
  */
 public class CancelDialog extends javax.swing.JDialog {
 
-    private JPanel detailItem;
-    private SubtotalPanel totalPanel;
-    private Button btnPayment;
-    private HashMap<String, String> map = new HashMap<>();
-    private String reasonId;
-    private Component[] listCom;
-    
-    /**
-     * Creates new form DeleteDialog
-     */
+     private JPanel detailItem;
+     private SubtotalPanel totalPanel;
+     private Button btnPayment;
+     private HashMap<String, String> map = new HashMap<>();
+     private String reasonId;
+     private Component[] listCom;
 
-    public CancelDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        panelCancel.setBackground(WindowColor.mediumGreen);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
-        addComboReason();
-        // action get select customer type
-         ButtonEvent events = new ButtonEvent() {
-              @Override
-              public void onSelect(String key) {
-                   reasonId = key;
-              }
-         };
-         comboBoxReason.initEvent(events);
-    }
-    
-    private void addComboReason() {
-        
-        try {
-            ArrayList<ReasonModel> reason = new ArrayList<>();
-            Response response = JavaConnection.get(JavaRoute.reason + "cancel");
-            if (response.isSuccessful()) {
-                String responseData = response.body().string();
-                JSONObject jsonObject = new JSONObject(responseData);
-                JSONArray data = jsonObject.getJSONArray("data");
-                for (int i = 0; i < data.length(); i++) {
-                    JSONObject obj = data.getJSONObject(i);
-                    ReasonModel modelReason = new ReasonModel(
-                            obj.getInt("id"),
-                            obj.getString("reason")
-                    );
-                    reason.add(modelReason);
-                    int idReason = reason.get(i).getIdReason();
-                    String reasonName = reason.get(i).getReason();
-                    map.put(reasonName, "" + idReason);
+     /**
+      * Creates new form DeleteDialog
+      */
+     public CancelDialog(java.awt.Frame parent, boolean modal) {
+          super(parent, modal);
+          initComponents();
+          panelCancel.setBackground(WindowColor.mediumGreen);
+          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          setResizable(false);
+          addComboReason();
+          // action get select customer type
+          ButtonEvent events = new ButtonEvent() {
+               @Override
+               public void onSelect(String key) {
+                    reasonId = key;
+               }
+          };
+          comboBoxReason.initEvent(events);
+     }
 
-                }
-                comboBoxReason.setMap(map);
-                
-            } else {
-                System.err.println("fail loading data");
-            }
-        } catch (Exception e) {
-            System.err.println("error = " + e);
-        }
-    }
-    
-    @SuppressWarnings("unchecked")
+     private void addComboReason() {
+
+          try {
+               ArrayList<ReasonModel> reason = new ArrayList<>();
+               Response response = JavaConnection.get(JavaRoute.reason + "cancel");
+               if (response.isSuccessful()) {
+                    String responseData = response.body().string();
+                    JSONObject jsonObject = new JSONObject(responseData);
+                    JSONArray data = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                         JSONObject obj = data.getJSONObject(i);
+                         ReasonModel modelReason = new ReasonModel(
+                              obj.getInt("id"),
+                              obj.getString("reason")
+                         );
+                         reason.add(modelReason);
+                         int idReason = reason.get(i).getIdReason();
+                         String reasonName = reason.get(i).getReason();
+                         map.put(reasonName, "" + idReason);
+
+                    }
+                    comboBoxReason.setMap(map);
+
+               } else {
+                    System.err.println("fail loading data");
+               }
+          } catch (Exception e) {
+               System.err.println("error = " + e);
+          }
+     }
+
+     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -179,157 +178,156 @@ public class CancelDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCancelMouseClicked
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_buttonCancelMouseClicked
 
     private void buttonSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveMouseClicked
 
-        JSONObject jsonData = new JSONObject();
-        
-        ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
-        for (int i = 0; i < listCom.length; i++) {
-            var obj = ((BoxItem) listCom[i]);
-            ProductIDModel pro = new ProductIDModel(
-                 obj.getProductId()
-            );
-            listCancelDetail.add(pro);
-        }
-        
-        jsonData.put("listCancelDetail", listCancelDetail);
-        jsonData.put("reasonId", reasonId);
-        jsonData.put("createBy", JavaConstant.cashierId);
-        
-        try { 
-            
-            if(reasonId == null){
-                UIManager UI=new UIManager();
-                UI.put("OptionPane.background", WindowColor.mediumGreen);
-                UI.put("Panel.background", WindowColor.mediumGreen);
-                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                JOptionPane.showMessageDialog(null, "Please select a reason!");
-                return;
-            }
-            
-            Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "cancel", jsonData);
-            if (response.isSuccessful()) {
-                this.dispose();
-                detailItem.removeAll();
-                detailItem.revalidate();
-                detailItem.repaint();
-                clearTotal();
-                changeColorButtonPayment();
-            }
-            else
-            {
-                UIManager UI=new UIManager();
-                UI.put("OptionPane.background", WindowColor.mediumGreen);
-                UI.put("Panel.background", WindowColor.mediumGreen);
-                UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                JOptionPane.showMessageDialog(null, "Save Failed!");
-                return;
-            }
+         JSONObject jsonData = new JSONObject();
 
-        } catch (Exception e) {
+         ArrayList<ProductIDModel> listCancelDetail = new ArrayList<>();
+         for (int i = 0; i < listCom.length; i++) {
+              var obj = ((BoxItem) listCom[i]);
+              ProductIDModel pro = new ProductIDModel(
+                   obj.getProductId()
+              );
+              listCancelDetail.add(pro);
+         }
 
-        }
+         jsonData.put("listCancelDetail", listCancelDetail);
+         jsonData.put("reasonId", reasonId);
+         jsonData.put("createBy", JavaConstant.cashierId);
+
+         try {
+
+              if (reasonId == null) {
+                   UIManager UI = new UIManager();
+                   UI.put("OptionPane.background", WindowColor.mediumGreen);
+                   UI.put("Panel.background", WindowColor.mediumGreen);
+                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                   JOptionPane.showMessageDialog(null, "Please select a reason!");
+                   return;
+              }
+
+              Response response = JavaConnection.post(JavaRoute.cancelAndDelete + "cancel", jsonData);
+              if (response.isSuccessful()) {
+                   this.dispose();
+                   detailItem.removeAll();
+                   detailItem.revalidate();
+                   detailItem.repaint();
+                   clearTotal();
+                   changeColorButtonPayment();
+              } else {
+                   UIManager UI = new UIManager();
+                   UI.put("OptionPane.background", WindowColor.mediumGreen);
+                   UI.put("Panel.background", WindowColor.mediumGreen);
+                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+                   JOptionPane.showMessageDialog(null, "Save Failed!");
+                   return;
+              }
+
+         } catch (Exception e) {
+
+         }
     }//GEN-LAST:event_buttonSaveMouseClicked
 
-    void changeColorButtonPayment(){
-        Component[] listCom1 = detailItem.getComponents();
-        if (listCom1.length == 0){
-            btnPayment.setBackground(WindowColor.lightGray);
-            getDetailItem().setBorder(null);
-        }
-    }
-    
-    void clearTotal(){
-        totalPanel.setLabelSubtotalKhr("0");
-        totalPanel.setLabelSubtotalUsd("$ 0.00");
-        totalPanel.setLableDiscountKhr("0");
-        totalPanel.setLableDiscountUsd("$ 0.00");
-        totalPanel.setLableDeliveryUsd("$ 0.00");
-        totalPanel.setLableTotalKhr("0");
-        totalPanel.setLableTotalUsd("$ 0.00");
-        totalPanel.setLableDeliveryKhr("0");
-        totalPanel.setLableDeliveryUsd("$ 0.00");
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     void changeColorButtonPayment() {
+          Component[] listCom1 = detailItem.getComponents();
+          if (listCom1.length == 0) {
+               btnPayment.setBackground(WindowColor.lightGray);
+               getDetailItem().setBorder(null);
+          }
+     }
+
+     void clearTotal() {
+          totalPanel.setLabelSubtotalKhr("0");
+          totalPanel.setLabelSubtotalUsd("$ 0.00");
+          totalPanel.setLableDiscountKhr("0");
+          totalPanel.setLableDiscountUsd("$ 0.00");
+          totalPanel.setLableDeliveryUsd("$ 0.00");
+          totalPanel.setLableTotalKhr("0");
+          totalPanel.setLableTotalUsd("$ 0.00");
+          totalPanel.setLableDeliveryKhr("0");
+          totalPanel.setLableDeliveryUsd("$ 0.00");
+     }
+
+     /**
+      * @param args the command line
+      * arguments
+      */
+     public static void main(String args[]) {
+          /* Set the Nimbus look and feel */
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CancelDialog dialog = new CancelDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+           */
+          try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                         break;
                     }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-    
-    public JPanel getDetailItem() {
-        return detailItem;
-    }
+               }
+          } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(CancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          }
+          //</editor-fold>
+          //</editor-fold>
 
-    public void setDetailItem(JPanel detailItem) {
-        this.detailItem = detailItem;
-    }
+          /* Create and display the dialog */
+          java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                    CancelDialog dialog = new CancelDialog(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                         @Override
+                         public void windowClosing(java.awt.event.WindowEvent e) {
+                              System.exit(0);
+                         }
+                    });
+                    dialog.setVisible(true);
+               }
+          });
+     }
 
-    public SubtotalPanel getTotalPanel() {
-        return totalPanel;
-    }
+     public JPanel getDetailItem() {
+          return detailItem;
+     }
 
-    public void setTotalPanel(SubtotalPanel totalPanel) {
-        this.totalPanel = totalPanel;
-    }
+     public void setDetailItem(JPanel detailItem) {
+          this.detailItem = detailItem;
+     }
 
-    public Button getBtnPayment() {
-        return btnPayment;
-    }
+     public SubtotalPanel getTotalPanel() {
+          return totalPanel;
+     }
 
-    public void setBtnPayment(Button btnPayment) {
-        this.btnPayment = btnPayment;
-    }
+     public void setTotalPanel(SubtotalPanel totalPanel) {
+          this.totalPanel = totalPanel;
+     }
 
-    public Component[] getListCom() {
-        return listCom;
-    }
+     public Button getBtnPayment() {
+          return btnPayment;
+     }
 
-    public void setListCom(Component[] listCom) {
-        this.listCom = listCom;
-    }
+     public void setBtnPayment(Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
 
-  
+     public Component[] getListCom() {
+          return listCom;
+     }
+
+     public void setListCom(Component[] listCom) {
+          this.listCom = listCom;
+     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ButtonPackage.ButtonCancel buttonCancel;
     private ButtonPackage.ButtonSave buttonSave;

@@ -9,6 +9,7 @@ import Constant.JavaConstant;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ public class CloseShift extends javax.swing.JDialog {
      private Button btnOpenShift;
      private JPanel panelProduct;
      private JPanel panelPagination;
+     private JPanel category;
 
      public CloseShift(java.awt.Frame parent, boolean modal, Button btnOpenShift) {
           super(parent, modal);
@@ -364,7 +366,8 @@ public class CloseShift extends javax.swing.JDialog {
                 btnOpenShift.setButtonName("Open Shift");
                 JavaConstant.checkCloseShift = 0l;
                 JavaConstant.checkOpenShift = false;
-
+                    
+                    category.setBackground(Color.red);
                    panelProduct.removeAll();
                    panelProduct.revalidate();
                    panelProduct.repaint();
@@ -400,6 +403,16 @@ public class CloseShift extends javax.swing.JDialog {
           this.panelPagination = panelPagination;
      }
 
+     public JPanel getCategory() {
+          return category;
+     }
+
+     public void setCategory(JPanel category) {
+          this.category = category;
+     }
+
+     
+     
      /**
       * @param args the command line
       * arguments

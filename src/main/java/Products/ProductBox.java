@@ -107,7 +107,6 @@ public class ProductBox extends javax.swing.JPanel {
         this.discountPercentag = discountPercentag;
         if (discountPercentag > 0) {
             discount.setDiscountPrice("Was $"+" "+ wasPrice);
-//            discount.setDiscountPrice(discountPercentag+" "+"%"+" off");
             discount.setVisible(true);
         }
     }
@@ -118,11 +117,14 @@ public class ProductBox extends javax.swing.JPanel {
 
      public void setProductStatus(String productStatus) {
           this.productStatus = productStatus;
-          if (productStatus.isEmpty()) {
-               buttonStatus.setBgColor(Color.red);
-               buttonStatus.setButtonName("Unavailable");
-          } else {
-               buttonStatus.setButtonName(productStatus);
+          buttonStatus.setButtonName(productStatus);
+          if (productStatus == "Unavailable") {
+               buttonStatus.setBgColor(WindowColor.darkred);
+          } else if(productStatus == "Out Stock"){
+               buttonStatus.setBgColor(WindowColor.darkred);
+          }
+          else{
+              buttonStatus.setBgColor(WindowColor.darkGreen);
           }
      }
 

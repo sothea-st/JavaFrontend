@@ -804,6 +804,12 @@ public class MainPage extends javax.swing.JFrame {
                    cancel.setListCom(listCom);
                    cancel.setVisible(true);
               }
+              else{
+                   JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                   j.setMessage("Cannot process this function!");
+                   j.setVisible(true);
+                   return;
+              }
          } else {
               System.err.println("System cannot open cancel option");
               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);

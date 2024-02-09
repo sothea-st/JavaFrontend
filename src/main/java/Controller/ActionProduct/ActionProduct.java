@@ -158,7 +158,20 @@ public class ActionProduct {
 
                product.setQty("" + listData.getQty());
                product.initEvent(event);
-               product.setProductStatus(listData.getProductStatus());
+               
+               if(listData.getQty()>0){
+                   product.setProductStatus(listData.getProductStatus()); 
+               }
+               else
+               {
+                   if(listData.getProductStatus().isEmpty()){
+                       product.setProductStatus("Unavailable"); 
+                   }
+                   else{
+                       product.setProductStatus("Out Stock");
+                   }
+               }
+               
                product.setDiscountPercentag(listData.getDiscount(), price);
                
                product.setDiscountPercent(listData.getDiscount());

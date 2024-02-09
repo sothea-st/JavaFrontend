@@ -151,7 +151,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
         panelLogin.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtUserId.setLabelTextField("");
+        txtUserId.setLabelTextField("User ID");
+
+        txtPassword.setTextPassowrd("Password");
 
         labelPopUpTitle2.setLabelTitle("Login");
 
@@ -235,11 +237,11 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      }
 
     private void buttonLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogin1MouseClicked
-//         String userId = txtUserId.getValueTextField();
-//         String password = txtPassword.getValuePassword();
-
-        String userId = "0003";
-        String password = "TT@126$kh#";
+         String userId = txtUserId.getValueTextField();
+         String password = txtPassword.getValuePassword();
+         
+//        String userId = "0003";
+//        String password = "TT@126$kh#";
 
          JSONObject json = new JSONObject();
          json.put("userCode", userId);

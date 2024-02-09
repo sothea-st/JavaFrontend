@@ -12,6 +12,7 @@ import Customer.Customer;
 import DefaultPrice.DataModelDefaultPrice;
 import DeleteAndCancel.CancelDialog;
 import Event.ButtonEvent;
+import Fonts.WindowFonts;
 import LoginAndLogoutForm.LoginFormJdailog;
 import LoginAndLogoutForm.LogoutDialog;
 import Model.CashierReport.DataSuccessModelReport;
@@ -26,12 +27,16 @@ import Return.ApprovalCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 import okhttp3.Response;
 
 public class MainPage extends javax.swing.JFrame {
@@ -66,6 +71,27 @@ public class MainPage extends javax.swing.JFrame {
           previousEvent();
           getLogo();
           getUserIcon();
+          existFun();
+     }
+
+     void existFun() {
+          UIManager UI = new UIManager();
+          UI.put("OptionPane.background", WindowColor.mediumGreen);
+          UI.put("Panel.background", WindowColor.mediumGreen);
+          UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+
+          addWindowListener(new WindowAdapter() {
+               public void windowClosing(WindowEvent evt) {
+                    int resp = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?",
+                         "Exit?", JOptionPane.YES_NO_OPTION);
+
+                    if (resp == JOptionPane.YES_OPTION) {
+                         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    } else {
+                         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                    }
+               }
+          });
      }
 
      void getLogo() {
@@ -97,18 +123,17 @@ public class MainPage extends javax.swing.JFrame {
                @Override
                public void onMouseClick() {
                     int count = jdFormLogin.getCount();
-                    System.err.println("count = " + count);
                     if (limit < count) {
                          limit += 10;
                     }
                     if (jdFormLogin.getBrandId() == 0) {
-                         System.out.println("nect event by cat id");
                          try {
                               Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + jdFormLogin.getCatId() + "&limit=" + limit + "");
                               if (response.isSuccessful()) {
                                    String responseData = response.body().string();
                                    ObjectMapper objMap = new ObjectMapper();
-                                   ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
+                                   ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class
+                                   );
                                    ProductDataModel[] listData = data.getData();
                                    jdFormLogin.assignProduct(listData);
                               } else {
@@ -140,7 +165,8 @@ public class MainPage extends javax.swing.JFrame {
                                    if (response.isSuccessful()) {
                                         String responseData = response.body().string();
                                         ObjectMapper objMap = new ObjectMapper();
-                                        ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
+                                        ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class
+                                        );
                                         ProductDataModel[] listData = data.getData();
                                         jdFormLogin.assignProduct(listData);
                                    } else {
@@ -172,7 +198,6 @@ public class MainPage extends javax.swing.JFrame {
                                    ActionScanBarcodeAddProduct.scanBarcode(barcode, jdFormLogin);
                                    textField.setValueTextField("");
                               } else {
-
                                    j.setMessage(JavaConstant.openShiftFirst);
                                    j.setVisible(true);
                               }
@@ -192,10 +217,28 @@ public class MainPage extends javax.swing.JFrame {
                @Override
                public void onKeyType() {
                     valueSearch = searchBox.getValueTextSearch();
+
                     JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
                     if (JavaConstant.token != null) {
+
+                         if (valueSearch.isEmpty()) {
+                              panelProduct.removeAll();
+                              panelProduct.revalidate();
+                              panelProduct.repaint();
+                              return;
+                         }
+
                          if (JavaConstant.checkOpenShift) {
-                              ActionSearchProduct.searchProduct(valueSearch, jdFormLogin);
+                              ActionSearchProduct.searchProduct(valueSearch, jdFormLogin, panelProduct);
+                              panelPagination.setVisible(false);
+
+                              // each time search product by barcode or name category will remove bg color 
+                              if (jdFormLogin.getCatName() != null) {
+                                   Component[] listCom = category.getComponents();
+                                   int index = Integer.parseInt(jdFormLogin.getCatName());
+                                   listCom[index].setBackground(WindowColor.darkGreen);
+                              }
+
                          } else {
                               j.setMessage(JavaConstant.openShiftFirst);
                               j.setVisible(true);
@@ -204,7 +247,6 @@ public class MainPage extends javax.swing.JFrame {
                          j.setMessage(MessageAlert.Message.OverallMessage);
                          j.setVisible(true);
                     }
-
                }
           };
           searchBox.initEvent(event);
@@ -666,6 +708,8 @@ public class MainPage extends javax.swing.JFrame {
               jdFormLogin.setBtnOpenShift(btnOpenShift);
               jdFormLogin.setLbPOSId(lbPOSId);
               jdFormLogin.setLimit(limit);
+              jdFormLogin.setSearchBox(searchBox);
+              jdFormLogin.setBtnPayment(btnPayment);
               jdFormLogin.setVisible(true);
          } else if (buttonName.equals("logout")) {
               LogoutDialog logout = new LogoutDialog(new JFrame(), true);
@@ -695,7 +739,8 @@ public class MainPage extends javax.swing.JFrame {
                         if (response.isSuccessful()) {
                              String myObject = response.body().string();
                              ObjectMapper objMap = new ObjectMapper();
-                             DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class);
+                             DataModelDefaultPrice d = objMap.readValue(myObject, DataModelDefaultPrice.class
+                             );
                              jdOpenShift.setCategory(category);
                              jdOpenShift.setPanelProduct(panelProduct);
                              jdOpenShift.setLimit(limit);
@@ -749,7 +794,6 @@ public class MainPage extends javax.swing.JFrame {
 //              rep.setTextButtonRight("Reprint by Invoice №");
 //              rep.setTypeForm("reprint");
 //              rep.setVisible(true);
-
          } else {
               System.err.println("System Cannot Open Reprint");
               JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
@@ -839,7 +883,8 @@ public class MainPage extends javax.swing.JFrame {
                     if (response.isSuccessful()) {
                          String myObject = response.body().string();
                          ObjectMapper objMap = new ObjectMapper();
-                         DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class);
+                         DataSuccessModelReport d = objMap.readValue(myObject, DataSuccessModelReport.class
+                         );
                          cashier.setDataSuccessReport(d);
                          cashier.setVisible(true);
                     }
@@ -945,16 +990,24 @@ public class MainPage extends javax.swing.JFrame {
                     if ("Nimbus".equals(info.getName())) {
                          javax.swing.UIManager.setLookAndFeel(info.getClassName());
                          break;
+
                     }
                }
           } catch (ClassNotFoundException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+               java.util.logging.Logger.getLogger(MainPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
           } catch (InstantiationException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+               java.util.logging.Logger.getLogger(MainPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
           } catch (IllegalAccessException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+               java.util.logging.Logger.getLogger(MainPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
           } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-               java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+               java.util.logging.Logger.getLogger(MainPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
           }
           //</editor-fold>
 

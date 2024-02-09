@@ -1,5 +1,6 @@
 package Components;
 
+ 
 import Color.WindowColor;
 import Components.Shadow.ShadowRenderer;
 import Components.Shadow.ShadowType;
@@ -208,6 +209,15 @@ public class BoxItem extends javax.swing.JPanel {
           this.discountAmt = discountAmt;
      }
 
+     public Button.Button getBtnPayment() {
+          return btnPayment;
+     }
+
+     public void setBtnPayment(Button.Button btnPayment) {
+          this.btnPayment = btnPayment;
+     }
+
+     
      /**
       * Creates new form BoxItem
       */
@@ -230,7 +240,7 @@ public class BoxItem extends javax.swing.JPanel {
      DecimalFormat dm = new DecimalFormat("$ #,##0.00");
      DecimalFormat kh = new DecimalFormat("#,##0");
      private String discountAmt;
-
+     private Button.Button btnPayment;
      public BoxItem() {
           initComponents();
 
@@ -555,6 +565,7 @@ public class BoxItem extends javax.swing.JPanel {
          delete.setListCom(listDelete);
          delete.setProductId(b.getProductId());
          delete.setSubtotalPanel(subtotalPanel);
+         delete.setBtnPayment(btnPayment);
          delete.setVisible(true);
 
     }//GEN-LAST:event_btnDeleteMouseClicked

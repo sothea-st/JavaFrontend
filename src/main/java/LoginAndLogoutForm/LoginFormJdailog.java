@@ -39,6 +39,7 @@ import Button.Button;
 import Components.BackgroundImage;
 import Components.ComboBox;
 import Components.JavaAlertMessage;
+import Components.SearchField;
 import Controller.ActionProduct.ActionProduct;
 import Controller.ActionRequestBrand.ActionRequestBrand;
 import Controller.ActionScanBarcodeAddProduct.ActionScanBarcodeAddProduct;
@@ -93,6 +94,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
      private int count;
      private int brandId = 0;
      private String catIdIndex0;
+     private String catName;
+     private SearchField searchBox;
+ 
 
      public LoginFormJdailog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -131,7 +135,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
           pro.setBoxUserName(boxUserName);
           pro.setPanelProduct(panelProduct);
           if (listData != null) {
-               pro.assignProduct(listData,panelProduct);
+               pro.assignProduct(listData, panelProduct);
           }
      }
 
@@ -231,7 +235,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 
      public void scanbarCodeAddProduct(ProductModel proModel) {
           ActionScanBarcodeAddProduct action = new ActionScanBarcodeAddProduct();
-
           pro.eventBtnBuy(proModel);
      }
 
@@ -239,7 +242,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
 //         String userId = txtUserId.getValueTextField();
 //         String password = txtPassword.getValuePassword();
 
-         String userId = "0003";
+         String userId = "0005";
          String password = "TT@126$kh#";
 
          JSONObject json = new JSONObject();
@@ -338,7 +341,6 @@ public class LoginFormJdailog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancel1MouseClicked
 
      public void eventSelectBrand() {
-
           ButtonEvent events = new ButtonEvent() {
                @Override
                public void onSelect(String key) {
@@ -356,11 +358,23 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                     String responseData = response.body().string();
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData model = objMap.readValue(responseData, ProductSuccessData.class);
-
                     ProductDataModel[] listProduct = model.getData();
-                    assignProduct(listProduct);
+                    if (listProduct.length > 0) {
+                         assignProduct(listProduct);
+                    } else {
+                         panelProduct.removeAll();
+                         panelProduct.add(new JLabel(JavaConstant.noResult));
+                         panelProduct.revalidate();
+                         panelProduct.repaint();
+                    }
                     setBrandId(Integer.parseInt(key));
                     setCount(model.getCount());
+                    // each time select brand category will remove bg color 
+                    if (getCatName() != null) {
+                         Component[] listCom = category.getComponents();
+                         int index = Integer.parseInt(getCatName());
+                         listCom[index].setBackground(WindowColor.darkGreen);
+                    }
                }
           } catch (Exception e) {
                System.err.println("error get produt by brand = " + e);
@@ -393,8 +407,9 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                          LabelTitle categoryTitle = new LabelTitle();
                          categoryTitle.setLbCatId("" + catId);
                          category.add(categoryTitle);
-                         String catName = listCategory.get(i).getCatNameEn();
-                         categoryTitle.setLabelTitle(catName);
+                         String catNameData = listCategory.get(i).getCatNameEn();
+
+                         categoryTitle.setLabelTitle(catNameData);
                          ButtonEvent event = new ButtonEvent() {
                               @Override
                               public void onMouseClick() {
@@ -405,14 +420,20 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                                         Component[] listCom = category.getComponents();
                                         for (int i = 0; i < listCom.length; i++) {
                                              String title = ((LabelTitle) listCom[i]).getLabelTitle();
-                                             if (catName.equals(title)) {
+                                             if (catNameData.equals(title)) {
                                                   listCom[i].setBackground(WindowColor.black);
+                                                  setCatName("" + i);
                                              } else {
                                                   listCom[i].setBackground(WindowColor.darkGreen);
                                              }
                                         }
+                                        setBrandId(0); // each time user click on category brandId will be 0
+                                        cmboxBrand.setToFirstItem(); // each time user click on category combobox brand will be set to first item
+                                        searchBox.requestFocusInWindow(); // each time user click on category remove cursor from searchBox
+
                                         panelProduct.removeAll();
-                                        pro.product(catId, limit,panelProduct);
+                                        pro.product(catId, limit, panelProduct);
+                                        pro.setBtnPayment(btnPayment);
                                         panelProduct.revalidate();
                                         panelProduct.repaint();
                                         setCount(pro.getCount());
@@ -436,6 +457,22 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                System.err.println("error " + e);
           }
 
+     }
+
+     public SearchField getSearchBox() {
+          return searchBox;
+     }
+
+     public void setSearchBox(SearchField searchBox) {
+          this.searchBox = searchBox;
+     }
+
+     public String getCatName() {
+          return catName;
+     }
+
+     public void setCatName(String catName) {
+          this.catName = catName;
      }
 
      public String getCatIdIndex0() {

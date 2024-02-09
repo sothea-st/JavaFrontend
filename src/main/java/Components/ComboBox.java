@@ -53,6 +53,9 @@ public class ComboBox extends javax.swing.JPanel {
          });
      }
      
+     public void setToFirstItem(){
+          combo.setSelectedIndex(0);
+     }
      
      public void removeAllItem(){
           combo.removeAllItems();

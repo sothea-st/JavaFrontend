@@ -11,7 +11,6 @@ import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import Model.Package.ReasonModel;
 import Model.PackageProduct.ProductIDModel;
-import java.awt.Color;
 import java.awt.Component;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -35,6 +34,7 @@ public class DeleteDialog extends javax.swing.JDialog {
      DecimalFormat dm = new DecimalFormat("$ #,##0.00");
      DecimalFormat kh = new DecimalFormat("#,##0");
      private String reasonId;
+     private Button.Button btnPayment;
 
      public DeleteDialog(java.awt.Frame parent, boolean modal) {
           super(parent, modal);
@@ -49,7 +49,7 @@ public class DeleteDialog extends javax.swing.JDialog {
                @Override
                public void onSelect(String key) {
                     reasonId = key;
-                    System.err.println("key = " + key);
+
                }
           };
           comboBoxReason.initEvent(event);
@@ -89,6 +89,7 @@ public class DeleteDialog extends javax.swing.JDialog {
      void deleteItem() {
           double sumSubTotalUsd = 0;
           double sumDiscount = 0;
+
           for (int i = 0; i < listCom.length; i++) {
                var d = (BoxItem) listCom[i];
                if (productId == d.getProductId()) {
@@ -111,6 +112,12 @@ public class DeleteDialog extends javax.swing.JDialog {
                     double discountValue = JavaConstant.getReplace(d.getDiscountAmount());
                     sumDiscount += discountValue;
                }
+          }
+
+          Component[] l = detailItem.getComponents();
+      
+          if (l.length == 0) {
+               btnPayment.setBackground(WindowColor.lightGray);
           }
 
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumSubTotalUsd));
@@ -270,6 +277,14 @@ public class DeleteDialog extends javax.swing.JDialog {
                     dialog.setVisible(true);
                }
           });
+     }
+
+     public Button.Button getBtnPayment() {
+          return btnPayment;
+     }
+
+     public void setBtnPayment(Button.Button btnPayment) {
+          this.btnPayment = btnPayment;
      }
 
      public JPanel getDetailItem() {

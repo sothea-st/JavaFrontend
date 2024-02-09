@@ -55,7 +55,7 @@ public class ActionProduct {
      public void product(int catId, int limit,JPanel panelProduct) {
           try {
                Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + catId + "&limit=" + limit + "");
-                System.err.println("data loading here ========= " + response);
+              
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
                     ObjectMapper objMap = new ObjectMapper();
@@ -271,6 +271,7 @@ public class ActionProduct {
           try {
                BoxItem box = new BoxItem();
                box.setWasPrice("" + price);
+               box.setBtnPayment(btnPayment);
                Component[] listCom = detailItem.getComponents();
                if (listCom.length != 0) {
                     for (int i = 0; i < listCom.length; i++) {

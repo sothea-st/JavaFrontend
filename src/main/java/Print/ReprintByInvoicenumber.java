@@ -145,12 +145,8 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
     private void btnPreviewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviewMouseClicked
 
          String paymentNo = txtInvoiceNumber.getValueTextField();
-         if (paymentNo == null) {
-            UIManager UI=new UIManager();
-            UI.put("OptionPane.background", WindowColor.mediumGreen);
-            UI.put("Panel.background", WindowColor.mediumGreen);
-            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-            JOptionPane.showMessageDialog(null, "Invoice № can not be empty!");
+         if (paymentNo == null || paymentNo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invoice № can not be empty!");
             return;
          }
 
@@ -167,13 +163,8 @@ public class ReprintByInvoicenumber extends javax.swing.JDialog {
                    rec.setDataSuccess(d);
                    rec.setVisible(true);
               } else {
-                   UIManager UI=new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Wrong Invoice №!");
+                   JOptionPane.showMessageDialog(this, "Wrong Invoice №!");
                    return;
-                   
               }
 
          } catch (Exception e) {

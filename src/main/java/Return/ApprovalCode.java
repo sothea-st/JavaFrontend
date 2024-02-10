@@ -28,8 +28,7 @@ public class ApprovalCode extends javax.swing.JDialog {
           setResizable(false);
           event();
           txtCode.requestFocus();
-          txtCode.setLabelTextField("");
-          txtPassword.setValuePassword(null);
+          txtPassword.setTextPassowrd("Password");
      }
 
      //Action call function placeholder
@@ -66,7 +65,8 @@ public class ApprovalCode extends javax.swing.JDialog {
 
         txtCode.setLabelTextField("Code");
 
-        txtPassword.setValuePassword("password");
+        txtPassword.setTextPassowrd("Password");
+        txtPassword.setValuePassword("");
 
         buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,10 +150,16 @@ public class ApprovalCode extends javax.swing.JDialog {
          String userCode = txtCode.getValueTextField();
          String password = txtPassword.getValuePassword();
 
-         if (userCode == null || password == null) {
-              JOptionPane.showMessageDialog(this, "Please fill box code and password!");
+         if (userCode == null || userCode.isEmpty()) {
+              JOptionPane.showMessageDialog(this, "Code can not be empty!");
               return;
          }
+         
+         if (password == null || password.isEmpty()) {
+              JOptionPane.showMessageDialog(this, "Password can not be empty!");
+              return;
+         }
+         
          JSONObject json = new JSONObject();
          json.put("userCode", userCode);
          json.put("password", password);
@@ -187,6 +193,10 @@ public class ApprovalCode extends javax.swing.JDialog {
                         j.setMessage("You have no permission use this function!");
                         j.setVisible(true);
                    }
+              }
+              else{
+                  JOptionPane.showMessageDialog(this, "Wrong code or password!");
+                  return;
               }
          } catch (Exception e) {
               System.err.println("err  = " + e);

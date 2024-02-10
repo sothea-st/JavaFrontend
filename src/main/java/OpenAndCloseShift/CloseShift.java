@@ -310,53 +310,29 @@ public class CloseShift extends javax.swing.JDialog {
          json.put("posId", JavaConstant.posId);
 
         try {
-            
-            if (express == null) {
-                 UIManager UI = new UIManager();
-                 UI.put("OptionPane.background", WindowColor.mediumGreen);
-                 UI.put("Panel.background", WindowColor.mediumGreen);
-                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                 JOptionPane.showMessageDialog(null, "RED ANT EXPRESS can not be empty!");
+            System.out.println("express :" + express);
+            if (express == null || express.isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "RED ANT EXPRESS can not be empty!");
                  return;
             }
-            if (khqrMnk == null) {
-                 UIManager UI = new UIManager();
-                 UI.put("OptionPane.background", WindowColor.mediumGreen);
-                 UI.put("Panel.background", WindowColor.mediumGreen);
-                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                 JOptionPane.showMessageDialog(null, "KHQR-NMK can not be empty!");
+            if (khqrMnk == null || khqrMnk.isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "KHQR-NMK can not be empty!");
                  return;
             }
-            if (khqrAba == null) {
-                 UIManager UI = new UIManager();
-                 UI.put("OptionPane.background", WindowColor.mediumGreen);
-                 UI.put("Panel.background", WindowColor.mediumGreen);
-                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                 JOptionPane.showMessageDialog(null, "KHQR-ABA can not be empty!");
+            if (khqrAba == null || khqrAba.isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "KHQR-ABA can not be empty!");
                  return;
             }
-            if (creditCard == null) {
-                 UIManager UI = new UIManager();
-                 UI.put("OptionPane.background", WindowColor.mediumGreen);
-                 UI.put("Panel.background", WindowColor.mediumGreen);
-                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                 JOptionPane.showMessageDialog(null, "ABA-CREDIT CARD can not be empty!");
+            if (creditCard == null || creditCard.isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "ABA-CREDIT CARD can not be empty!");
                  return;
             }
-            if (cashUsd == null) {
-                 UIManager UI = new UIManager();
-                 UI.put("OptionPane.background", WindowColor.mediumGreen);
-                 UI.put("Panel.background", WindowColor.mediumGreen);
-                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                 JOptionPane.showMessageDialog(null, "CASH (USD) can not be empty!");
+            if (cashUsd == null || cashUsd.isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "CASH (USD) can not be empty!");
                  return;
             }
-            if ( cashKhr == null) {
-                 UIManager UI = new UIManager();
-                 UI.put("OptionPane.background", WindowColor.mediumGreen);
-                 UI.put("Panel.background", WindowColor.mediumGreen);
-                 UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                 JOptionPane.showMessageDialog(null, "CASH (KHR) can not be empty!");
+            if ( cashKhr == null || cashKhr.isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "CASH (KHR) can not be empty!");
                  return;
             }
             
@@ -367,18 +343,14 @@ public class CloseShift extends javax.swing.JDialog {
                 JavaConstant.checkCloseShift = 0l;
                 JavaConstant.checkOpenShift = false;
                     
-                    category.setBackground(Color.red);
+                   category.setBackground(Color.red);
                    panelProduct.removeAll();
                    panelProduct.revalidate();
                    panelProduct.repaint();
                    getPanelPagination().setVisible(false);
 
               } else {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Save Failed!");
+                   JOptionPane.showMessageDialog(this, "Save Failed!");
                    return;
               }
 

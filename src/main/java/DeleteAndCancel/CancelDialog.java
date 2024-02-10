@@ -201,11 +201,7 @@ public class CancelDialog extends javax.swing.JDialog {
          try {
 
               if (reasonId == null) {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Please select a reason!");
+                   JOptionPane.showMessageDialog(this, "Please select a reason!");
                    return;
               }
 
@@ -218,11 +214,7 @@ public class CancelDialog extends javax.swing.JDialog {
                    clearTotal();
                    changeColorButtonPayment();
               } else {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Save Failed!");
+                   JOptionPane.showMessageDialog(this, "Save Failed!");
                    return;
               }
 

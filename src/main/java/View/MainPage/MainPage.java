@@ -71,7 +71,7 @@ public class MainPage extends javax.swing.JFrame {
           previousEvent();
           getLogo();
           getUserIcon();
-          existFun();
+//          existFun();
      }
 
      void existFun() {
@@ -851,6 +851,12 @@ public class MainPage extends javax.swing.JFrame {
                    cancel.setBtnPayment(btnPayment);
                    cancel.setListCom(listCom);
                    cancel.setVisible(true);
+              }
+              else{
+                   JavaAlertMessage j = new JavaAlertMessage(new JFrame(), true);
+                   j.setMessage("Cannot process this function!");
+                   j.setVisible(true);
+                   return;
               }
          } else {
               System.err.println("System cannot open cancel option");

@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 public class PasswordField extends javax.swing.JPanel {
 
      private String valuePassword;
+     private String textPassowrd;
 
      public PasswordField() {
           initComponents();
@@ -127,13 +128,18 @@ public class PasswordField extends javax.swing.JPanel {
      }//GEN-LAST:event_passwordKeyReleased
 
      private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
-          password.setText("");
+
+         if( password.getText().trim().equals("Password")){
+              password.setText("");
+         }
      }//GEN-LAST:event_passwordFocusGained
 
      private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         
-        
-
+        if( password.getText().trim().equals("")){
+              password.setText("Password");
+              password.setForeground(WindowColor.lightGray);
+         }
      }//GEN-LAST:event_passwordFocusLost
 
      private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
@@ -152,5 +158,17 @@ public class PasswordField extends javax.swing.JPanel {
      public void setValuePassword(String valuePassword) {
           this.valuePassword = valuePassword;
           password.setText(valuePassword);
+          password.setForeground(WindowColor.black);
      }
+
+    public String getTextPassowrd() {
+        return textPassowrd;
+    }
+
+    public void setTextPassowrd(String textPassowrd) {
+        this.textPassowrd = textPassowrd;
+        password.setText(textPassowrd);
+        password.setForeground(WindowColor.lightGray);
+    }
+
 }

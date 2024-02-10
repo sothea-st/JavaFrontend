@@ -96,10 +96,13 @@
       <SubComponents>
         <Component class="Components.TextField" name="txtUserId">
           <Properties>
-            <Property name="labelTextField" type="java.lang.String" value=""/>
+            <Property name="labelTextField" type="java.lang.String" value="User ID"/>
           </Properties>
         </Component>
         <Component class="Components.PasswordField" name="txtPassword">
+          <Properties>
+            <Property name="textPassowrd" type="java.lang.String" value="Password"/>
+          </Properties>
         </Component>
         <Component class="Components.LabelPopUpTitle" name="labelPopUpTitle2">
           <Properties>

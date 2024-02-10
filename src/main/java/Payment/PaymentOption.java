@@ -8,6 +8,7 @@ import Components.RadioButton;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoundDown;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
@@ -1067,9 +1068,11 @@ public class PaymentOption extends javax.swing.JDialog {
               double totalKhrValue = JavaConstant.getReplace(lbTotalKhr.getLabelName());
               double rKhrValue = JavaConstant.getReplace(txtReceiveKhr.getText());
               double resultValueKhr = rKhrValue - totalKhrValue;
+
               if (resultValueKhr == 0) {
                    setValueLabelKhr(resultValueKhr, resultValueKhr);
               } else if (resultValueKhr > 0) {
+
                    setValueLabelKhr(0, resultValueKhr);
               } else if (resultValueKhr < 0) {
                    setValueLabelKhr(resultValueKhr, 0);
@@ -1169,9 +1172,9 @@ public class PaymentOption extends javax.swing.JDialog {
          for (int i = 0; i < listCom.length; i++) {
               var obj = ((BoxItem) listCom[i]);
               double price = JavaConstant.getReplace(obj.getLabelPrice());
-            
+
               int discountDigit = obj.getDiscountDigit();
-              double unitPrice = price - ( price*discountDigit )/100;
+              double unitPrice = price - (price * discountDigit) / 100;
               double p = JavaConstant.getReplace(df.format(unitPrice));
 
               double amount = obj.getQty() * p;
@@ -1204,14 +1207,13 @@ public class PaymentOption extends javax.swing.JDialog {
                    JavaConstant.indexArrayListHold = 0;
               }
 
-         }
-         else{
-            UIManager UI=new UIManager();
-            UI.put("OptionPane.background", WindowColor.mediumGreen);
-            UI.put("Panel.background", WindowColor.mediumGreen);
-            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-            JOptionPane.showMessageDialog(null, "Charge Failed!");
-            return;
+         } else {
+              UIManager UI = new UIManager();
+              UI.put("OptionPane.background", WindowColor.mediumGreen);
+              UI.put("Panel.background", WindowColor.mediumGreen);
+              UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
+              JOptionPane.showMessageDialog(null, "Charge Failed!");
+              return;
          }
 
 
@@ -1290,7 +1292,9 @@ public class PaymentOption extends javax.swing.JDialog {
      }
 
      private void setValueLabelKhr(double remaining, double change) {
+
           lbRemainingKhr.setLabelName(dm.format(remaining));
+
           lbChangeKhr.setLabelName(dm.format(change));
      }
 
@@ -1320,7 +1324,8 @@ public class PaymentOption extends javax.swing.JDialog {
           String moneyUsd = totalUsd.replace("$", "");
           moneyUsd = moneyUsd.replace(",", "");
           double totalKhr = Double.valueOf(moneyUsd);
-          lbTotalKhr.setLabelName(dm.format(totalKhr * 4200));
+          double _totalKh = JavaRoundDown.roundDown("" + totalKhr * JavaConstant.exchangeRate);
+          lbTotalKhr.setLabelName(dm.format(_totalKh));
      }
 
      public Component[] getListCom() {

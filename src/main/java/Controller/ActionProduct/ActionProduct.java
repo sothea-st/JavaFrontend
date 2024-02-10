@@ -7,6 +7,7 @@ import Components.JavaAlertMessage;
 import Components.SubtotalPanel;
 import Constant.JavaConnection;
 import Constant.JavaConstant;
+import Constant.JavaRoundDown;
 import Constant.JavaRoundUpKhr;
 import Constant.JavaRoute;
 import Event.ButtonEvent;
@@ -52,17 +53,17 @@ public class ActionProduct {
      public ActionProduct() {
      }
 
-     public void product(int catId, int limit,JPanel panelProduct) {
+     public void product(int catId, int limit, JPanel panelProduct) {
           try {
                Response response = JavaConnection.get(JavaRoute.getProductByCatId + "?catId=" + catId + "&limit=" + limit + "");
-              
+
                if (response.isSuccessful()) {
                     String responseData = response.body().string();
                     ObjectMapper objMap = new ObjectMapper();
                     ProductSuccessData data = objMap.readValue(responseData, ProductSuccessData.class);
                     ProductDataModel[] listData = data.getData();
                     setCount(data.getCount());
-                    assignProduct(listData,panelProduct);
+                    assignProduct(listData, panelProduct);
                } else {
                     System.err.println("fail loading product");
                }
@@ -71,7 +72,7 @@ public class ActionProduct {
           }
      }
 
-     public void assignProduct(ProductDataModel[] listData,JPanel panelProduct) {
+     public void assignProduct(ProductDataModel[] listData, JPanel panelProduct) {
           ArrayList<ProductModel> listProduct = new ArrayList<>();
           for (int i = 0; i < listData.length; i++) {
                var obj = listData[i];
@@ -93,10 +94,10 @@ public class ActionProduct {
                listProduct.add(product);
 
           }
-          appendProduct(listProduct,panelProduct);
+          appendProduct(listProduct, panelProduct);
      }
 
-     void appendProduct(ArrayList<ProductModel> listProduct,JPanel panelProduct) {
+     void appendProduct(ArrayList<ProductModel> listProduct, JPanel panelProduct) {
 
           GridBagLayout gridBagLayout = new GridBagLayout();
           gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0}; // one row has 5 column
@@ -158,11 +159,21 @@ public class ActionProduct {
 
                product.setQty("" + listData.getQty());
                product.initEvent(event);
-               product.setProductStatus(listData.getProductStatus());
+
+               if (listData.getQty() > 0) {
+                    product.setProductStatus(listData.getProductStatus());
+               } else {
+                    if (listData.getProductStatus().isEmpty()) {
+                         product.setProductStatus("Unavailable");
+                    } else {
+                         product.setProductStatus("Out Stock");
+                    }
+               }
+
                product.setDiscountPercentag(listData.getDiscount(), price);
-               
+
                product.setDiscountPercent(listData.getDiscount());
-               
+
                String productName;
                if (listData.getProductNameEn().length() > 35) {
                     productName = listData.getProductNameEn().substring(0, 34) + "...";
@@ -175,11 +186,11 @@ public class ActionProduct {
 
                if (listData.getDiscount() > 0) {
                     double discountPrice = price - (listData.getDiscount() * price) / 100;
-                    double dis4Length = JavaConstant.get4Length(""+discountPrice);
-                    product.setPrice(""+dis4Length);
+                    double dis4Length = JavaConstant.get4Length("" + discountPrice);
+                    product.setPrice(dm.format(dis4Length));
                } else {
-                     double _price = JavaConstant.get4Length(""+price);
-                    product.setPrice(""+_price);
+                    double _price = JavaConstant.get4Length("" + price);
+                    product.setPrice(dm.format(_price));
                }
 
                product.setBarcode(listData.getBarcode());
@@ -219,15 +230,19 @@ public class ActionProduct {
                     sumDiscount += Double.valueOf(discount);
                }
           }
+
           subtotalPanel.setLabelSubtotalUsd(dm.format(sumAmountUsd));
-          subtotalPanel.setLabelSubtotalKhr(kh.format(sumAmountUsd * JavaConstant.exchangeRate));
+          double subTotalValueKh = JavaRoundDown.roundDown("" + sumAmountUsd * JavaConstant.exchangeRate);
+          subtotalPanel.setLabelSubtotalKhr(kh.format(subTotalValueKh));
 
           subtotalPanel.setLableDiscountUsd(dm.format(sumDiscount));
-          subtotalPanel.setLableDiscountKhr(kh.format(sumDiscount * JavaConstant.exchangeRate));
+          double disKh = JavaRoundDown.roundDown("" + sumDiscount * JavaConstant.exchangeRate);
+          subtotalPanel.setLableDiscountKhr(kh.format(disKh));
           // total
           double total = sumAmountUsd - sumDiscount;
           subtotalPanel.setLableTotalUsd(dm.format(total));
-          subtotalPanel.setLableTotalKhr(kh.format(total * JavaConstant.exchangeRate));
+          double valueKh = JavaRoundDown.roundDown("" + total * JavaConstant.exchangeRate);
+          subtotalPanel.setLableTotalKhr(kh.format(valueKh));
 
 //          String khValue = kh.format(total * JavaConstant.exchangeRate);
 //          khValue = khValue.replaceAll(",", "");
@@ -261,13 +276,12 @@ public class ActionProduct {
 //          System.err.println("data value = " + value);
      }
 
- 
      public void eventBtnBuy(ProductModel listData) {
           double price = listData.getPrice();
           double discount = (listData.getDiscount() * price) / 100;
-        
-          discount = JavaConstant.get4Length(""+discount); // get 2 precision
-        
+
+          discount = JavaConstant.get4Length("" + discount); // get 2 precision
+
           try {
                BoxItem box = new BoxItem();
                box.setWasPrice("" + price);
@@ -290,7 +304,10 @@ public class ActionProduct {
                                    newAmountUsd = discountPrice * qty;
                               }
                               obj.setLabelAmountUsd(dm.format(newAmountUsd));
-                              obj.setLabelAmountKh(kh.format(newAmountUsd * JavaConstant.exchangeRate));
+
+                              double valueRoundDown1 = JavaRoundDown.roundDown("" + newAmountUsd * JavaConstant.exchangeRate);
+
+                              obj.setLabelAmountKh(kh.format(valueRoundDown1));
                               box.setSubtotalPanel(subtotalPanel);
                               obj.setDiscountAmount(dm.format(qty * discount));
 
@@ -306,23 +323,12 @@ public class ActionProduct {
                box.setLabelWeight(listData.getWeight());
                box.setLabelBarcode(listData.getBarcode());
 
-//               if (listData.getDiscount() > 0) {
-//                    double discountPrice = price - (listData.getDiscount() * price) / 100;
-//                    String discountStr = dm.format(discountPrice).replace("$", "");
-//                    discountStr = discountStr.replace(",", "");
-//                    price = Double.parseDouble(discountStr);
-//
-//                    box.setLabelPrice(dm.format(discountPrice));
-//                    box.setLabelAmountUsd(dm.format(discountPrice));
-//                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
-//
-//               } else {
-                    box.setLabelPrice(dm.format(price));
-                    box.setLabelAmountUsd(dm.format(price));
-                    box.setLabelAmountKh(kh.format(price * JavaConstant.exchangeRate));
-//               }
+               box.setLabelPrice(dm.format(price));
+               box.setLabelAmountUsd(dm.format(price));
 
-            
+               double valueRoundDown = JavaRoundDown.roundDown("" + price * JavaConstant.exchangeRate);
+               box.setLabelAmountKh(kh.format(valueRoundDown));
+
                box.setDiscountAmount(dm.format(discount));
                box.setDiscountAmt(dm.format(discount));
 

@@ -1206,14 +1206,10 @@ public class PaymentOption extends javax.swing.JDialog {
                    JavaConstant.listHoldData.remove(index);
                    JavaConstant.indexArrayListHold = 0;
               }
-
-         } else {
-              UIManager UI = new UIManager();
-              UI.put("OptionPane.background", WindowColor.mediumGreen);
-              UI.put("Panel.background", WindowColor.mediumGreen);
-              UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-              JOptionPane.showMessageDialog(null, "Charge Failed!");
-              return;
+         }
+         else{
+            JOptionPane.showMessageDialog(this, "Charge Failed!");
+            return;
          }
 
 

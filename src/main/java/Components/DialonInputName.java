@@ -3,6 +3,7 @@ package Components;
 import Button.Button;
 import Color.WindowColor;
 import Constant.JavaConstant;
+import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import Model.HoldOrder.HoldOrderModel;
 import java.awt.Component;
@@ -22,7 +23,21 @@ public class DialonInputName extends javax.swing.JDialog {
           initComponents();
           txtCustomerName.setLabelTextCenter("");
           body.setBackground(WindowColor.mediumGreen);
+          event();
+          txtCustomerName.requestFocus();
+          txtCustomerName.setLabelTextCenter("Customer Name");
      }
+     
+    //Action call function placeholder
+    void event() {
+        ButtonEvent btnevent = new ButtonEvent() {
+            @Override
+            public void onFocusGain() {
+
+            }
+        };
+        txtCustomerName.initEvent(btnevent);
+    }
 
      @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -99,12 +114,8 @@ public class DialonInputName extends javax.swing.JDialog {
      private void labelFontBlack9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFontBlack9MouseClicked
           String name = txtCustomerName.getValueTextFieldCenter();
 
-          if(name==null){
-            UIManager UI=new UIManager();
-            UI.put("OptionPane.background", WindowColor.mediumGreen);
-            UI.put("Panel.background", WindowColor.mediumGreen);
-            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-            JOptionPane.showMessageDialog(null, "Customer Name can not be empty!");
+          if(name==null || name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Customer Name can not be empty!");
             return;
           }
 

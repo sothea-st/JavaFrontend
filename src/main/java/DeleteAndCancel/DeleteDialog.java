@@ -236,11 +236,7 @@ public class DeleteDialog extends javax.swing.JDialog {
     private void buttonSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSave1MouseClicked
 
          if (reasonId == null) {
-              UIManager UI = new UIManager();
-              UI.put("OptionPane.background", WindowColor.mediumGreen);
-              UI.put("Panel.background", WindowColor.mediumGreen);
-              UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-              JOptionPane.showMessageDialog(null, "Please select a reason!");
+              JOptionPane.showMessageDialog(this, "Please select a reason!");
               return;
          }
 
@@ -258,11 +254,7 @@ public class DeleteDialog extends javax.swing.JDialog {
                    dispose();
                    deleteItem();
               } else {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Save Failed!");
+                   JOptionPane.showMessageDialog(this, "Save Failed!");
                    return;
               }
          } catch (Exception e) {

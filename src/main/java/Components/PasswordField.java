@@ -137,7 +137,7 @@ public class PasswordField extends javax.swing.JPanel {
      private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         
         if( password.getText().trim().equals("")){
-              password.setText("Password");
+              password.setText(textPassowrd);
               password.setForeground(WindowColor.lightGray);
          }
      }//GEN-LAST:event_passwordFocusLost

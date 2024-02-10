@@ -231,22 +231,14 @@ public class LoginFormJdailog extends javax.swing.JDialog {
          json.put("password", password);
 
          try {
-
-              if (userId == null) {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "User ID can not be empty!");
+             
+              if (userId == null || userId.isEmpty()) {
+                   JOptionPane.showMessageDialog(this, "User ID can not be empty!");
                    return;
               }
 
-              if (password == null) {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Password can not be empty!");
+              if (password == null || password.isEmpty()) {
+                   JOptionPane.showMessageDialog(this, "Password can not be empty!");
                    return;
               }
 
@@ -305,11 +297,7 @@ public class LoginFormJdailog extends javax.swing.JDialog {
                    txtPassword.setValuePassword(null);
 
               } else {
-                   UIManager UI = new UIManager();
-                   UI.put("OptionPane.background", WindowColor.mediumGreen);
-                   UI.put("Panel.background", WindowColor.mediumGreen);
-                   UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-                   JOptionPane.showMessageDialog(null, "Wrong email or password!");
+                   JOptionPane.showMessageDialog(this, "Wrong email or password!");
               }
 
          } catch (Exception e) {

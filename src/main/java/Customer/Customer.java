@@ -390,11 +390,7 @@ public class Customer extends javax.swing.JDialog {
             dispose();
         }
         else{
-            UIManager UI=new UIManager();
-            UI.put("OptionPane.background", WindowColor.mediumGreen);
-            UI.put("Panel.background", WindowColor.mediumGreen);
-            UI.put("OptionPane.messageFont", WindowFonts.timeNewRomanBold14);
-            JOptionPane.showMessageDialog(null, "Save Failed!");
+            JOptionPane.showMessageDialog(this, "Save Failed!");
             return;
         }
     }//GEN-LAST:event_buttonSaveMouseClicked

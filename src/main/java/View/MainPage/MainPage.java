@@ -11,6 +11,7 @@ import Controller.ActionSearchProductController.ActionSearchProduct;
 import Customer.Customer;
 import DefaultPrice.DataModelDefaultPrice;
 import DeleteAndCancel.CancelDialog;
+import Discount.DiscountType;
 import Event.ButtonEvent;
 import Fonts.WindowFonts;
 import LoginAndLogoutForm.LoginFormJdailog;
@@ -293,7 +294,7 @@ public class MainPage extends javax.swing.JFrame {
         btnLogin = new Button.Button();
         btnOpenShift = new Button.Button();
         btnReprint = new Button.Button();
-        button8 = new Button.Button();
+        buttonDiscount = new Button.Button();
         buttonCashier = new Button.Button();
         buttonCustomer = new Button.Button();
         buttonCancel1 = new ButtonPackage.ButtonCancel();
@@ -435,11 +436,11 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        button8.setBackground(new java.awt.Color(47, 155, 70));
-        button8.setButtonName("Discount");
-        button8.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonDiscount.setBackground(new java.awt.Color(47, 155, 70));
+        buttonDiscount.setButtonName("Discount");
+        buttonDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button8MouseClicked(evt);
+                buttonDiscountMouseClicked(evt);
             }
         });
 
@@ -493,7 +494,7 @@ public class MainPage extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                    .addComponent(buttonDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                             .addComponent(buttonCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -513,7 +514,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOpenShift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelprocessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonCashier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -925,17 +926,20 @@ public class MainPage extends javax.swing.JFrame {
                j.setVisible(true);
                return;
           }
-
      }//GEN-LAST:event_button3MouseClicked
 
      private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
 
      }//GEN-LAST:event_btnLoginMouseEntered
 
-     private void button8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button8MouseClicked
-          int l = JavaConstant.listHoldData.size();
-          System.err.println("lenght list holde = " + l);
-     }//GEN-LAST:event_button8MouseClicked
+     private void buttonDiscountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDiscountMouseClicked
+//          int l = JavaConstant.listHoldData.size();
+//          System.err.println("lenght list holde = " + l);
+
+            DiscountType dis = new DiscountType(new JFrame(), true);
+            dis.setVisible(true);
+
+     }//GEN-LAST:event_buttonDiscountMouseClicked
 
      //Action Button Customer
     private void buttonCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCustomerMouseClicked
@@ -1035,10 +1039,10 @@ public class MainPage extends javax.swing.JFrame {
     private Button.Button btnReprint;
     private Button.Button btnReturn;
     private Button.Button button3;
-    private Button.Button button8;
     private ButtonPackage.ButtonCancel buttonCancel1;
     private Button.Button buttonCashier;
     private Button.Button buttonCustomer;
+    private Button.Button buttonDiscount;
     private javax.swing.JPanel category;
     private Components.ComboBox cmboxBrand;
     private javax.swing.JLabel currentDate;

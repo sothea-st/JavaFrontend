@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-Constant\JavaRoundDown.class
-=======
 Components\SearchField$1.class
 Controller\ReceiptController.class
 Components\LabelReceipt.class
@@ -79,6 +76,7 @@ View\MainPage\MainPage$6.class
 Model\Reprint\ReprintModel.class
 Components\UnEditableTextField.class
 DeleteAndCancel\DeleteDialog$2.class
+Constant\JavaRoundDown.class
 LoginAndLogoutForm\LogoutDialog$2.class
 Components\PasswordField$2.class
 Print\ReprintByInvoicenumber$1.class
@@ -231,4 +229,3 @@ Components\DialonInputName$1.class
 Components\HoldItem$2.class
 OpenAndCloseShift\CloseShift$1.class
 Components\HoldItem.class
->>>>>>> 5e33ce66e48e40b934051b272240153cf58bf8e9
